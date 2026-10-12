@@ -205,8 +205,12 @@ Workers do NOT start empty-handed. The corpus, concrete and inventoried:
 - **PR #222** (branch `codex/llm-purchase-ingestion` in TechdealsHandoff): a
   working two-call small-LLM extraction engine with `semantic_cases.json`
   fixtures. Best existing engine semantics (options/nodes/memberships, quantities
-  on edges, "never allocate lot price to components") — absorb the ideas, not
-  the code.
+  on edges, "never allocate lot price to components", untrusted-input discipline,
+  null-instead-of-guessing) — absorb the IDEAS, not the code. CAUTION, verified
+  2026-10-12: that engine is ONE LISTING PER CALL (`MAX_OUTPUT_TOKENS = 16000`,
+  interpret-then-enrich per capture). Its semantics transfer; its calling pattern
+  does not — the v2 engine's batched design (dozens of listings per call) is
+  genuinely new work, and fixture zero is its first proof.
 - **Issue corpus** (TechdealsHandoff): #131 Reddit multi-item rules, #204 price
   kinds & cost basis, #224 parked EPYC server lane, #172 agent shortlist needs,
   #223 the owner's own pivot sketch.

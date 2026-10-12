@@ -223,12 +223,27 @@ Workers do NOT start empty-handed. The corpus, concrete and inventoried:
 
 ### 5.3 Fixture cells (minimum coverage)
 
-The fixture set is a handful of real captures, not a framework: (a) clean
-single-item retail listing — Shopify product JSON (`waterpanther`,
-`serverpartdeals`, or `fusionww` fixtures: id, title, body_html, variants,
-price); (b) configured server, 8–10 components, one URL — exactly one cell, do
-NOT overfit the suite to it (`raw_r2_16slot_h12ssl.json` in the 512GB bundle is
-the candidate); (c) Reddit multi-item FOR-SALE post — the verified
+The fixture set is a handful of real captures, not a framework.
+
+**Fixture zero (first, hardest, proves the engine): the EPYC 1P corpus** —
+TechdealsHandoff issue #224, data branch
+`data/epyc-1p-ebay-listings-2026-10-05`, folder
+`data/inbox/epyc-1p-ebay-2026-10-05/`: 376 eBay single-socket EPYC server
+listings with raw pages (`raw.tar.gz`), human-verified reads
+(`servers_read_v2.csv`/`.jsonl`), a read-the-raw spec (`READ_SPEC.md`), a QA
+curator check with real misreads (`curator_check_2026-10-05.md`), and a parse
+report with coverage stats (`schema/parse_report.json`). Contains the hardest
+shapes in one package: board+CPU+RAM combos, barebones, configurator base
+variants, sale-price-vs-list, out-of-stock, title-vs-description conflicts. The
+engine's first job is to reproduce the human reads in batches, scored against
+them. It is ONE fixture among the cells, not the whole test — the anti-overfit
+rule stands.
+
+Remaining cells: (a) clean single-item retail listing — Shopify product JSON
+(`waterpanther`, `serverpartdeals`, or `fusionww` fixtures: id, title,
+body_html, variants, price); (b) configured server, 8–10 components, one URL —
+exactly one cell (`raw_r2_16slot_h12ssl.json` in the 512GB bundle is the
+candidate); (c) Reddit multi-item FOR-SALE post — the verified
 multi-line-per-post shape in `reddit_homelabsales/fixtures/sample_atom.xml`
 (e.g. "4x 8TB Exos $280 / Samsung 980 Pro 2TB $110" in ONE post =
 decomposition; the `[W]` wanted-post in the same file = quarantine/skip, never
@@ -267,10 +282,15 @@ strong on listing STRUCTURES but thin on price TIME SERIES outside GovDeals'
 bidbox and the V100 CSV — the engine must still prove temporal handling from
 shapes 5 + 8's firstFound/lastSeen.
 
-## 6. The North Star (what workers optimize toward and how they stay on track)
+## 6. Acceptance contract (what workers optimize toward and how they stay on track)
 
-This is the missing piece: the single target that keeps schema and ingestion
-work from drifting. Every design choice is scored against it.
+Authority note: the product North Star is `TechdealsHandoff/docs/NORTH_STAR.md`
+(owner-authored, living; that repo's AGENTS.md forbids inventing a second review
+contract). This section is subordinate to it — the v2 acceptance contract: the
+target the schema and ingestion work is scored against, nothing more.
+
+The single target that keeps schema and ingestion work from drifting. Every
+design choice is scored against it.
 
 ### The target query set
 

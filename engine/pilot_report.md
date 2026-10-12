@@ -172,3 +172,64 @@ did not need rescuing — the same prompt, unchanged across three batches of 20,
 every field except ram_total_gb (86%), and the misses are informative (policy gap, not
 capability gap). Attempt 2, when justified, should change the prompt policy for aggregation
 and the scorer's normalization, not the architecture.
+
+---
+
+## Addendum — 2026-10-12, adversarial-review corrections (append; the report above is the pre-fix record)
+
+Corrections to claims in this report, made by the review mission. Nothing above is rewritten.
+
+1. **Replay-safety claim was HALF FALSE.** The "Replay-safety verification" section says every
+   replay-subject got a fresh `offer_key = sha256(posting_offer_key | g<group_index>)` "from the
+   position path". True for the AVAILABILITY ledger only — the PRICE ledger hashed the group's
+   fresh random `uuid7` id, so every run minted new logical price offers and price/availability
+   keys could not be joined. Fixed in `engine/extract.py` (S1: position path for both ledgers),
+   with the schema now storing `subject_path` and trigger-enforcing the derivation
+   (`sale_groups.position` is the recorded stable half of the key). Re-proven on branch
+   `fix-verify`: two-run replay of 5 listings → 5 postings, 10 extractions (appended),
+   5 price observations = 5 distinct offer_keys (replay minted zero new offers), 0 history
+   mutation, and a loud `replay_dedupe` ledger row for the 5+5 identical re-observations the
+   new dedupe indexes skip.
+2. **Truncation claim was FALSE (S4).** "Truncated output (output-token limit) splits the batch
+   and retries" did not exist in the code: the truncated bring-up run (ledger row
+   2026-10-12T11:26, 24,000 output tokens) parsed a partial batch and 9 listings went to
+   `parse_failed` with no split retry. That run is honestly recorded here as a truncated run
+   with 9 parse failures. The mechanism is now implemented in `extract.py` (split in half,
+   recurse; sub-batch ledger rows) — see `engine/README.md` addendum.
+3. **Quarantine-count reconciliation (S8).** The DB-state table above says
+   `quarantine_events 22` and the narrative claims "20 parse_failed (3 invalid-model batches
+   during bring-up)". The ledger implies up to **49** parse_failed-equivalent events: two
+   HTTP-400 invalid-model `call_failed` runs (20 listings each — the pre-fix engine wrote a
+   `parse_failed` quarantine event per failed listing) plus the truncated run's 9. The
+   engine-pilot database actually holds **22 events: 20 `parse_failed` (all written at
+   2026-10-12T11:23Z — one failed-run write landed; the other's doc did not) and 2
+   `dead_page`** — so the report's "20" matches the DB, while the ledger's two call_failed rows
+   (status `call_failed`) evidence the runs whose quarantine writes did not all land.
+   Reconciled against the branch DB, not against the narrative.
+   Also fixed going forward: transport failures now quarantine as `transport_failed`
+   (not `parse_failed`), and successful later parses emit `released` events.
+4. **Hygiene: stale quarantine events.** Per the `v_stale_quarantine` predicate
+   (`schema/020_views.sql`), **19 of the 20 `parse_failed` events on engine-pilot are stale** —
+   their postings were re-extracted successfully (with lines) later and never released.
+   The pilot branch is read-only for the fix mission (constraint: never write engine-pilot),
+   so marking them released there is deferred to whoever owns that branch; the release SQL is
+   one append per event
+   (`INSERT INTO quarantine_events (posting_id, line_id, state, reason, detail) SELECT
+   posting_id, line_id, 'released', reason, 'released: later extraction parsed successfully'
+   FROM v_stale_quarantine;`).
+   The fix itself ships in two places: the `v_stale_quarantine` Q4 accounting view, and the
+   engine now emits `released` events when a later batch parses a previously-quarantined
+   listing successfully (verified on `fix-verify`).
+5. **ram_total_gb aggregation proposal REJECTED.** The "prompt version bump that permits
+   aggregate stated count × stated per-unit size" proposal above was not taken. Deterministic
+   fix instead: `v_line_ram` (schema view) computes `ram_total_gb` from stated factors only,
+   else NULL — BRIEF §6 (no stored derivations), and no LLM arithmetic. The scorer and the
+   committed fixture numbers above stand as the pre-fix measurement.
+6. **S10.** The prompt now suggests `storage_capacity_gb` / `storage_kind` / `storage_interface`
+   attribute keys for drive-capacity facts. Boundary: the engine's packer is JSON-only —
+   the Atom/HTML fixture cells have no adapters yet, so cells (b-Reddit/central_computers
+   shapes) are not end-to-end ingestable in this mission.
+
+Fix-mission API spend and engine fix list: see `engine/README.md` addendum. Schema side:
+see `schema/README.md` (branch `fix-verify`, smoke record incl. replay-dedupe,
+ordinal-shift, multi-term and supersession cases).

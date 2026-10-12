@@ -130,3 +130,102 @@ schema mission lands token columns.
 - `out/batch_ledger.jsonl` — append-only batch ledger (tokens, cost, latency).
 - `out/results_<run>_<ver>.json` — validated per-listing extraction results.
 - `pilot_report.md` — attempt-1 verdict on fixture zero.
+
+---
+
+## Addendum — 2026-10-12, adversarial-review fixes (append; history above is the pre-fix record)
+
+Corrections and fixes to the engine made by the review mission. Where the
+original README or pilot report claimed something false, the claim is corrected
+HERE, not rewritten above.
+
+1. **S1 (offer-key unification) — the pilot's replay claim was partly FALSE.**
+   The replay-safety section above says price-observation `offer_key` is
+   position-path based; in the committed pilot code the PRICE ledger actually
+   hashed the group's fresh random `uuid7` id (`sha256(pk|<gkey>)`), while
+   availability hashed the position path (`sha256(pk|g<index>)`). Every run
+   therefore minted new logical price offers and the two ledgers were
+   unjoinable. Fixed: both ledgers now hash the stable position path
+   `g<group_index>`, the schema stores that path as
+   `subject_path` and trigger-enforces the derivation
+   (`schema/000_functions.sql observation_offer_key_guard()`), and
+   `sale_groups.position` records the group's stable index.
+   Re-proven on Neon branch `fix-verify` with a two-run replay (5 listings,
+   one call each): price and availability offer_keys are identical across
+   runs, 5 distinct keys total, zero duplicate offers, history append-only.
+2. **S3 (batch floor).** `--batch-size` is floored at 2 (`MIN_BATCH_SIZE`);
+   `--batch-size 1` is rejected by the CLI. The salvage retry never sends a
+   single-listing call: if fewer than 2 ids are missing, the retry call is
+   padded with other listings from the batch (answers for ids already parsed
+   are discarded). A run remainder smaller than the floor merges into the
+   previous batch instead of making a tiny call. The ledger row records
+   `salvage_batch_size`.
+3. **S4 (truncation split-and-retry) — the claim above was FALSE when the
+   pilot ran.** The committed code skipped salvage on truncated output;
+   ledger row 3 (the 2026-10-12 11:26 truncated run) shows the result:
+   24,000 output tokens, 9 `parse_failed` listings, no split retry. That run
+   is honestly recorded as a truncated run with parse failures, not a
+   split-and-retry success. The mechanism is NOW implemented: a truncated
+   batch is split in half and each half retried recursively (sub-calls append
+   their own ledger rows — `truncated_split` / `L`/`R` sub-indexes / a
+   `split_retry` summary; a truncated single-listing batch fails outright).
+4. **S5 (no silent quantity defaults).** Unstated counts stay NULL everywhere:
+   `lines.stated_quantity`, `sale_group_terms.line_quantity`,
+   `price_observations.quantity` (schema now nullable), and every line gets an
+   explicit `quantity_stated` attribute (children included). An
+   `explicit_unit` price with an unstated unit count is stored with quantity
+   NULL and a `quantity_units not stated` basis note — the derived unit price
+   is NULL (non-unit-confident), never a silent 1.0.
+5. **S6 (no silent price drops).** A stated price that cannot be stored
+   confidently (e.g. `homogeneous_division` without a real lot total and unit
+   count) now emits a `price_ambiguous` quarantine event plus a ledger
+   `engine_note` and stderr line instead of returning silently. A cheap
+   cross-check flags `explicit_unit` quantity contradicting the group's own
+   stated member count (single-line group with stated N, price says another
+   count) as `quantity_conflict` — never silently stored. Normal multi-line
+   bundles priced at quantity 1 are not flagged. The engine still never
+   allocates a lot price itself (confirmed clean in review; kept that way).
+6. **S7 (honest salvage flag).** `salvaged_parse` in the ledger is now true
+   only when the strict JSON parse actually failed and the salvage path was
+   used (the pilot code set it true on every successful parse). The salvage
+   retry's own flag is folded in.
+7. **S8 (transport vs parse).** Batch-call failures get a distinct quarantine
+   reason: `transport_failed` (transport errors, HTTP 5xx, 429), 
+   `batch_call_failed` (other call-level failures, e.g. HTTP 400), and
+   `parse_failed` only for unparseable/invalid results. `quarantine_events`
+   reason vocabulary updated in `schema/010_tables.sql`. The engine also
+   emits a `released` quarantine event when a listing that carries a stale
+   `parse_failed`/transport/batch-call quarantine parses successfully in a
+   later run — see the reconciliation note in `pilot_report.md`.
+8. **S9 (no silent dedupe drops).** (a) A repeated client id across input
+   files is reported to stderr and the ledger (`input_dedupe_drop` row) —
+   there is no posting row yet to hang a quarantine event on. (b) Replay
+   observations identical to ones already written
+   (`offer_key, observed_at, price_kind/state`) are skipped BEFORE insert and
+   reported in a `replay_dedupe` ledger row plus stderr — the H2 unique
+   indexes make the duplicate a schema-level error otherwise, and skipping is
+   never silent.
+9. **S10 (storage-capacity attribute keys).** The prompt's suggested
+   attribute vocabulary now includes `storage_capacity_gb`, `storage_kind`,
+   `storage_interface` — the drive-capacity facts that fixture cell (c)
+   (Reddit multi-item posts) and GovDeals lots live on. Boundary note: the
+   packer today consumes JSON captures only. The Reddit-Atom and HTML adapter
+   cells do not exist yet — nothing in this mission parses Atom or HTML — so
+   cells like `reddit_homelabsales` / `central_computers` are not ingestable
+   end-to-end until adapters are written (explicitly out of scope here).
+10. **ram_total aggregation decision.** The pilot report's proposal to let
+    the prompt multiply stated factors was REJECTED. Deterministic fix only:
+    `schema/020_views.sql v_line_ram` computes `ram_total_gb` from stated
+    factors (own `stated_quantity × ram_dimm_gb`, or the all-children sum when
+    every child states both), else NULL — BRIEF §6 "derived values in views,
+    never stored", and no LLM arithmetic. `score_pilot.py` was NOT changed;
+    its committed fixture numbers (86% on ram_total_gb) remain the honest
+    pre-fix measurement.
+
+Mission API spend (OpenRouter, deepseek/deepseek-v4-flash-0731, all batched,
+zero one-listing-per-call): **$0.009319 total** across five 5-listing batched
+calls — the final S1 replay proof pair ($0.001860 + $0.001914) plus one
+earlier attempt pair ($0.001756 + $0.001948, of which one run crashed after
+the LLM call and before any DB write, and one retry $0.001841) invalidated by
+a mid-flight schema change (`sale_groups.position`). Ledger:
+`engine/out/batch_ledger.jsonl`, rows from 12:06–12:12 UTC.

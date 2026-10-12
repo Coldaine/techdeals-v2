@@ -79,5 +79,143 @@
   "offer_key": "90ffc4fdf7c6ffea5a7f497363e0018a20470a75a04b7afad6a27193bc77429b",
   "checksum": "e9a22cd7d736c9d1985384d9e5f9238da6173fc5bff1733d566a65f20c9aef11",
   "condensed_chars": 5845
+ },
+ {
+  "client_id": "116572740961",
+  "condensed": {
+   "title": "Supermicro AMD EPYC Milan AS-1014S-WTRT 1U Server",
+   "price": "$2,550.00",
+   "currency": "USD",
+   "condition": "Used",
+   "availability": "in_stock",
+   "quantity_available": 10,
+   "is_sold": false,
+   "item_location": "ShenZhen, China",
+   "listing_format": "Buy It Now + Best Offer",
+   "brand": "Supermicro",
+   "url": "https://www.ebay.com/itm/116572740961",
+   "domain": "www.ebay.com",
+   "item_id": "116572740961",
+   "description": "Supermicro AMD EPYC Milan AS-1014S-WTRT 1U Server , 2x 500W Power supplier Noly the server , no CPU SSD RAMs",
+   "specs": [
+    {
+     "Condition": "Used: An item that has been used previously. The item may have some signs of cosmetic wear, but is fully operational and functions as intended. This item may be a floor model or store return that has been used. See the seller’s listing for full details and description of any imperfections."
+    },
+    {
+     "Brand": "Supermicro"
+    },
+    {
+     "Memory Type": "DDR4 SDRAM"
+    },
+    {
+     "Model": "AS-1014S-WTRT-OTO-54"
+    },
+    {
+     "MPN": "AS-1014S-WTRT-OTO-54"
+    },
+    {
+     "Number of Processors": "1"
+    },
+    {
+     "Processor Type": "AMD EPYC 7003 Series"
+    },
+    {
+     "Type": "Rack"
+    },
+    {
+     "UPC": "Does not apply"
+    }
+   ],
+   "category": "Electronics>Computers/Tablets & Networking>Enterprise Networking, Servers>Servers, Clients & Terminals>Computer Servers",
+   "timestamp": "2026-10-06T02:21:31.744Z",
+   "seller_name": "yzhan-695",
+   "seller_rating": "98% positive feedback",
+   "fetch_status": "live",
+   "extra_product_id": "116572740961",
+   "extra_root_category": "Electronics",
+   "extra_available_count": 10,
+   "extra_description_from_the_seller": "Supermicro AMD EPYC Milan AS-1014S-WTRT 1U Server , 2x 500W Power supplier Noly the server , no CPU SSD RAMs",
+   "extra_description_from_the_seller_parsed": "<p>Supermicro AMD EPYC Milan AS-1014S-WTRT 1U Server , 2x 500W Power supplier<br>Noly the server , no CPU SSD RAMs</p>",
+   "extra_seller_url": "https://www.ebay.com/str/rhett?_trksid=p4429486.m3561.l161211",
+   "extra_availability_date": "Estimated between Mon, Oct 19 and Tue, Oct 20",
+   "extra_group_id": "116572740961",
+   "extra_listing_has_variations": false,
+   "extra_store_name": "yzhan-695",
+   "extra_return_window": 30,
+   "extra_store_country": "US",
+   "extra_all_variations": false,
+   "extra_gtin": "Does not apply"
+  },
+  "source": "www.ebay.com",
+  "url": "https://www.ebay.com/itm/116572740961",
+  "fetched_at": "2026-10-06T02:21:31.744000+00:00",
+  "offer_key": "53cc88d7ac6c4ae69b458bfb6cb61bb426d31b3ae2f1fc76d373a1c5876e6184",
+  "checksum": "742e3cb1769a6078bd93067794d154bbf47f6e1e5bd6f2fda8307140e46ddbb3",
+  "condensed_chars": 2166
+ },
+ {
+  "client_id": "117083098586",
+  "condensed": {
+   "title": "Supermicro H12SSL-i+AMD EPYC 7A23 48 cores 96 threads 2.65ghz combination -",
+   "price": "$1,574.57",
+   "currency": "USD",
+   "condition": "Open box",
+   "availability": "in_stock",
+   "quantity_available": 10,
+   "quantity_sold": 2,
+   "is_sold": false,
+   "item_location": "深圳, China",
+   "listing_format": "Buy It Now + Best Offer",
+   "brand": "AMD",
+   "url": "https://www.ebay.com/itm/117083098586",
+   "domain": "www.ebay.com",
+   "item_id": "117083098586",
+   "description": "Note: Buyer is responsible for customs fees. Thank you. Note: Buyer is responsible for customs duties. Thanks. Supermicro H12SSL-i+AMD EPYC 7A23 48 cores 96 threads 2.65ghz combination Product Description Package include 1X Supermicro H12SSL-i Motherboard 1x AMD EPYC 7A23 Category Specification Model SKUs MBD-H12SSL-i, H12SSL-i, MBD-H12SSL-i-O, H12SSL-i (Retail Pack) Form Factor ATX (12\" x 9.6\" / 30.5cm x 24.4cm) Processor CPU Support Single AMD EPYC 7002/7003 Series CPU Socket SP3 Max Cores Up to 64 Memory Slots 8 DIMM slots Max Capacity 2TB Memory Type DDR4 3200MHz Registered ECC Memory Bus 8-channel Storage SATA Ports 8 x SATA3 (6Gbps) Hybrid Ports 1 x SlimSAS x8 (supports 8 SATA3 OR 2 NVMe) M.2 Slots 2 x M.2 (PCIe 4.0 x4), Form Factors: 2280, 22110 Expansion Slots PCIe Slots 5 x PCIe 4.0 x16 2 x PCIe 4.0 x8 Networking LAN Ports 2 x Gigabit Ethernet (Broadcom BCM5720) IPMI 1 x Dedicated IPMI LAN (Realtek RTL8211F) I/O Ports USB 4 x USB 3.0 (rear) + 2 x USB 3.0 (via header) Video 1 x VGA (via ASPEED AST2500 BMC) Other 1 x COM port, 2 x SATA DOM power, 1 x TPM 2.0 header Management BMC ASPEED AST2500 Management Features IPMI 2.0, KVM-over-LAN, Virtual Media Cooling Fan Headers 7 x 4-pin PWM Environmental Operating Temperature 10°C to 35°C (50°F to 95°F) Buying Notes: 1. All orders are shipped from China 2.orders will be shipped within 5 days after we receive full payment (excluding holidays or weekends). 3. All parcels will be provided with a tracking number for your tracking: 1 Standard SpeedPAK Shipping: 8-12 business days to the US and most countries. 2 If you choose expedited shipping, the package will be shipped by FedEx, DHL or UPS. 3 If you have any problems with customs clearance (invoice, declared value, etc.), please feel free to contact us and we will reply as soon as possible. 4 If you need to change the address, please cancel the order first and then place the order with the correct address. 4.About Returns and Exchanges: If you receive the goods and find faults or damage problems, please keep the goods as they are and then contact us to provide you with after-sale solutions; If you need to return or exchange the goods for personal reasons, the return shipping costs need to be borne by you. If you have any questions, our customer service staff will be happy to assist you. However, due to the large number of emails we receive each day and the time difference, we may not be able to respond to your email immediately. Please allow us to respond to your message immediately after business hours.",
+   "specs": [
+    {
+     "Condition": "Open box: An item in excellent, new condition with no wear. The item may be missing the original packaging or protective wrapping, or may be in the original packaging but not sealed. The item includes original accessories. The item may be a factory second. See the seller's listing for full details and description."
+    },
+    {
+     "CPU Series": "amd epyc 7a23"
+    },
+    {
+     "Compatible CPU Brand": "AMD"
+    },
+    {
+     "Motherboard Brand": "Supermicro"
+    },
+    {
+     "Model": "H12SSL-i"
+    },
+    {
+     "EAN": "Does not apply"
+    },
+    {
+     "Country of Origin": "China"
+    }
+   ],
+   "category": "Electronics>Computers/Tablets & Networking>Computer Components & Parts>Motherboard & CPU Combos",
+   "timestamp": "2026-10-06T02:23:23.150Z",
+   "seller_name": "NewDisk",
+   "seller_rating": "99.7% positive feedback",
+   "fetch_status": "live",
+   "extra_product_id": "117083098586",
+   "extra_root_category": "Electronics",
+   "extra_available_count": 10,
+   "extra_sold_count": "2",
+   "extra_seller_url": "https://www.ebay.com/str/newdisk?_trksid=p4429486.m3561.l161211",
+   "extra_availability_date": "Estimated between Wed, Oct 14 and Fri, Oct 23",
+   "extra_group_id": "117083098586",
+   "extra_listing_has_variations": false,
+   "extra_store_name": "NewDisk",
+   "extra_all_variations": false,
+   "extra_gtin": "Nicht zutreffend"
+  },
+  "source": "www.ebay.com",
+  "url": "https://www.ebay.com/itm/117083098586",
+  "fetched_at": "2026-10-06T02:23:23.150000+00:00",
+  "offer_key": "1a16d700c536ebb9bf25c980fd0de96994736a3e80839a7498860471a1597f64",
+  "checksum": "c66703943e055e0f263e7f5773d74a4948aa3355a2975e460e0f6aa54df70aca",
+  "condensed_chars": 4243
  }
 ]

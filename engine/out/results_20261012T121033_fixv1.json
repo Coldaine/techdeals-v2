@@ -1,0 +1,333 @@
+{
+ "run_id": "20261012T121033",
+ "model": "deepseek/deepseek-v4-flash-0731",
+ "parser_name": "llm_batch:fixv1",
+ "prompt_version": "batch-v1",
+ "batch_size": 5,
+ "results": [
+  {
+   "id": "115876998802",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12SSL-i + EPYC 7742 + 8x32GB 2666MHz RAM bundle",
+     "availability": "available",
+     "price": {
+      "amount": "4579.66",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one bundle: motherboard + CPU + 8x32GB RAM"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max_gb": 2048,
+        "board_support_cpu": "Single AMD EPYC 7003/7002 Series"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7742 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7742",
+        "cpu_count": 1,
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "cpu_socket": "SP3",
+        "cpu_tdp_watts": 225
+       },
+       "children": []
+      },
+      {
+       "label": "Samsung 32GB 2666MHz DDR4 ECC RAM",
+       "quantity": 8,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_dimm_count": 8,
+        "ram_dimm_gb": 32,
+        "ram_total_gb": 256,
+        "ram_type": "DDR4 ECC",
+        "ram_speed_mts": 2666
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Description package list and specs agree; price is a single Buy It Now ask for the bundle."
+  },
+  {
+   "id": "116572740961",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro AS-1014S-WTRT 1U server (no CPU/RAM/SSD)",
+     "availability": "available",
+     "price": {
+      "amount": "2550.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one server chassis with 2x500W PSUs, no CPU/RAM/SSD"
+     },
+     "lines": [
+      {
+       "label": "Supermicro AS-1014S-WTRT 1U server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "AS-1014S-WTRT",
+        "form_factor_u": 1,
+        "psu_count": 2,
+        "psu_watts": 500,
+        "cpu_count": 0,
+        "ram_total_gb": 0,
+        "storage_capacity_gb": 0
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Specs list 'Processor Type: AMD EPYC 7003 Series' and 'Number of Processors: 1', but description states no CPU is included."
+   ],
+   "read_confidence": "high",
+   "read_note": "Description explicitly states server only, no CPU/SSD/RAM; specs table lists processor type generically."
+  },
+  {
+   "id": "117083098586",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12SSL-i + EPYC 7A23 bundle",
+     "availability": "available",
+     "price": {
+      "amount": "1574.57",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one bundle: motherboard + CPU"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max_gb": 2048,
+        "board_support_cpu": "Single AMD EPYC 7002/7003 Series"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7A23 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7A23",
+        "cpu_count": 1,
+        "cpu_cores": 48,
+        "cpu_threads": 96,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "cpu_socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Description package list and specs agree; price is a single Buy It Now ask for the bundle."
+  },
+  {
+   "id": "117173565052",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Dell PowerEdge R6515 configured server",
+     "availability": "available",
+     "price": {
+      "amount": "4951.07",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one configured server: R6515 with 7542 CPU, 128GB RAM, H730, 2x550W"
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R6515 server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R6515",
+        "drive_bays": 10,
+        "storage_interface": "10x2.5\" (10xNVME)",
+        "raid_controller": "H730",
+        "psu_count": 2,
+        "psu_watts": 550,
+        "nic": "Motherboard integrated network card"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7542 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7542",
+        "cpu_count": 1,
+        "cpu_cores": 32
+       },
+       "children": []
+      },
+      {
+       "label": "32GB 3200MHz RAM",
+       "quantity": 4,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_dimm_count": 4,
+        "ram_dimm_gb": 32,
+        "ram_total_gb": 128,
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Description details configuration; specs confirm 128GB memory and model."
+  },
+  {
+   "id": "117219265177",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12SSL-i + EPYC 7532 + 8x32GB 2666MHz RAM bundle",
+     "availability": "available",
+     "price": {
+      "amount": "3026.47",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one bundle: motherboard + CPU + 8x32GB RAM"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max_gb": 2048,
+        "board_support_cpu": "Single AMD EPYC 7003/7002 Series"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7532 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7532",
+        "cpu_count": 1,
+        "cpu_cores": 32,
+        "cpu_threads": 64,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "cpu_socket": "SP3",
+        "cpu_tdp_watts": 200
+       },
+       "children": []
+      },
+      {
+       "label": "Samsung 32GB 2666MHz DDR4 ECC RAM",
+       "quantity": 8,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_dimm_count": 8,
+        "ram_dimm_gb": 32,
+        "ram_total_gb": 256,
+        "ram_type": "DDR4 ECC",
+        "ram_speed_mts": 2666
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Description package list and specs agree; price is a single Buy It Now ask for the bundle."
+  }
+ ],
+ "failed": {},
+ "batch_rows": [
+  {
+   "ts": "2026-10-12T12:11:14.570300+00:00",
+   "batch_index": "0",
+   "model": "deepseek/deepseek-v4-flash-0731",
+   "prompt_version": "batch-v1",
+   "listing_count": 5,
+   "input_tokens": 7675,
+   "output_tokens": 2666,
+   "cached_tokens": 7424,
+   "cost_usd": 0.00186,
+   "latency_s": 40.19,
+   "retries": 0,
+   "truncated": false,
+   "salvaged_parse": false,
+   "retried_missing": 0,
+   "salvage_batch_size": null,
+   "failed_ids": [],
+   "status": "ok"
+  }
+ ]
+}

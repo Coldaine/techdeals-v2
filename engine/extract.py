@@ -50,6 +50,10 @@ MODEL_PRICES = {
 
 PROMPT_VERSION = "batch-v1"
 OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out")
+# S3: hard batch floor — every LLM call (steady state OR salvage retry) must
+# carry at least MIN_BATCH_SIZE listings; one-listing-per-call is a defect
+# (BRIEF §6 guardrail), not an option.
+MIN_BATCH_SIZE = 2
 
 # ---------------------------------------------------------------- condensing --
 # Shape-generic projection: map common listing-field synonyms to canonical
@@ -217,7 +221,7 @@ Prices:
 
 Availability: the group's current purchasability: "available", "unavailable" (sold out / ended / sold), or "unknown".
 
-Attributes: a JSON object of stated spec facts using SUGGESTED vocabulary where they apply (any other snake_case key is valid too): cpu_model, cpu_count, cpu_cores, cpu_threads, cpu_family, ram_total_gb, ram_dimm_count, ram_dimm_gb, ram_type, ram_kind, ram_speed_mts, chassis_vendor, chassis_model, form_factor_u, drive_bays, motherboard, gpu, psu_count, psu_watts, raid_controller, boot_device, nic. Preserve the source's exact strings (e.g. "EPYC 7542"), numbers as numbers, unknown as null. Put board-support statements ("board supports DDR4 3200") under keys prefixed board_support_, NOT as installed RAM.
+Attributes: a JSON object of stated spec facts using SUGGESTED vocabulary where they apply (any other snake_case key is valid too): cpu_model, cpu_count, cpu_cores, cpu_threads, cpu_family, ram_total_gb, ram_dimm_count, ram_dimm_gb, ram_type, ram_kind, ram_speed_mts, storage_capacity_gb, storage_kind, storage_interface, chassis_vendor, chassis_model, form_factor_u, drive_bays, motherboard, gpu, psu_count, psu_watts, raid_controller, boot_device, nic. Preserve the source's exact strings (e.g. "EPYC 7542"), numbers as numbers, unknown as null. Put board-support statements ("board supports DDR4 3200") under keys prefixed board_support_, NOT as installed RAM.
 
 outcome: "extracted" when there is purchase information; "quarantined" when the capture is out of scope or unparseable (fill "quarantine" with reason: dead_page, not_inventory, out_of_scope_consumer, wanted_post, parse_failed — plus a short detail); "no_purchase_information" only when there are no options, groups, lines or prices at all.
 
@@ -412,11 +416,22 @@ class BatchClient:
         text = msg.get("content") or msg.get("text") or ""
         if choices[0].get("finish_reason") == "length":
             meta["truncated"] = True
-        results = _canonical_results(_salvage_json(text))
-        if results is None:
+        # S7: `salvaged` means the salvage path was actually needed — a clean
+        # strict JSON parse is not salvage, and the ledger must not claim it was.
+        strict_parse = True
+        try:
+            parsed = json.loads(text)
+        except (ValueError, TypeError):
+            strict_parse = False
+            parsed = _salvage_json(text)
+        if parsed is None:
             meta["raw_text_sha256"] = hashlib.sha256(text.encode()).hexdigest()
             raise LLMError(f"unparseable batch output (sha256 {meta['raw_text_sha256'][:16]})")
-        meta["salvaged"] = True
+        results = _canonical_results(parsed)
+        if results is None:
+            meta["raw_text_sha256"] = hashlib.sha256(text.encode()).hexdigest()
+            raise LLMError(f"batch output parsed but carries no per-listing results (sha256 {meta['raw_text_sha256'][:16]})")
+        meta["salvaged"] = not strict_parse
         return results, meta
 
 
@@ -578,12 +593,12 @@ def db_write_batch(dsn: str, doc: dict) -> None:
       extractions: [{id, client_key, posting_id, parser_name}]
       lines:       [{id, client_key, posting_id, extraction_id, parent_id|null,
                      ordinal, label, stated_quantity, separately_purchasable, attributes}]
-      groups:      [{id, client_key, posting_id, extraction_id, label}]
+      groups:      [{id, client_key, posting_id, extraction_id, position, label}]
       terms:       [{id, group_id, line_id, line_quantity}]
-      prices:      [{id, offer_key, posting_id, subject_kind, subject_id, observed_at,
-                     price_kind, price_basis, amount|null, currency, quantity,
+      prices:      [{id, offer_key, subject_path, posting_id, subject_kind, subject_id, observed_at,
+                     price_kind, price_basis, amount|null, currency, quantity|null,
                      bound_low|null, bound_high|null, basis_note|null}]
-      avail:       [{id, offer_key, posting_id, subject_kind, subject_id, observed_at, state}]
+      avail:       [{id, offer_key, subject_path, posting_id, subject_kind, subject_id, observed_at, state}]
       quarantine:  [{id, posting_id, line_id|null, state, reason, detail}]
     """
     b64 = base64.b64encode(json.dumps(doc).encode()).decode()
@@ -609,18 +624,19 @@ SELECT (s->>'id')::uuid, (s->>'posting_id')::uuid, (s->>'extraction_id')::uuid,
        COALESCE(s->'attributes','{{}}'::jsonb)
 FROM (SELECT d FROM _src) x, jsonb_array_elements(x.d->'lines') s;
 
-INSERT INTO sale_groups (id, posting_id, extraction_id, label)
-SELECT (s->>'id')::uuid, (s->>'posting_id')::uuid, (s->>'extraction_id')::uuid, s->>'label'
+INSERT INTO sale_groups (id, posting_id, extraction_id, position, label)
+SELECT (s->>'id')::uuid, (s->>'posting_id')::uuid, (s->>'extraction_id')::uuid,
+       (s->>'position')::int, s->>'label'
 FROM (SELECT d FROM _src) x, jsonb_array_elements(x.d->'groups') s;
 
 INSERT INTO sale_group_terms (id, sale_group_id, line_id, line_quantity)
 SELECT (s->>'id')::uuid, (s->>'group_id')::uuid, (s->>'line_id')::uuid, (s->>'line_quantity')::numeric
 FROM (SELECT d FROM _src) x, jsonb_array_elements(x.d->'terms') s;
 
-INSERT INTO price_observations (id, offer_key, posting_id, subject_kind, line_id, sale_group_id, observed_at,
+INSERT INTO price_observations (id, offer_key, subject_path, posting_id, subject_kind, line_id, sale_group_id, observed_at,
                                 price_kind, price_basis, amount, currency, quantity,
                                 bound_low, bound_high, basis_note)
-SELECT (s->>'id')::uuid, s->>'offer_key', (s->>'posting_id')::uuid, s->>'subject_kind',
+SELECT (s->>'id')::uuid, s->>'offer_key', s->>'subject_path', (s->>'posting_id')::uuid, s->>'subject_kind',
        CASE WHEN s->>'subject_kind' = 'line' THEN (s->>'subject_id')::uuid END,
        CASE WHEN s->>'subject_kind' = 'sale_group' THEN (s->>'subject_id')::uuid END,
        (s->>'observed_at')::timestamptz,
@@ -629,8 +645,8 @@ SELECT (s->>'id')::uuid, s->>'offer_key', (s->>'posting_id')::uuid, s->>'subject
        s->>'basis_note'
 FROM (SELECT d FROM _src) x, jsonb_array_elements(x.d->'prices') s;
 
-INSERT INTO availability_observations (id, offer_key, posting_id, subject_kind, line_id, sale_group_id, observed_at, state)
-SELECT (s->>'id')::uuid, s->>'offer_key', (s->>'posting_id')::uuid, s->>'subject_kind',
+INSERT INTO availability_observations (id, offer_key, subject_path, posting_id, subject_kind, line_id, sale_group_id, observed_at, state)
+SELECT (s->>'id')::uuid, s->>'offer_key', s->>'subject_path', (s->>'posting_id')::uuid, s->>'subject_kind',
        CASE WHEN s->>'subject_kind' = 'line' THEN (s->>'subject_id')::uuid END,
        CASE WHEN s->>'subject_kind' = 'sale_group' THEN (s->>'subject_id')::uuid END,
        (s->>'observed_at')::timestamptz, s->>'state'
@@ -646,11 +662,94 @@ COMMIT;
     run_psql(dsn, sql)
 
 
+def db_prior_quarantines(dsn: str, posting_ids: list[str]) -> dict[str, str]:
+    """{posting_id: reason} whose latest quarantine event is still 'quarantined'.
+
+    Hygiene input: listings parsed successfully in THIS run that carry a stale
+    quarantine (e.g. parse_failed from a bring-up batch) get a 'released' event.
+    """
+    if not posting_ids:
+        return {}
+    doc = base64.b64encode(json.dumps({"ids": posting_ids}).encode()).decode()
+    sql = f"""
+BEGIN;
+CREATE TEMP TABLE _src AS
+  SELECT convert_from(decode('{doc}','base64'),'UTF8')::jsonb AS d;
+WITH latest AS (
+  SELECT DISTINCT ON (q.posting_id) q.posting_id, q.state, q.reason
+  FROM quarantine_events q
+  WHERE q.posting_id = ANY (ARRAY(SELECT jsonb_array_elements_text(d->'ids') FROM _src)::uuid[])
+  ORDER BY q.posting_id, q.created_at DESC, q.id DESC
+)
+SELECT 'Q:'||coalesce(jsonb_object_agg(posting_id::text, reason)::text, '{{}}') FROM latest WHERE state = 'quarantined';
+COMMIT;
+"""
+    out = run_psql(dsn, sql)
+    for line in out:
+        if line.startswith("Q:"):
+            return json.loads(line[2:])
+    return {}
+
+
+def db_filter_replayed_observations(dsn: str, doc: dict) -> tuple[dict, list[str], list[str]]:
+    """Drop observations a previous run already wrote (H2 replay-dedupe).
+
+    The schema's partial unique indexes block a second LIVE observation for the
+    same (offer_key, observed_at, price_kind/state); the engine pre-checks so a
+    replay skips them instead of failing the batch transaction — never silently
+    (S9): the caller reports each drop to the ledger and stderr.
+    Returns (doc_with_only_new_rows, dropped_price_labels, dropped_avail_labels).
+    """
+    prices, avail = doc.get("prices") or [], doc.get("avail") or []
+    if not prices and not avail:
+        return doc, [], []
+    b64 = base64.b64encode(json.dumps({"prices": prices, "avail": avail}).encode()).decode()
+    sql = f"""
+BEGIN;
+CREATE TEMP TABLE _src AS
+  SELECT convert_from(decode('{b64}','base64'),'UTF8')::jsonb AS d;
+SELECT 'PD:'||t.ord
+FROM (SELECT d FROM _src) x,
+     LATERAL jsonb_array_elements(x.d->'prices') WITH ORDINALITY AS t(val, ord)
+JOIN price_observations po
+  ON po.offer_key = val->>'offer_key'
+ AND po.observed_at = (val->>'observed_at')::timestamptz
+ AND po.price_kind = val->>'price_kind'
+ AND po.superseded_by IS NULL;
+SELECT 'AD:'||t.ord
+FROM (SELECT d FROM _src) x,
+     LATERAL jsonb_array_elements(x.d->'avail') WITH ORDINALITY AS t(val, ord)
+JOIN availability_observations ao
+  ON ao.offer_key = val->>'offer_key'
+ AND ao.observed_at = (val->>'observed_at')::timestamptz
+ AND ao.state = val->>'state';
+COMMIT;
+"""
+    out = run_psql(dsn, sql)
+    drop_prices = {int(l[3:]) - 1 for l in out if l.startswith("PD:")}
+    drop_avail = {int(l[3:]) - 1 for l in out if l.startswith("AD:")}
+    dropped_price_labels = [f"{prices[i]['subject_path']}:{prices[i]['price_kind']}" for i in sorted(drop_prices)]
+    dropped_avail_labels = [f"{avail[i]['subject_path']}:{avail[i]['state']}" for i in sorted(drop_avail)]
+    if drop_prices:
+        doc["prices"] = [p for i, p in enumerate(prices) if i not in drop_prices]
+    if drop_avail:
+        doc["avail"] = [a for i, a in enumerate(avail) if i not in drop_avail]
+    return doc, dropped_price_labels, dropped_avail_labels
+
+
 # --------------------------------------------------------------- pipeline ----
 
 
-def load_listings(paths: list[str]) -> list[dict]:
+def load_listings(paths: list[str]) -> tuple[list[dict], list[dict]]:
+    """Load captures; returns (listings, dropped_duplicates).
+
+    A repeated client id is NOT silently dropped (BRIEF §3.1: nothing silently
+    dropped) — the second capture is returned to the caller, which reports it
+    to stderr and the ledger. No posting row exists for it yet, so there is
+    nothing to hang a quarantine event on until/unless it is ever ingested.
+    """
     listings = []
+    dropped: list[dict] = []
     seen_ids: set[str] = set()
     for idx, path in enumerate(paths):
         with open(path) as f:
@@ -659,6 +758,7 @@ def load_listings(paths: list[str]) -> list[dict]:
             continue
         cid = str(payload.get("item_id") or payload.get("product_id") or payload.get("id") or f"idx{idx}")
         if cid in seen_ids:
+            dropped.append({"client_id": cid, "path": path})
             continue
         seen_ids.add(cid)
         condensed = condense(payload)
@@ -677,7 +777,7 @@ def load_listings(paths: list[str]) -> list[dict]:
             "offer_key": offer_key,
             "checksum": checksum,
         })
-    return listings
+    return listings, dropped
 
 
 def postset_payload(l: dict) -> dict:
@@ -688,12 +788,31 @@ def postset_payload(l: dict) -> dict:
     }
 
 
-def price_observation(l: dict, group: dict, group_index: int, group_key: str) -> dict | None:
+def classify_failure(detail: str) -> str:
+    """S8: transport failures are not parse failures — quarantine reason must
+    say which, so batch-call failures are not laundered as parse_failed."""
+    d = detail.lower()
+    if "transport" in d or "http 5" in d or "http 429" in d or "timeout" in d:
+        return "transport_failed"
+    if "batch call failed" in d:
+        return "batch_call_failed"
+    return "parse_failed"
+
+
+def price_observation(l: dict, path: str, group: dict) -> tuple[dict | None, str | None]:
+    """Build the group-priced observation, or (None, drop_reason) when the
+    stated price cannot be stored confidently (S6: never a silent drop).
+
+    S1: `path` is the group's stable POSITION path ("g<index>") — the offer_key
+    is sha256(posting natural key | '|' | path), the same derivation the
+    availability observations use, so replays keep offers joinable.
+    """
     p = group["price"]
     basis = p["price_basis"]
     amount = as_decimal(p.get("amount"))
+    # S5: an unstated unit count stays NULL — never silently promoted to 1.0
     qty = p.get("quantity_units")
-    qty = float(qty) if isinstance(qty, (int, float)) and not isinstance(qty, bool) and float(qty) > 0 else 1.0
+    qty = float(qty) if isinstance(qty, (int, float)) and not isinstance(qty, bool) and float(qty) > 0 else None
     bound_low = as_decimal(p.get("bound_low"))
     bound_high = as_decimal(p.get("bound_high"))
     kind = p.get("price_kind") or "ask"
@@ -704,23 +823,28 @@ def price_observation(l: dict, group: dict, group_index: int, group_key: str) ->
     if not re.fullmatch(r"[A-Z]{3}", currency):
         currency = "USD"
         note = (note + " " if note else "") + "currency unstated in capture; defaulted USD"
-    if basis == "homogeneous_division" and not (amount and qty > 1):
+    if qty is None:
+        note = (note + " " if note else "") + "quantity_units not stated; unit price not confidently derivable"
+    if basis == "homogeneous_division" and not (amount and qty and qty > 1):
         # a homogeneous division needs a real lot total and a real unit count
-        basis = "bound_only" if (bound_low or bound_high) else None
-        if basis is None:
-            return None
+        if bound_low or bound_high:
+            basis = "bound_only"
+        else:
+            return None, (f"homogeneous_division without a stated lot total and unit count "
+                          f"(amount={amount!r}, quantity_units={qty!r}) — price dropped, not silently stored")
     if basis == "bound_only":
         if not (bound_low or bound_high):
-            return None
+            return None, "bound_only without either bound — price dropped, not silently stored"
         amount = None
     elif not amount:
-        return None
+        return None, "no stated amount after basis checks — price dropped, not silently stored"
     return {
         "id": uuid7(),
-        "offer_key": sha256_hex(f"{l['offer_key']}|{group_key}"),
+        "offer_key": sha256_hex(f"{l['offer_key']}|{path}"),
+        "subject_path": path,
         "posting_id": l["posting_id"],
         "subject_kind": "sale_group",
-        "subject_id": group_key,
+        "subject_id": None,  # filled by build_batch_doc after the group id exists
         "observed_at": l["fetched_at"],
         "price_kind": kind,
         "price_basis": basis,
@@ -730,19 +854,27 @@ def price_observation(l: dict, group: dict, group_index: int, group_key: str) ->
         "bound_low": bound_low,
         "bound_high": bound_high,
         "basis_note": note,
-    }
+    }, None
 
 
 def build_batch_doc(batch: list[dict], model: str, parser_name: str, cost_usd: float,
-                    results_by_id: dict[str, dict], failed_ids: dict[str, str]) -> dict:
-    """Turn validated model results into one DB transaction doc."""
+                    results_by_id: dict[str, dict], failed_ids: dict[str, str],
+                    prior_quarantines: dict[str, str] | None = None) -> dict:
+    """Turn validated model results into one DB transaction doc.
+
+    prior_quarantines: {posting_id: reason} for postings whose latest
+    quarantine event is still 'quarantined' — a listing that parses
+    successfully this run gets a 'released' event appended (hygiene: stale
+    parse_failed state must not linger, BRIEF §6 query 4).
+    """
+    prior_quarantines = prior_quarantines or {}
     doc = {
         "batch": {
             "id": uuid7(), "model": model, "prompt_version": PROMPT_VERSION,
             "cost_usd": cost_usd, "listing_count": len(batch),
         },
         "extractions": [], "lines": [], "groups": [], "terms": [],
-        "prices": [], "avail": [], "quarantine": [],
+        "prices": [], "avail": [], "quarantine": [], "ledger_notes": [],
     }
     batch_id = doc["batch"]["id"]
     for l in batch:
@@ -753,10 +885,11 @@ def build_batch_doc(batch: list[dict], model: str, parser_name: str, cost_usd: f
         })
         res = results_by_id.get(l["client_id"])
         if res is None:
+            detail = failed_ids.get(l["client_id"], "no result for this listing after salvage/retry")
             doc["quarantine"].append({
                 "id": uuid7(), "posting_id": l["posting_id"], "line_id": None,
-                "state": "quarantined", "reason": "parse_failed",
-                "detail": failed_ids.get(l["client_id"], "no result for this listing after salvage/retry"),
+                "state": "quarantined", "reason": classify_failure(detail),
+                "detail": detail,
             })
             continue
         if res["outcome"] in ("quarantined", "no_purchase_information"):
@@ -768,48 +901,89 @@ def build_batch_doc(batch: list[dict], model: str, parser_name: str, cost_usd: f
                 "detail": (q.get("detail") or "")[:500],
             })
             continue
+        # hygiene: this run parsed the listing successfully — release any stale
+        # quarantine (e.g. parse_failed from a bring-up batch) so Q4 accounting
+        # does not keep counting it as failed
+        if l["posting_id"] in prior_quarantines:
+            doc["quarantine"].append({
+                "id": uuid7(), "posting_id": l["posting_id"], "line_id": None,
+                "state": "released", "reason": prior_quarantines[l["posting_id"]],
+                "detail": "released: a later batch parsed this listing successfully",
+            })
         ord_counter = 0
         for gi, g in enumerate(res["sale_groups"]):
             gkey = uuid7()
+            path = f"g{gi}"  # S1: stable position path, both ledgers
             doc["groups"].append({
                 "id": gkey, "client_key": f"{l['client_id']}:g{gi}",
-                "posting_id": l["posting_id"], "extraction_id": ex_id, "label": g["label"],
+                "posting_id": l["posting_id"], "extraction_id": ex_id,
+                "position": gi, "label": g["label"],
             })
+            top_stated = [ln["quantity"] for ln in g["lines"]]
             for li, ln in enumerate(g["lines"]):
                 lkey = uuid7()
                 ord_counter += 1
                 attrs = dict(ln["attributes"])
-                if ln["quantity"] is None:
-                    attrs["quantity_stated"] = False
+                attrs["quantity_stated"] = ln["quantity"] is not None
                 doc["lines"].append({
                     "id": lkey, "client_key": f"{l['client_id']}:g{gi}:l{li}",
                     "posting_id": l["posting_id"], "extraction_id": ex_id,
                     "parent_id": None, "ordinal": ord_counter, "label": ln["label"],
-                    "stated_quantity": float(ln["quantity"]) if ln["quantity"] is not None else 1.0,
+                    # S5: NULL when not stated — never a silent 1.0
+                    "stated_quantity": float(ln["quantity"]) if ln["quantity"] is not None else None,
                     "separately_purchasable": ln["separately_purchasable"],
                     "attributes": attrs,
                 })
                 for ci, ch in enumerate(ln["children"]):
+                    c_attrs = dict(ch["attributes"])
+                    c_attrs["quantity_stated"] = ch["quantity"] is not None
                     doc["lines"].append({
                         "id": uuid7(), "client_key": f"{l['client_id']}:g{gi}:l{li}:c{ci}",
                         "posting_id": l["posting_id"], "extraction_id": ex_id,
                         "parent_id": lkey, "ordinal": ci + 1, "label": ch["label"],
-                        "stated_quantity": float(ch["quantity"]) if ch["quantity"] is not None else 1.0,
+                        "stated_quantity": float(ch["quantity"]) if ch["quantity"] is not None else None,
                         "separately_purchasable": ch["separately_purchasable"],
-                        "attributes": ch["attributes"],
+                        "attributes": c_attrs,
                     })
-                # group terms: the purchase includes every line at its stated count
+                # group terms: the purchase includes the line at its stated count;
+                # an unstated count keeps the term share NULL (S5)
                 doc["terms"].append({
                     "id": uuid7(), "group_id": gkey, "line_id": lkey,
-                    "line_quantity": float(ln["quantity"]) if ln["quantity"] is not None else 1.0,
+                    "line_quantity": float(ln["quantity"]) if ln["quantity"] is not None else None,
                 })
             if g["price"] is not None:
-                po = price_observation(l, g, gi, gkey)
-                if po:
+                po, drop_reason = price_observation(l, path, g)
+                if po is None:
+                    # S6: a stated price that cannot be stored confidently is
+                    # quarantined and traced, never silently dropped
+                    doc["quarantine"].append({
+                        "id": uuid7(), "posting_id": l["posting_id"], "line_id": None,
+                        "state": "quarantined", "reason": "price_ambiguous",
+                        "detail": f"group {path} ({g['label'] or 'unlabeled'}): {drop_reason}"[:500],
+                    })
+                    doc["ledger_notes"].append(
+                        f"posting {l['client_id']} group {path}: price dropped — {drop_reason}")
+                elif (po["price_basis"] == "explicit_unit" and len(top_stated) == 1
+                      and top_stated[0] is not None and po["quantity"] is not None
+                      and po["quantity"] != float(top_stated[0])):
+                    # S6 cheap cross-check: explicit_unit count contradicting the
+                    # group's own stated member count (e.g. per-unit 1 on a group
+                    # of N identical units) — flag + drop, never silent store
+                    reason_txt = (f"explicit_unit quantity_units={po['quantity']:g} contradicts the "
+                                  f"group's stated count {top_stated[0]:g}")
+                    doc["quarantine"].append({
+                        "id": uuid7(), "posting_id": l["posting_id"], "line_id": None,
+                        "state": "quarantined", "reason": "quantity_conflict",
+                        "detail": f"group {path} ({g['label'] or 'unlabeled'}): {reason_txt}"[:500],
+                    })
+                    doc["ledger_notes"].append(f"posting {l['client_id']} group {path}: price dropped — {reason_txt}")
+                else:
+                    po["subject_id"] = gkey
                     doc["prices"].append(po)
             doc["avail"].append({
                 "id": uuid7(),
-                "offer_key": sha256_hex(f"{l['offer_key']}|g{gi}"),
+                "offer_key": sha256_hex(f"{l['offer_key']}|{path}"),
+                "subject_path": path,
                 "posting_id": l["posting_id"], "subject_kind": "sale_group",
                 "subject_id": gkey, "observed_at": l["fetched_at"],
                 "state": g["availability"],
@@ -823,11 +997,20 @@ def append_ledger(path: str, row: dict) -> None:
 
 
 def run_batch_call(client: BatchClient, batch: list[dict], max_tokens: int,
-                   ledger_path: str, batch_index: int, retries_left: int = 2) -> tuple[dict[str, dict], dict[str, str], dict]:
+                   ledger_path: str, batch_index, retries_left: int = 2) -> tuple[dict[str, dict], dict[str, str], dict]:
     """Call the LLM for one batch; validate; targeted retry for missing ids.
+
+    S3: the salvage retry is itself batched — it never sends a single-listing
+    call; if fewer than MIN_BATCH_SIZE ids are missing, the retry call is
+    padded with other listings from the batch (answers for ids already parsed
+    are discarded) so every call stays a real batch.
+    S4: a truncated output (output-token limit) splits the batch in half and
+    retries each half recursively — the README's split-and-retry claim, made
+    real. Sub-calls append their own ledger rows; a summary row references them.
 
     Returns (results_by_id, failed_ids {id: reason}, ledger_row).
     """
+    batch_index = str(batch_index)
     payload = {"listings": [{"id": l["client_id"], **l["condensed"]} for l in batch]}
     try:
         raw_results, meta = client.call(SYSTEM_PROMPT, payload, OUTPUT_SCHEMA, max_tokens)
@@ -843,6 +1026,37 @@ def run_batch_call(client: BatchClient, batch: list[dict], max_tokens: int,
         append_ledger(ledger_path, row)
         return {}, {l["client_id"]: f"batch call failed: {str(e)[:200]}" for l in batch}, row
 
+    if meta["truncated"]:
+        # S4: the run hit the output-token limit; the parse below would see a
+        # partial batch and mark the rest parse_failed. Split and retry.
+        truncated_row = {
+            "ts": datetime.now(timezone.utc).isoformat(), "batch_index": batch_index,
+            "model": client.model, "prompt_version": PROMPT_VERSION,
+            "listing_count": len(batch),
+            "input_tokens": meta["prompt_tokens"], "output_tokens": meta["completion_tokens"],
+            "cached_tokens": meta["cached_tokens"],
+            "latency_s": meta["latency_s"], "truncated": True, "status": "truncated_split",
+        }
+        append_ledger(ledger_path, truncated_row)
+        if len(batch) == 1:
+            failed = {batch[0]["client_id"]: "output truncated; no result for this listing"}
+            return {}, failed, truncated_row
+        mid = len(batch) // 2
+        lres, lfail, lrow = run_batch_call(client, batch[:mid], max_tokens, ledger_path, f"{batch_index}L", retries_left)
+        rres, rfail, rrow = run_batch_call(client, batch[mid:], max_tokens, ledger_path, f"{batch_index}R", retries_left)
+        merged_results = {**lres, **rres}
+        merged_failed = {**lfail, **rfail}
+        summary = {
+            "ts": datetime.now(timezone.utc).isoformat(), "batch_index": batch_index,
+            "model": client.model, "prompt_version": PROMPT_VERSION,
+            "listing_count": len(batch), "status": "split_retry",
+            "note": "truncated output: batch split and each half retried; tokens/cost on the sub-batch rows",
+            "sub_batches": [lrow.get("batch_index"), rrow.get("batch_index")],
+            "failed_ids": sorted(merged_failed),
+        }
+        append_ledger(ledger_path, summary)
+        return merged_results, merged_failed, summary
+
     results_by_id: dict[str, dict] = {}
     failed: dict[str, str] = {}
     for r in raw_results:
@@ -856,16 +1070,25 @@ def run_batch_call(client: BatchClient, batch: list[dict], max_tokens: int,
 
     missing = [l for l in batch if l["client_id"] not in results_by_id and l["client_id"] not in failed]
     if missing and not meta["truncated"]:
-        # targeted salvage retry: only the missing ids
+        # targeted salvage retry, batched (S3): pad below the batch floor with
+        # other listings from the batch rather than send a one-listing call
+        salvage_batch = list(missing)
+        missing_ids = {m["client_id"] for m in missing}
+        if len(salvage_batch) < MIN_BATCH_SIZE:
+            for l in batch:
+                if l["client_id"] not in missing_ids:
+                    salvage_batch.append(l)
+                if len(salvage_batch) >= MIN_BATCH_SIZE:
+                    break
         try:
             raw2, meta2 = client.call(
                 SYSTEM_PROMPT,
-                {"listings": [{"id": l["client_id"], **l["condensed"]} for l in missing]},
+                {"listings": [{"id": l["client_id"], **l["condensed"]} for l in salvage_batch]},
                 OUTPUT_SCHEMA, max_tokens,
             )
             for r in raw2:
                 rid = str(r.get("id"))
-                if rid in {l["client_id"] for l in missing} and rid not in results_by_id:
+                if rid in missing_ids and rid not in results_by_id:
                     try:
                         results_by_id[rid] = validate_result(r)
                         failed.pop(rid, None)
@@ -875,6 +1098,8 @@ def run_batch_call(client: BatchClient, batch: list[dict], max_tokens: int,
             meta["completion_tokens"] = (meta["completion_tokens"] or 0) + (meta2["completion_tokens"] or 0)
             meta["latency_s"] = round(meta["latency_s"] + meta2["latency_s"], 2)
             meta["retried_missing"] = len(missing)
+            meta["salvage_batch_size"] = len(salvage_batch)
+            meta["salvaged"] = meta["salvaged"] or meta2["salvaged"]
         except LLMError as e:
             for l in missing:
                 failed[l["client_id"]] = f"salvage retry failed: {str(e)[:150]}"
@@ -894,6 +1119,7 @@ def run_batch_call(client: BatchClient, batch: list[dict], max_tokens: int,
         "latency_s": meta["latency_s"], "retries": 2 - retries_left,
         "truncated": meta["truncated"], "salvaged_parse": meta["salvaged"],
         "retried_missing": meta.get("retried_missing", 0),
+        "salvage_batch_size": meta.get("salvage_batch_size"),
         "failed_ids": sorted(failed), "status": "ok" if not failed else "partial",
     }
     append_ledger(ledger_path, row)
@@ -905,13 +1131,17 @@ def main(argv=None) -> int:
     ap.add_argument("--raw-dir", default=None)
     ap.add_argument("--files", default=None, help="comma-separated capture paths")
     ap.add_argument("--limit", type=int, default=None)
-    ap.add_argument("--batch-size", type=int, default=20)
+    ap.add_argument("--batch-size", type=int, default=20,
+                    help=f"listings per LLM call (minimum {MIN_BATCH_SIZE}; batch discipline is a hard rule)")
     ap.add_argument("--model", default=DEFAULT_MODEL)
     ap.add_argument("--parser-version", default="engine-v1")
     ap.add_argument("--max-tokens", type=int, default=64000)
     ap.add_argument("--dry-run", action="store_true", help="condense only; no LLM, no DB")
     ap.add_argument("--results-out", default=None)
     args = ap.parse_args(argv)
+    # S3: one-listing-per-call is a defect, not an option — floor the batch size
+    if args.batch_size < MIN_BATCH_SIZE:
+        ap.error(f"--batch-size must be >= {MIN_BATCH_SIZE} (batch discipline: never one listing per call)")
 
     if args.files:
         paths = [p for p in args.files.split(",") if p]
@@ -922,10 +1152,15 @@ def main(argv=None) -> int:
     if args.limit:
         paths = paths[: args.limit]
 
-    listings = load_listings(paths)
+    listings, dropped_dups = load_listings(paths)
     for l in listings:
         s = json.dumps(l["condensed"], ensure_ascii=False)
         l["condensed_chars"] = len(s)
+
+    # S9: duplicate client ids are never silently dropped
+    for d in dropped_dups:
+        print(f"input dedupe drop: capture {d['client_id']} from {d['path']} reuses a client id already in this run — "
+              f"skipped, recorded in ledger (no posting row exists to quarantine against)", file=sys.stderr)
 
     print(f"loaded {len(listings)} captures; condensed total {sum(l['condensed_chars'] for l in listings)} chars", file=sys.stderr)
 
@@ -952,6 +1187,13 @@ def main(argv=None) -> int:
     run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S")
     results_out = args.results_out or os.path.join(OUT_DIR, f"results_{run_id}_{args.parser_version}.json")
 
+    for d in dropped_dups:
+        append_ledger(ledger_path, {
+            "ts": datetime.now(timezone.utc).isoformat(), "run_id": run_id,
+            "status": "input_dedupe_drop", "client_id": d["client_id"], "path": d["path"],
+            "note": "second capture with a repeated client id; skipped, not silently dropped (BRIEF 3.1)",
+        })
+
     posting_map = db_upsert_postings(dsn, [postset_payload(l) for l in listings])
     for l in listings:
         l["posting_id"] = posting_map[l["offer_key"]]
@@ -962,15 +1204,42 @@ def main(argv=None) -> int:
     batch_rows: list[dict] = []
 
     batches = [listings[i:i + args.batch_size] for i in range(0, len(listings), args.batch_size)]
+    # S3: the partition itself respects the floor — a remainder smaller than the
+    # minimum merges into the previous batch instead of making a tiny call
+    if len(batches) > 1 and len(batches[-1]) < MIN_BATCH_SIZE:
+        batches = batches[:-2] + [batches[-2] + batches[-1]]
+
     for bi, batch in enumerate(batches):
         print(f"batch {bi}: {len(batch)} listings -> one call ({args.model})", file=sys.stderr)
         results_by_id, failed, row = run_batch_call(client, batch, args.max_tokens, ledger_path, bi)
         batch_rows.append(row)
         all_results.update(results_by_id)
         all_failed.update(failed)
-        doc = build_batch_doc(batch, args.model, parser_name, row.get("cost_usd", 0.0), results_by_id, failed)
+        # hygiene: successfully parsed listings carrying a stale quarantine get released
+        extracted_postings = [l["posting_id"] for l in batch if l["client_id"] in results_by_id]
+        prior = db_prior_quarantines(dsn, extracted_postings)
+        doc = build_batch_doc(batch, args.model, parser_name, row.get("cost_usd", 0.0),
+                              results_by_id, failed, prior_quarantines=prior)
+        for note in doc.pop("ledger_notes", []):
+            append_ledger(ledger_path, {"ts": datetime.now(timezone.utc).isoformat(), "run_id": run_id,
+                                        "batch_index": bi, "status": "engine_note", "note": note})
+            print(f"  engine note: {note}", file=sys.stderr)
+        # H2 replay-dedupe: skip observations a previous run already wrote,
+        # loudly (S9 — never silent)
+        doc, dropped_prices, dropped_avail = db_filter_replayed_observations(dsn, doc)
+        if dropped_prices or dropped_avail:
+            append_ledger(ledger_path, {
+                "ts": datetime.now(timezone.utc).isoformat(), "run_id": run_id, "batch_index": bi,
+                "status": "replay_dedupe",
+                "dropped_price_observations": dropped_prices,
+                "dropped_avail_observations": dropped_avail,
+                "note": "identical replay observations already present (offer_key, observed_at, kind/state); "
+                        "skipped, not silently — replay appends history only for changed values",
+            })
+            print(f"  replay dedupe: {len(dropped_prices)} price / {len(dropped_avail)} availability "
+                  f"observation(s) already written by an earlier run — skipped (see ledger)", file=sys.stderr)
         db_write_batch(dsn, doc)
-        print(f"  -> cost ${row.get('cost_usd', 0):.6f}, {row.get('input_tokens', '?')} in / {row.get('output_tokens', '?')} out tokens, {row.get('latency_s', '?')}s", file=sys.stderr)
+        print(f"  -> cost ${row.get('cost_usd', 0) or 0:.6f}, {row.get('input_tokens', '?')} in / {row.get('output_tokens', '?')} out tokens, {row.get('latency_s', '?')}s", file=sys.stderr)
 
     out = {
         "run_id": run_id, "model": args.model, "parser_name": parser_name,

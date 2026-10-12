@@ -1,0 +1,361 @@
+{
+  "url": "https://www.ebay.com/itm/287529044772",
+  "product_id": "287529044772",
+  "title": "Dell PowerEdge R6515 Server w AMD EPYC 7313P 3GHz 16c CPU 128GB 2Trays 10Gb H330",
+  "seller_name": "ptnerd",
+  "seller_rating": "99.5% positive feedback",
+  "seller_reviews": "1087",
+  "breadcrumbs": [
+    {
+      "name": "Electronics",
+      "url": "https://www.ebay.com/b/Electronics/bn_7000259124"
+    },
+    {
+      "name": "Computers/Tablets & Networking",
+      "url": "https://www.ebay.com/b/Computers-Tablets-Network-Hardware/58058/bn_1865247"
+    },
+    {
+      "name": "Enterprise Networking, Servers",
+      "url": "https://www.ebay.com/b/Enterprise-Networking-Servers/175698/bn_1309143"
+    },
+    {
+      "name": "Servers, Clients & Terminals",
+      "url": "https://www.ebay.com/b/Enterprise-Network-Servers-Clients-Terminals/175700/bn_886999"
+    },
+    {
+      "name": "Computer Servers",
+      "url": "https://www.ebay.com/b/Computer-Servers/11211/bn_886971"
+    }
+  ],
+  "root_category": "Electronics",
+  "images": [
+    "https://i.ebayimg.com/images/g/wHwAAeSwtH5qggCC/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/tOYAAeSwDp1qggCF/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/s-sAAeSw4PZqggCC/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/DpgAAeSw3bJqggCD/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/zCEAAeSwv8xqggCX/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/pf0AAeSwBXxqggCD/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/x2QAAeSwCclqggCD/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/QG8AAeSwMjhqggCE/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/nogAAeSwUp5qggCF/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/zC4AAeSwa2dqggCF/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/zgAAAeSwZoJqggCF/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/Ee8AAeSwm6tqggCG/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/yXYAAeSwk71qggCG/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/tkAAAeSws4lqggCH/s-l1600.webp"
+  ],
+  "price": "$4,950.00",
+  "currency": "USD",
+  "condition": "Used",
+  "available_count": 2,
+  "item_location": "Ambler, Pennsylvania, United States",
+  "ships_to": "Estimated between Fri, Oct 9 and Fri, Oct 16 to 22102 Delivery time is estimated using our proprietary method which is based on the buyer's proximity to the item location, the shipping service selected, the seller's shipping history, and other factors. Delivery times may vary, especially during peak periods.",
+  "excludes_shipping": "Excludes\nBarbados, French Guiana, French Polynesia, Guadeloupe, Libya, Martinique, New Caledonia, Reunion, Russian Federation, Ukraine, Venezuela",
+  "return_policy": "30 days returns . Seller pays for return shipping . See details - for more information about returns",
+  "product_specifications": [
+    {
+      "specification_name": "Condition",
+      "specification_value": "Used: An item that has been used previously. The item may have some signs of cosmetic wear, but is fully operational and functions as intended. This item may be a floor model or store return that has been used. See the seller\u2019s listing for full details and description of any imperfections."
+    },
+    {
+      "specification_name": "Chassis",
+      "specification_value": "10x 2.5\" Drive Bays"
+    },
+    {
+      "specification_name": "Number of Processors",
+      "specification_value": "1"
+    },
+    {
+      "specification_name": "Network Management Type",
+      "specification_value": "Managed"
+    },
+    {
+      "specification_name": "HDD",
+      "specification_value": "2x 960GB SATA SSD"
+    },
+    {
+      "specification_name": "MPN",
+      "specification_value": "R6515"
+    },
+    {
+      "specification_name": "Processor Type",
+      "specification_value": "EPYC 7532"
+    },
+    {
+      "specification_name": "DRAC",
+      "specification_value": "iDRAC9 Enterprise"
+    },
+    {
+      "specification_name": "Form Factor",
+      "specification_value": "Does Not Apply"
+    },
+    {
+      "specification_name": "Processor Manufacturer",
+      "specification_value": "AMD"
+    },
+    {
+      "specification_name": "Manufacturer",
+      "specification_value": "Dell"
+    },
+    {
+      "specification_name": "RAID Levels",
+      "specification_value": "5, 6, 0, 1, 10, 50, 60"
+    },
+    {
+      "specification_name": "Network Connectivity",
+      "specification_value": "Wired-Ethernet (RJ-45)"
+    },
+    {
+      "specification_name": "Warranty type",
+      "specification_value": "1 Year Warranty Included"
+    },
+    {
+      "specification_name": "RAM Size",
+      "specification_value": "128 GB"
+    },
+    {
+      "specification_name": "Model Number",
+      "specification_value": "R6515"
+    },
+    {
+      "specification_name": "RAID",
+      "specification_value": "H740P"
+    },
+    {
+      "specification_name": "Processor Speed",
+      "specification_value": "3 GHz"
+    },
+    {
+      "specification_name": "California Prop 65 Warning",
+      "specification_value": "This product contains a chemical known to the State of California to cause cancer and birth defects or other reproductive harm."
+    },
+    {
+      "specification_name": "Brand",
+      "specification_value": "Dell"
+    },
+    {
+      "specification_name": "Network Type",
+      "specification_value": "Does Not Apply"
+    },
+    {
+      "specification_name": "Type",
+      "specification_value": "Dell"
+    },
+    {
+      "specification_name": "Maximum RAM Capacity",
+      "specification_value": "NA"
+    },
+    {
+      "specification_name": "Model",
+      "specification_value": "R6515"
+    },
+    {
+      "specification_name": "Interface",
+      "specification_value": "Server"
+    },
+    {
+      "specification_name": "Product Line",
+      "specification_value": "PowerEdge"
+    },
+    {
+      "specification_name": "UPC",
+      "specification_value": "Does not apply"
+    },
+    {
+      "specification_name": "Country of Origin",
+      "specification_value": "United States"
+    }
+  ],
+  "seller_total_reviews": 1006,
+  "item_reviews": 0,
+  "seller_ratings": [
+    {
+      "rating_name": "Accurate description",
+      "rating_value": "4.9\n4.9 out of 5 stars"
+    },
+    {
+      "rating_name": "Reasonable shipping cost",
+      "rating_value": "5.0\n5 out of 5 stars"
+    },
+    {
+      "rating_name": "Shipping speed",
+      "rating_value": "5.0\n5 out of 5 stars"
+    },
+    {
+      "rating_name": "Communication",
+      "rating_value": "5.0\n5 out of 5 stars"
+    }
+  ],
+  "product_ratings": 0,
+  "amount_of_stars": [
+    {
+      "5_stars": "0"
+    },
+    {
+      "4_stars": "0"
+    },
+    {
+      "3_stars": "0"
+    },
+    {
+      "2_stars": "0"
+    },
+    {
+      "1_star": "0"
+    }
+  ],
+  "you_may_also_like": [],
+  "tags": [
+    "9 viewed today"
+  ],
+  "description_from_the_seller": "What's up guys, This is for a Dell PowerEdge R6516 2.5'' 8 bay Small Form Factor (SFF) 1U server. This can run Windows Server, Ubuntu, ESXI, trueNAS, unraid .. whatever you want basically. This is a 15th generation Dell server offering awesome power, excellent heat dissipation and is whisper quiet! I'm happy to help answer any technical questions after purchase!I have the eBay app with push notifications so will be quick to respond :) Includes \"The Dude Abides\" FULL one year warranty. From one enthusiast to another, rest easy in receiving quality products. Check out the box specs: iDrac Enterprise LICENSED - This gives you FULL remote console capabilities! 1x 16 Core AMD EPYC 7313P 3Ghz CPU (with hyperthreading that's a combined 36 logical CPUs) 128Gb DDR4 BLAZING FAST RAM (PC4-3200AA) 2x Trays 1x H330 RAID Controller 2x 550w Power Supplies 2x Power Cables 2x 1GB NICs 2X 10gb SFP+ 1x VGA display port (2 ports front/back) -- VGA to VGA cables available 2x PCIe Risers This will come packaged in a 275lb rated, double walled, corrugated box with Polyethylene Foam, AND insurance to protect both of us. Don't know what that means? Neither do I! All you need to know is that the box is BEEFY to protect your server while in transit, the box alone is 5lbs! You DO NOT have to worry about the package coming damaged! As an enthusiast myself, I know how much it can suck - DO NOT WORRY - I do NOT cheap out on shipping materials :) If you're interested or have questions, hit me up. If you want to customize, we can talk. I have a bunch of SAS/SATA drives, hard drive trays, RAM, CPUs, HBAs, SFPs - Those would be an upcharge. I have a lab in my basement that I use to learn. I can also install a different OS for you for free if you'd like - Just let me know what you want! Any questions don't hesitate to reach out! Thanks for looking!",
+  "description_from_the_seller_parsed": "<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">What&apos;s up guys, This is for a Dell PowerEdge R6516 2.5&apos;&apos; 8 bay Small Form Factor (SFF) 1U server. This can run Windows Server, Ubuntu, ESXI, trueNAS, unraid .. whatever you want basically.</p>\n<br>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">&#xA0;This is a 15th generation Dell server offering awesome power, excellent heat dissipation and is whisper quiet!</p>\n<br>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">I&apos;m happy to help answer any technical questions after purchase!I have the eBay app with push notifications so will be quick to respond :)</p>\n<br>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">Includes &quot;The Dude Abides&quot; FULL one year warranty. From one enthusiast to another, rest easy in receiving quality products.&#xA0;</p>\n<br>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">&#xA0;</p>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">Check out the box specs:</p>\n<br>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">iDrac Enterprise LICENSED - This gives you FULL remote console capabilities!</p>\n<br>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">1x 16 Core AMD EPYC 7313P 3Ghz CPU (with hyperthreading that&apos;s a combined 36 logical CPUs)</p>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">128Gb DDR4 BLAZING FAST RAM (PC4-3200AA)</p>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">2x Trays</p>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">1x H330 RAID Controller</p>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">2x 550w Power Supplies</p>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">2x Power Cables</p>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">2x 1GB NICs</p>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">2X 10gb SFP+ </p>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">1x VGA display port (2 ports front/back)</p>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">-- VGA to VGA cables available</p>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">2x PCIe Risers</p>\n<br>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">This will come packaged in a 275lb rated, double walled, corrugated box with Polyethylene Foam, AND insurance to protect both of us. </p>\n<br>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">Don&apos;t know what that means? Neither do I! All you need to know is that the box is BEEFY to protect your server while in transit, the box alone is 5lbs!</p>\n<br>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">You DO NOT have to worry about the package coming damaged!</p>\n<br>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">As an enthusiast myself, I know how much it can suck - DO NOT WORRY - I do NOT cheap out on shipping materials :)</p>\n<br>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">If you&apos;re interested or have questions, hit me up. If you want to customize, we can talk. I have a bunch of SAS/SATA drives, hard drive trays, RAM, CPUs, HBAs, SFPs - Those would be an upcharge. I have a lab in my basement that I use to learn. I can also install a different OS for you for free if you&apos;d like - Just let me know what you want!</p>\n<br>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">Any questions don&apos;t hesitate to reach out! </p>\n<br>\n<p dir=\"ltr\" style=\"margin-top:0; margin-bottom:0;\">Thanks for looking!</p>",
+  "compatibility": null,
+  "domain": "www.ebay.com",
+  "seller_url": "https://www.ebay.com/str/ptn?_trksid=p4429486.m3561.l161211",
+  "variant_id": null,
+  "brand": "Dell",
+  "sale_price": null,
+  "availability": "in_stock",
+  "availability_date": "Estimated between Fri, Oct 9 and Fri, Oct 16",
+  "group_id": "287529044772",
+  "listing_has_variations": false,
+  "variant_attributes": null,
+  "variants": null,
+  "product_category": "Electronics>Computers/Tablets & Networking>Enterprise Networking, Servers>Servers, Clients & Terminals>Computer Servers",
+  "item_id": "287529044772",
+  "description": "What's up guys, This is for a Dell PowerEdge R6516 2.5'' 8 bay Small Form Factor (SFF) 1U server. This can run Windows Server, Ubuntu, ESXI, trueNAS, unraid .. whatever you want basically. This is a 15th generation Dell server offering awesome power, excellent heat dissipation and is whisper quiet! I'm happy to help answer any technical questions after purchase!I have the eBay app with push notifications so will be quick to respond :) Includes \"The Dude Abides\" FULL one year warranty. From one enthusiast to another, rest easy in receiving quality products. Check out the box specs: iDrac Enterprise LICENSED - This gives you FULL remote console capabilities! 1x 16 Core AMD EPYC 7313P 3Ghz CPU (with hyperthreading that's a combined 36 logical CPUs) 128Gb DDR4 BLAZING FAST RAM (PC4-3200AA) 2x Trays 1x H330 RAID Controller 2x 550w Power Supplies 2x Power Cables 2x 1GB NICs 2X 10gb SFP+ 1x VGA display port (2 ports front/back) -- VGA to VGA cables available 2x PCIe Risers This will come packaged in a 275lb rated, double walled, corrugated box with Polyethylene Foam, AND insurance to protect both of us. Don't know what that means? Neither do I! All you need to know is that the box is BEEFY to protect your server while in transit, the box alone is 5lbs! You DO NOT have to worry about the package coming damaged! As an enthusiast myself, I know how much it can suck - DO NOT WORRY - I do NOT cheap out on shipping materials :) If you're interested or have questions, hit me up. If you want to customize, we can talk. I have a bunch of SAS/SATA drives, hard drive trays, RAM, CPUs, HBAs, SFPs - Those would be an upcharge. I have a lab in my basement that I use to learn. I can also install a different OS for you for free if you'd like - Just let me know what you want! Any questions don't hesitate to reach out! Thanks for looking!",
+  "category_tree": [
+    {
+      "name": "Electronics",
+      "url": "https://www.ebay.com/b/Electronics/bn_7000259124"
+    },
+    {
+      "name": "Computers/Tablets & Networking",
+      "url": "https://www.ebay.com/b/Computers-Tablets-Network-Hardware/58058/bn_1865247"
+    },
+    {
+      "name": "Enterprise Networking, Servers",
+      "url": "https://www.ebay.com/b/Enterprise-Networking-Servers/175698/bn_1309143"
+    },
+    {
+      "name": "Servers, Clients & Terminals",
+      "url": "https://www.ebay.com/b/Enterprise-Network-Servers-Clients-Terminals/175700/bn_886999"
+    },
+    {
+      "name": "Computer Servers",
+      "url": "https://www.ebay.com/b/Computer-Servers/11211/bn_886971"
+    }
+  ],
+  "image_url": "https://i.ebayimg.com/images/g/wHwAAeSwtH5qggCC/s-l1600.webp",
+  "store_name": "ptnerd",
+  "return_window": 30,
+  "target_countries": [
+    "US"
+  ],
+  "store_country": "US",
+  "category_urls": [
+    "https://www.ebay.com/b/Electronics/bn_7000259124",
+    "https://www.ebay.com/b/Computers-Tablets-Network-Hardware/58058/bn_1865247",
+    "https://www.ebay.com/b/Enterprise-Networking-Servers/175698/bn_1309143",
+    "https://www.ebay.com/b/Enterprise-Network-Servers-Clients-Terminals/175700/bn_886999",
+    "https://www.ebay.com/b/Computer-Servers/11211/bn_886971"
+  ],
+  "all_variations": false,
+  "seller_tos": "https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259",
+  "seller_privacy_policy": "https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260",
+  "gtin": "Does not apply",
+  "mpn": null,
+  "listing_format": "Buy It Now + Best Offer",
+  "seller_feedback": [
+    {
+      "review_id": "2933481556018",
+      "reviewer_username": "y***n (148)",
+      "feedback_text": "While nobody wants to have to contact a seller for an issue, I had the most positive experience working with ptnerd. He's fast to respond, friendly, helpful, and makes sure you are well taken care of.\nShipping was amazingly fast and everything comes well protected with bubble wrap and foam padding.\nServer came as described with the added front bezel I requested as an option. Amazing value, highly recommended.",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": "https://www.ebay.com/itm/287482481420",
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2939559556018",
+      "reviewer_username": "k***0 (25)",
+      "feedback_text": "Seller was amazing to work with, very quick response on questions before and after purchase. I couldn't believe it shipped out on a Sunday!! It was packed very well, protected and arrived without issues. I'd definitely buy from them again - trustworthy and great to work with! I got everything as described. ",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": "https://www.ebay.com/itm/287266303028",
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2873643185018",
+      "reviewer_username": "i***i (102)",
+      "feedback_text": "Awesome seller. Super patient and  willing to help even when you are still learning the basics of networks. Very responsive.  Shipped out relatively quickly and Arrived packaged very well with foam, bubble wrap, and bags around necessary items. Item was as described and working really well. Also, when a slight issue was discovered during the build he threw in an extra HDD without me asking. I'll definitely be back! ",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2948316655018",
+      "reviewer_username": "a***b (495)",
+      "feedback_text": "\nExcellent experience buying 1100W Dell power modules from this seller. They knew exactly what I needed (even recommended the GPU) answered all my compatibility questions, and both units arrived in flawless condition\u2014exactly as described. The Tesla GPU is going to run nicely in there. Professionally packed and shipped quickly.",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": "https://www.ebay.com/itm/287543059346",
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2992513188018",
+      "reviewer_username": "h***b (29)",
+      "feedback_text": "Unbelievably communicative with fast responses. Ordered a 70lb server and was packed as well as one can. The condition of the item looked basically brand new considering the age of the system (15 years). They answer ed questions long after the purchase was over and product delivered!\n\nA++++++++++++ seller, would easily buy again from.",
+      "feedback_time_period": "Past month",
+      "is_verified_purchase": true,
+      "related_item_url": "https://www.ebay.com/itm/287584002241",
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2603019247018",
+      "reviewer_username": "e***c (45)",
+      "feedback_text": "No issues whatsoever. Thats expected from a experienced seller. Shipping was on time and fast at that, packaged as well as you can pack a 40 pound server though I did have one very, very small ding in the front panel. Came as described, maybe a bit more and this was one of the better prices I saw for this specific server model.\n\nMy biggest thing was the seller himself. He doesn\u2019t mind a million questions, doesn\u2019t mind helping out, going out of his way to make sure everything is perfect. Kudos!",
+      "feedback_time_period": "Past year",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2669400734018",
+      "reviewer_username": "c***n (32)",
+      "feedback_text": "10/10 seller. I've done business with PTNerd before and as long as he's selling, I'll be buying. He's always willing to go the extra mile, especially to make things right. His packaging is as described but this time my product arrived with some obvious damage from the carrier handling and there was some minor damage to the product. I was able straighten things out and everything functions as designed but we still worked out a partial refund and I didn't have to ask. Rockstar eBay seller!",
+      "feedback_time_period": "Past year",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2685479078018",
+      "reviewer_username": "n***r (66)",
+      "feedback_text": "Absolute top tier quality and great communication from ptnerd. Server arrived in the condition described and given the current second hand market was a really good value. Ptnerd took the extra effort to remove PSUs and tape them to the bottom of the box along with the rack ears to help ensure no damage during shipping. This is my second purchase from ptnerd and will definitely return for more.",
+      "feedback_time_period": "Past year",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    }
+  ],
+  "product_information": null,
+  "quantity_available": 2,
+  "quantity_sold": null,
+  "country": null,
+  "is_sold": false,
+  "sold_date": null,
+  "timestamp": "2026-10-06T02:21:34.156Z",
+  "input": {
+    "url": "https://www.ebay.com/itm/287529044772"
+  },
+  "_enrich_meta": {
+    "fetch_tool": "bd-dataset",
+    "dataset_id": "gd_ltr9mjt81n0zzdk1fb",
+    "snapshot_id": "sd_muw1xwv5qkp8x7hpi",
+    "status": "live",
+    "bd_error": null
+  }
+}

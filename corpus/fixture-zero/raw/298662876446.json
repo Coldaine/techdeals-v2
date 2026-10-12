@@ -1,0 +1,213 @@
+{
+  "url": "https://www.ebay.com/itm/298662876446",
+  "product_id": "298662876446",
+  "title": "Dell PowerEdge R6515 Rack Server (Fully Loaded)",
+  "seller_name": "jackedmonkey",
+  "seller_rating": "100% positive feedback",
+  "seller_reviews": "166",
+  "breadcrumbs": [
+    {
+      "name": "Electronics",
+      "url": "https://www.ebay.com/b/Electronics/bn_7000259124"
+    },
+    {
+      "name": "Computers/Tablets & Networking",
+      "url": "https://www.ebay.com/b/Computers-Tablets-Network-Hardware/58058/bn_1865247"
+    },
+    {
+      "name": "Enterprise Networking, Servers",
+      "url": "https://www.ebay.com/b/Enterprise-Networking-Servers/175698/bn_1309143"
+    },
+    {
+      "name": "Servers, Clients & Terminals",
+      "url": "https://www.ebay.com/b/Enterprise-Network-Servers-Clients-Terminals/175700/bn_886999"
+    },
+    {
+      "name": "Computer Servers",
+      "url": "https://www.ebay.com/b/Computer-Servers/11211/bn_886971"
+    }
+  ],
+  "root_category": "Electronics",
+  "images": [
+    "https://i.ebayimg.com/images/g/l2wAAeSwiRRqo0QY/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/bNoAAeSwjEBqo0QY/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/N2EAAeSw6-pqo0QY/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/b1MAAeSwkHFqo0QY/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/afQAAeSwynNqo0QY/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/Uo8AAeSwx0Vqo0QY/s-l1600.webp"
+  ],
+  "price": "$6,300.00",
+  "currency": "USD",
+  "condition": "Used",
+  "available_count": 2,
+  "item_location": "Boise, Idaho, United States",
+  "ships_to": "Estimated between Fri, Oct 9 and Fri, Oct 16 to 98121 Delivery time is estimated using our proprietary method which is based on the buyer's proximity to the item location, the shipping service selected, the seller's shipping history, and other factors. Delivery times may vary, especially during peak periods.",
+  "excludes_shipping": "Excludes\nBarbados, French Guiana, French Polynesia, Guadeloupe, Libya, Martinique, New Caledonia, Reunion, Russian Federation, Ukraine, Venezuela",
+  "shipping": "$60.54",
+  "return_policy": "14 days returns . Buyer pays for return shipping. If you use an eBay shipping label, it will be deducted from your refund amount . See details - for more information about returns",
+  "product_specifications": [
+    {
+      "specification_name": "Condition",
+      "specification_value": "Used: An item that has been used previously. The item may have some signs of cosmetic wear, but is fully operational and functions as intended. This item may be a floor model or store return that has been used. See the seller\u2019s listing for full details and description of any imperfections."
+    },
+    {
+      "specification_name": "Number of Processors",
+      "specification_value": "1"
+    },
+    {
+      "specification_name": "Network Connectivity",
+      "specification_value": "Wired-Ethernet (RJ-45)"
+    },
+    {
+      "specification_name": "Network Management Type",
+      "specification_value": "Fully Managed"
+    },
+    {
+      "specification_name": "RAM Size",
+      "specification_value": "64 MB"
+    },
+    {
+      "specification_name": "MPN",
+      "specification_value": "R6515"
+    },
+    {
+      "specification_name": "Processor Type",
+      "specification_value": "AMD EPYC 7313P"
+    },
+    {
+      "specification_name": "Memory Type",
+      "specification_value": "DDR4 SDRAM"
+    },
+    {
+      "specification_name": "Brand",
+      "specification_value": "Dell"
+    },
+    {
+      "specification_name": "Form Factor",
+      "specification_value": "Rack Mountable"
+    },
+    {
+      "specification_name": "Type",
+      "specification_value": "Server"
+    },
+    {
+      "specification_name": "Processor Manufacturer",
+      "specification_value": "AMD"
+    },
+    {
+      "specification_name": "Maximum RAM Capacity",
+      "specification_value": "2 TB"
+    },
+    {
+      "specification_name": "Model",
+      "specification_value": "Dell PowerEdge R6515"
+    },
+    {
+      "specification_name": "Interface",
+      "specification_value": "Ethernet (RJ-45), Serial (RS-232), SFP, USB 2.0, USB 3.0"
+    },
+    {
+      "specification_name": "Product Line",
+      "specification_value": "PowerEdge"
+    }
+  ],
+  "seller_total_reviews": 0,
+  "item_reviews": 0,
+  "product_ratings": 0,
+  "amount_of_stars": [
+    {
+      "5_stars": "0"
+    },
+    {
+      "4_stars": "0"
+    },
+    {
+      "3_stars": "0"
+    },
+    {
+      "2_stars": "0"
+    },
+    {
+      "1_star": "0"
+    }
+  ],
+  "you_may_also_like": [],
+  "tags": [],
+  "description_from_the_seller": "Up for sale is a Dell PowerEdge R6515 enterprise server in excellent working condition. This server was professionally maintained in a business environment and is an excellent platform for: VMware ESXi Proxmox VE Hyper-V TrueNAS Veeam Backup File Servers SQL Server Business Applications Homelab and Lab Environments The system features a powerful AMD EPYC processor, enterprise-grade Dell components, 10Gb networking, remote management, redundant power supplies, and included rails. Specifications Server Dell PowerEdge R6515 1U Rackmount 8-Bay 2.5\" Hot-Swap Chassis LCD Front Bezel ReadyRails Sliding Rail Kit Included Processor AMD EPYC 7313P 16 Cores / 32 Threads 3.0 GHz Base Clock 128MB L3 Cache Memory 64GB DDR4-3200 ECC RDIMM Storage 2 \u00d7 1.92TB Dell Enterprise Mixed-Use SSDs 3.84TB Raw Capacity Total RAID Controller Dell PERC H730P 2GB NV Cache Networking Intel X520 10GbE Adapter Dual Onboard Gigabit Ethernet Ports Remote Management Dell iDRAC9 Enterprise Power Dual 550W Hot-Plug Redundant Power Supplies Security TPM 2.0 Installed Windows Server Licensing This server was originally purchased with Dell OEM Microsoft Windows Server 2022 Standard licensing . The OEM license is associated with the server hardware and will remain with the server. Any recovery media, digital entitlement, or operating system deployment remains subject to Microsoft's OEM licensing terms. No separate retail, volume, or transferable Windows license is included. Condition Fully tested and operational Boots and functions normally Enterprise-maintained hardware Clean overall condition with minor cosmetic rack wear consistent with normal use Ready for deployment Included \u2705 Dell PowerEdge R6515 Server \u2705 AMD EPYC 7313P Processor \u2705 64GB DDR4-3200 ECC RAM \u2705 2 \u00d7 1.92TB Dell Enterprise SSDs \u2705 Dell PERC H730P RAID Controller \u2705 Intel X520 10GbE Adapter \u2705 Dell iDRAC9 Enterprise \u2705 Dual Redundant Power Supplies \u2705 Dell ReadyRails Sliding Rail Kit \u2705 Dell LCD Front Bezel \u2705 Original OEM Windows Server 2022 Standard License Associated with Hardware Why Buy This Server? The AMD EPYC 7313P remains an excellent balance of performance and efficiency, providing 16 cores and 32 threads in a single-socket platform. Combined with enterprise SSD storage, 10Gb networking, iDRAC Enterprise, and included rails, this server is an outstanding choice for virtualization, storage, backup, lab, and SMB workloads. Shipping Professionally packed Fully insured Local pickup welcome",
+  "description_from_the_seller_parsed": "<div><span style=\"font-family: &quot;Segoe UI&quot;; font-size: 14px;\">Up for sale is a Dell PowerEdge R6515 enterprise server in excellent working condition.</span></div><div><div style=\"font-family: &quot;Segoe UI&quot;; font-size: 14px; line-height: 20px;\"><p>This server was professionally maintained in a business environment and is an excellent platform for:</p><ul><li>VMware ESXi</li><li>Proxmox VE</li><li>Hyper-V</li><li>TrueNAS</li><li>Veeam Backup</li><li>File Servers</li><li>SQL Server</li><li>Business Applications</li><li>Homelab and Lab Environments</li></ul><p>The system features a powerful AMD EPYC processor, enterprise-grade Dell components, 10Gb networking, remote management, redundant power supplies, and included rails.</p><hr><h1>Specifications</h1><h3>Server</h3><ul><li>Dell PowerEdge R6515</li><li>1U Rackmount</li><li>8-Bay 2.5&quot; Hot-Swap Chassis</li><li>LCD Front Bezel</li><li>ReadyRails Sliding Rail Kit Included</li></ul><h3>Processor</h3><ul><li>AMD EPYC 7313P</li><li>16 Cores / 32 Threads</li><li>3.0 GHz Base Clock</li><li>128MB L3 Cache</li></ul><h3>Memory</h3><ul><li>64GB DDR4-3200 ECC RDIMM</li></ul><h3>Storage</h3><ul><li>2 &#xD7; 1.92TB Dell Enterprise Mixed-Use SSDs</li><li>3.84TB Raw Capacity Total</li></ul><h3>RAID Controller</h3><ul><li>Dell PERC H730P</li><li>2GB NV Cache</li></ul><h3>Networking</h3><ul><li>Intel X520 10GbE Adapter</li><li>Dual Onboard Gigabit Ethernet Ports</li></ul><h3>Remote Management</h3><ul><li>Dell iDRAC9 Enterprise</li></ul><h3>Power</h3><ul><li>Dual 550W Hot-Plug Redundant Power Supplies</li></ul><h3>Security</h3><ul><li>TPM 2.0 Installed</li></ul><hr><h1>Windows Server Licensing</h1><p>This server was originally purchased with <strong>Dell OEM Microsoft Windows Server 2022 Standard licensing</strong>.</p><p>The OEM license is associated with the server hardware and will remain with the server. Any recovery media, digital entitlement, or operating system deployment remains subject to Microsoft&apos;s OEM licensing terms.</p><p>No separate retail, volume, or transferable Windows license is included.</p><hr><h1>Condition</h1><ul><li>Fully tested and operational</li><li>Boots and functions normally</li><li>Enterprise-maintained hardware</li><li>Clean overall condition with minor cosmetic rack wear consistent with normal use</li><li>Ready for deployment</li></ul><hr><h1>Included</h1><p>&#x2705; Dell PowerEdge R6515 Server</p><p>&#x2705; AMD EPYC 7313P Processor</p><p>&#x2705; 64GB DDR4-3200 ECC RAM</p><p>&#x2705; 2 &#xD7; 1.92TB Dell Enterprise SSDs</p><p>&#x2705; Dell PERC H730P RAID Controller</p><p>&#x2705; Intel X520 10GbE Adapter</p><p>&#x2705; Dell iDRAC9 Enterprise</p><p>&#x2705; Dual Redundant Power Supplies</p><p>&#x2705; Dell ReadyRails Sliding Rail Kit</p><p>&#x2705; Dell LCD Front Bezel</p><p>&#x2705; Original OEM Windows Server 2022 Standard License Associated with Hardware</p><hr><h1>Why Buy This Server?</h1><p>The AMD EPYC 7313P remains an excellent balance of performance and efficiency, providing 16 cores and 32 threads in a single-socket platform. Combined with enterprise SSD storage, 10Gb networking, iDRAC Enterprise, and included rails, this server is an outstanding choice for virtualization, storage, backup, lab, and SMB workloads.</p><hr><h1>Shipping</h1><ul><li>Professionally packed</li><li>Fully insured</li><li>Local pickup welcome</li></ul></div></div>",
+  "compatibility": null,
+  "domain": "www.ebay.com",
+  "seller_url": "https://www.ebay.com/sch/jackedmonkey/m.html?item=298662876446&rt=nc&_trksid=p4429486.m3561.l161211",
+  "variant_id": null,
+  "brand": "Dell",
+  "sale_price": null,
+  "availability": "in_stock",
+  "availability_date": "Estimated between Fri, Oct 9 and Fri, Oct 16",
+  "group_id": "298662876446",
+  "listing_has_variations": false,
+  "variant_attributes": null,
+  "variants": null,
+  "product_category": "Electronics>Computers/Tablets & Networking>Enterprise Networking, Servers>Servers, Clients & Terminals>Computer Servers",
+  "item_id": "298662876446",
+  "description": "Up for sale is a Dell PowerEdge R6515 enterprise server in excellent working condition. This server was professionally maintained in a business environment and is an excellent platform for: VMware ESXi Proxmox VE Hyper-V TrueNAS Veeam Backup File Servers SQL Server Business Applications Homelab and Lab Environments The system features a powerful AMD EPYC processor, enterprise-grade Dell components, 10Gb networking, remote management, redundant power supplies, and included rails. Specifications Server Dell PowerEdge R6515 1U Rackmount 8-Bay 2.5\" Hot-Swap Chassis LCD Front Bezel ReadyRails Sliding Rail Kit Included Processor AMD EPYC 7313P 16 Cores / 32 Threads 3.0 GHz Base Clock 128MB L3 Cache Memory 64GB DDR4-3200 ECC RDIMM Storage 2 \u00d7 1.92TB Dell Enterprise Mixed-Use SSDs 3.84TB Raw Capacity Total RAID Controller Dell PERC H730P 2GB NV Cache Networking Intel X520 10GbE Adapter Dual Onboard Gigabit Ethernet Ports Remote Management Dell iDRAC9 Enterprise Power Dual 550W Hot-Plug Redundant Power Supplies Security TPM 2.0 Installed Windows Server Licensing This server was originally purchased with Dell OEM Microsoft Windows Server 2022 Standard licensing . The OEM license is associated with the server hardware and will remain with the server. Any recovery media, digital entitlement, or operating system deployment remains subject to Microsoft's OEM licensing terms. No separate retail, volume, or transferable Windows license is included. Condition Fully tested and operational Boots and functions normally Enterprise-maintained hardware Clean overall condition with minor cosmetic rack wear consistent with normal use Ready for deployment Included \u2705 Dell PowerEdge R6515 Server \u2705 AMD EPYC 7313P Processor \u2705 64GB DDR4-3200 ECC RAM \u2705 2 \u00d7 1.92TB Dell Enterprise SSDs \u2705 Dell PERC H730P RAID Controller \u2705 Intel X520 10GbE Adapter \u2705 Dell iDRAC9 Enterprise \u2705 Dual Redundant Power Supplies \u2705 Dell ReadyRails Sliding Rail Kit \u2705 Dell LCD Front Bezel \u2705 Original OEM Windows Server 2022 Standard License Associated with Hardware Why Buy This Server? The AMD EPYC 7313P remains an excellent balance of performance and efficiency, providing 16 cores and 32 threads in a single-socket platform. Combined with enterprise SSD storage, 10Gb networking, iDRAC Enterprise, and included rails, this server is an outstanding choice for virtualization, storage, backup, lab, and SMB workloads. Shipping Professionally packed Fully insured Local pickup welcome",
+  "category_tree": [
+    {
+      "name": "Electronics",
+      "url": "https://www.ebay.com/b/Electronics/bn_7000259124"
+    },
+    {
+      "name": "Computers/Tablets & Networking",
+      "url": "https://www.ebay.com/b/Computers-Tablets-Network-Hardware/58058/bn_1865247"
+    },
+    {
+      "name": "Enterprise Networking, Servers",
+      "url": "https://www.ebay.com/b/Enterprise-Networking-Servers/175698/bn_1309143"
+    },
+    {
+      "name": "Servers, Clients & Terminals",
+      "url": "https://www.ebay.com/b/Enterprise-Network-Servers-Clients-Terminals/175700/bn_886999"
+    },
+    {
+      "name": "Computer Servers",
+      "url": "https://www.ebay.com/b/Computer-Servers/11211/bn_886971"
+    }
+  ],
+  "image_url": "https://i.ebayimg.com/images/g/l2wAAeSwiRRqo0QY/s-l1600.webp",
+  "store_name": "jackedmonkey",
+  "return_window": 14,
+  "target_countries": [
+    "US"
+  ],
+  "store_country": "US",
+  "category_urls": [
+    "https://www.ebay.com/b/Electronics/bn_7000259124",
+    "https://www.ebay.com/b/Computers-Tablets-Network-Hardware/58058/bn_1865247",
+    "https://www.ebay.com/b/Enterprise-Networking-Servers/175698/bn_1309143",
+    "https://www.ebay.com/b/Enterprise-Network-Servers-Clients-Terminals/175700/bn_886999",
+    "https://www.ebay.com/b/Computer-Servers/11211/bn_886971"
+  ],
+  "all_variations": false,
+  "seller_tos": "https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259",
+  "seller_privacy_policy": "https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260",
+  "gtin": null,
+  "mpn": null,
+  "listing_format": "Buy It Now + Best Offer",
+  "seller_feedback": null,
+  "product_information": null,
+  "quantity_available": 2,
+  "quantity_sold": null,
+  "country": null,
+  "is_sold": false,
+  "sold_date": null,
+  "timestamp": "2026-10-06T02:21:27.487Z",
+  "input": {
+    "url": "https://www.ebay.com/itm/298662876446"
+  },
+  "_enrich_meta": {
+    "fetch_tool": "bd-dataset",
+    "dataset_id": "gd_ltr9mjt81n0zzdk1fb",
+    "snapshot_id": "sd_muw1xwv5qkp8x7hpi",
+    "status": "live",
+    "bd_error": null
+  }
+}

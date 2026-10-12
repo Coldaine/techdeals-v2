@@ -1,0 +1,91 @@
+{
+  "corpus": "TechDeals v2 fixture corpus",
+  "generated": "2026-10-12",
+  "staged_by": "corpus-staging mission (per BRIEF.md section 5, read in full)",
+  "sources": {
+    "data_branch": "TechdealsHandoff: remotes/origin/data/epyc-1p-ebay-listings-2026-10-05 (commit dde2669)",
+    "engine_branch": "TechdealsHandoff: remotes/origin/codex/llm-purchase-ingestion (PR #222 semantics reference)"
+  },
+  "anti_overfit_note": "BRIEF 5.3: fixture zero (the EPYC 1P corpus) is ONE fixture among the cells, not the whole test - the anti-overfit rule stands. BRIEF 0.7: never prove the pipeline on one listing type (e.g. the parked EPYC lane); the engine must pass across ALL cells a-g below, which span Shopify retail JSON, configured servers, Reddit multi-item posts, liquidation/GovDeals lots, lot-vs-unit ambiguity, quarantine paths, and cost-basis records. Passing fixture-zero alone is NOT acceptance.",
+  "fixture_zero": {
+    "description": "EPYC 1P corpus - issue #224: 376 eBay single-socket EPYC server listings with raw captured pages, human-verified reads, read-the-raw spec, curator QA check, and parse report. Hardest shapes in one package: board+CPU+RAM combos, barebones, configurator base variants, sale-vs-list price, out-of-stock, title-vs-description conflicts.",
+    "origin": "data/inbox/epyc-1p-ebay-2026-10-05/ on the data branch",
+    "status": "staged",
+    "staged_root": "corpus/fixture-zero/",
+    "files": [
+      {"path": "corpus/fixture-zero/raw.tar.gz", "bytes": 3914620, "sha256": "6362d33a70a602e371d0d3ccfb9faa74df5f56de78c1a7a88d2095087360711a", "note": "canonical raw payload tarball (376 per-item eBay JSON pages + 6 eBay search pages + notes md); staged copy of the branch blob 59f96203"},
+      {"path": "corpus/fixture-zero/raw.tar.gz.listing", "note": "verbose tar listing of raw.tar.gz contents (the 'listed then extracted' record)"},
+      {"path": "corpus/fixture-zero/raw/", "note": "extracted tarball contents: 376 raw per-item JSON captures, 6 eBay search-page HTML (h12ssw/h12ssl/as1114/dl325/r6515/r7515), 1 notes markdown"},
+      {"path": "corpus/fixture-zero/servers_read_v2.csv", "bytes": 337427, "sha256": "18a8fe8c17e5ce576a46444fa1248ca610fdbc31a1116ba5f6b7afd1686a01b0", "note": "human-verified reads (engine scoring target)"},
+      {"path": "corpus/fixture-zero/servers_read_v2.jsonl", "bytes": 805690, "sha256": "55da35108527ba3b8d9cc73a56de3f2e6cc45d9019651fc848662fa996caeefc", "note": "human-verified reads, JSONL (engine scoring target)"},
+      {"path": "corpus/fixture-zero/READ_SPEC.md", "bytes": 2679, "sha256": "ec0c1781c100036bf65eb561b9d1bd1e8b50f675ec2d51b5e8679d0aeb039876", "note": "read-the-raw spec; defines the target field set and never-guess discipline"},
+      {"path": "corpus/fixture-zero/curator_check_2026-10-05.md", "bytes": 1337, "sha256": "8a0e0ce2edba20d08531e3b615f188ab1ad81ebd9beb575ebaaafc1d6df2f986", "note": "curator QA check with real misreads (price drift 4250-vs-4690, SKU-vs-seller-typo core counts, ram-without-qty issue)"},
+      {"path": "corpus/fixture-zero/schema/parse_report.json", "bytes": 3626, "sha256": "74bb24c4b0b322225009fc92de5bb3c6df81967047ee813d97b95ed9880218c5", "note": "parse coverage stats (376 parsed / 372 live / 1 error; per-field coverage)"},
+      {"path": "corpus/fixture-zero/schema/*.csv", "note": "READ_SPEC-relevant normalized schema CSVs (chassis_model, cpu_sku_reference, listing, listing_cpu, listing_gpu, listing_memory_group, listing_nic, listing_raid_hba, listing_storage_group, server_config, price_observation); per-file sha256 in SHA256SUMS"}
+    ],
+    "checksums_file": "corpus/fixture-zero/SHA256SUMS",
+    "checksums_note": "covers every staged file including all extracted raw/ members; sha256sum -c SHA256SUMS from corpus/fixture-zero/ verifies (verified clean at staging time, 2026-10-12)"
+  },
+  "cells": {
+    "a_clean_single_item_retail": {
+      "witnesses": [
+        {"path": "/home/coldaine/TechdealsHandoff/scripts/ingest/fusionww/fixtures/sample_products.json", "bytes": 2174, "sha256": "5cf35f15d261a2047c780d7907d7380cf02cf486a66396eb6eb08957bdc0aa51"},
+        {"path": "/home/coldaine/TechdealsHandoff/scripts/ingest/serverpartdeals/fixtures/collections_all_p1.json", "bytes": 18225, "sha256": "c9654a08ad3005fd4db87cffb496dccb5f6ac650a29da372aae7080471145826"},
+        {"path": "/home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json", "bytes": 752203, "sha256": "803710ea9f4fd1c5215fb3d05bc773aff84ba86deb1de1b86c3d252f552b0bf1"}
+      ],
+      "status": "referenced-by-path"
+    },
+    "b_configured_server_one_url": {
+      "witnesses": [
+        {"path": "/home/coldaine/Downloads/fresh-512gb-server-discovery-2026-09-13.zip", "zip_member": "raw_source/raw_r2_16slot_h12ssl.json", "member_bytes_uncompressed": 9024467, "member_sha256": "90eecaaddfe48f3456f67c0ae0850a1206754e15614c5e682c32ad82702f801d", "zip_bytes": 21046897, "zip_sha256": "7530a11128ff50462f10961642fce0376138670ad4d4a8de53daf3d94f544263"}
+      ],
+      "status": "referenced-by-path",
+      "note": "zip is NEVER copied or extracted into corpus/; member checksum obtained by streaming (unzip -p). Additional 16-slot/8-slot raw captures (romed8, s8030, dl325, h11ssl, r6515, dual sr665/dl385/r7525) are in the same zip's raw_source/ for later depth."
+    },
+    "c_reddit_multi_item_for_sale": {
+      "witnesses": [
+        {"path": "/home/coldaine/TechdealsHandoff/scripts/ingest/reddit_homelabsales/fixtures/sample_atom.xml", "bytes": 1430, "sha256": "d43e64fbfc6ddf2a5c97a7b43610945ba6cfb00fea53a02997cc7d0bd0bab21c"}
+      ],
+      "status": "referenced-by-path",
+      "note": "multi-line [FS] posts in one feed = decomposition target (BRIEF 5.4 shape 4: 3 entries inspected - two multi-line FS posts, one [W] post)."
+    },
+    "d_liquidation_govdeals_lot_with_manifest": {
+      "witnesses": [
+        {"path": "/home/coldaine/TechdealsHandoff/scripts/ingest/liquidation_com/fixtures/listing_card_21256289.html", "bytes": 491, "sha256": "1cf91ed5cf1aa8ae5adefc10345e32397d388496172e5adb69bac06dc6ab269e"},
+        {"path": "/home/coldaine/TechdealsHandoff/scripts/ingest/liquidation_com/fixtures/manifest_21256289.html", "bytes": 6409, "sha256": "5db29fd21f8ead937436d4b3cee8a0539734b8e6ec8e3bf40e2cb917f4b2416f"},
+        {"path": "/home/coldaine/TechdealsHandoff/scripts/ingest/liquidation_com/fixtures/auction_detail_21256289.html", "bytes": 519, "sha256": "bd576dbfbe8a9d5988070ab15ecfb22c0f5908040c91c3684319e6739bb0b0d0"},
+        {"path": "/home/coldaine/TechdealsHandoff/scripts/ingest/govdeals/fixtures/asset_30467_94.json", "bytes": 922, "sha256": "15a37bd83b363d8df6aa92f908e00702379e264ec27edc0104c0e2b74a7c6bfa", "note": "64x32GB DIMM lot, asset description"},
+        {"path": "/home/coldaine/TechdealsHandoff/scripts/ingest/govdeals/fixtures/bidbox_30467_94.json", "bytes": 316, "sha256": "929ae46ff921c71746c5102ff8ae84550140fbd9ede5bdadf952b8843ea18c30", "note": "live bidbox: currentBid, bidCount, all_in_estimate_usd"}
+      ],
+      "status": "referenced-by-path"
+    },
+    "e_lot_total_vs_per_unit_ambiguity": {
+      "witnesses": [
+        {"path": "collection-workbench/corpus_ingest/fixtures/semantic_cases.json", "git_repo": "/home/coldaine/TechdealsHandoff", "git_revision": "remotes/origin/codex/llm-purchase-ingestion", "bytes": 24805, "sha256": "f10a76310250d97f01f277b66c18c21c8819b211ebcb22475456f413fa7837df", "case_ids": ["homogeneous_lot", "configured_server_optional_gpu"], "git_blob": "6a1a02918a90b0baac8044635614c4fcae119829"},
+        {"path": "/home/coldaine/TechdealsHandoff/scripts/ingest/govdeals/fixtures/bidbox_30467_94.json", "bytes": 316, "sha256": "929ae46ff921c71746c5102ff8ae84550140fbd9ede5bdadf952b8843ea18c30", "note": "real-world lot-level currentBid vs 64 units"}
+      ],
+      "status": "referenced-by-path",
+      "note": "engine probes assert the 'never allocate lot price to components' rule (BRIEF 5.1 PR #222 semantics; BRIEF 6 no-silent-allocation guardrail). semantic_cases.json lives only on the engine branch git blob, not in any working tree."
+    },
+    "f_out_of_scope_consumer_item_quarantine": {
+      "witnesses": [
+        {"path": "/home/coldaine/TechdealsHandoff/scripts/ingest/reddit_homelabsales/fixtures/sample_atom.xml", "bytes": 1430, "sha256": "d43e64fbfc6ddf2a5c97a7b43610945ba6cfb00fea53a02997cc7d0bd0bab21c", "note": "the [W] wanted-post entry: quarantine/skip, never an ask"},
+        {"path": "collection-workbench/corpus_ingest/fixtures/semantic_cases.json", "git_repo": "/home/coldaine/TechdealsHandoff", "git_revision": "remotes/origin/codex/llm-purchase-ingestion", "bytes": 24805, "sha256": "f10a76310250d97f01f277b66c18c21c8819b211ebcb22475456f413fa7837df", "git_blob": "6a1a02918a90b0baac8044635614c4fcae119829", "case_ids": ["irrelevant_text"]}
+      ],
+      "status": "referenced-by-path"
+    },
+    "g_cost_basis_record_internal_purchase": {
+      "witnesses": [
+        {"path": "collection-workbench/corpus_ingest/fixtures/purchase_examples.jsonl", "git_repo": "/home/coldaine/TechdealsHandoff", "git_revision": "remotes/origin/codex/llm-purchase-ingestion", "bytes": 958, "sha256": "994864eb5c305a93a9e1d2b40b1b84bf4f79bb5d3b9d7dfeb450594d452a0cfc", "git_blob": "a66848881ca335121e12df122c6ebc5122a372f3", "note": "internal purchase records (idempotency_key, subject_key, observed_at, payload.text) - cost-basis input, NOT market asks"}
+      ],
+      "status": "referenced-by-path",
+      "note": "purchase_examples.jsonl exists only on the engine branch git blob, not in any working tree."
+    }
+  },
+  "extra_reference_witnesses": {
+    "note": "not 5.3 cells, but BRIEF-5 corpus items referenced by path + checksum; NEVER copied",
+    "items": [
+      {"path": "/home/coldaine/big-racks/web/public/data/snapshot.json", "bytes": 5214418, "sha256": "aecbe14b24afdff7bdb7c74165f606212c3fc047f8325270f35953abf9a8f8e2", "note": "RackRat ~3k used-server typed listings (BRIEF 5.4 shape 8)"}
+    ]
+  }
+}

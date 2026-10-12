@@ -1,53 +1,138 @@
-# TechDeals v2 — Domain Glossary
 
-Canonical terms for the TechDeals v2 domain. Implementation details belong in code, not here.
+# TechDeals v2
 
-## Core Entities
+Canonical vocabulary for the TechDeals v2 rebuild. The domain is used
+hardware and datacenter gear — sources sell or auction it, the pipeline
+decomposes it into items, prices it over time, and makes it answerable.
+These definitions are the language every mission, review, and document uses.
 
-**Posting** — A marketplace listing at a point in time. One URL, one source, one capture. The center of the schema.
+## Language
 
-**Line** — A decomposed item within a posting. A server posting with 8 DIMMs produces 9 lines (1 server + 8 DIMMs). Lines can nest (`parent_line_id`).
+### Evidence and provenance
 
-**Sale Group** — A set of lines that can be purchased together. One posting may have multiple sale groups (e.g., "whole server" vs "RAM only").
+**Capture**:
+A single fetch of a source: the raw page payload plus where and when it was
+fetched. The only input the pipeline accepts.
+_Avoid_: scrape, page, download
 
-**Observation** — An append-only price/availability event. Never mutated; corrections via supersession. The time-series heart of the system.
+**Posting**:
+The atomic unit of evidence — one capture, whatever it contains: one item, a
+configured server, a lot, or a wanted post. Postings are never edited, merged,
+or deleted; they are only added.
+_Avoid_: listing, product, item (an item is a Line)
 
-**Resolution** — A candidate product match for a line. Confidence-scored, re-runnable, never a write gate.
+**Provenance**:
+The where-seen/when-seen facts attached to every capture: source, URL, fetch
+time, and a content checksum. Nothing enters the system without it.
 
-**Category** — A dynamic classification of lines. Adding a category is inserting data, not migrating schema.
+**Offer Key**:
+The stable identity of an offer, derived from its natural facts so that
+re-parsing the same capture never invents a second offer.
+_Avoid_: offer id, dedupe key
 
-## Identity
+**Extraction**:
+One parse pass over one capture. Re-running a parser produces a new
+extraction; it never rewrites the old one.
+_Avoid_: parse job, ingest run
 
-**Offer Key** — A replay-stable SHA-256 hash of the natural key (source, listing ID, line number, sale group). Same input always produces the same key. Re-ingesting with a new parser version creates a new extraction version, never duplicates.
+**Batch**:
+Many postings parsed together in a single LLM call. Batched parsing is a
+requirement, never an optimization; one-listing-per-call is a defect.
+_Avoid_: single parse
 
-**Capture Checksum** — SHA-256 of the raw payload. Used to detect duplicate captures.
+### Decomposition
 
-## Pricing
+**Line**:
+One item decomposed out of a posting, carrying the seller's stated
+description and stated quantity. Lines can nest: components inside a server
+line, manifest rows inside a lot line.
+_Avoid_: product, SKU, item row
 
-**Price Kind** — What a price represents: `ask` (seller's asking price), `bid` (buyer's offer), `sold` (confirmed transaction), `cost_basis` (internal purchase), `reference` (third-party estimate).
+**Stated Quantity**:
+How many units of a line the seller says are present, as stated — not
+inferred or rounded.
 
-**Price Basis** — How a price was determined: `explicit_unit` (seller stated per-unit), `homogeneous_division` (lot divided evenly), `bound_only` (only a bound known), `allocated` (allocated from lot total with recorded basis).
+**Separately Purchasable**:
+Whether a line can be bought on its own, or only as part of a larger purchase.
 
-**Fabricated Price** — A unit price derived by dividing a lot total across components without recording the division. This is a defect, never acceptable.
+**Sale Group**:
+The set of lines that can actually be bought together in one purchase — a
+configured server as one unit, each DIMM bought individually, a whole lot.
+Alternative purchase shapes of the same posting are distinct sale groups.
+_Avoid_: bundle, package, offer (see Offer)
 
-## Pipeline States
+**Membership Terms**:
+Which lines are in a sale group and how many of each one's stated quantity
+the purchase includes.
 
-**Raw** — A captured listing that has not been processed.
+### Prices and time
 
-**Extracted** — A posting whose lines, sale groups, and observations have been populated by the LLM engine.
+**Offer**:
+Something purchasable at a price — a line or a sale group, at a point in
+time. Observations attach to offers.
+_Avoid_: posting (a posting is evidence; an offer is what is for sale)
 
-**Quarantined** — A posting that cannot be processed (out-of-scope, wanted-post, parse failure). Visible in counts, never silently dropped.
+**Price Kind**:
+Which market fact a price is — these series are never conflated:
+- **Ask** — what a seller is asking
+- **Bid** — what a buyer has offered (auction)
+- **Sold** — a completed transaction
+- **Cost Basis** — what we paid internally, not a market price
+- **Reference** — a third-party or list price used for comparison
 
-**Superseded** — An observation or resolution that has been replaced by a newer version. The original is preserved; the pointer `superseded_by` chains to the replacement.
+**Price Basis**:
+How a price amount relates to units — the honesty record:
+- **Explicit Unit** — the price was stated per unit
+- **Homogeneous Division** — a lot total divided across identical units
+- **Bound-Only** — only bounds are known; never allocate to units
+- **Allocated** — a lot total apportioned across different components, with
+  the basis recorded
 
-## Source Types
+**Availability**:
+Whether an offer is currently purchasable — a time series alongside price.
 
-**Capture** — The raw page payload (HTML/JSON/XML) plus source URL and fetch timestamp. The pipeline's only input boundary.
+**Observation**:
+An appended price or availability event. Observations are never updated or
+deleted; corrections point to a superseding observation.
+_Avoid_: price update, correction row
 
-**Fixture** — A real captured listing used for testing the pipeline. Not synthetic data.
+### Identity
 
-## Analysis
+**Resolution**:
+A candidate product match for a line, with a confidence score. Resolutions
+are re-runnable and never block anything from being visible; unresolved
+postings appear in every read view immediately.
+_Avoid_: identity merge, dedupe, match lock
 
-**Decomposition** — Breaking a multi-item posting into individual lines with honest pricing.
+**Product**:
+The canonical identity lines resolve to. Never trusted implicitly — always
+arrived at through scored resolutions.
+_Avoid_: item, SKU
 
-**Time Series** — Price and availability history for a posting or line, queryable via `time_bucket()`.
+**Category**:
+A named spec, built dynamically by adding data — not by changing the schema.
+_Avoid_: type, taxonomy node
+
+### Honesty
+
+**Quarantine**:
+An explicit, visible exclusion state with a reason (out-of-scope item, wanted
+post, parse failure). Quarantined things are counted, never silently dropped.
+_Avoid_: skip, filter, delete
+
+**Wanted Post**:
+A post seeking to buy, not to sell. Excluded from inventory with a recorded
+reason; never treated as an ask.
+
+**Parse Failure**:
+An extraction that could not complete. The capture's payload stays intact
+for re-extraction; the failure is visible, not hidden.
+
+**Coverage**:
+The fraction of captures that reach a queryable state — extracted, priced,
+resolved or explicitly unresolved. Drops and quarantines count as long as
+they are visible with reasons.
+
+**Trust**:
+The guarantee that query answers are correctly decomposed, priced, and
+kinned: zero fabricated unit prices, zero conflated price kinds.

@@ -1,0 +1,16 @@
+{
+  "item_id": "127220408839",
+  "url": "https://www.ebay.com/itm/127220408839",
+  "error": "dead_page 404 (confirmed via bd-dataset + web_data_ebay_product MCP)",
+  "error_code": "dead_page",
+  "_enrich_meta": {
+    "fetch_tool": "bd-dataset+web_data_ebay_product+scrape_as_markdown",
+    "status": "error",
+    "retries": [
+      "bd-dataset",
+      "web_data_ebay_product",
+      "scrape_as_markdown"
+    ],
+    "notes": "404 dead page; scrape_as_markdown saved separately"
+  }
+}

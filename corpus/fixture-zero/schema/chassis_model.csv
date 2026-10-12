@@ -1,0 +1,13 @@
+chassis_key,vendor,model,generation,form_factor,default_sockets,notes,techdeals_item_id
+dell_r6515,Dell,R6515,,rack,,,
+dell_r7515,Dell,R7515,,2U,1,,
+hpe_dl325_gen10,HPE,DL325 Gen10,7002,1U,2,,
+hpe_dl325,HPE,DL325,7002,rack,1,,
+hp_dl325_gen10,HP,DL325 Gen10,,,,,
+supermicro_as_1014s_wtrt,Supermicro,AS-1014S-WTRT,7003,1U,1,,
+dell_t550,Dell,T550,,,2,,
+dell_r7415,Dell,R7415,,,1,,
+dell_r6415,Dell,R6415,,Blade,1,,
+supermicro_as_2014tp_htr,Supermicro,AS-2014TP-HTR,,2U,2,,
+dell_dl325_gen10,DELL,DL325 Gen10,7003,,2,,
+na_dl325_gen10,NA,DL325 Gen10,,,1,,

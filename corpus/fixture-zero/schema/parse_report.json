@@ -1,0 +1,125 @@
+{
+  "parsed": 376,
+  "live": 372,
+  "ended": 3,
+  "error": 1,
+  "coverage_of_all": {
+    "chassis": "376/376 (100.0%)",
+    "bays": "375/376 (99.7%)",
+    "cpu": "353/376 (93.9%)",
+    "family": "307/376 (81.6%)",
+    "ram": "164/376 (43.6%)"
+  },
+  "coverage_of_live_server_with_cpu": {
+    "cpu_model": "118/121 (97.5%)",
+    "cpu_family": "106/121 (87.6%)",
+    "ram_total_gb": "72/121 (59.5%)",
+    "chassis_model": "121/121 (100.0%)",
+    "bay_count": "121/121 (100.0%)"
+  },
+  "enriched_rows": 372,
+  "chassis_ref": 12,
+  "listing_cpu_rows": 585,
+  "live_server_with_cpu": 121,
+  "live_us_server_with_cpu": 51,
+  "live_milan": 90,
+  "live_us_milan_server_with_cpu": 10,
+  "cheapest8": [
+    {
+      "item_id": "278434233163",
+      "url": "https://www.ebay.com/itm/278434233163",
+      "title": "HP DL325 Gen 10 Plus Server AMD Epyc 7402 2.80GHz 64GB, 8 x 2.5\" SAS/SATA",
+      "price_usd": 999.99,
+      "ship_usd": 24.0,
+      "all_in": 1023.99,
+      "cpu": "7402",
+      "family": "Rome",
+      "ram_gb": 64,
+      "chassis": "DL325 Gen10"
+    },
+    {
+      "item_id": "318597923696",
+      "url": "https://www.ebay.com/itm/318597923696",
+      "title": "HPE ProLiant DL325 Gen10 Plus 1U Server AMD EPYC 7402P 24-Core NO RAM",
+      "price_usd": 1099.99,
+      "ship_usd": 0.0,
+      "all_in": 1099.99,
+      "cpu": "7402P",
+      "family": "Rome",
+      "ram_gb": null,
+      "chassis": "DL325 Gen10"
+    },
+    {
+      "item_id": "267696398195",
+      "url": "https://www.ebay.com/itm/267696398195",
+      "title": "HP ProLiant DL325 Gen10 Server 8 bay AMD EPYC 7402P 24 Core 2.8Ghz 64GB 4x10GbE",
+      "price_usd": 2050.0,
+      "ship_usd": 0.0,
+      "all_in": 2050.0,
+      "cpu": "7402P",
+      "family": "Rome",
+      "ram_gb": 64,
+      "chassis": "DL325 Gen10"
+    },
+    {
+      "item_id": "178398597091",
+      "url": "https://www.ebay.com/itm/178398597091",
+      "title": "Supermicro 1114S-WN10RT 1U 10-Bay NVMe U.2 Server H12SSW-NTR + AMD Epyc 7402P",
+      "price_usd": 1999.99,
+      "ship_usd": 69.99,
+      "all_in": 2069.98,
+      "cpu": "7402P",
+      "family": "Rome",
+      "ram_gb": null,
+      "chassis": "1114S-WN10RT"
+    },
+    {
+      "item_id": "158378210675",
+      "url": "https://www.ebay.com/itm/158378210675",
+      "title": "Dell R6515 1U 8bay 2.5\" SFF Single AMD EPYC 7352 H730P Mini Raid Dual 550W PSU",
+      "price_usd": 2299.0,
+      "ship_usd": 65.0,
+      "all_in": 2364.0,
+      "cpu": "7352",
+      "family": "Rome",
+      "ram_gb": null,
+      "chassis": "R6515"
+    },
+    {
+      "item_id": "168506458575",
+      "url": "https://www.ebay.com/itm/168506458575",
+      "title": "HPE DL325 Gen10 Plus AMD EPYC 7702P 10/25GB SFP Card 2*DC 800W PSU Serv (NO RAM",
+      "price_usd": 2760.0,
+      "ship_usd": 60.82,
+      "all_in": 2820.82,
+      "cpu": "7702P",
+      "family": "Rome",
+      "ram_gb": null,
+      "chassis": "DL325 Gen10"
+    },
+    {
+      "item_id": "117303596513",
+      "url": "https://www.ebay.com/itm/117303596513",
+      "title": "HPE DL325 Gen10 PLUS 8SFF 1x AMD EPYC 7702P 64GB P408i-a 2x 25Gb SFP28",
+      "price_usd": 3028.0,
+      "ship_usd": 0.0,
+      "all_in": 3028.0,
+      "cpu": "7702P",
+      "family": "Rome",
+      "ram_gb": 64,
+      "chassis": "DL325 Gen10"
+    },
+    {
+      "item_id": "189028178908",
+      "url": "https://www.ebay.com/itm/189028178908",
+      "title": "HPE DL325 Gen10 Plus Server 20SFF NVMe EPYC 7402P 64GB DDR4 500W PSU",
+      "price_usd": 3447.0,
+      "ship_usd": 24.0,
+      "all_in": 3471.0,
+      "cpu": "7402P",
+      "family": "Rome",
+      "ram_gb": 64,
+      "chassis": "DL325 Gen10"
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "url": "https://www.ebay.com/itm/267696398195",
+  "product_id": "267696398195",
+  "title": "HP ProLiant DL325 Gen10 Server 8 bay AMD EPYC 7402P 24 Core 2.8Ghz 64GB 4x10GbE",
+  "seller_name": "Shop-MyDatacenter",
+  "seller_rating": "100% positive feedback",
+  "seller_reviews": "1927",
+  "breadcrumbs": [
+    {
+      "name": "Electronics",
+      "url": "https://www.ebay.com/b/Electronics/bn_7000259124"
+    },
+    {
+      "name": "Computers/Tablets & Networking",
+      "url": "https://www.ebay.com/b/Computers-Tablets-Network-Hardware/58058/bn_1865247"
+    },
+    {
+      "name": "Enterprise Networking, Servers",
+      "url": "https://www.ebay.com/b/Enterprise-Networking-Servers/175698/bn_1309143"
+    },
+    {
+      "name": "Servers, Clients & Terminals",
+      "url": "https://www.ebay.com/b/Enterprise-Network-Servers-Clients-Terminals/175700/bn_886999"
+    },
+    {
+      "name": "Computer Servers",
+      "url": "https://www.ebay.com/b/Computer-Servers/11211/bn_886971"
+    }
+  ],
+  "root_category": "Electronics",
+  "images": [
+    "https://i.ebayimg.com/images/g/59gAAeSw9WJqIKQe/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/DVkAAeSw7SlqIKQd/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/~aQAAeSw-LFqIKTg/s-l1600.webp"
+  ],
+  "price": "$2,050.00",
+  "currency": "USD",
+  "condition": "Used",
+  "available_count": 1,
+  "sold_count": "1",
+  "item_location": "San Jose, California, United States",
+  "ships_to": "Estimated between Fri, Oct 9 and Sat, Oct 17 to 20147 Delivery time is estimated using our proprietary method which is based on the buyer's proximity to the item location, the shipping service selected, the seller's shipping history, and other factors. Delivery times may vary, especially during peak periods.",
+  "excludes_shipping": "Excludes\nBarbados, French Guiana, French Polynesia, Guadeloupe, Libya, Martinique, New Caledonia, Reunion, Russian Federation, Ukraine, Venezuela",
+  "return_policy": "30 days returns . Buyer pays for return shipping. If you use an eBay shipping label, it will be deducted from your refund amount . See details - for more information about returns",
+  "product_specifications": [
+    {
+      "specification_name": "Condition",
+      "specification_value": "Used: An item that has been used previously. The item may have some signs of cosmetic wear, but is fully operational and functions as intended. This item may be a floor model or store return that has been used. See the seller\u2019s listing for full details and description of any imperfections."
+    },
+    {
+      "specification_name": "Number of Processors",
+      "specification_value": "1"
+    },
+    {
+      "specification_name": "Network Connectivity",
+      "specification_value": "Wired-Ethernet (RJ-45)"
+    },
+    {
+      "specification_name": "RAM Size",
+      "specification_value": "64 GB"
+    },
+    {
+      "specification_name": "Memory Type",
+      "specification_value": "DDR4 SDRAM"
+    },
+    {
+      "specification_name": "Brand",
+      "specification_value": "HPE"
+    },
+    {
+      "specification_name": "Form Factor",
+      "specification_value": "Rack Mountable"
+    },
+    {
+      "specification_name": "Type",
+      "specification_value": "Server"
+    },
+    {
+      "specification_name": "Processor Manufacturer",
+      "specification_value": "AMD"
+    },
+    {
+      "specification_name": "Model",
+      "specification_value": "HPE Proliatn DL325 Gen10 8 bay 2.5\""
+    },
+    {
+      "specification_name": "RAID Levels",
+      "specification_value": "10+0"
+    },
+    {
+      "specification_name": "Interface",
+      "specification_value": "Ethernet (RJ-45), USB 2.0, USB 3.0"
+    },
+    {
+      "specification_name": "Country of Origin",
+      "specification_value": "United States"
+    },
+    {
+      "specification_name": "Product Line",
+      "specification_value": "ProLiant"
+    },
+    {
+      "specification_name": "UPC",
+      "specification_value": "Does not apply"
+    }
+  ],
+  "seller_total_reviews": 1752,
+  "item_reviews": 0,
+  "seller_ratings": [
+    {
+      "rating_name": "Accurate description",
+      "rating_value": "5.0\n5 out of 5 stars"
+    },
+    {
+      "rating_name": "Reasonable shipping cost",
+      "rating_value": "5.0\n5 out of 5 stars"
+    },
+    {
+      "rating_name": "Shipping speed",
+      "rating_value": "5.0\n5 out of 5 stars"
+    },
+    {
+      "rating_name": "Communication",
+      "rating_value": "5.0\n5 out of 5 stars"
+    }
+  ],
+  "product_ratings": 0,
+  "amount_of_stars": [
+    {
+      "5_stars": "0"
+    },
+    {
+      "4_stars": "0"
+    },
+    {
+      "3_stars": "0"
+    },
+    {
+      "2_stars": "0"
+    },
+    {
+      "1_star": "0"
+    }
+  ],
+  "you_may_also_like": [],
+  "tags": [
+    "Last item available"
+  ],
+  "description_from_the_seller": "*** SHOP-MYDATACENTER *** Item Description Manufacturer: HPE Model: ProLiant DL335 Gen10 Form Factor: 1U Rackmount Condition Used, fully tested, and ready to deploy. Minor cosmetic wear possible. Performance Specs CPU: AMD EPYC 7402P Processor, 24 Cores, 2.8GHz Base Clock Memory: 64GB DDR4 ECC Registered RAM (Total) Drive Bays: 8x 2.5\" SAS/SATA Hot-Swap Bays (no drives included) Backplane does not support NVME RAID Controller: HPE Smart Array P408i-a SR Gen10 RAID Controller with HPE Smart Storage Battery Network: HPE FlexibleLOM 536FLR-T Quad Port 10GbE RJ45 Network Adapter Power Supply: Dual Redundant Hot-Plug Power Supplies (800W) Caddies: Only 2 caddies Included | Contact Us for more Rails: Not Included | Contact Us for Rails Shipping Free FedEx Ground Shipping within the 48 continental U.S. states Orders ship within 3\u20134 business days of cleared payment Warranty & Support 30-Day Standard Hardware Warranty (hardware only, software not included) Buyer responsible for return shipping unless item is defective 20% restocking fee applies to non-defective returns (unless otherwise stated) Contact us anytime via eBay messaging or phone (Mon\u2013Fri 9AM\u20135PM PST) for questions or custom configurations.",
+  "description_from_the_seller_parsed": "<p data-start=\"93\" data-end=\"169\">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0;*** <em data-start=\"142\" data-end=\"165\"><strong data-start=\"143\" data-end=\"164\">SHOP-MYDATACENTER</strong></em> ***</p>\n<ul data-start=\"381\" data-end=\"812\"><li data-start=\"789\" data-end=\"812\"><p data-start=\"270\" data-end=\"375\"><strong data-start=\"270\" data-end=\"290\">Item Description</strong><br data-start=\"290\" data-end=\"293\">\nManufacturer: HPE<br data-start=\"310\" data-end=\"313\">\nModel: ProLiant DL335 Gen10&#xA0;<br data-start=\"345\" data-end=\"348\">\nForm Factor: 1U Rackmount</p><p data-start=\"377\" data-end=\"465\"><strong data-start=\"377\" data-end=\"390\">Condition</strong><br data-start=\"390\" data-end=\"393\">\nUsed, fully tested, and ready to deploy. Minor cosmetic wear possible.</p><p data-start=\"467\" data-end=\"490\"><strong data-start=\"467\" data-end=\"488\">Performance Specs</strong></p><p data-start=\"203\" data-end=\"292\">\n\n\n</p><ul data-start=\"491\" data-end=\"1079\">\n<li data-start=\"491\" data-end=\"560\">\n<p data-start=\"493\" data-end=\"560\"><strong data-start=\"493\" data-end=\"501\">CPU:</strong> AMD EPYC 7402P Processor, 24 Cores, 2.8GHz Base Clock</p>\n</li>\n<li data-start=\"561\" data-end=\"614\">\n<p data-start=\"563\" data-end=\"614\"><strong data-start=\"563\" data-end=\"574\">Memory:</strong>&#xA0;64GB DDR4 ECC Registered RAM (Total)</p>\n</li>\n<li data-start=\"615\" data-end=\"691\">\n<p data-start=\"617\" data-end=\"691\"><strong data-start=\"617\" data-end=\"632\">Drive Bays:</strong> 8x 2.5&quot; SAS/SATA Hot-Swap Bays (no drives included) Backplane does not support NVME</p>\n</li>\n<li data-start=\"692\" data-end=\"792\">\n<p data-start=\"694\" data-end=\"792\"><strong data-start=\"694\" data-end=\"714\">RAID Controller:</strong>&#xA0;HPE Smart Array P408i-a SR Gen10 RAID Controller with HPE Smart Storage Battery</p>\n</li>\n<li data-start=\"793\" data-end=\"872\">\n<p data-start=\"795\" data-end=\"872\"><strong data-start=\"795\" data-end=\"807\">Network:</strong> HPE FlexibleLOM 536FLR-T Quad Port 10GbE RJ45 Network Adapter</p>\n</li>\n<li data-start=\"873\" data-end=\"968\">\n<p data-start=\"875\" data-end=\"968\"><strong data-start=\"875\" data-end=\"892\">Power Supply:</strong> Dual Redundant Hot-Plug Power Supplies (800W)</p>\n</li>\n<li data-start=\"969\" data-end=\"1028\">\n<p data-start=\"971\" data-end=\"1028\"><strong data-start=\"971\" data-end=\"983\">Caddies:</strong>&#xA0;Only 2 caddies Included | Contact Us for more</p>\n</li>\n<li data-start=\"1029\" data-end=\"1079\">\n<p data-start=\"1031\" data-end=\"1079\"><strong data-start=\"1031\" data-end=\"1041\">Rails:</strong> Not Included | Contact Us for Rails</p></li></ul>\n</li>\n</ul>\n<p data-start=\"814\" data-end=\"828\"><strong data-start=\"814\" data-end=\"826\">Shipping</strong></p>\n<ul data-start=\"829\" data-end=\"957\">\n<li data-start=\"829\" data-end=\"897\">\n<p data-start=\"831\" data-end=\"897\">Free FedEx Ground Shipping within the 48 continental U.S. states</p>\n</li>\n<li data-start=\"898\" data-end=\"957\">\n<p data-start=\"900\" data-end=\"957\">Orders ship within 3&#x2013;4 business days of cleared payment</p>\n</li>\n</ul>\n<p data-start=\"959\" data-end=\"983\"><strong data-start=\"959\" data-end=\"981\">Warranty &amp; Support</strong></p>\n<ul data-start=\"984\" data-end=\"1209\">\n<li data-start=\"984\" data-end=\"1060\">\n<p data-start=\"986\" data-end=\"1060\">30-Day Standard Hardware Warranty (hardware only, software not included)</p>\n</li>\n<li data-start=\"1061\" data-end=\"1127\">\n<p data-start=\"1063\" data-end=\"1127\">Buyer responsible for return shipping unless item is defective</p>\n</li>\n<li data-start=\"1128\" data-end=\"1209\">\n<p data-start=\"1130\" data-end=\"1209\">20% restocking fee applies to non-defective returns (unless otherwise stated)</p>\n</li>\n</ul>\n<p data-start=\"1211\" data-end=\"1319\">Contact us anytime via eBay messaging or phone (Mon&#x2013;Fri 9AM&#x2013;5PM PST) for questions or custom configurations.</p>",
+  "compatibility": null,
+  "domain": "www.ebay.com",
+  "seller_url": "https://www.ebay.com/str/shopmydatacenter?_trksid=p4429486.m3561.l161211",
+  "variant_id": null,
+  "brand": "HPE",
+  "sale_price": null,
+  "availability": "in_stock",
+  "availability_date": "Estimated between Fri, Oct 9 and Sat, Oct 17",
+  "group_id": "267696398195",
+  "listing_has_variations": false,
+  "variant_attributes": null,
+  "variants": null,
+  "product_category": "Electronics>Computers/Tablets & Networking>Enterprise Networking, Servers>Servers, Clients & Terminals>Computer Servers",
+  "item_id": "267696398195",
+  "description": "*** SHOP-MYDATACENTER *** Item Description Manufacturer: HPE Model: ProLiant DL335 Gen10 Form Factor: 1U Rackmount Condition Used, fully tested, and ready to deploy. Minor cosmetic wear possible. Performance Specs CPU: AMD EPYC 7402P Processor, 24 Cores, 2.8GHz Base Clock Memory: 64GB DDR4 ECC Registered RAM (Total) Drive Bays: 8x 2.5\" SAS/SATA Hot-Swap Bays (no drives included) Backplane does not support NVME RAID Controller: HPE Smart Array P408i-a SR Gen10 RAID Controller with HPE Smart Storage Battery Network: HPE FlexibleLOM 536FLR-T Quad Port 10GbE RJ45 Network Adapter Power Supply: Dual Redundant Hot-Plug Power Supplies (800W) Caddies: Only 2 caddies Included | Contact Us for more Rails: Not Included | Contact Us for Rails Shipping Free FedEx Ground Shipping within the 48 continental U.S. states Orders ship within 3\u20134 business days of cleared payment Warranty & Support 30-Day Standard Hardware Warranty (hardware only, software not included) Buyer responsible for return shipping unless item is defective 20% restocking fee applies to non-defective returns (unless otherwise stated) Contact us anytime via eBay messaging or phone (Mon\u2013Fri 9AM\u20135PM PST) for questions or custom configurations.",
+  "category_tree": [
+    {
+      "name": "Electronics",
+      "url": "https://www.ebay.com/b/Electronics/bn_7000259124"
+    },
+    {
+      "name": "Computers/Tablets & Networking",
+      "url": "https://www.ebay.com/b/Computers-Tablets-Network-Hardware/58058/bn_1865247"
+    },
+    {
+      "name": "Enterprise Networking, Servers",
+      "url": "https://www.ebay.com/b/Enterprise-Networking-Servers/175698/bn_1309143"
+    },
+    {
+      "name": "Servers, Clients & Terminals",
+      "url": "https://www.ebay.com/b/Enterprise-Network-Servers-Clients-Terminals/175700/bn_886999"
+    },
+    {
+      "name": "Computer Servers",
+      "url": "https://www.ebay.com/b/Computer-Servers/11211/bn_886971"
+    }
+  ],
+  "image_url": "https://i.ebayimg.com/images/g/59gAAeSw9WJqIKQe/s-l1600.webp",
+  "store_name": "Shop-MyDatacenter",
+  "return_window": 30,
+  "target_countries": [
+    "US"
+  ],
+  "store_country": "US",
+  "category_urls": [
+    "https://www.ebay.com/b/Electronics/bn_7000259124",
+    "https://www.ebay.com/b/Computers-Tablets-Network-Hardware/58058/bn_1865247",
+    "https://www.ebay.com/b/Enterprise-Networking-Servers/175698/bn_1309143",
+    "https://www.ebay.com/b/Enterprise-Network-Servers-Clients-Terminals/175700/bn_886999",
+    "https://www.ebay.com/b/Computer-Servers/11211/bn_886971"
+  ],
+  "all_variations": false,
+  "seller_tos": "https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259",
+  "seller_privacy_policy": "https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260",
+  "gtin": "Does not apply",
+  "mpn": null,
+  "listing_format": "Buy It Now + Best Offer",
+  "seller_feedback": [
+    {
+      "review_id": "2332116347023",
+      "reviewer_username": "b***n (867)",
+      "feedback_text": "Very quick shipment.  Got it in about 2 to 3 days and that is quick for shipping across country.\n\nPacking is great and works fantastic.  Price was great too.\nCondition is amazing.  Brand new\nHighly recommend this seller.  A+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": "https://www.ebay.com/itm/267469015107",
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2149821446023",
+      "reviewer_username": "r***l (988)",
+      "feedback_text": "Shipping was great. Items were packed extremely well, each item in bubble wrapped and separated from each other by packing paper, all space in box packed so items did not bang around against each other, result...all items work perfectly and look brand new! Exactly as described. Great price for multiple items. Wonderful seller!! Thank You!!!",
+      "feedback_time_period": "Past year",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2352880856023",
+      "reviewer_username": "d***o (45)",
+      "feedback_text": "Item as advertised, and packaged well. Shipping was prompt.\nCommunication wasn't necessary, but I'm sure that if I would have had to contact seller there wouldn't have been no issues.\nThanks for your product, and service.",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": "https://www.ebay.com/itm/267720503761",
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2230689803023",
+      "reviewer_username": "k***f (403)",
+      "feedback_text": "Thank you to the seller and their team for the efficient processing of my order. Communication was prompt, the item arrived as described and on schedule, and I especially appreciate the professional support throughout the process. The secure packaging and the availability of a return option are also appreciated, and I recommend this seller.",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2208003119023",
+      "reviewer_username": "c***l (19224)",
+      "feedback_text": "A+ Seller, Items were exactly as described, shipped quickly and were packed well. They were quick to respond to questions and we had a great overall experience.",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2292395600023",
+      "reviewer_username": "l***z (225)",
+      "feedback_text": "Item exactly as described and at a great price. Shipped on time perfectly packaged. I highly recommend this seller! Thank You! ",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2226517791023",
+      "reviewer_username": "5***i (975)",
+      "feedback_text": "Fast, hassle-free delivery of ESC8000A server in near-mint condition, nicely packaged for freight transport.  Arrived with a minor issue which was instantly resolved via FedEx, at their expense, without waiting for the return.  Will definitely look forward to future business with these guys.  Thanks!",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2379852210023",
+      "reviewer_username": "1***n (19)",
+      "feedback_text": "Item as described, shipped quickly, well packed.  Excellent seller.",
+      "feedback_time_period": "Past month",
+      "is_verified_purchase": true,
+      "related_item_url": "https://www.ebay.com/itm/267769930907",
+      "reviewer_rate": true
+    }
+  ],
+  "product_information": null,
+  "quantity_available": 1,
+  "quantity_sold": 1,
+  "country": null,
+  "is_sold": false,
+  "sold_date": null,
+  "timestamp": "2026-10-06T02:21:39.208Z",
+  "input": {
+    "url": "https://www.ebay.com/itm/267696398195"
+  },
+  "_enrich_meta": {
+    "fetch_tool": "bd-dataset",
+    "dataset_id": "gd_ltr9mjt81n0zzdk1fb",
+    "snapshot_id": "sd_muw1xwv5qkp8x7hpi",
+    "status": "live",
+    "bd_error": null
+  }
+}

@@ -1,0 +1,280 @@
+{
+  "url": "https://www.ebay.com/itm/287533683368",
+  "product_id": "287533683368",
+  "title": "HPE ProLiant DL325 64-core 128-thread DL325 Gen10 EPYC 7V12 32GB P816i-a",
+  "seller_name": "Oniyanma Japan Vintage",
+  "seller_rating": "98.9% positive feedback",
+  "seller_reviews": "1419",
+  "breadcrumbs": [
+    {
+      "name": "Electronics",
+      "url": "https://www.ebay.com/b/Electronics/bn_7000259124"
+    },
+    {
+      "name": "Computers/Tablets & Networking",
+      "url": "https://www.ebay.com/b/Computers-Tablets-Network-Hardware/58058/bn_1865247"
+    },
+    {
+      "name": "Enterprise Networking, Servers",
+      "url": "https://www.ebay.com/b/Enterprise-Networking-Servers/175698/bn_1309143"
+    },
+    {
+      "name": "Servers, Clients & Terminals",
+      "url": "https://www.ebay.com/b/Enterprise-Network-Servers-Clients-Terminals/175700/bn_886999"
+    },
+    {
+      "name": "Computer Servers",
+      "url": "https://www.ebay.com/b/Computer-Servers/11211/bn_886971"
+    }
+  ],
+  "root_category": "Electronics",
+  "images": [
+    "https://i.ebayimg.com/images/g/R5YAAeSw69pqhTkP/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/uCwAAeSwcZxqhTkQ/s-l1600.webp",
+    "https://i.ebayimg.com/images/g/X1gAAeSwhq5qhTkQ/s-l1600.webp"
+  ],
+  "price": "$3,500.00",
+  "currency": "USD",
+  "condition": "Used",
+  "available_count": 1,
+  "item_location": "Saitama, Japan",
+  "ships_to": "Estimated between Fri, Oct 9 and Thu, Oct 22 to 98121 Delivery time is estimated using our proprietary method which is based on the buyer's proximity to the item location, the shipping service selected, the seller's shipping history, and other factors. Delivery times may vary, especially during peak periods.",
+  "excludes_shipping": "Excludes\nPO Box, APO/FPO, Afghanistan, Africa, Alaska/Hawaii, Albania, American Samoa, Andorra, Armenia, Azerbaijan Republic, Bahrain, Bangladesh, Belarus, Bermuda, Bhutan, Bosnia and Herzegovina, Brunei Darussalam, Bulgaria, Cambodia, Central America and Caribbean, Cook Islands, Cyprus, Czech Republic, Fiji, French Polynesia, Georgia, Gibraltar, Greenland, Guam, Guernsey, India, Indonesia, Iraq, Japan, Jersey, Jordan, Kazakhstan, Kiribati, Kuwait, Kyrgyzstan, Laos, Lebanon, Liechtenstein, Lithuania, Luxembourg, Macau, Malaysia, Maldives, Malta, Marshall Islands, Micronesia, Moldova, Monaco, Mongolia, Montenegro, Nauru, Nepal, New Caledonia, Niue, North Macedonia, Oman, Pakistan, Palau, Papua New Guinea, Qatar, Romania, Russian Federation, Saint Pierre and Miquelon, San Marino, Saudi Arabia, Serbia, Solomon Islands, South America, Svalbard and Jan Mayen, Tajikistan, Tonga, Turkey, Turkmenistan, Tuvalu, US Protectorates, Ukraine, United Arab Emirates, Uzbekistan, Vanuatu, Vatican City State, Vietnam, Wallis and Futuna, Western Samoa, Yemen",
+  "return_policy": "30 days returns . Seller pays for return shipping . See details - for more information about returns",
+  "product_specifications": [
+    {
+      "specification_name": "Condition",
+      "specification_value": "Used"
+    },
+    {
+      "specification_name": "Seller Notes",
+      "specification_value": "\u201cThis is a 1U rack server equipped with an HPE EPYC processor.It features the top-of-the-line EPYC 7V12 from the EPYC Rome series, making it an ideal CPU for virtual environment infrastructure.It also has 32GB of 3200MHz memory to maximize performance.Storage can accommodate up to 10 2.5-inch disks. The RAID card is the top-of-the-line P816i-a.Specifications:CPU: 1x AMD EPYC 7V12@2.40GHz 64 cores 128 threadsMemory: 2x DDR4 PC4-3200AA 3200MHz 16GB HPE genuine product Total 32GBRAID: HPE SmartArray P816i-a (8GB cache/SAS, SATA compatible/RAID 0, 1, 10, 5, 6 etc. compatible)Rack rails are included.A Windows Server 2019 Standard license is included. iLO Advanced Premium Security Edition is also applied.\u201d"
+    },
+    {
+      "specification_name": "Number of Processors",
+      "specification_value": "1"
+    },
+    {
+      "specification_name": "Brand",
+      "specification_value": "HPE"
+    },
+    {
+      "specification_name": "Form Factor",
+      "specification_value": "1U Rackmount"
+    },
+    {
+      "specification_name": "Type",
+      "specification_value": "Server"
+    },
+    {
+      "specification_name": "Processor Manufacturer",
+      "specification_value": "AMD"
+    },
+    {
+      "specification_name": "Model",
+      "specification_value": "SimpliVity 325 Gen10"
+    },
+    {
+      "specification_name": "Country of Origin",
+      "specification_value": "Mexico"
+    },
+    {
+      "specification_name": "Product Line",
+      "specification_value": "ProLiant DL"
+    },
+    {
+      "specification_name": "UPC",
+      "specification_value": "Does not apply"
+    }
+  ],
+  "seller_total_reviews": 1487,
+  "item_reviews": 0,
+  "seller_ratings": [
+    {
+      "rating_name": "Accurate description",
+      "rating_value": "4.8\n4.8 out of 5 stars"
+    },
+    {
+      "rating_name": "Reasonable shipping cost",
+      "rating_value": "5.0\n5 out of 5 stars"
+    },
+    {
+      "rating_name": "Shipping speed",
+      "rating_value": "4.9\n4.9 out of 5 stars"
+    },
+    {
+      "rating_name": "Communication",
+      "rating_value": "4.5\n4.5 out of 5 stars"
+    }
+  ],
+  "product_ratings": 0,
+  "amount_of_stars": [
+    {
+      "5_stars": "0"
+    },
+    {
+      "4_stars": "0"
+    },
+    {
+      "3_stars": "0"
+    },
+    {
+      "2_stars": "0"
+    },
+    {
+      "1_star": "0"
+    }
+  ],
+  "you_may_also_like": [],
+  "tags": [],
+  "description_from_the_seller": "Shipping DHL or FedEx or Japan Post. International Buyers - Please Note: For U.S. buyers: The item price already includes customs duties and taxes, so you can purchase with confidence. For buyers outside the U.S.: Customs duties and taxes are not included. However, I am happy to accept reasonable offers or price adjustments.",
+  "description_from_the_seller_parsed": "<div><br></div>\n<font rwr=\"1\" size=\"4\" style=\"font-family:Arial\"><div class=\"hasso\" style=\"font-family: &quot;Hiragino Kaku Gothic ProN&quot;; background-color: rgb(255, 255, 255);\"><h2 style=\"background-color: rgb(17, 144, 217); padding: 10px 20px; margin: 0px 0px 10px; font-size: 22px; line-height: 1.2; text-align: center;\"><font face=\"Arial Black\"><i>Shipping</i></font></h2><div style=\"text-align: center; font-family: Arial;\">DHL or FedEx or Japan Post.</div><div style=\"text-align: center; font-family: Arial;\"><br></div></div><div class=\"tyuui\" style=\"font-family: &quot;Hiragino Kaku Gothic ProN&quot;; background-color: rgb(255, 255, 255);\"><h2 style=\"background-color: rgb(17, 144, 217); padding: 10px 20px; margin: 0px 0px 10px; font-size: 22px; line-height: 1.2; text-align: center;\"><font face=\"Arial Black\"><i>International Buyers - Please Note:</i></font></h2><p style=\"line-height: 24px; font-size: 18px; margin: 0px; padding: 0px 0px 20px; color: rgb(51, 51, 51); font-family: Arial;\">For U.S. buyers: The item price already includes customs duties and taxes, so you can purchase with confidence. For buyers outside the U.S.: Customs duties and taxes are not included. However, I am happy to accept reasonable offers or price adjustments.</p></div></font>",
+  "compatibility": null,
+  "domain": "www.ebay.com",
+  "seller_url": "https://www.ebay.com/str/oniyanmashop?_trksid=p4429486.m3561.l161211",
+  "variant_id": null,
+  "brand": "HPE",
+  "sale_price": null,
+  "availability": "in_stock",
+  "availability_date": "Estimated between Fri, Oct 9 and Thu, Oct 22",
+  "group_id": "287533683368",
+  "listing_has_variations": false,
+  "variant_attributes": null,
+  "variants": null,
+  "product_category": "Electronics>Computers/Tablets & Networking>Enterprise Networking, Servers>Servers, Clients & Terminals>Computer Servers",
+  "item_id": "287533683368",
+  "description": "Shipping DHL or FedEx or Japan Post. International Buyers - Please Note: For U.S. buyers: The item price already includes customs duties and taxes, so you can purchase with confidence. For buyers outside the U.S.: Customs duties and taxes are not included. However, I am happy to accept reasonable offers or price adjustments.",
+  "category_tree": [
+    {
+      "name": "Electronics",
+      "url": "https://www.ebay.com/b/Electronics/bn_7000259124"
+    },
+    {
+      "name": "Computers/Tablets & Networking",
+      "url": "https://www.ebay.com/b/Computers-Tablets-Network-Hardware/58058/bn_1865247"
+    },
+    {
+      "name": "Enterprise Networking, Servers",
+      "url": "https://www.ebay.com/b/Enterprise-Networking-Servers/175698/bn_1309143"
+    },
+    {
+      "name": "Servers, Clients & Terminals",
+      "url": "https://www.ebay.com/b/Enterprise-Network-Servers-Clients-Terminals/175700/bn_886999"
+    },
+    {
+      "name": "Computer Servers",
+      "url": "https://www.ebay.com/b/Computer-Servers/11211/bn_886971"
+    }
+  ],
+  "image_url": "https://i.ebayimg.com/images/g/R5YAAeSw69pqhTkP/s-l1600.webp",
+  "store_name": "Oniyanma Japan Vintage",
+  "return_window": 30,
+  "target_countries": [
+    "US"
+  ],
+  "store_country": "US",
+  "category_urls": [
+    "https://www.ebay.com/b/Electronics/bn_7000259124",
+    "https://www.ebay.com/b/Computers-Tablets-Network-Hardware/58058/bn_1865247",
+    "https://www.ebay.com/b/Enterprise-Networking-Servers/175698/bn_1309143",
+    "https://www.ebay.com/b/Enterprise-Network-Servers-Clients-Terminals/175700/bn_886999",
+    "https://www.ebay.com/b/Computer-Servers/11211/bn_886971"
+  ],
+  "all_variations": false,
+  "seller_tos": "https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259",
+  "seller_privacy_policy": "https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260",
+  "gtin": "Does not apply",
+  "mpn": null,
+  "listing_format": "Buy It Now + Best Offer",
+  "seller_feedback": [
+    {
+      "review_id": "2205090638025",
+      "reviewer_username": "e***i (440)",
+      "feedback_text": "Good communication and price. Packed well. Everything as described. Received one day later than the latest shipping date - not because the shipping was slow but because the package wasn't shipped until the very last minute. Probably a one-person operation with a lot of orders to fulfill, but I can't give a 5 star rating for shipping. Everything else was great. Would buy from this seller again but know that your package might take a few weeks to arrive.",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2205363353025",
+      "reviewer_username": "8***j (963)",
+      "feedback_text": "Shipping took the full 10 business days to even depart. That ilwas stated and understandable, but that does seem excessive for a business who's premise is selling. The packaging was good, but the item's box was slightly dented from shipoing in a vinyl bubble mailer and not a box. There was limited communication from the seller. The item is as described and a good value for the going price currently.",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2336885970025",
+      "reviewer_username": "p***- (52)",
+      "feedback_text": "Once shipped my bass arrived within 2 days, Good communication. Packaging was good. The bass was in better shape than what the photos showed. They are a very busy company and sell a lot of items. It took them a little extra time to pack and ship but it was worth waiting for. Great job tkO Thanks",
+      "feedback_time_period": "Past month",
+      "is_verified_purchase": true,
+      "related_item_url": "https://www.ebay.com/itm/287125392497",
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2213229618025",
+      "reviewer_username": "p***k (403)",
+      "feedback_text": "Once purchased it took a few days and decided to send a message via eBay on the status. No response and a day or two later I got shipping confirmation via eBay. No response from the seller at all. However, once shipped it gets handed off to FedEx stateside in the US and got it within 5 business days. It was packed well and item is new as listed and described.",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2263663424025",
+      "reviewer_username": "a***h (19)",
+      "feedback_text": "No communication or messages from the seller, but that it completely fine. The postage was free and came promptly after the shipping notification, beating the estimate. It was packaged in a simple bag, but the item was wrapped in many layers of bubble wrap to keep it safe. The pen was exactly as described in the listing. ",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2257588858025",
+      "reviewer_username": "n***j (596)",
+      "feedback_text": "This seller is amazing. In addition to the radio I bought\u2014which is in excellent condition\u2014the seller shipped it internationally and it arrived in practically a week. Not only was the item in excellent condition and very well packaged, but they also sent me another radio as a gift\u2014one that is in collector-quality condition. I highly recommend this seller: great communication, very fast delivery, and excellent packaging. Thank you so much! A 1000% gold-excellent-seller!",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2227079329025",
+      "reviewer_username": "y***k (101)",
+      "feedback_text": "Item arrived as described. Be prepared for shipping to take a bit longer than expected. The item sat making no visible progress for a couple weeks. Seller was responsive throughout the process. Once the item shipped it arrived within days. Highly recommend this seller.",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    },
+    {
+      "review_id": "2221744311025",
+      "reviewer_username": "a***a (944)",
+      "feedback_text": "Excellent, honest transaction. Seller confirmed the exact serial number (#253682) in messaging, packed the vintage deck safely, and expedited shipping perfectly to accommodate my travel schedule. The unit arrived exactly as described and pictured. High professional integrity. Highly recommended seller!",
+      "feedback_time_period": "Past 6 months",
+      "is_verified_purchase": true,
+      "related_item_url": null,
+      "reviewer_rate": true
+    }
+  ],
+  "product_information": null,
+  "quantity_available": null,
+  "quantity_sold": null,
+  "country": null,
+  "is_sold": false,
+  "sold_date": null,
+  "timestamp": "2026-10-06T02:21:42.888Z",
+  "input": {
+    "url": "https://www.ebay.com/itm/287533683368"
+  },
+  "_enrich_meta": {
+    "fetch_tool": "bd-dataset",
+    "dataset_id": "gd_ltr9mjt81n0zzdk1fb",
+    "snapshot_id": "sd_muw1xwv5qkp8x7hpi",
+    "status": "live",
+    "bd_error": null
+  }
+}

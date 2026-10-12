@@ -1,0 +1,22 @@
+listing_id,model_raw,vram_gb,qty,parse_confidence
+ebay:itm:327381335819,A40,,1,0.5
+ebay:itm:800537739061,NVIDIA Jetson,,1,0.5
+ebay:itm:127931129280,NVIDIA Jetson,,1,0.5
+ebay:itm:800444821121,NVIDIA Jetson,,1,0.5
+ebay:itm:800444664408,NVIDIA Jetson,,1,0.5
+ebay:itm:376415278248,NVIDIA Jetson,,1,0.5
+ebay:itm:227349950548,NVIDIA Jetson,,1,0.5
+ebay:itm:800420659268,NVIDIA Jetson,,1,0.5
+ebay:itm:336075061092,NVIDIA Jetson,,1,0.5
+ebay:itm:127956898857,NVIDIA Jetson,,1,0.5
+ebay:itm:800338690180,A100,,1,0.5
+ebay:itm:398311103855,Nvidia Tesla,,1,0.5
+ebay:itm:800338422207,A100,,1,0.5
+ebay:itm:127540686442,NVIDIA Jetson,,1,0.5
+ebay:itm:226873879160,NVIDIA Jetson,,1,0.5
+ebay:itm:127978020600,NVIDIA Jetson,,1,0.5
+ebay:itm:800338247058,A100,,1,0.5
+ebay:itm:127822340628,NVIDIA Jetson,,1,0.5
+ebay:itm:127940112860,RTX 3090,,1,0.5
+ebay:itm:127940259331,RTX 4090,,1,0.5
+ebay:itm:336379927573,NVIDIA L20,,1,0.5

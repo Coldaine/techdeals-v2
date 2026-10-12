@@ -1,0 +1,4809 @@
+{
+ "run_id": "20261012T114419",
+ "model": "deepseek/deepseek-v4-flash-0731",
+ "parser_name": "llm_batch:engine-v1",
+ "prompt_version": "batch-v1",
+ "batch_size": 20,
+ "results": [
+  {
+   "id": "115876998802",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12SSL-i + EPYC 7742 + 8x32GB 2666MHz RAM",
+     "availability": "available",
+     "price": {
+      "amount": "4579.66",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one bundle: motherboard + CPU + 8 RAM modules"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB",
+        "board_support_cpu": "Single AMD EPYC 7003/7002 Series Processor"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7742 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7742",
+        "cpu_count": 1,
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "socket": "SP3"
+       },
+       "children": []
+      },
+      {
+       "label": "Samsung 32GB 2666MHz DDR4 ECC RAM",
+       "quantity": 8,
+       "separately_purchasable": true,
+       "attributes": {
+        "ram_dimm_count": 8,
+        "ram_dimm_gb": 32,
+        "ram_total_gb": 256,
+        "ram_type": "DDR4 ECC",
+        "ram_speed_mts": 2666
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear package list and price; specs consistent with description."
+  },
+  {
+   "id": "116572740961",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro AS-1014S-WTRT 1U Server (barebone, no CPU/RAM/SSD)",
+     "availability": "available",
+     "price": {
+      "amount": "2550.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one server; description states no CPU, SSD or RAM included"
+     },
+     "lines": [
+      {
+       "label": "Supermicro AS-1014S-WTRT 1U Server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "AS-1014S-WTRT",
+        "form_factor_u": 1,
+        "psu_count": 2,
+        "psu_watts": 500
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 'AMD EPYC Milan' but description states no CPU is included; specs list Processor Type AMD EPYC 7003 Series as a supported type, not installed."
+   ],
+   "read_confidence": "high",
+   "read_note": "Description explicitly excludes CPU/SSD/RAM; price and PSU details clear."
+  },
+  {
+   "id": "117083098586",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12SSL-i + EPYC 7A23 48-core",
+     "availability": "available",
+     "price": {
+      "amount": "1574.57",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one bundle: motherboard + CPU"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB",
+        "board_support_cpu": "Single AMD EPYC 7002/7003 Series CPU"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7A23 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7A23",
+        "cpu_count": 1,
+        "cpu_cores": 48,
+        "cpu_threads": 96,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package list and price clear; no RAM included."
+  },
+  {
+   "id": "117173565052",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Dell PowerEdge R6515 10x2.5\" (10xNVMe) with EPYC 7542, 128GB RAM, H730, 2x550W",
+     "availability": "available",
+     "price": {
+      "amount": "4951.07",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one configured server"
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R6515 Server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R6515",
+        "drive_bays": 10,
+        "form_factor_u": 1,
+        "raid_controller": "H730",
+        "psu_count": 2,
+        "psu_watts": 550
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7542 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7542",
+        "cpu_count": 1,
+        "cpu_cores": 32
+       },
+       "children": []
+      },
+      {
+       "label": "32GB 3200MHz RAM",
+       "quantity": 4,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_dimm_count": 4,
+        "ram_dimm_gb": 32,
+        "ram_total_gb": 128,
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Detailed configuration list; HDD none, rails none."
+  },
+  {
+   "id": "117219265177",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12SSL-i + EPYC 7532 + 8x32GB 2666MHz RAM",
+     "availability": "available",
+     "price": {
+      "amount": "3026.47",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one bundle: motherboard + CPU + 8 RAM modules"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB",
+        "board_support_cpu": "Single AMD EPYC 7003/7002 Series Processor"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7532 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7532",
+        "cpu_count": 1,
+        "cpu_cores": 32,
+        "cpu_threads": 64,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "socket": "SP3"
+       },
+       "children": []
+      },
+      {
+       "label": "Samsung 32GB 2666MHz DDR4 ECC RAM",
+       "quantity": 8,
+       "separately_purchasable": true,
+       "attributes": {
+        "ram_dimm_count": 8,
+        "ram_dimm_gb": 32,
+        "ram_total_gb": 256,
+        "ram_type": "DDR4 ECC",
+        "ram_speed_mts": 2666
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package list and price clear."
+  },
+  {
+   "id": "117303596450",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "HPE DL325 Gen10 Plus 8SFF, EPYC 7702P, 128GB, P408i-a, 2x25Gb SFP28",
+     "availability": "available",
+     "price": {
+      "amount": "3828.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one configured server"
+     },
+     "lines": [
+      {
+       "label": "HPE ProLiant DL325 Gen10 Plus 8SFF Server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "HPE",
+        "chassis_model": "ProLiant DL325 Gen10 Plus",
+        "form_factor_u": 1,
+        "drive_bays": 8,
+        "raid_controller": "HPE Smart Array P408i-a 12Gb/s 2GB Cache",
+        "nic": "HPE Mellanox ConnectX-5 CX562A (2x 25Gb SFP28) OCP3.0",
+        "psu_count": 2,
+        "psu_watts": 500
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7702P CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7702P",
+        "cpu_count": 1,
+        "cpu_cores": 64
+       },
+       "children": []
+      },
+      {
+       "label": "128GB DDR4 RAM",
+       "quantity": null,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 128,
+        "ram_type": "DDR4"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Detailed spec table; HDD/SSD not installed, rail kit not included."
+  },
+  {
+   "id": "117303596488",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "HPE DL325 Gen10 Plus 8SFF, EPYC 7702P, 192GB, P408i-a, 2x25Gb SFP28",
+     "availability": "available",
+     "price": {
+      "amount": "4628.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one configured server"
+     },
+     "lines": [
+      {
+       "label": "HPE ProLiant DL325 Gen10 Plus 8SFF Server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "HPE",
+        "chassis_model": "ProLiant DL325 Gen10 Plus",
+        "form_factor_u": 1,
+        "drive_bays": 8,
+        "raid_controller": "HPE Smart Array P408i-a 12Gb/s 2GB Cache",
+        "nic": "HPE Mellanox ConnectX-5 CX562A (2x 25Gb SFP28) OCP3.0",
+        "psu_count": 2,
+        "psu_watts": 500
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7702P CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7702P",
+        "cpu_count": 1,
+        "cpu_cores": 64
+       },
+       "children": []
+      },
+      {
+       "label": "192GB DDR4 RAM",
+       "quantity": null,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 192,
+        "ram_type": "DDR4"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Detailed spec table; HDD/SSD not installed, rail kit not included."
+  },
+  {
+   "id": "117303596513",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "HPE DL325 Gen10 Plus 8SFF, EPYC 7702P, 64GB, P408i-a, 2x25Gb SFP28",
+     "availability": "available",
+     "price": {
+      "amount": "3028.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one configured server"
+     },
+     "lines": [
+      {
+       "label": "HPE ProLiant DL325 Gen10 Plus 8SFF Server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "HPE",
+        "chassis_model": "ProLiant DL325 Gen10 Plus",
+        "form_factor_u": 1,
+        "drive_bays": 8,
+        "raid_controller": "HPE Smart Array P408i-a 12Gb/s 2GB Cache",
+        "nic": "HPE Mellanox ConnectX-5 CX562A (2x 25Gb SFP28) OCP3.0",
+        "psu_count": 2,
+        "psu_watts": 500
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7702P CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7702P",
+        "cpu_count": 1,
+        "cpu_cores": 64
+       },
+       "children": []
+      },
+      {
+       "label": "64GB DDR4 RAM",
+       "quantity": null,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 64,
+        "ram_type": "DDR4"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Detailed spec table; HDD/SSD not installed, rail kit not included."
+  },
+  {
+   "id": "117303596603",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "HPE DL325 Gen10 Plus 8SFF, EPYC 7702P, 256GB, P408i-a, 2x25Gb SFP28",
+     "availability": "available",
+     "price": {
+      "amount": "5428.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one configured server"
+     },
+     "lines": [
+      {
+       "label": "HPE ProLiant DL325 Gen10 Plus 8SFF Server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "HPE",
+        "chassis_model": "ProLiant DL325 Gen10 Plus",
+        "form_factor_u": 1,
+        "drive_bays": 8,
+        "raid_controller": "HPE Smart Array P408i-a 12Gb/s 2GB Cache",
+        "nic": "HPE Mellanox ConnectX-5 CX562A (2x 25Gb SFP28) OCP3.0",
+        "psu_count": 2,
+        "psu_watts": 500
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7702P CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7702P",
+        "cpu_count": 1,
+        "cpu_cores": 64
+       },
+       "children": []
+      },
+      {
+       "label": "256GB DDR4 RAM",
+       "quantity": null,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 256,
+        "ram_type": "DDR4"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Detailed spec table; HDD/SSD not installed, rail kit not included."
+  },
+  {
+   "id": "126472428668",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12SSL-i + EPYC 7282 + 32G*2 3200MHz DDR4 ECC REG",
+     "availability": "available",
+     "price": {
+      "amount": "1712.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the base RAM variant (32G*2)"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7282 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7282",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "socket": "SP3"
+       },
+       "children": []
+      },
+      {
+       "label": "32GB 3200MHz DDR4 ECC REG RAM",
+       "quantity": 2,
+       "separately_purchasable": true,
+       "attributes": {
+        "ram_dimm_count": 2,
+        "ram_dimm_gb": 32,
+        "ram_total_gb": 64,
+        "ram_type": "DDR4 ECC REG",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + EPYC 7282 + 32G*4 3200MHz DDR4 ECC REG",
+     "availability": "available",
+     "price": {
+      "amount": "2263.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for 32G*4 RAM configuration"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7282 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7282",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "socket": "SP3"
+       },
+       "children": []
+      },
+      {
+       "label": "32GB 3200MHz DDR4 ECC REG RAM",
+       "quantity": 4,
+       "separately_purchasable": true,
+       "attributes": {
+        "ram_dimm_count": 4,
+        "ram_dimm_gb": 32,
+        "ram_total_gb": 128,
+        "ram_type": "DDR4 ECC REG",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + EPYC 7282 + 32G*8 3200MHz DDR4 ECC REG",
+     "availability": "available",
+     "price": {
+      "amount": "3412.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for 32G*8 RAM configuration"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7282 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7282",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "socket": "SP3"
+       },
+       "children": []
+      },
+      {
+       "label": "32GB 3200MHz DDR4 ECC REG RAM",
+       "quantity": 8,
+       "separately_purchasable": true,
+       "attributes": {
+        "ram_dimm_count": 8,
+        "ram_dimm_gb": 32,
+        "ram_total_gb": 256,
+        "ram_type": "DDR4 ECC REG",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + EPYC 7282 + 64G*2 3200MHz DDR4 ECC REG",
+     "availability": "available",
+     "price": {
+      "amount": "2263.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for 64G*2 RAM configuration"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7282 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7282",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "socket": "SP3"
+       },
+       "children": []
+      },
+      {
+       "label": "64GB 3200MHz DDR4 ECC REG RAM",
+       "quantity": 2,
+       "separately_purchasable": true,
+       "attributes": {
+        "ram_dimm_count": 2,
+        "ram_dimm_gb": 64,
+        "ram_total_gb": 128,
+        "ram_type": "DDR4 ECC REG",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + EPYC 7282 + 64G*4 3200MHz DDR4 ECC REG",
+     "availability": "available",
+     "price": {
+      "amount": "3412.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for 64G*4 RAM configuration"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7282 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7282",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "socket": "SP3"
+       },
+       "children": []
+      },
+      {
+       "label": "64GB 3200MHz DDR4 ECC REG RAM",
+       "quantity": 4,
+       "separately_purchasable": true,
+       "attributes": {
+        "ram_dimm_count": 4,
+        "ram_dimm_gb": 64,
+        "ram_total_gb": 256,
+        "ram_type": "DDR4 ECC REG",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + EPYC 7282 + 64G*8 3200MHz DDR4 ECC REG",
+     "availability": "available",
+     "price": {
+      "amount": "5613.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for 64G*8 RAM configuration"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7282 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7282",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "socket": "SP3"
+       },
+       "children": []
+      },
+      {
+       "label": "64GB 3200MHz DDR4 ECC REG RAM",
+       "quantity": 8,
+       "separately_purchasable": true,
+       "attributes": {
+        "ram_dimm_count": 8,
+        "ram_dimm_gb": 64,
+        "ram_total_gb": 512,
+        "ram_type": "DDR4 ECC REG",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says '16GB-512GB 3200MHz RAM' but the variant options start at 32G*2 (64GB total); no 16GB option is listed."
+   ],
+   "read_confidence": "high",
+   "read_note": "Six RAM variants with explicit prices; base variant is 32G*2."
+  },
+  {
+   "id": "126718876005",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12SSL-i + AMD EPYC 7282 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1136.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the base CPU variant (EPYC 7282)"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7282 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7282",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7302 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1150.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7302"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7302 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7302",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7402 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1170.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7402"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7402 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7402",
+        "cpu_count": 1,
+        "cpu_cores": 24,
+        "cpu_threads": 48,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7452 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1260.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7452"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7452 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7452",
+        "cpu_count": 1,
+        "cpu_cores": 32,
+        "cpu_threads": 64,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7502 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1399.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7502"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7502 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7502",
+        "cpu_count": 1,
+        "cpu_cores": 32,
+        "cpu_threads": 64,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7542 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1435.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7542"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7542 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7542",
+        "cpu_count": 1,
+        "cpu_cores": 32,
+        "cpu_threads": 64,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7642 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1358.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7642"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7642 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7642",
+        "cpu_count": 1,
+        "cpu_cores": 48,
+        "cpu_threads": 96,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7K62 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1391.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7K62"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7K62 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7K62",
+        "cpu_count": 1,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7R32 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1489.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7R32"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7R32 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7R32",
+        "cpu_count": 1,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7552 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1553.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7552"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7552 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7552",
+        "cpu_count": 1,
+        "cpu_cores": 48,
+        "cpu_threads": 96,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7662 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1783.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7662"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7662 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7662",
+        "cpu_count": 1,
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7702 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1852.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7702"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7702 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7702",
+        "cpu_count": 1,
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7742 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1970.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7742"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7742 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7742",
+        "cpu_count": 1,
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7B12 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1643.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7B12"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7B12 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7B12",
+        "cpu_count": 1,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7532 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1332.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7532"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7532 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7532",
+        "cpu_count": 1,
+        "cpu_cores": 32,
+        "cpu_threads": 64,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7F32 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1204.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7F32"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7F32 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7F32",
+        "cpu_count": 1,
+        "cpu_cores": 8,
+        "cpu_threads": 16,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7F52 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1138.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7F52"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7F52 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7F52",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-i + AMD EPYC 7F72 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1428.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for EPYC 7F72"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7F72 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7F72",
+        "cpu_count": 1,
+        "cpu_cores": 24,
+        "cpu_threads": 48,
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "18 CPU variants with explicit prices; no RAM included."
+  },
+  {
+   "id": "127199933537",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12SSL-i + EPYC 7402 + 8x64GB 2666MHz RAM",
+     "availability": "available",
+     "price": {
+      "amount": "4300.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one bundle: motherboard + CPU + 8 RAM modules"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7402 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7402",
+        "cpu_count": 1,
+        "cpu_cores": 24,
+        "cpu_threads": 48,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "socket": "SP3"
+       },
+       "children": []
+      },
+      {
+       "label": "64GB 2666MHz DDR4 RAM",
+       "quantity": 8,
+       "separately_purchasable": true,
+       "attributes": {
+        "ram_dimm_count": 8,
+        "ram_dimm_gb": 64,
+        "ram_total_gb": 512,
+        "ram_type": "DDR4",
+        "ram_speed_mts": 2666
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package list and price clear."
+  },
+  {
+   "id": "127212119662",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12SSL-i + EPYC 7513 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1680.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one bundle: motherboard + CPU"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7513 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7513",
+        "cpu_count": 1,
+        "cpu_cores": 32,
+        "cpu_threads": 64,
+        "cpu_family": "AMD EPYC 7003 Series",
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package list and price clear; no RAM included."
+  },
+  {
+   "id": "127212226077",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12SSL-i + EPYC 7513 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1680.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one bundle: motherboard + CPU"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7513 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7513",
+        "cpu_count": 1,
+        "cpu_cores": 32,
+        "cpu_threads": 64,
+        "cpu_family": "AMD EPYC 7003 Series",
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package list and price clear; no RAM included."
+  },
+  {
+   "id": "127220408839",
+   "outcome": "quarantined",
+   "sale_groups": [],
+   "quarantine": {
+    "reason": "dead_page",
+    "detail": "404 dead page confirmed via bd-dataset + web_data_ebay_product MCP"
+   },
+   "conflicts": [],
+   "read_confidence": null,
+   "read_note": "Capture is an error record with no listing content."
+  },
+  {
+   "id": "127462928151",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12SSL-i + EPYC 7302 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "11150.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one bundle: motherboard + CPU"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7302 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7302",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package list and price clear; no RAM included."
+  },
+  {
+   "id": "127540686442",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12SSL-i + EPYC 7313 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1580.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one bundle: motherboard + CPU"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7313 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7313",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7003 Series",
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package list and price clear; no RAM included."
+  },
+  {
+   "id": "127552535357",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12SSL-i + EPYC 7713 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "2560.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one bundle: motherboard + CPU"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7713 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7713",
+        "cpu_count": 1,
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_family": "AMD EPYC 7003 Series",
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package list and price clear; no RAM included."
+  },
+  {
+   "id": "127554847495",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i Motherboard",
+     "availability": "available",
+     "price": {
+      "amount": "1049.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for the motherboard"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 ECC",
+        "board_support_cpu": "AMD EPYC 7002 single-socket"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Description lists generic/incorrect specs (Standard memory 1GB, Hard disk capacity 320GB, Processor type AMD Opteron, Processor frequency 1.95GHz) that do not match the H12SSL-i motherboard; these appear to be template filler."
+   ],
+   "read_confidence": "med",
+   "read_note": "Motherboard-only listing; description contains boilerplate specs inconsistent with the product."
+  },
+  {
+   "id": "127608523462",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12SSL-i + EPYC 7313 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1574.57",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Buy It Now price for one bundle: motherboard + CPU"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "motherboard": "Supermicro H12SSL-i",
+        "form_factor": "ATX",
+        "socket": "SP3",
+        "ram_dimm_count": 8,
+        "board_support_ram_type": "DDR4 3200MHz Registered ECC",
+        "board_support_ram_max": "2TB"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7313 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7313",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7003 Series",
+        "socket": "SP3"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package list and price clear; no RAM included."
+  },
+  {
+   "id": "127822340628",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "2718.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the bundle as described"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7T83 CPU (OEM version of 7763)",
+       "quantity": 2,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7T83",
+        "cpu_count": 2,
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_family": "AMD EPYC 7003"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 'With AMD EPYC 7T83 Server CPU' but description says '2x AMD EPYC 7T83 CPU' - quantity discrepancy."
+   ],
+   "read_confidence": "med",
+   "read_note": "Description states 2 CPUs but title implies 1; RAM mentioned in mainboard specs but not in package include."
+  },
+  {
+   "id": "127822340867",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "2689.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the bundle as described"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7T83 CPU (OEM version of 7763)",
+       "quantity": 2,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7T83",
+        "cpu_count": 2,
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_family": "AMD EPYC 7003"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 'With AMD EPYC 7T83 CPU' but description says '2x AMD EPYC 7T83 CPU' - quantity discrepancy."
+   ],
+   "read_confidence": "med",
+   "read_note": "Description states 2 CPUs but title implies 1; RAM mentioned in mainboard specs but not in package include."
+  },
+  {
+   "id": "127822479792",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "2689.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the bundle as described"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7T83 CPU (OEM version of 7763)",
+       "quantity": 2,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7T83",
+        "cpu_count": 2,
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_family": "AMD EPYC 7003"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 'With AMD EPYC 7T83 CPU' but description says '2x AMD EPYC 7T83 CPU' - quantity discrepancy."
+   ],
+   "read_confidence": "med",
+   "read_note": "Description states 2 CPUs but title implies 1; RAM mentioned in mainboard specs but not in package include."
+  },
+  {
+   "id": "127851946605",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "3999.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the bundle as described"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7763 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7763",
+        "cpu_count": 1,
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_family": "AMD EPYC 7003"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package include clearly states 1 motherboard and 1 CPU."
+  },
+  {
+   "id": "127852021044",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "3999.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the bundle as described"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7763 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7763",
+        "cpu_count": 1,
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_family": "AMD EPYC 7003"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package include clearly states 1 motherboard and 1 CPU."
+  },
+  {
+   "id": "127910760440",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "2468.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the bundle as described"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 75F3 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 75F3",
+        "cpu_count": 1,
+        "cpu_cores": 32,
+        "cpu_family": "AMD EPYC 7003"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package include clearly states 1 motherboard and 1 CPU."
+  },
+  {
+   "id": "127910760470",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "1325.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the bundle as described"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7K62 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7K62",
+        "cpu_count": 1,
+        "cpu_cores": 48,
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package include clearly states 1 motherboard and 1 CPU."
+  },
+  {
+   "id": "127910921547",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "1325.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the bundle as described"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7K62 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7K62",
+        "cpu_count": 1,
+        "cpu_cores": 48,
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package include clearly states 1 motherboard and 1 CPU."
+  },
+  {
+   "id": "127916316802",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration (32G*2 RAM)",
+     "availability": "available",
+     "price": {
+      "amount": "1712.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the base configuration with 2x32GB RAM"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7282 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7282",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      },
+      {
+       "label": "DDR4 3200MHz ECC REG RAM (32GB x2)",
+       "quantity": 2,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 64,
+        "ram_dimm_count": 2,
+        "ram_dimm_gb": 32,
+        "ram_type": "DDR4",
+        "ram_kind": "ECC REG",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "Variant: 32G*4 3200MHz DDR4 ECC REG",
+     "availability": "available",
+     "price": {
+      "amount": "2263.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for 4x32GB RAM"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7282 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7282",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      },
+      {
+       "label": "DDR4 3200MHz ECC REG RAM (32GB x4)",
+       "quantity": 4,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 128,
+        "ram_dimm_count": 4,
+        "ram_dimm_gb": 32,
+        "ram_type": "DDR4",
+        "ram_kind": "ECC REG",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "Variant: 32G*8 3200MHz DDR4 ECC REG",
+     "availability": "available",
+     "price": {
+      "amount": "3412.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for 8x32GB RAM"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7282 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7282",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      },
+      {
+       "label": "DDR4 3200MHz ECC REG RAM (32GB x8)",
+       "quantity": 8,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 256,
+        "ram_dimm_count": 8,
+        "ram_dimm_gb": 32,
+        "ram_type": "DDR4",
+        "ram_kind": "ECC REG",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "Variant: 64G*2 3200MHz DDR4 ECC REG",
+     "availability": "available",
+     "price": {
+      "amount": "2263.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for 2x64GB RAM"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7282 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7282",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      },
+      {
+       "label": "DDR4 3200MHz ECC REG RAM (64GB x2)",
+       "quantity": 2,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 128,
+        "ram_dimm_count": 2,
+        "ram_dimm_gb": 64,
+        "ram_type": "DDR4",
+        "ram_kind": "ECC REG",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "Variant: 64G*4 3200MHz DDR4 ECC REG",
+     "availability": "available",
+     "price": {
+      "amount": "3412.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for 4x64GB RAM"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7282 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7282",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      },
+      {
+       "label": "DDR4 3200MHz ECC REG RAM (64GB x4)",
+       "quantity": 4,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 256,
+        "ram_dimm_count": 4,
+        "ram_dimm_gb": 64,
+        "ram_type": "DDR4",
+        "ram_kind": "ECC REG",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "Variant: 64G*8 3200MHz DDR4 ECC REG",
+     "availability": "available",
+     "price": {
+      "amount": "5613.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Variant price for 8x64GB RAM"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7282 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7282",
+        "cpu_count": 1,
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      },
+      {
+       "label": "DDR4 3200MHz ECC REG RAM (64GB x8)",
+       "quantity": 8,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 512,
+        "ram_dimm_count": 8,
+        "ram_dimm_gb": 64,
+        "ram_type": "DDR4",
+        "ram_kind": "ECC REG",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says '16GB-512GB 3200MHz RAM' but variants only show 32GB and 64GB DIMMs; base price corresponds to 32G*2 variant."
+   ],
+   "read_confidence": "high",
+   "read_note": "Variants clearly listed with prices; base configuration is the first variant."
+  },
+  {
+   "id": "127931129280",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "1980.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the bundle as described"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7B13 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7B13",
+        "cpu_count": 1,
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_family": "AMD EPYC 7003"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package include clearly states 1 motherboard and 1 CPU."
+  },
+  {
+   "id": "127932828201",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "1640.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the bundle as described"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7552 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7552",
+        "cpu_count": 1,
+        "cpu_cores": 48,
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package include clearly states 1 motherboard and 1 CPU."
+  },
+  {
+   "id": "127937947036",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "5200.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the bundle as described"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7K62 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7K62",
+        "cpu_count": 1,
+        "cpu_cores": 48,
+        "cpu_threads": 96,
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      },
+      {
+       "label": "DDR4 3200MHz RAM (32GB x8)",
+       "quantity": 8,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 256,
+        "ram_dimm_count": 8,
+        "ram_dimm_gb": 32,
+        "ram_type": "DDR4",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package include clearly states 1 motherboard, 1 CPU, and 8x32GB RAM."
+  },
+  {
+   "id": "127940112860",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "3679.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the server as described"
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R6515 server (4x3.5\")",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R6515",
+        "drive_bays": 4,
+        "raid_controller": "H330",
+        "psu_count": 2,
+        "psu_watts": 550,
+        "nic": "Motherboard comes with its own network card"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Product details clearly state no CPU, no memory, no HDD; only chassis with RAID and PSU."
+  },
+  {
+   "id": "127940112864",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "5930.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the server as described"
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R6515 server (4x3.5\")",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R6515",
+        "drive_bays": 4,
+        "raid_controller": "H330",
+        "psu_count": 2,
+        "psu_watts": 550,
+        "nic": "Motherboard comes with its own network card"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7663 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7663",
+        "cpu_count": 1,
+        "cpu_family": "AMD EPYC 7003"
+       },
+       "children": []
+      },
+      {
+       "label": "DDR4 2666MHz RAM (64GB x2)",
+       "quantity": 2,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 128,
+        "ram_dimm_count": 2,
+        "ram_dimm_gb": 64,
+        "ram_type": "DDR4",
+        "ram_speed_mts": 2666
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Product details clearly state 1 CPU and 2x64GB RAM."
+  },
+  {
+   "id": "127940259331",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "5350.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the server as described"
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R6515 server (4x3.5\")",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R6515",
+        "drive_bays": 4,
+        "raid_controller": "H330",
+        "psu_count": 2,
+        "psu_watts": 550,
+        "nic": "Motherboard comes with its own network card"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7302 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7302",
+        "cpu_count": 1,
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      },
+      {
+       "label": "DDR4 2666MHz RAM (16GB x2)",
+       "quantity": 2,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 32,
+        "ram_dimm_count": 2,
+        "ram_dimm_gb": 16,
+        "ram_type": "DDR4",
+        "ram_speed_mts": 2666
+       },
+       "children": []
+      },
+      {
+       "label": "20TB HDD",
+       "quantity": 4,
+       "separately_purchasable": false,
+       "attributes": {
+        "drive_capacity_tb": 20
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Product details clearly state 1 CPU, 2x16GB RAM, and 4x20T HDD."
+  },
+  {
+   "id": "127941668776",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "4690.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the server as described"
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R6515 server (10x2.5\" NVMe)",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R6515",
+        "drive_bays": 10,
+        "raid_controller": "H730",
+        "psu_count": 2,
+        "psu_watts": 550,
+        "nic": "Motherboard comes with its own network card"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Product details clearly state no CPU, no memory, no HDD; only chassis with RAID and PSU."
+  },
+  {
+   "id": "127956898826",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "2220.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the bundle as described"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7642 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7642",
+        "cpu_count": 1,
+        "cpu_cores": 48,
+        "cpu_threads": 96,
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      },
+      {
+       "label": "COOLSERVER AMD SP3 P23 2U 300W CPU cooler",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {},
+       "children": []
+      },
+      {
+       "label": "DDR4 2666MHz RAM (32GB x4)",
+       "quantity": 4,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 128,
+        "ram_dimm_count": 4,
+        "ram_dimm_gb": 32,
+        "ram_type": "DDR4",
+        "ram_speed_mts": 2666
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package include clearly states 1 motherboard, 1 CPU, 1 cooler, and 4x32GB RAM."
+  },
+  {
+   "id": "127956898857",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "6599.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the bundle as described"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7542 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7542",
+        "cpu_count": 1,
+        "cpu_cores": 32,
+        "cpu_threads": 64,
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      },
+      {
+       "label": "DDR4 2666MHz ECC RAM (64GB x8)",
+       "quantity": 8,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 512,
+        "ram_dimm_count": 8,
+        "ram_dimm_gb": 64,
+        "ram_type": "DDR4",
+        "ram_kind": "ECC",
+        "ram_speed_mts": 2666
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package include clearly states 1 motherboard, 1 CPU, and 8x64GB RAM."
+  },
+  {
+   "id": "127956966556",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "1165.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the bundle as described"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7402P CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7402P",
+        "cpu_count": 1,
+        "cpu_cores": 24,
+        "cpu_threads": 48,
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package include clearly states 1 motherboard and 1 CPU."
+  },
+  {
+   "id": "127959492006",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Base configuration",
+     "availability": "available",
+     "price": {
+      "amount": "1170.00",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for the bundle as described"
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "motherboard": "Supermicro H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7402 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7402",
+        "cpu_count": 1,
+        "cpu_cores": 24,
+        "cpu_threads": 48,
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Package include clearly states 1 motherboard and 1 CPU."
+  },
+  {
+   "id": "127959492196",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "AMD EPYC 7302 CPU + Supermicro H12SSL-i Motherboard",
+     "availability": "available",
+     "price": {
+      "amount": "11150.00",
+      "basis_note": "Listed price for the combo (CPU + motherboard)",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "AMD EPYC 7302 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7302",
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "cpu_speed": "3.0 GHz - 3.3 GHz"
+       },
+       "children": []
+      },
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "form_factor": "ATX",
+        "socket_type": "SP3",
+        "memory_slots": 8,
+        "board_support_memory": "DDR4 3200MHz Registered ECC"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear combo listing with price and package contents."
+  },
+  {
+   "id": "127976485478",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i Motherboard With AMD EPYC 7402 CPU，512GB 2666MHz RAM",
+     "availability": "available",
+     "price": {
+      "amount": "4300.00",
+      "basis_note": "Listed price for the combo (motherboard + CPU + 8x64GB RAM)",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i DDR4 ATX Motherboard",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "form_factor": "ATX",
+        "socket_type": "SP3",
+        "memory_slots": 8,
+        "board_support_memory": "DDR4 3200MHz Registered ECC"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7402 2.8GHz 24 Cores Processor",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7402",
+        "cpu_cores": 24,
+        "cpu_threads": 48,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "cpu_speed": "2.8 GHz"
+       },
+       "children": []
+      },
+      {
+       "label": "64GB 2666MHz DDR4 RAM",
+       "quantity": 8,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_type": "DDR4",
+        "ram_speed_mts": 2666,
+        "ram_dimm_gb": 64
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear combo listing with price and package contents."
+  },
+  {
+   "id": "127978020600",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i With AMD EPYC 7702 Processor",
+     "availability": "available",
+     "price": {
+      "amount": "2177.00",
+      "basis_note": "Listed price for the combo (CPU + motherboard)",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "AMD EPYC 7702 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7702",
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "cpu_speed": "2.0 GHz",
+        "cpu_tdp": 200
+       },
+       "children": []
+      },
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "form_factor": "ATX",
+        "socket_type": "SP3",
+        "memory_slots": 8,
+        "board_support_memory": "DDR4 3200MHz Registered ECC"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear combo listing with price and package contents."
+  },
+  {
+   "id": "127978236879",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i With AMD EPYC 7702 Processor",
+     "availability": "available",
+     "price": {
+      "amount": "2267.00",
+      "basis_note": "Listed price for the combo (CPU + motherboard)",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "AMD EPYC 7702 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7702",
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "cpu_speed": "2.0 GHz",
+        "cpu_tdp": 200
+       },
+       "children": []
+      },
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "form_factor": "ATX",
+        "socket_type": "SP3",
+        "memory_slots": 8,
+        "board_support_memory": "DDR4 3200MHz Registered ECC"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear combo listing with price and package contents."
+  },
+  {
+   "id": "128008832123",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i Motherboard With AMD EPYC 7713 CPU, 8x64GB 2666MHz RAM",
+     "availability": "available",
+     "price": {
+      "amount": "5670.00",
+      "basis_note": "Listed price for the combo (motherboard + CPU + 8x64GB RAM)",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "form_factor": "ATX",
+        "socket_type": "SP3",
+        "memory_slots": 8,
+        "board_support_memory": "DDR4 3200MHz Registered ECC"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7713 2GHz 64 Cores CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7713",
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_family": "AMD EPYC 7003 Series",
+        "cpu_speed": "2.0 GHz"
+       },
+       "children": []
+      },
+      {
+       "label": "64GB DDR4 RECC 2666MHz RAM",
+       "quantity": 8,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_type": "DDR4",
+        "ram_speed_mts": 2666,
+        "ram_dimm_gb": 64,
+        "ram_kind": "RECC"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear combo listing with price and package contents."
+  },
+  {
+   "id": "128071439116",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "H12DSI-N6",
+     "availability": "available",
+     "price": {
+      "amount": "1528.00",
+      "basis_note": "Listed price for H12DSI-N6 variant",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12DSI-N6 Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12DSI-N6"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H12SSL-I",
+     "availability": "available",
+     "price": {
+      "amount": "1705.00",
+      "basis_note": "Listed price for H12SSL-I variant",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-I Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-I"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H13 SSL-NT (10 Gigabit)",
+     "availability": "available",
+     "price": {
+      "amount": "1617.00",
+      "basis_note": "Listed price for H13 SSL-NT variant",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H13 SSL-NT Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H13 SSL-NT"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "H13SSL-N",
+     "availability": "available",
+     "price": {
+      "amount": "1587.00",
+      "basis_note": "Listed price for H13SSL-N variant",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H13SSL-N Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H13SSL-N"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Motherboard listing with variants; base price is for H12DSI-N6."
+  },
+  {
+   "id": "128082143975",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i Motherboard With AMD EPYC 7452",
+     "availability": "available",
+     "price": {
+      "amount": "1150.00",
+      "basis_note": "Listed price for the combo (motherboard + CPU)",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i DDR4 SP3 Motherboard",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "form_factor": "ATX",
+        "socket_type": "SP3",
+        "memory_slots": 8,
+        "board_support_memory": "DDR4 3200MHz Registered ECC"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7452 32Cores Server CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7452",
+        "cpu_cores": 32,
+        "cpu_threads": 64,
+        "cpu_family": "AMD EPYC 7002 Series"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear combo listing with price and package contents."
+  },
+  {
+   "id": "128082759919",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i Motherboard With AMD EPYC 7452",
+     "availability": "available",
+     "price": {
+      "amount": "1150.00",
+      "basis_note": "Listed price for the combo (motherboard + CPU)",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i DDR4 SP3 Motherboard",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "form_factor": "ATX",
+        "socket_type": "SP3",
+        "memory_slots": 8,
+        "board_support_memory": "DDR4 3200MHz Registered ECC"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7452 32Cores Server CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7452",
+        "cpu_cores": 32,
+        "cpu_threads": 64,
+        "cpu_family": "AMD EPYC 7002 Series"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear combo listing with price and package contents."
+  },
+  {
+   "id": "128084558185",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i Motherboard With AMD EPYC 7343",
+     "availability": "available",
+     "price": {
+      "amount": "1690.00",
+      "basis_note": "Listed price for the combo (motherboard + CPU)",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "form_factor": "ATX",
+        "socket_type": "SP3",
+        "memory_slots": 8,
+        "board_support_memory": "DDR4 3200MHz Registered ECC"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7343 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7343",
+        "cpu_cores": 16,
+        "cpu_family": "AMD EPYC 7003 Series",
+        "cpu_speed": "3.2 GHz",
+        "cpu_tdp": 190
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear combo listing with price and package contents."
+  },
+  {
+   "id": "128100032495",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i Motherboard With AMD EPYC 7413 CPU，8x32GB 2666MHz RECC RAM",
+     "availability": "available",
+     "price": {
+      "amount": "3516.00",
+      "basis_note": "Listed price for the combo (motherboard + CPU + 8x32GB RAM)",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "form_factor": "ATX",
+        "socket_type": "SP3",
+        "memory_slots": 8,
+        "board_support_memory": "DDR4 3200MHz Registered ECC"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7413 Milan CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7413",
+        "cpu_cores": 24,
+        "cpu_threads": 48,
+        "cpu_family": "AMD EPYC 7003 Series",
+        "cpu_speed": "2.65 GHz",
+        "cpu_tdp": 180
+       },
+       "children": []
+      },
+      {
+       "label": "32GB 2666MHz DDR4 RAM",
+       "quantity": 8,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_type": "DDR4",
+        "ram_speed_mts": 2666,
+        "ram_dimm_gb": 32,
+        "ram_kind": "RECC"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear combo listing with price and package contents."
+  },
+  {
+   "id": "134147346048",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i + AMD EPYC 7B13",
+     "availability": "available",
+     "price": {
+      "amount": "1870.00",
+      "basis_note": "Listed price for the combo (motherboard + CPU)",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7B13 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7B13",
+        "cpu_cores": 60,
+        "cpu_threads": 60,
+        "cpu_speed": "2.2 GHz"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 64 cores but description/specs say 60 cores for EPYC 7B13."
+   ],
+   "read_confidence": "med",
+   "read_note": "Listing title and description conflict on core count; price is for the combo."
+  },
+  {
+   "id": "134707750284",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "AMD EPYC 7302 + Supermicro H12SSL-i",
+     "availability": "available",
+     "price": {
+      "amount": "1724.18",
+      "basis_note": "Listed price for the combo (CPU + motherboard)",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "AMD EPYC 7302 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7302",
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "cpu_speed": "3.0 GHz"
+       },
+       "children": []
+      },
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear combo listing with price and package contents."
+  },
+  {
+   "id": "135210124717",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i + AMD EPYC 7F72",
+     "availability": "available",
+     "price": {
+      "amount": "1609.00",
+      "basis_note": "Listed price for the combo (motherboard + CPU)",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7F72 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7F72",
+        "cpu_speed": "3.2 GHz"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear combo listing with price and package contents."
+  },
+  {
+   "id": "137291211126",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Dell PowerEdge R7515 24x2.5 7H12 64C 128GB 4x900GB-10k 2x960GB NVME SSD H740P",
+     "availability": "available",
+     "price": {
+      "amount": "5999.00",
+      "basis_note": "Listed price for the configured server",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R7515 server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R7515",
+        "form_factor_u": 2,
+        "drive_bays": "24x 2.5\""
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7H12 processor",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7H12",
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_speed": "2.6 GHz",
+        "cpu_tdp": 280
+       },
+       "children": []
+      },
+      {
+       "label": "128GB DDR4/PC4 registered/ECC RDIMMs",
+       "quantity": null,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 128,
+        "ram_type": "DDR4",
+        "ram_kind": "RDIMM"
+       },
+       "children": []
+      },
+      {
+       "label": "PERC H740P RAID mini-mono controller",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "raid_controller": "PERC H740P"
+       },
+       "children": []
+      },
+      {
+       "label": "900GB 10k SAS Hard Drives",
+       "quantity": 4,
+       "separately_purchasable": false,
+       "attributes": {
+        "drive_type": "SAS",
+        "drive_capacity_gb": 900,
+        "drive_speed_rpm": 10000
+       },
+       "children": []
+      },
+      {
+       "label": "960GB U.2 NVME SSDs",
+       "quantity": 2,
+       "separately_purchasable": false,
+       "attributes": {
+        "drive_type": "NVMe SSD",
+        "drive_capacity_gb": 960
+       },
+       "children": []
+      },
+      {
+       "label": "750W EPP power supplies",
+       "quantity": 2,
+       "separately_purchasable": false,
+       "attributes": {
+        "psu_count": 2,
+        "psu_watts": 750
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Specs list Hard Drive Capacity as 2 x 1.2 Tb 10K SAS but description says 4x 900GB 10k SAS."
+   ],
+   "read_confidence": "high",
+   "read_note": "Server listing with detailed specs; price is for the configured server."
+  },
+  {
+   "id": "137350935318",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Dell PowerEdge R7515 Epyc 7H12 64C 2.6 Ghz 128Gb 1.92Tb SAS SSD H730P 24x 2.5\"",
+     "availability": "available",
+     "price": {
+      "amount": "4799.00",
+      "basis_note": "Listed price for the configured server",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R7515 server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R7515",
+        "form_factor_u": 2,
+        "drive_bays": "24x 2.5\""
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7H12 processor",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7H12",
+        "cpu_cores": 64,
+        "cpu_speed": "2.6 GHz"
+       },
+       "children": []
+      },
+      {
+       "label": "128GB PC4 registered/ECC RDIMMs",
+       "quantity": null,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 128,
+        "ram_type": "DDR4",
+        "ram_kind": "RDIMM"
+       },
+       "children": []
+      },
+      {
+       "label": "PERC H740P RAID mini-mono controller",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "raid_controller": "PERC H740P"
+       },
+       "children": []
+      },
+      {
+       "label": "1.92Tb 2.5\" SAS Dell Enterprise certified hard drive",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "drive_type": "SAS SSD",
+        "drive_capacity_gb": 1920
+       },
+       "children": []
+      },
+      {
+       "label": "750 watt EPP power supplies",
+       "quantity": 2,
+       "separately_purchasable": false,
+       "attributes": {
+        "psu_count": 2,
+        "psu_watts": 750
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Specs list Processor Type as Xeon but description says AMD EPYC 7H12."
+   ],
+   "read_confidence": "high",
+   "read_note": "Server listing with detailed specs; price is for the configured server."
+  },
+  {
+   "id": "137428560780",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i Single Socket For EPYC 7003/7002 Server Motherboard Rev 1.1",
+     "availability": "available",
+     "price": {
+      "amount": "1210.00",
+      "basis_note": "Listed price for the motherboard",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "form_factor": "ATX",
+        "socket_type": "SP3",
+        "memory_slots": 8,
+        "board_support_cpu": "EPYC 7003/7002"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Motherboard listing with price."
+  },
+  {
+   "id": "137456445157",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Dell PowerEdge R7515 24x2.5 7702P 64C 256GB 4x300GB-10k 2x960GB NVME SSD H740P",
+     "availability": "available",
+     "price": {
+      "amount": "7009.00",
+      "basis_note": "Listed price for the configured server",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R7515 server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R7515",
+        "form_factor_u": 2,
+        "drive_bays": "24x 2.5\""
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7702P Processor",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7702P",
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_speed": "2 GHz",
+        "cpu_tdp": 200
+       },
+       "children": []
+      },
+      {
+       "label": "256GB DDR4/PC4 registered/ECC RDIMMs",
+       "quantity": null,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 256,
+        "ram_type": "DDR4",
+        "ram_kind": "RDIMM"
+       },
+       "children": []
+      },
+      {
+       "label": "PERC H740P RAID mini-mono controller",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "raid_controller": "PERC H740P"
+       },
+       "children": []
+      },
+      {
+       "label": "300GB 10k SAS Hard Drives",
+       "quantity": 4,
+       "separately_purchasable": false,
+       "attributes": {
+        "drive_type": "SAS",
+        "drive_capacity_gb": 300,
+        "drive_speed_rpm": 10000
+       },
+       "children": []
+      },
+      {
+       "label": "960GB U.2 NVME SSDs",
+       "quantity": 2,
+       "separately_purchasable": false,
+       "attributes": {
+        "drive_type": "NVMe SSD",
+        "drive_capacity_gb": 960
+       },
+       "children": []
+      },
+      {
+       "label": "750W EPP power supplies",
+       "quantity": 2,
+       "separately_purchasable": false,
+       "attributes": {
+        "psu_count": 2,
+        "psu_watts": 750
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Specs list RAM Size as 128 GB but description says 256GB total memory."
+   ],
+   "read_confidence": "high",
+   "read_note": "Server listing with detailed specs; price is for the configured server."
+  },
+  {
+   "id": "137496550733",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "HPE ProLiant DL325 G10 Plus 8B SFF 1U CTO – No CPU Mem HDD",
+     "availability": "available",
+     "price": {
+      "amount": "1395.00",
+      "basis_note": "Listed price for the bare server (no CPU, memory, or drives)",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "HPE ProLiant DL325 G10 Plus server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "HPE",
+        "chassis_model": "ProLiant DL325 G10 Plus",
+        "form_factor_u": 1,
+        "drive_bays": "8 SFF"
+       },
+       "children": []
+      },
+      {
+       "label": "HPE Smart Array P408i-a SR Gen10 controller",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "raid_controller": "HPE Smart Array P408i-a SR Gen10"
+       },
+       "children": []
+      },
+      {
+       "label": "HP Enterprise ProLiant G10 800W Platinum Power Supplies",
+       "quantity": 2,
+       "separately_purchasable": false,
+       "attributes": {
+        "psu_count": 2,
+        "psu_watts": 800
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Specs list RAM Size as 12 GB but description says No Memory."
+   ],
+   "read_confidence": "high",
+   "read_note": "Server chassis listing without CPU/memory/drives; price is for the bare server."
+  },
+  {
+   "id": "137736518897",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "TYAN S8030 GM2NE ATX MOA Server Board",
+     "availability": "available",
+     "price": {
+      "amount": "614.70",
+      "basis_note": "Listed price for the motherboard",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "TYAN S8030 GM2NE MOA motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "TYAN",
+        "chassis_model": "S8030 GM2NE",
+        "form_factor": "ATX",
+        "socket_type": "SP3",
+        "memory_slots": 8,
+        "board_support_cpu": "EPYC 7002/7003",
+        "board_support_memory": "DDR4 3200 RECC RDIMM"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Motherboard listing with price."
+  },
+  {
+   "id": "147620197777",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i Motherboard + AMD EPYC 7452 32-Core CPU + Cooler Combo",
+     "availability": "available",
+     "price": {
+      "amount": "1250.00",
+      "basis_note": "Listed price for the combo (motherboard + CPU + cooler)",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "form_factor": "ATX",
+        "socket_type": "SP3",
+        "memory_slots": 8,
+        "board_support_memory": "DDR4-3200 ECC RDIMM/LRDIMM"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7452 CPU + Cooler",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7452",
+        "cpu_cores": 32,
+        "cpu_threads": 64,
+        "cpu_family": "AMD EPYC 7002 Series",
+        "cpu_speed": "2.35 GHz - 3.35 GHz"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear combo listing with price and package contents."
+  }
+ ],
+ "failed": {},
+ "batch_rows": [
+  {
+   "ts": "2026-10-12T11:46:33.903890+00:00",
+   "batch_index": 0,
+   "model": "deepseek/deepseek-v4-flash-0731",
+   "prompt_version": "batch-v1",
+   "listing_count": 20,
+   "input_tokens": 30499,
+   "output_tokens": 17835,
+   "cached_tokens": 30464,
+   "cost_usd": 0.012024,
+   "latency_s": 133.5,
+   "retries": 0,
+   "truncated": false,
+   "salvaged_parse": true,
+   "retried_missing": 0,
+   "failed_ids": [],
+   "status": "ok"
+  },
+  {
+   "ts": "2026-10-12T11:47:44.088555+00:00",
+   "batch_index": 1,
+   "model": "deepseek/deepseek-v4-flash-0731",
+   "prompt_version": "batch-v1",
+   "listing_count": 20,
+   "input_tokens": 32035,
+   "output_tokens": 11107,
+   "cached_tokens": 0,
+   "cost_usd": 0.007749,
+   "latency_s": 69.52,
+   "retries": 0,
+   "truncated": false,
+   "salvaged_parse": true,
+   "retried_missing": 0,
+   "failed_ids": [],
+   "status": "ok"
+  },
+  {
+   "ts": "2026-10-12T11:49:27.934228+00:00",
+   "batch_index": 2,
+   "model": "deepseek/deepseek-v4-flash-0731",
+   "prompt_version": "batch-v1",
+   "listing_count": 20,
+   "input_tokens": 29026,
+   "output_tokens": 10089,
+   "cached_tokens": 0,
+   "cost_usd": 0.007037,
+   "latency_s": 103.27,
+   "retries": 0,
+   "truncated": false,
+   "salvaged_parse": true,
+   "retried_missing": 0,
+   "failed_ids": [],
+   "status": "ok"
+  }
+ ]
+}

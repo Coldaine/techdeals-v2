@@ -1,0 +1,83 @@
+[
+ {
+  "client_id": "115876998802",
+  "condensed": {
+   "title": "Supermicro H12SSL-i Motherboard + AMD EPYC 7742 64 Cores CPU + 8x32GB 2666MHz RAM -",
+   "price": "$4,579.66",
+   "currency": "USD",
+   "condition": "Open box",
+   "availability": "in_stock",
+   "quantity_available": 10,
+   "is_sold": false,
+   "item_location": "深圳, China",
+   "listing_format": "Buy It Now + Best Offer",
+   "brand": "AMD",
+   "url": "https://www.ebay.com/itm/115876998802",
+   "domain": "www.ebay.com",
+   "item_id": "115876998802",
+   "description": "Note: Buyer is responsible for customs fees. Thank you. Note: Buyer is responsible for customs duties. Thanks. Package include: 1x AMD EPYC 7742 CPU 1x Supermicro H12SSL-i motherboard 8x Samsung 32GB 2666MHz DDR4 ECC RAMs The default shipping method is: FedEx international express shipping! AMD EPYC™ 7742 Specifications # of CPU Cores 64 # of Threads 128 Base Clock 2.25GHz Max Boost Clock Up to 3.4GHz Total L3 Cache 256MB Package SP3 Socket Count 1P/2P PCI Express® Version PCIe 4.0 x128 Default TDP / TDP 225W System Memory System Memory Specification Up to 3200MHz System Memory Type DDR4 Memory Channels 8 Per Socket Mem BW 204.8 GB/s Key Features Supported Technologies AMD Infinity Architecture Workload Affinity Analytics CAE/CFD/FEA ERM/SCM/CRM apps High capacity data mgmt (NR/RDBMS) HPC Parallel VM Density Foundation Product Family AMD EPYC™ Product Line AMD EPYC™ 7002 Series Platform Server OPN Tray 100-000000053 OPN PIB 100-100000053WOF Specifications Product SKUs MBD-H12SSL-i H12SSL-i MBD-H12SSL-i-O H12SSL-i (Retail Pack) Physical Stats Form Factor ATX Dimensions 12\" x 9.6\" (30.5cm x 24.4cm) Processor/Chipset CPU Single AMD EPYC™ 7003/7002 Series Processor (7003 Series Processor drop-in support requires BIOS version 2.0 or newer) Socket SP3 Cores Up to 64 Cores Chipset System on Chip System Memory Memory Capacity 8 DIMM slots Supports up to 2TB Registered ECC DDR4 3200MHz SDRAM 8-channel memory bus Memory Type DDR4 3200MHz Registered ECC, 288-pin gold-plated DIMMs DIMM Sizes 8GB, 16GB, 32GB, 64GB, 128GB, 256GB Memory Voltage 1.2V Error Detection Correct single-bit errors Detects double-bit errors (using ECC memory) On-Board Devices SATA SATA3 (6Gbps) IPMI Support for Intelligent Platform Management Interface v.2.0 IPMI 2.0 with virtual media over LAN and KVM-over-LAN support ASPEED AST2500 BMC Network Controllers Dual gigabit LAN via Broadcom BCM5720 1 Realtek RTL8211F PHY (dedicated IPMI) VGA ASPEED AST2500 BMC Input / Output SATA 8 SATA3 (6Gbps) ports SATA/NVMe Hybrid 8 SATA3 or 2 NVMe via single SlimSAS x8 LAN 2 RJ45 Gigabit Ethernet LAN ports 1 RJ45 Dedicated IPMI LAN port USB 6 USB 3.0 ports (4 rear + 2 via header) VGA 1 VGA port Others 1 COM port (rear) 2 SATA DOM power connectors 1 TPM 2.0 header Expansion Slots PCI-Express 5 PCI-E 4.0 x16 2 PCI-E 4.0 x8 M.2 Interface: 2 PCI-E 4.0 x4 Form factor: 2280, 22110 Key: M-key Chassis (Optimized for H12SSL-i) 1U SC813MFTQC-350CB2 SC813MFTQC-R407CB 2U SC213BAC8-R1K23LPB SC216BE1C4-R1K23LPB SC825MBTQC-R802LPB SC825TQC-R802LPB SC826BE1C4-R1K23LPB SCLA26AC12-R920LP1 3U SC835TQC-R802B SC836BE1C-R1K23B Mid Tower SC732i-903B Tower/4U SC745BAC-R1K23B SC846BE1C-R1K23B Server(s) (with H12SSL-i) Model(s) AS-2014S-TR AS-3014TS-i System BIOS BIOS Type AMI 256Mb SPI Flash EEPROM BIOS Features Plug and Play (PnP) DMI 2.3 PCI 2.2 ACPI 5.1 USB Keyboard Support SMBIOS 3.1.1 Management Software Super Doctor 5 Watch Dog NMI SUM IPMI 2.0, KVM with dedicated LAN Power Configurations ACPI Power Management Power-on mode control for AC power loss recovery PC Health Monitoring CPU Monitors CPU Core Voltages, +3.3V, +5V, +5V standby, +3.3V standby CPU switching voltage regulator Supports system management utility VBAT FAN Up to 7-fan status speedometer monitoring Up to 7 4-pin fan headers Dual Cooling Zone Status monitor for speed control Pulse Width Modulated (PWM) fan connectors Temperature Monitoring for CPU and chassis environment CPU Thermal Trip Support Thermal control for 7x Fan connectors I²C Temperature Sensing Logic LED CPU / System Overheat LED Other Features Chassis Intrusion Detection Chassis Intrusion Header UID Operating Environment / Compliance Environmental Specifications Operating Temperature: 10°C to 35°C (50°F to 95°F) Non-operating Temperature: -40°C to 70°C (-40°F to 158°F) Operating Relative Humidity: 8% to 90% (non-condensing) Non-operating Relative Humidity: 5% to 95% (non-condensing) Parts List Bulk Pack List Part Number Qty Description H12SSL-i MBD-H12SSL-i-B 1 H12SSL-i Mo …[clipped]",
+   "specs": [
+    {
+     "Condition": "Open box: An item in excellent, new condition with no wear. The item may be missing the original packaging or protective wrapping, or may be in the original packaging but not sealed. The item includes original accessories. The item may be a factory second. See the seller's listing for full details and description."
+    },
+    {
+     "Number of CPU Cores": "64"
+    },
+    {
+     "Number of Memory Slots": "8"
+    },
+    {
+     "CPU Series": "AMD EPYC 7742"
+    },
+    {
+     "CPU Clock Speed": "2.25GHz - 3.4GHz"
+    },
+    {
+     "Form Factor": "ATX"
+    },
+    {
+     "Compatible CPU Brand": "AMD"
+    },
+    {
+     "Motherboard Brand": "Supermicro"
+    },
+    {
+     "Model": "H12SSL-i"
+    },
+    {
+     "Socket Type": "SP3"
+    },
+    {
+     "Memory Type": "DDR4"
+    },
+    {
+     "EAN": "Does not apply"
+    },
+    {
+     "Country of Origin": "China"
+    }
+   ],
+   "category": "Electronics>Computers/Tablets & Networking>Computer Components & Parts>Motherboard & CPU Combos",
+   "timestamp": "2026-10-06T02:21:39.167Z",
+   "seller_name": "NewDisk",
+   "seller_rating": "99.7% positive feedback",
+   "fetch_status": "live",
+   "extra_product_id": "115876998802",
+   "extra_root_category": "Electronics",
+   "extra_available_count": 10,
+   "extra_seller_url": "https://www.ebay.com/str/newdisk?_trksid=p4429486.m3561.l161211",
+   "extra_availability_date": "Estimated between Mon, Oct 19 and Mon, Oct 26",
+   "extra_group_id": "115876998802",
+   "extra_listing_has_variations": false,
+   "extra_store_name": "NewDisk",
+   "extra_all_variations": false,
+   "extra_gtin": "Does not apply"
+  },
+  "source": "www.ebay.com",
+  "url": "https://www.ebay.com/itm/115876998802",
+  "fetched_at": "2026-10-06T02:21:39.167000+00:00",
+  "offer_key": "90ffc4fdf7c6ffea5a7f497363e0018a20470a75a04b7afad6a27193bc77429b",
+  "checksum": "e9a22cd7d736c9d1985384d9e5f9238da6173fc5bff1733d566a65f20c9aef11",
+  "condensed_chars": 5845
+ }
+]

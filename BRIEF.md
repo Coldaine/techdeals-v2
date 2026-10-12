@@ -350,13 +350,23 @@ If an ingestion step cannot show which query it feeds, it does not get built.
 ## 7. Environment & Credentials
 
 - **Neon** (scratch DB host): `NEON_API_KEY` + `NEON_DATABASE_KEY` in Doppler
-  `apps-data/dev`. No `neonctl` installed — use the Neon API via `curl`. Never
-  print secret values; `--only-names` to locate, `doppler run` to inject.
+  `apps-data/dev` — both verified 2026-10-12 as valid `napi_`-prefix API keys
+  (the second is NOT a connection string). Both are ORG-SCOPED: the management
+  API demands an `org_id` param and the key cannot enumerate orgs; no org/project
+  IDs exist anywhere in Doppler. Provisioning is blocked on one paste of the org
+  ID from the Neon console organization settings page. Incluster DSNs
+  (`DBHUB_PG_DSN_*` in `homelab/dev`) do NOT resolve off-cluster — read-only
+  reference from the laptop is impossible. No `neonctl` installed — use the Neon
+  API via `curl` once org_id is known. Never print secret values; `--only-names`
+  to locate, `doppler run` to inject.
 - **LLM endpoints**: Doppler `ai-automation/dev` has OpenRouter, Kilo
   (`KILO_CODE_API_KEY`, `KILO_GATEWAY_API`), Gemini, Groq, DeepSeek, Mistral,
   Anthropic, OpenAI. `homelab/dev` additionally has LiteLLM gateway keys — a
-  self-hosted proxy that may be the cheapest batch path. Prefer free/cheap tiers;
-  record cost per batch regardless.
+  self-hosted proxy that may be the cheapest batch path. OpenRouter key verified
+  live 2026-10-12 (HTTP 200 on /models); free/near-free batch candidates with 1M
+  context confirmed in catalog: `qwen/qwen3.8-omni-flash` ($0.15/MTok prompt),
+  `deepseek/deepseek-v4.1-flash:batch` tier. Prefer free/cheap tiers; record cost
+  per batch regardless.
 - **Local tooling**: `psql` 18.6, `jq`, `curl`, `python3`, `uv` present.
 - **Hard constraint**: do NOT touch the existing production cluster or the old
   databases. Neon is the sandbox.

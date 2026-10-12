@@ -349,16 +349,17 @@ If an ingestion step cannot show which query it feeds, it does not get built.
 
 ## 7. Environment & Credentials
 
-- **Neon** (scratch DB host): `NEON_API_KEY` + `NEON_DATABASE_KEY` in Doppler
-  `apps-data/dev` — both verified 2026-10-12 as valid `napi_`-prefix API keys
-  (the second is NOT a connection string). Both are ORG-SCOPED: the management
-  API demands an `org_id` param and the key cannot enumerate orgs; no org/project
-  IDs exist anywhere in Doppler. Provisioning is blocked on one paste of the org
-  ID from the Neon console organization settings page. Incluster DSNs
-  (`DBHUB_PG_DSN_*` in `homelab/dev`) do NOT resolve off-cluster — read-only
-  reference from the laptop is impossible. No `neonctl` installed — use the Neon
-  API via `curl` once org_id is known. Never print secret values; `--only-names`
-  to locate, `doppler run` to inject.
+- **Neon** (scratch DB host — LIVE 2026-10-12): scratch project `techdeals-v2`
+  (`winter-brook-99288103`), org Patrick (`org-dark-union-91305365`),
+  region `aws-us-east-2`, branch `main` (`br-tiny-rain-b4ynpurt`). Provisioned
+  via `neon` CLI (mise shim) with OAuth as pmaclyman — NOT via Doppler keys
+  (the `napi_`-prefix keys in Doppler `apps-data/dev` are org-scoped API keys
+  that cannot enumerate orgs; the pasted `napi_` token failed API auth and must
+  be rotated — it sits in shell history). Non-interactive pattern:
+  `neon <cmd> --project-id winter-brook-99288103` (bare commands hang on an
+  org picker). Record project/branch IDs here on first write — done. Incluster
+  DSNs (`DBHUB_PG_DSN_*` in `homelab/dev`) do NOT resolve off-cluster.
+  Never print secret values; `--only-names` to locate, `doppler run` to inject.
 - **LLM endpoints**: Doppler `ai-automation/dev` has OpenRouter, Kilo
   (`KILO_CODE_API_KEY`, `KILO_GATEWAY_API`), Gemini, Groq, DeepSeek, Mistral,
   Anthropic, OpenAI. `homelab/dev` additionally has LiteLLM gateway keys — a

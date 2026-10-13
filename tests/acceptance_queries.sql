@@ -91,3 +91,38 @@ SELECT
     (SELECT COUNT(*) FROM sale_groups) as total_sale_groups,
     (SELECT COUNT(*) FROM observations WHERE superseded_by IS NULL) as active_observations,
     (SELECT COUNT(*) FROM resolutions WHERE superseded_by IS NULL) as active_resolutions;
+-- =====================================================================
+-- BRIEF 6 target-query demonstrations (every design choice is scored
+-- against these four questions; these two are the ones with a schema shape).
+-- =====================================================================
+
+-- TQ1: "Cheapest 32GB DDR4 available right now" — needs decomposition +
+-- per-unit/bound prices + spec attributes. Rows must be REAL asks.
+SELECT l.label, l.category, l.quantity, l.capacity_gb, l.interface,
+       o.price_cents, p.source, p.url
+FROM lines l
+JOIN postings p ON p.id = l.posting_id
+JOIN observations o ON o.line_id = l.id
+WHERE p.status = 'extracted'
+  AND o.superseded_by IS NULL AND o.available = true AND o.price_kind = 'ask'
+  AND l.category = 'ram' AND l.interface = 'DDR4' AND l.capacity_gb = 32
+ORDER BY o.price_cents;
+
+-- TQ3: "What is this lot actually worth" — lot totals must never be silently
+-- divided into per-unit prices. Anything not explicit_unit must be labelled.
+SELECT p.source, sg.label, sg.price_basis, sg.total_price_cents,
+       COUNT(sgl.line_id) AS lines_in_group, sg.notes
+FROM sale_groups sg
+JOIN postings p ON p.id = sg.posting_id
+JOIN sale_group_lines sgl ON sgl.sale_group_id = sg.id
+WHERE sg.price_basis <> 'explicit_unit'
+GROUP BY p.source, sg.label, sg.price_basis, sg.total_price_cents, sg.notes
+ORDER BY sg.total_price_cents DESC;
+
+-- Guardrail check: no observation may carry a line price without a sale group
+-- (the "no fabricated prices" invariant, made queryable).
+SELECT COUNT(*) AS naked_line_prices
+FROM observations o
+LEFT JOIN sale_group_lines sgl ON sgl.line_id = o.line_id
+WHERE o.line_id IS NOT NULL AND o.price_cents IS NOT NULL
+  AND sgl.sale_group_id IS NULL;

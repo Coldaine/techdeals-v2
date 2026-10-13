@@ -1,0 +1,28 @@
+{
+  "source_url": "https://www.ebay.com/itm/295817364221",
+  "captured_at": "2026-10-05T12:03:00+00:00",
+  "title": "Supermicro 2U H12SSL-i Server EPYC 7543 32-Core 128GB DDR4 2x 1.6TB U.2 NVMe 2x 1200W PSU",
+  "price": {
+    "value": 3150.0,
+    "currency": "USD",
+    "kind": "ask",
+    "format": "fixed"
+  },
+  "seller": "racksurplus_llc",
+  "condition": "Used",
+  "quantity_available": 1,
+  "shipping": {
+    "value": 95.0,
+    "currency": "USD"
+  },
+  "item_specifics": {
+    "Brand": "Supermicro",
+    "Model": "H12SSL-i",
+    "Form Factor": "Rack Mountable",
+    "Processor": "AMD EPYC 7543",
+    "Memory": "128 GB DDR4",
+    "Drive Type": "NVMe U.2",
+    "Power": "2x 1200W"
+  },
+  "description": "Supermicro 2U configured server, fully tested. Components: 1x AMD EPYC 7543 32-core 2.8GHz processor; Supermicro H12SSL-i motherboard; 4x 32GB DDR4-3200 ECC RDIMM (128GB total, 8 of 16 DIMM slots populated); 2x 1.6TB U.2 NVMe SSDs (Samsung PM9A3) in 2.5in hot-swap bays; 2x 1200W redundant power supplies; 16-bay 2.5in NVMe backplane with SAS3 expander; Supermicro SC216 2U chassis with rail kit. Sold as a complete unit."
+}

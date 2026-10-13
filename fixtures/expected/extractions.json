@@ -1,0 +1,1669 @@
+{
+  "_meta": {
+    "what": "Recorded model responses (cassette) for the committed fixture set.",
+    "why": "Lets the persistence + SQL + acceptance path be verified deterministically with zero LLM calls. NOT the model: the real engine (techdeals extract) calls the batched LLM instead.",
+    "key": "<source>:<source_listing_id>",
+    "generated": "2026-10-13"
+  },
+  "serverpartdeals:15420393390358": {
+    "title": "Refurbished: 15.36TB 3D TLC PCIe 4.0 x4 NVMe U.2 SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+    "description": null,
+    "seller": null,
+    "location": null,
+    "currency": "USD",
+    "listing_format": "fixed",
+    "lines": [
+      {
+        "line_number": 1,
+        "label": "Refurbished: 15.36TB 3D TLC PCIe 4.0 x4 NVMe U.2 SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+        "category": "ssd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Refurbished: 15.36TB 3D TLC PCIe 4.0 x4 NVMe U.2 SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+        "capacity_gb": 15360,
+        "interface": "NVMe",
+        "form_factor": "U.2",
+        "manufacturer": "Samsung"
+      }
+    ],
+    "sale_groups": [
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 409900,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          1
+        ],
+        "notes": null
+      }
+    ],
+    "observations": [
+      {
+        "line_number": 1,
+        "sale_group_label": null,
+        "price_cents": 409900,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      }
+    ],
+    "parse_confidence": 0.95,
+    "notes": "",
+    "quarantine_reason": null
+  },
+  "serverpartdeals:15420393193750": {
+    "title": "15.36TB SAS 12Gb/s 2.5\" SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+    "description": null,
+    "seller": null,
+    "location": null,
+    "currency": "USD",
+    "listing_format": "fixed",
+    "lines": [
+      {
+        "line_number": 1,
+        "label": "15.36TB SAS 12Gb/s 2.5\" SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+        "category": "ssd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "15.36TB SAS 12Gb/s 2.5\" SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+        "capacity_gb": 15360,
+        "interface": "SAS",
+        "form_factor": "2.5\"",
+        "manufacturer": "Samsung"
+      }
+    ],
+    "sale_groups": [
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 359900,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          1
+        ],
+        "notes": null
+      }
+    ],
+    "observations": [
+      {
+        "line_number": 1,
+        "sale_group_label": null,
+        "price_cents": 359900,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      }
+    ],
+    "parse_confidence": 0.95,
+    "notes": "",
+    "quarantine_reason": null
+  },
+  "serverpartdeals:15420392997142": {
+    "title": "15.36TB SAS 12Gb/s 2.5\" SSD for Dell PowerEdge Servers | Enterprise Drive in 13G Tray",
+    "description": null,
+    "seller": null,
+    "location": null,
+    "currency": "USD",
+    "listing_format": "fixed",
+    "lines": [
+      {
+        "line_number": 1,
+        "label": "15.36TB SAS 12Gb/s 2.5\" SSD for Dell PowerEdge Servers | Enterprise Drive in 13G Tray",
+        "category": "ssd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "15.36TB SAS 12Gb/s 2.5\" SSD for Dell PowerEdge Servers | Enterprise Drive in 13G Tray",
+        "capacity_gb": 15360,
+        "interface": "SAS",
+        "form_factor": "2.5\"",
+        "manufacturer": "Samsung"
+      }
+    ],
+    "sale_groups": [
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 359900,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          1
+        ],
+        "notes": null
+      }
+    ],
+    "observations": [
+      {
+        "line_number": 1,
+        "sale_group_label": null,
+        "price_cents": 359900,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      }
+    ],
+    "parse_confidence": 0.95,
+    "notes": "",
+    "quarantine_reason": null
+  },
+  "serverpartdeals:15420392800534": {
+    "title": "WP Arsenal 15.36TB SAS 12Gb/s 2.5\" DAS SSD",
+    "description": null,
+    "seller": null,
+    "location": null,
+    "currency": "USD",
+    "listing_format": "fixed",
+    "lines": [
+      {
+        "line_number": 1,
+        "label": "WP Arsenal 15.36TB SAS 12Gb/s 2.5\" DAS SSD",
+        "category": "ssd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "WP Arsenal 15.36TB SAS 12Gb/s 2.5\" DAS SSD",
+        "capacity_gb": 15360,
+        "interface": "SAS",
+        "form_factor": "2.5\"",
+        "manufacturer": "WP"
+      }
+    ],
+    "sale_groups": [
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 359900,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          1
+        ],
+        "notes": null
+      }
+    ],
+    "observations": [
+      {
+        "line_number": 1,
+        "sale_group_label": null,
+        "price_cents": 359900,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      }
+    ],
+    "parse_confidence": 0.95,
+    "notes": "",
+    "quarantine_reason": null
+  },
+  "serverpartdeals:15420392603926": {
+    "title": "15.36TB SAS 12Gb/s 3.5\" Hybrid SSD for Dell EMC PowerEdge Servers | Enterprise Drive",
+    "description": null,
+    "seller": null,
+    "location": null,
+    "currency": "USD",
+    "listing_format": "fixed",
+    "lines": [
+      {
+        "line_number": 1,
+        "label": "15.36TB SAS 12Gb/s 3.5\" Hybrid SSD for Dell EMC PowerEdge Servers | Enterprise Drive",
+        "category": "ssd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "15.36TB SAS 12Gb/s 3.5\" Hybrid SSD for Dell EMC PowerEdge Servers | Enterprise Drive",
+        "capacity_gb": 15360,
+        "interface": "SAS",
+        "form_factor": "3.5\"",
+        "manufacturer": "Samsung"
+      }
+    ],
+    "sale_groups": [
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 359900,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          1
+        ],
+        "notes": null
+      }
+    ],
+    "observations": [
+      {
+        "line_number": 1,
+        "sale_group_label": null,
+        "price_cents": 359900,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      }
+    ],
+    "parse_confidence": 0.95,
+    "notes": "",
+    "quarantine_reason": null
+  },
+  "reddit_homelabsales:t3_1x4k5ff": {
+    "title": "[fs] Server Equipment, Projectors, misc. ancient Electronics",
+    "description": null,
+    "seller": null,
+    "location": null,
+    "currency": "USD",
+    "listing_format": "lot",
+    "lines": [
+      {
+        "line_number": 1,
+        "label": "Digi AnywhereUSB 8 Plus (AW08-G300)",
+        "category": "networking",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Digi AnywhereUSB 8 Plus (AW08-G300) - $750"
+      },
+      {
+        "line_number": 2,
+        "label": "CyberPower OL6KSTF UPS",
+        "category": "psu",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "CyberPower OL6KSTF - $200"
+      },
+      {
+        "line_number": 3,
+        "label": "CyberPower BP144VL2U01 battery pack (like new)",
+        "category": "psu",
+        "quantity": 3,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "[3x] CyberPower BP144VL2U01 (Like new) - $900"
+      },
+      {
+        "line_number": 4,
+        "label": "Dell EMC PowerSwitch S4128F-ON (AS-IS, untested)",
+        "category": "networking",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Dell EMC PowerSwitch S4128F-ON (AS-IS, Untested) - $200"
+      },
+      {
+        "line_number": 5,
+        "label": "APC Smart-UPS 2U SUA2200RM2U (AS-IS, untested)",
+        "category": "psu",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Smart-UPS 2u SUA2200RM2U (AS-IS, Untested)- $400"
+      },
+      {
+        "line_number": 6,
+        "label": "CyberPower OL6KRTHD 6kW UPS",
+        "category": "psu",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "CyberPower OL6KRTHD 6kW UPS - $5000"
+      },
+      {
+        "line_number": 7,
+        "label": "Epson PowerLite 77C projector",
+        "category": "consumer",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Epson PowerLite 77C - $20"
+      },
+      {
+        "line_number": 8,
+        "label": "Epson EX7235 projector",
+        "category": "consumer",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Epson Ex7235 - $175"
+      },
+      {
+        "line_number": 9,
+        "label": "Epson EX9220 projector (bag, remote, cables)",
+        "category": "consumer",
+        "quantity": 2,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "[2x] Epson Ex9220 - $250 (Both include bag, remote, cables etc)"
+      },
+      {
+        "line_number": 10,
+        "label": "Onkyo CP-1140F turntable",
+        "category": "consumer",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Onkyo CP-1140F Turn Table - $100"
+      },
+      {
+        "line_number": 11,
+        "label": "Seagate Cheetah 10K.6 ST336607LW 36.7GB SCSI HDD",
+        "category": "hdd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Seagate Cheetah 10K.6, ST336607LW (36.7gb HDD) - $10",
+        "capacity_gb": 36,
+        "interface": "SCSI"
+      },
+      {
+        "line_number": 12,
+        "label": "Seagate Constellation.2 ST91000640NS 1TB SATA HDD",
+        "category": "hdd",
+        "quantity": 4,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "[4x] Seagate Constellation.2, ST91000640NS (1tb Sata HDD) - $30",
+        "capacity_gb": 1000,
+        "interface": "SATA"
+      },
+      {
+        "line_number": 13,
+        "label": "Compaq 18GB Wide Ultra SCSI drive + tray (143919-001)",
+        "category": "hdd",
+        "quantity": 7,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "[7x] Compaq 18GB Wide Ultra SCSI drive/tray, spare 143919-001 (18tb HDD) - $20",
+        "capacity_gb": 18,
+        "interface": "SCSI"
+      }
+    ],
+    "sale_groups": [
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 75000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          1
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 20000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          2
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "bound_only",
+        "total_price_cents": 90000,
+        "total_currency": "USD",
+        "quantity_in_group": 3,
+        "line_numbers": [
+          3
+        ],
+        "notes": "[3x] $900 stated for the group; per-unit price not stated (no division)"
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 20000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          4
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 40000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          5
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 500000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          6
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 2000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          7
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 17500,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          8
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "bound_only",
+        "total_price_cents": 25000,
+        "total_currency": "USD",
+        "quantity_in_group": 2,
+        "line_numbers": [
+          9
+        ],
+        "notes": "[2x] $250 stated for the pair; per-unit not stated"
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 10000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          10
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 1000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          11
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "bound_only",
+        "total_price_cents": 3000,
+        "total_currency": "USD",
+        "quantity_in_group": 4,
+        "line_numbers": [
+          12
+        ],
+        "notes": "[4x] $30 stated for the group; per-unit not stated"
+      },
+      {
+        "label": null,
+        "price_basis": "bound_only",
+        "total_price_cents": 2000,
+        "total_currency": "USD",
+        "quantity_in_group": 7,
+        "line_numbers": [
+          13
+        ],
+        "notes": "[7x] $20 stated for the group; per-unit not stated"
+      }
+    ],
+    "observations": [
+      {
+        "line_number": 1,
+        "sale_group_label": null,
+        "price_cents": 75000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 2,
+        "sale_group_label": null,
+        "price_cents": 20000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 4,
+        "sale_group_label": null,
+        "price_cents": 20000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 5,
+        "sale_group_label": null,
+        "price_cents": 40000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 6,
+        "sale_group_label": null,
+        "price_cents": 500000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 7,
+        "sale_group_label": null,
+        "price_cents": 2000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 8,
+        "sale_group_label": null,
+        "price_cents": 17500,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 10,
+        "sale_group_label": null,
+        "price_cents": 10000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 11,
+        "sale_group_label": null,
+        "price_cents": 1000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      }
+    ],
+    "parse_confidence": 0.85,
+    "notes": "Heterogeneous FS post: IT hardware decomposed, projectors/turntable marked category=consumer (out of scope, not force-fit).",
+    "quarantine_reason": null
+  },
+  "reddit_homelabsales:t3_1x4jtjs": {
+    "title": "[FS] 2x Precision 3240, 3x Optiplex 3080 Mini, various other minis, Intel CPUs, DDR4, DDR5 RAM",
+    "description": null,
+    "seller": null,
+    "location": null,
+    "currency": "USD",
+    "listing_format": "lot",
+    "lines": [
+      {
+        "line_number": 1,
+        "label": "Dell Precision 3240 Mini (i5-10600, 2x8GB DDR4, missing front panel)",
+        "category": "server",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "1,missing front panel, doesn't effect usage $200"
+      },
+      {
+        "line_number": 2,
+        "label": "Dell Precision 3240 Mini (i5-10600, 2x8GB DDR4, 1 broken M.2 slot)",
+        "category": "server",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "1, has 1 broken M.2 slot. (has 1/2 working slots) $180"
+      },
+      {
+        "line_number": 3,
+        "label": "Dell Optiplex 3080 Mini (i5-10500T, barebones, broken M.2)",
+        "category": "server",
+        "quantity": 3,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "3x Optiplex 3080 Minis 10500T, barebones, BROKEN M.2 slot. SATA works. $100/ea"
+      },
+      {
+        "line_number": 4,
+        "label": "Dell Optiplex 3060 (i5-8500T)",
+        "category": "server",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "1x Optiplex 3060 i5-8500t $70"
+      },
+      {
+        "line_number": 5,
+        "label": "Dell Optiplex 9020 (i7-4785T)",
+        "category": "server",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "1x Optiplex 9020 i7-4785t $50"
+      },
+      {
+        "line_number": 6,
+        "label": "Intel Core i5-11500T",
+        "category": "cpu",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "I5-11500t $80"
+      },
+      {
+        "line_number": 7,
+        "label": "Intel Core i7-9700",
+        "category": "cpu",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "1x i7-9700 $80"
+      },
+      {
+        "line_number": 8,
+        "label": "Intel Core i7-8700",
+        "category": "cpu",
+        "quantity": 3,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "3x i7-8700 $60"
+      },
+      {
+        "line_number": 9,
+        "label": "Intel Core i7-6700",
+        "category": "cpu",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "1x i7-6700 $30"
+      },
+      {
+        "line_number": 10,
+        "label": "Intel Core i5-6500",
+        "category": "cpu",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "1x i5-6500 $10"
+      },
+      {
+        "line_number": 11,
+        "label": "Intel Xeon E5-1620 v2",
+        "category": "cpu",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "1x 1620V2 $10"
+      },
+      {
+        "line_number": 12,
+        "label": "SK Hynix DDR5-4800 SODIMM kit (2x8GB)",
+        "category": "ram",
+        "quantity": 2,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "2x8gb SK Hynix DDR5-4800 Soddims $140",
+        "capacity_gb": 8,
+        "speed_mhz": 4800,
+        "interface": "DDR5"
+      }
+    ],
+    "sale_groups": [
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 20000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          1
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 18000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          2
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 10000,
+        "total_currency": "USD",
+        "quantity_in_group": 3,
+        "line_numbers": [
+          3
+        ],
+        "notes": "stated $100/ea"
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 7000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          4
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 5000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          5
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 8000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          6
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 8000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          7
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "bound_only",
+        "total_price_cents": 6000,
+        "total_currency": "USD",
+        "quantity_in_group": 3,
+        "line_numbers": [
+          8
+        ],
+        "notes": "'3x i7-8700 $60' \u2014 is $60 each or for all three? AMBIGUOUS: recorded as a group bound total, not divided."
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 3000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          9
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 1000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          10
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 1000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          11
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "bound_only",
+        "total_price_cents": 14000,
+        "total_currency": "USD",
+        "quantity_in_group": 2,
+        "line_numbers": [
+          12
+        ],
+        "notes": "$140 stated for the 2x8GB SODIMM pair; per-module not stated"
+      }
+    ],
+    "observations": [
+      {
+        "line_number": 1,
+        "sale_group_label": null,
+        "price_cents": 20000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 2,
+        "sale_group_label": null,
+        "price_cents": 18000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 3,
+        "sale_group_label": null,
+        "price_cents": 10000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 4,
+        "sale_group_label": null,
+        "price_cents": 7000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 5,
+        "sale_group_label": null,
+        "price_cents": 5000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 6,
+        "sale_group_label": null,
+        "price_cents": 8000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 7,
+        "sale_group_label": null,
+        "price_cents": 8000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 9,
+        "sale_group_label": null,
+        "price_cents": 3000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 10,
+        "sale_group_label": null,
+        "price_cents": 1000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 11,
+        "sale_group_label": null,
+        "price_cents": 1000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      }
+    ],
+    "parse_confidence": 0.8,
+    "notes": "Mini-PC + CPU lot; the i7-8700 quantity/price ambiguity is preserved as bound_only rather than invented.",
+    "quarantine_reason": null
+  },
+  "reddit_homelabsales:t3_1x427kn": {
+    "title": "[FS][US-XX] 5\u00d7 16TB Seagate Exos X16 SAS HDDs, Micron 5200 PRO 1.92TB & assorted SSDs",
+    "description": null,
+    "seller": null,
+    "location": null,
+    "currency": "USD",
+    "listing_format": "lot",
+    "lines": [
+      {
+        "line_number": 1,
+        "label": "Seagate Exos X16 16TB SAS HDD (ST16000NM002G)",
+        "category": "hdd",
+        "quantity": 5,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Seagate Exos X16 16TB SAS HDD \u2014 ST16000NM002G 5 ... $225",
+        "capacity_gb": 16000,
+        "interface": "SAS",
+        "manufacturer": "Seagate"
+      },
+      {
+        "line_number": 2,
+        "label": "Samsung/EMC 1.92TB SAS SSD (P043S1T9)",
+        "category": "ssd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Samsung/EMC 1.92TB SAS SSD \u2014 P043S1T9 1 ... $150",
+        "capacity_gb": 1920,
+        "interface": "SAS",
+        "manufacturer": "Samsung/EMC"
+      },
+      {
+        "line_number": 3,
+        "label": "HP 300GB SAS HDD (DG0300FARVV)",
+        "category": "hdd",
+        "quantity": 2,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "HP 300GB SAS HDD \u2014 DG0300FARVV 2 ... $10",
+        "capacity_gb": 300,
+        "interface": "SAS",
+        "manufacturer": "HP"
+      },
+      {
+        "line_number": 4,
+        "label": "Micron 5200 PRO 1.92TB SATA SSD (MTFDDAK1T9TDD)",
+        "category": "ssd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Micron 5200 PRO 1.92TB SATA SSD \u2014 MTFDDAK1T9TDD 1 ... $190",
+        "capacity_gb": 1920,
+        "interface": "SATA",
+        "manufacturer": "Micron"
+      },
+      {
+        "line_number": 5,
+        "label": "Samsung 960GB SATA SSD (MZ7WD960HMHP)",
+        "category": "ssd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Samsung 960GB SATA SSD \u2014 MZ7WD960HMHP 1 ... $65",
+        "capacity_gb": 960,
+        "interface": "SATA",
+        "manufacturer": "Samsung"
+      },
+      {
+        "line_number": 6,
+        "label": "WD Blue 1TB SATA SSD (WDS100T2B0A)",
+        "category": "ssd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "WD Blue 1TB SATA SSD \u2014 WDS100T2B0A 1 ... $75",
+        "capacity_gb": 1000,
+        "interface": "SATA",
+        "manufacturer": "Western Digital"
+      },
+      {
+        "line_number": 7,
+        "label": "Samsung 850 EVO 500GB SATA SSD",
+        "category": "ssd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Samsung 850 EVO 500GB SATA SSD 1 ... $40",
+        "capacity_gb": 500,
+        "interface": "SATA",
+        "manufacturer": "Samsung"
+      },
+      {
+        "line_number": 8,
+        "label": "Samsung 512GB NVMe SSD (MZVL2512HCJQ)",
+        "category": "ssd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Samsung 512GB NVMe SSD \u2014 MZVL2512HCJQ 1 ... $55",
+        "capacity_gb": 512,
+        "interface": "NVMe",
+        "manufacturer": "Samsung"
+      },
+      {
+        "line_number": 9,
+        "label": "PC SN8000S 512GB NVMe SSD",
+        "category": "ssd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "PC SN8000S 512GB NVMe SSD 1 ... $50",
+        "capacity_gb": 512,
+        "interface": "NVMe"
+      },
+      {
+        "line_number": 10,
+        "label": "Samsung SM961 512GB NVMe SSD (MZVKW512HMJP)",
+        "category": "ssd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Samsung SM961 512GB NVMe SSD \u2014 MZVKW512HMJP 1 ... $30",
+        "capacity_gb": 512,
+        "interface": "NVMe",
+        "manufacturer": "Samsung"
+      },
+      {
+        "line_number": 11,
+        "label": "Samsung 256GB NVMe SSD (MZVLW256HEHP)",
+        "category": "ssd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Samsung 256GB NVMe SSD \u2014 MZVLW256HEHP 1 ... $30",
+        "capacity_gb": 256,
+        "interface": "NVMe",
+        "manufacturer": "Samsung"
+      },
+      {
+        "line_number": 12,
+        "label": "Samsung 256GB NVMe SSD (MZVLB256HAHQ)",
+        "category": "ssd",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Samsung 256GB NVMe SSD \u2014 MZVLB256HAHQ 1 ... $25",
+        "capacity_gb": 256,
+        "interface": "NVMe",
+        "manufacturer": "Samsung"
+      }
+    ],
+    "sale_groups": [
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 22500,
+        "total_currency": "USD",
+        "quantity_in_group": 5,
+        "line_numbers": [
+          1
+        ],
+        "notes": "'Price each' stated"
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 15000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          2
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 1000,
+        "total_currency": "USD",
+        "quantity_in_group": 2,
+        "line_numbers": [
+          3
+        ],
+        "notes": "'Price each' stated"
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 19000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          4
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 6500,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          5
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 7500,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          6
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 4000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          7
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 5500,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          8
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 5000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          9
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 3000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          10
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 3000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          11
+        ],
+        "notes": null
+      },
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 2500,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          12
+        ],
+        "notes": null
+      }
+    ],
+    "observations": [
+      {
+        "line_number": 1,
+        "sale_group_label": null,
+        "price_cents": 22500,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 2,
+        "sale_group_label": null,
+        "price_cents": 15000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 3,
+        "sale_group_label": null,
+        "price_cents": 1000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 4,
+        "sale_group_label": null,
+        "price_cents": 19000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 5,
+        "sale_group_label": null,
+        "price_cents": 6500,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 6,
+        "sale_group_label": null,
+        "price_cents": 7500,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 7,
+        "sale_group_label": null,
+        "price_cents": 4000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 8,
+        "sale_group_label": null,
+        "price_cents": 5500,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 9,
+        "sale_group_label": null,
+        "price_cents": 5000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 10,
+        "sale_group_label": null,
+        "price_cents": 3000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 11,
+        "sale_group_label": null,
+        "price_cents": 3000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      },
+      {
+        "line_number": 12,
+        "sale_group_label": null,
+        "price_cents": 2500,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      }
+    ],
+    "parse_confidence": 0.9,
+    "notes": "Explicit 'price each' with quantities: honest explicit_unit per unit, no division needed.",
+    "quarantine_reason": null
+  },
+  "reddit_homelabsales:t3_1x3wfwf": {
+    "title": "[FS][EU] 36x Samsung 32GB DDR4-2400 ECC RDIMM",
+    "description": null,
+    "seller": null,
+    "location": "EU",
+    "currency": "EUR",
+    "listing_format": "lot",
+    "lines": [
+      {
+        "line_number": 1,
+        "label": "Samsung 32GB DDR4-2400 ECC RDIMM (M393A4K40BB1-CRC4Q)",
+        "category": "ram",
+        "quantity": 36,
+        "separately_purchasable": false,
+        "parent_line_number": null,
+        "raw_text": "Selling 36x Samsung 32GB DDR4-2400 ECC Registered DIMMs (1.125TB total). \u20ac140 per DIMM OBO",
+        "capacity_gb": 32,
+        "speed_mhz": 2400,
+        "interface": "DDR4",
+        "form_factor": "RDIMM",
+        "manufacturer": "Samsung"
+      }
+    ],
+    "sale_groups": [
+      {
+        "label": null,
+        "price_basis": "explicit_unit",
+        "total_price_cents": 14000,
+        "total_currency": "EUR",
+        "quantity_in_group": 12,
+        "line_numbers": [
+          1
+        ],
+        "notes": "\u20ac140 per DIMM, stated; seller prefers lots of 12/24/36 and is not selling singles (separately_purchasable=false)."
+      }
+    ],
+    "observations": [
+      {
+        "line_number": 1,
+        "sale_group_label": null,
+        "price_cents": 14000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      }
+    ],
+    "parse_confidence": 0.9,
+    "notes": "Per-DIMM price is explicit, so explicit_unit is correct; lot-size preference recorded, not invented.",
+    "quarantine_reason": null
+  },
+  "reddit_homelabsales:t3_1x4n807": {
+    "title": "[W] [US-NJ] 256GB (4 x 64GB) DDR5 Desktop RAM",
+    "description": null,
+    "seller": null,
+    "location": "US-NJ",
+    "currency": "USD",
+    "listing_format": "unknown",
+    "lines": [],
+    "sale_groups": [],
+    "observations": [],
+    "parse_confidence": 1.0,
+    "notes": "[W] = Want To Buy, not a listing. Quarantined, never treated as an ask.",
+    "quarantine_reason": "wanted_post"
+  },
+  "govdeals:30467_94": {
+    "title": "LOT OF 64 - 32GB DDR4 ECC REGISTERED DIMMS (MIXED VENDORS)",
+    "description": null,
+    "seller": "City of Roanoke Surplus Property",
+    "location": "Roanoke, VA",
+    "currency": "USD",
+    "listing_format": "auction",
+    "lines": [
+      {
+        "line_number": 1,
+        "label": "DDR4 ECC Registered DIMM 32GB 2Rx4 2666 MT/s (mixed Samsung/Hynix/Micron)",
+        "category": "ram",
+        "quantity": 64,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "sixty-four (64) DDR4 ECC Registered DIMM modules, 32GB each ... 2Rx4, 2666 MT/s",
+        "capacity_gb": 32,
+        "speed_mhz": 2666,
+        "interface": "DDR4",
+        "form_factor": "RDIMM"
+      }
+    ],
+    "sale_groups": [
+      {
+        "label": "Lot 30467/94",
+        "price_basis": "bound_only",
+        "total_price_cents": 125000,
+        "total_currency": "USD",
+        "quantity_in_group": 64,
+        "line_numbers": [
+          1
+        ],
+        "notes": "Auction lot: only the current lot bid is known. No per-DIMM price exists \u2014 NOT divided."
+      }
+    ],
+    "observations": [
+      {
+        "line_number": null,
+        "sale_group_label": "Lot 30467/94",
+        "price_cents": 125000,
+        "price_kind": "bid",
+        "available": true,
+        "observed_at": "2026-10-05T09:14:00+00:00"
+      }
+    ],
+    "parse_confidence": 0.9,
+    "notes": "Bid is a lot-level economic observation (kind=bid) with no line price; all_in_estimate_usd preserved in raw payload.",
+    "quarantine_reason": null
+  },
+  "ebay:295817364221": {
+    "title": "Supermicro 2U H12SSL-i Server EPYC 7543 32-Core 128GB DDR4 2x 1.6TB U.2 NVMe 2x 1200W PSU",
+    "description": null,
+    "seller": "racksurplus_llc",
+    "location": null,
+    "currency": "USD",
+    "listing_format": "fixed",
+    "lines": [
+      {
+        "line_number": 1,
+        "label": "Supermicro 2U H12SSL-i configured server (EPYC 7543, 128GB DDR4, 2x1.6TB NVMe)",
+        "category": "server",
+        "quantity": 1,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "Sold as a complete unit."
+      },
+      {
+        "line_number": 2,
+        "label": "AMD EPYC 7543 32-core 2.8GHz processor",
+        "category": "cpu",
+        "quantity": 1,
+        "separately_purchasable": false,
+        "parent_line_number": 1,
+        "raw_text": "AMD EPYC 7543 32-core 2.8GHz processor",
+        "manufacturer": "AMD",
+        "model_code": "EPYC 7543"
+      },
+      {
+        "line_number": 3,
+        "label": "Supermicro H12SSL-i motherboard",
+        "category": "other",
+        "quantity": 1,
+        "separately_purchasable": false,
+        "parent_line_number": 1,
+        "raw_text": "Supermicro H12SSL-i motherboard",
+        "manufacturer": "Supermicro",
+        "model_code": "H12SSL-i"
+      },
+      {
+        "line_number": 4,
+        "label": "32GB DDR4-3200 ECC RDIMM",
+        "category": "ram",
+        "quantity": 4,
+        "separately_purchasable": false,
+        "parent_line_number": 1,
+        "raw_text": "32GB DDR4-3200 ECC RDIMM",
+        "capacity_gb": 32,
+        "speed_mhz": 3200,
+        "interface": "DDR4",
+        "form_factor": "RDIMM"
+      },
+      {
+        "line_number": 5,
+        "label": "1.6TB U.2 NVMe SSD (Samsung PM9A3)",
+        "category": "ssd",
+        "quantity": 2,
+        "separately_purchasable": false,
+        "parent_line_number": 1,
+        "raw_text": "1.6TB U.2 NVMe SSD (Samsung PM9A3)",
+        "capacity_gb": 1600,
+        "interface": "NVMe",
+        "manufacturer": "Samsung"
+      },
+      {
+        "line_number": 6,
+        "label": "1200W redundant power supply",
+        "category": "psu",
+        "quantity": 2,
+        "separately_purchasable": false,
+        "parent_line_number": 1,
+        "raw_text": "1200W redundant power supply"
+      },
+      {
+        "line_number": 7,
+        "label": "16-bay 2.5in NVMe backplane with SAS3 expander",
+        "category": "other",
+        "quantity": 1,
+        "separately_purchasable": false,
+        "parent_line_number": 1,
+        "raw_text": "16-bay 2.5in NVMe backplane with SAS3 expander"
+      },
+      {
+        "line_number": 8,
+        "label": "Supermicro SC216 2U chassis with rail kit",
+        "category": "enclosure",
+        "quantity": 1,
+        "separately_purchasable": false,
+        "parent_line_number": 1,
+        "raw_text": "Supermicro SC216 2U chassis with rail kit"
+      }
+    ],
+    "sale_groups": [
+      {
+        "label": "Full server",
+        "price_basis": "explicit_unit",
+        "total_price_cents": 315000,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          1
+        ],
+        "notes": "Configured server sold as ONE unit at $3150. Components are nested contents (parent_line_id), NOT separately priced \u2014 nothing is allocated to them."
+      }
+    ],
+    "observations": [
+      {
+        "line_number": 1,
+        "sale_group_label": "Full server",
+        "price_cents": 315000,
+        "price_kind": "ask",
+        "available": true,
+        "observed_at": null
+      }
+    ],
+    "parse_confidence": 0.9,
+    "notes": "8 lines, one URL, one price. Anti-allocation rule: only the server line carries a price.",
+    "quarantine_reason": null,
+    "condition": null
+  },
+  "liquidation_com:21256289": {
+    "title": "(25) HP EliteDesk 800 G4 SFF - Assorted CPU/RAM, No OS, No HDD",
+    "description": null,
+    "seller": "GovSurplus Partners",
+    "location": "Dallas, TX",
+    "currency": "USD",
+    "listing_format": "lot",
+    "lines": [
+      {
+        "line_number": 1,
+        "label": "HP EliteDesk 800 G4 SFF Desktop PC (i5-8500, 8GB DDR4, no HDD)",
+        "category": "server",
+        "quantity": 18,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "manifest line 1"
+      },
+      {
+        "line_number": 2,
+        "label": "HP EliteDesk 800 G4 SFF Desktop PC (i7-8700, 16GB DDR4, no HDD)",
+        "category": "server",
+        "quantity": 7,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "manifest line 2"
+      },
+      {
+        "line_number": 3,
+        "label": "HP 90W External Power Adapter",
+        "category": "psu",
+        "quantity": 25,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "manifest line 3"
+      },
+      {
+        "line_number": 4,
+        "label": "HP DisplayPort to VGA Adapter Cable",
+        "category": "other",
+        "quantity": 25,
+        "separately_purchasable": true,
+        "parent_line_number": null,
+        "raw_text": "manifest line 4"
+      }
+    ],
+    "sale_groups": [
+      {
+        "label": "Lot 21256289",
+        "price_basis": "bound_only",
+        "total_price_cents": 312500,
+        "total_currency": "USD",
+        "quantity_in_group": 1,
+        "line_numbers": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "notes": "Auction lot: current lot bid $3125 (18 bids) + 13% buyer's premium. No per-line price exists \u2014 NOT allocated."
+      }
+    ],
+    "observations": [
+      {
+        "line_number": null,
+        "sale_group_label": "Lot 21256289",
+        "price_cents": 312500,
+        "price_kind": "bid",
+        "available": true,
+        "observed_at": "2026-10-05T00:00:00+00:00"
+      }
+    ],
+    "parse_confidence": 0.85,
+    "notes": "Manifest decomposes into 4 lines; lot bid recorded at posting level only.",
+    "quarantine_reason": null
+  },
+  "ebay:155001234567": {
+    "title": "Nintendo Switch OLED Model - White Joy-Con, 64GB, Complete in Box",
+    "description": null,
+    "seller": null,
+    "location": null,
+    "currency": "USD",
+    "listing_format": "fixed",
+    "lines": [
+      {
+        "line_number": 1,
+        "label": "Nintendo Switch OLED console (consumer electronics)",
+        "category": "consumer",
+        "quantity": 1,
+        "separately_purchasable": false,
+        "parent_line_number": null,
+        "raw_text": "Nintendo Switch OLED console (consumer electronics)",
+        "manufacturer": "Nintendo"
+      }
+    ],
+    "sale_groups": [],
+    "observations": [],
+    "parse_confidence": 1.0,
+    "notes": "Consumer electronics \u2014 out of scope. Quarantined with a reason, not force-fit into a hardware category.",
+    "quarantine_reason": "out_of_scope_consumer"
+  }
+}

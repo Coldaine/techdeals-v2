@@ -14,14 +14,17 @@ EXCEPTION WHEN OTHERS THEN
     RAISE NOTICE 'TimescaleDB not available; continuing without it';
 END $$;
 
--- uuidv7 generation function
+-- uuidv7 generation function (RFC 9562).
+-- Layout: 48-bit ms timestamp | ver(0111)+rand_a | var(10)+rand_b.
+-- Verified against Postgres 18: version nibble is byte 6, variant byte 8.
 CREATE OR REPLACE FUNCTION uuidv7() RETURNS uuid AS $$
-  -- Use uuid v7 implementation: timestamp-based, sortable
+  WITH r AS (SELECT gen_random_bytes(10) AS b)
   SELECT encode(
-    set_bit(set_bit(
-      substring(int8send(floor(extract(epoch FROM clock_timestamp()) * 1000)::bigint) from 3 for 8)
-      || gen_random_bytes(10),
-    64, 1), 65, 1),
+    substring(int8send((extract(epoch FROM clock_timestamp()) * 1000)::bigint) FROM 3 FOR 8)
+    || (SELECT set_byte(
+                 set_byte(b, 0, 112 | (get_byte(b, 0) & 15)),   -- 0x70 version 7
+                         2, 128 | (get_byte(b, 2) & 63))        -- 0x80 RFC variant
+        FROM r),
     'hex')::uuid;
 $$ LANGUAGE SQL VOLATILE;
 
@@ -55,9 +58,14 @@ CREATE TABLE IF NOT EXISTS postings (
     status          TEXT NOT NULL DEFAULT 'raw' CHECK (status IN ('raw', 'extracting', 'extracted', 'failed', 'quarantined')),
     failure_mode    TEXT CHECK (failure_mode IN ('missed_url', 'partial_parse', 'price_ambiguous', 'out_of_scope', 'quarantine', 'parse_failed')),
     failure_details TEXT,
+    parser_version  TEXT NOT NULL DEFAULT 'v1',  -- replay: re-extraction with a new parser is a NEW version, never a duplicate posting
     created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
     updated_at      TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+-- Replay safety (BRIEF 3.8): one posting per (capture, parser version).
+CREATE UNIQUE INDEX IF NOT EXISTS ux_postings_capture_parser
+    ON postings (capture_id, parser_version);
 
 -- Lines — decomposed contents of a posting
 -- A server posting produces 8-10 lines (CPU, RAM, drives, etc.)
@@ -72,8 +80,21 @@ CREATE TABLE IF NOT EXISTS lines (
     quantity         INT NOT NULL DEFAULT 1,
     separately_purchasable BOOLEAN NOT NULL DEFAULT true,
     raw_text        TEXT,  -- the source text this line was extracted from
+    -- Spec attributes. These do not exist for their own sake: target query 1
+    -- ("cheapest N units of spec S available right now") cannot be answered
+    -- from a free-text label. Populated by the extractor when stated.
+    manufacturer    TEXT,
+    model_code      TEXT,
+    capacity_gb     INT,
+    speed_mhz       INT,
+    interface       TEXT,  -- SATA, SAS, NVMe, DDR4, DDR5, SCSI, PCIe...
+    form_factor     TEXT,  -- 2.5", 3.5", M.2, U.2, RDIMM, DIMM...
     UNIQUE (posting_id, line_number)
 );
+
+-- Spec lookup index: the "cheapest spec S right now" access path.
+CREATE INDEX IF NOT EXISTS idx_lines_specs
+    ON lines (category, interface, capacity_gb);
 
 -- Sale groups/terms — what can actually be bought together
 -- One posting may have multiple sale groups (e.g., "buy the whole server" vs "buy RAM separately")

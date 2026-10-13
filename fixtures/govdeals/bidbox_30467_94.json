@@ -1,0 +1,12 @@
+{
+  "accountId": 30467,
+  "assetId": 94,
+  "currentBid": 1250.0,
+  "bidCount": 9,
+  "highBidderRef": "bidder_ref_8821",
+  "all_in_estimate_usd": 1437.5,
+  "buyerPremiumPercent": 10.0,
+  "closingTime": "2026-10-16T18:00:00-04:00",
+  "capturedAt": "2026-10-05T09:14:00+00:00",
+  "currency": "USD"
+}

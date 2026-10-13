@@ -4,10 +4,26 @@ install:
 test:
     uv run pytest -v
 
+# Full suite including DB-backed integration tests (needs a scratch Postgres).
+# Bring one up with: ./scripts/local_postgres.sh up
+test-db:
+    TECHDEALS_TEST_DATABASE_URL=postgresql://postgres@127.0.0.1:55432/techdeals_test uv run pytest -v
+
 lint:
     uv run ruff check
 
-# Database commands (via Doppler for Neon credentials)
+# --- local pipeline (no credentials needed) ---------------------------------
+# Local Postgres instead of Doppler. `just pipeline` is the full fixture loop.
+migrate-local:
+    NEON_DATABASE_URL=postgresql://postgres@127.0.0.1:55432/techdeals uv run techdeals migrate
+
+pipeline:
+    NEON_DATABASE_URL=postgresql://postgres@127.0.0.1:55432/techdeals uv run techdeals pipeline --provider offline
+
+acceptance-local:
+    NEON_DATABASE_URL=postgresql://postgres@127.0.0.1:55432/techdeals uv run techdeals acceptance
+
+# --- Neon / Doppler (brief-aligned) -----------------------------------------
 migrate:
     doppler run --project apps-data --config dev -- uv run techdeals migrate
 
@@ -29,4 +45,4 @@ psql:
 
 # Acceptance checks
 acceptance:
-    doppler run --project apps-data --config dev -- bash -c 'psql "$NEON_DATABASE_URL" -f tests/acceptance_queries.sql'
+    doppler run --project apps-data --config dev -- uv run techdeals acceptance

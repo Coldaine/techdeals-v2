@@ -7,11 +7,11 @@ import psycopg
 
 from techdeals.config import get_settings
 
-
 MIGRATION_FILES = [
     "001_postings.sql",
     "002_observations.sql",
     "003_views.sql",
+    "004_batch_economics.sql",
 ]
 
 

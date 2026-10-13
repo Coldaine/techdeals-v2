@@ -6,7 +6,12 @@ SCHEMA_DIR = Path(__file__).resolve().parent.parent / "src" / "techdeals" / "sch
 
 
 def test_schema_files_exist() -> None:
-    expected = ["001_postings.sql", "002_observations.sql", "003_views.sql"]
+    expected = [
+        "001_postings.sql",
+        "002_observations.sql",
+        "003_views.sql",
+        "004_batch_economics.sql",
+    ]
     for name in expected:
         path = SCHEMA_DIR / name
         assert path.exists(), f"Missing schema file: {name}"

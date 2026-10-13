@@ -42,6 +42,15 @@ class ExtractedLine(BaseModel):
     )
     quantity: int = Field(default=1, ge=1)
     separately_purchasable: bool = Field(default=True)
+    parent_line_number: Optional[int] = Field(
+        None,
+        description=(
+            "If this line is a nested component of another line (a configured "
+            "server's DIMMs under the server line), the parent's line_number. "
+            "Nested lines describe contents; they are not separately priced unless "
+            "they also carry their own sale group."
+        ),
+    )
     raw_text: Optional[str] = Field(None, description="Source text this line was extracted from")
 
     # Hardware attributes (populated by enrichment phase)
@@ -101,6 +110,23 @@ class ExtractionResult(BaseModel):
                 raise ValueError(
                     f"Line numbers must be sequential: expected {i}, got {line.line_number}"
                 )
+        return v
+
+    @field_validator("lines")
+    @classmethod
+    def validate_parent_links(cls, v: list[ExtractedLine]) -> list[ExtractedLine]:
+        """A nested line's parent must exist and appear before it."""
+        seen: set[int] = set()
+        for line in v:
+            if line.parent_line_number is not None:
+                if line.parent_line_number not in seen:
+                    raise ValueError(
+                        f"line {line.line_number}: parent_line_number "
+                        f"{line.parent_line_number} does not precede it"
+                    )
+                if line.parent_line_number == line.line_number:
+                    raise ValueError(f"line {line.line_number} cannot be its own parent")
+            seen.add(line.line_number)
         return v
 
 

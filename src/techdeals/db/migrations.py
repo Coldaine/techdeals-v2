@@ -7,20 +7,32 @@ import psycopg
 
 from techdeals.config import get_settings
 
-
 MIGRATION_FILES = [
-    "001_postings.sql",
-    "002_observations.sql",
-    "003_views.sql",
+    "000_functions.sql",
+    "010_tables.sql",
+    "020_views.sql",
 ]
+
+
+def get_schema_dir() -> Path:
+    """Resolve schema directory location (root schema/ preferred, fallback to package schema)."""
+    # Root schema directory
+    root_schema = Path(__file__).resolve().parents[3] / "schema"
+    if root_schema.exists() and (root_schema / "000_functions.sql").exists():
+        return root_schema
+
+    # Package schema directory
+    pkg_schema = Path(__file__).resolve().parent.parent / "schema"
+    if pkg_schema.exists():
+        return pkg_schema
+
+    raise FileNotFoundError("Schema directory not found")
 
 
 def run_migrations() -> None:
     """Run all SQL migration files in schema/ in order."""
     settings = get_settings()
-    schema_dir = Path(__file__).parent.parent / "schema"
-    if not schema_dir.exists():
-        raise FileNotFoundError(f"Schema directory not found: {schema_dir}")
+    schema_dir = get_schema_dir()
 
     conn = psycopg.connect(settings.neon_database_url)
     try:

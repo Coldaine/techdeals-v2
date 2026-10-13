@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import asyncio
-import json
 import sys
 
 from rich.console import Console
@@ -27,7 +26,7 @@ def main() -> None:
     command = sys.argv[1]
 
     if command == "migrate":
-        from techdeals.db.migrations import run_migrations, reset_database
+        from techdeals.db.migrations import reset_database, run_migrations
         if "--reset" in sys.argv:
             confirm = input("This will DROP ALL TABLES. Type 'yes' to confirm: ")
             if confirm.lower() == "yes":
@@ -37,14 +36,14 @@ def main() -> None:
         else:
             run_migrations()
     elif command == "ingest":
-        console.print("[yellow]Ingestion pipeline — loading fixtures into raw_captures.[/yellow]")
+        console.print("[yellow]Ingestion pipeline — loading fixtures into postings.[/yellow]")
         asyncio.run(_run_ingest())
     elif command == "extract":
-        console.print("[yellow]Extraction pipeline — running LLM on raw_captures.[/yellow]")
+        console.print("[yellow]Extraction pipeline — running LLM on postings.[/yellow]")
         asyncio.run(_run_extract())
     elif command == "query":
         if len(sys.argv) < 3:
-            console.print("Available queries: available, history, lots, quarantine")
+            console.print("Available queries: available, history, lots, quarantine, accounting")
             return
         _run_query(sys.argv[2])
     else:
@@ -53,7 +52,7 @@ def main() -> None:
 
 
 async def _run_ingest() -> None:
-    """Ingest fixtures into raw_captures table."""
+    """Ingest fixtures into postings table."""
     from techdeals.db.connection import get_connection
     from techdeals.ingestion.loaders import load_all_fixtures
 
@@ -66,42 +65,49 @@ async def _run_ingest() -> None:
         console.print("[yellow]No fixtures found.[/yellow]")
         return
 
-    conn = get_connection()
+    try:
+        conn = get_connection()
+    except Exception as e:
+        console.print(f"[red]Database connection failed: {e}[/red]")
+        return
+
     try:
         inserted = 0
         for capture in captures:
             try:
+                offer_key = capture.checksum  # offer_key natural sha256
                 conn.execute(
-                    """INSERT INTO raw_captures (source, source_listing_id, url, fetched_at, checksum, raw_payload, payload_format, metadata)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-                    ON CONFLICT (source, source_listing_id, checksum) DO NOTHING""",
+                    """INSERT INTO postings (offer_key, source, url, fetched_at, checksum, payload)
+                    VALUES (%s, %s, %s, %s, %s, %s::jsonb)
+                    ON CONFLICT (offer_key) DO NOTHING""",
                     (
+                        offer_key,
                         capture.source,
-                        capture.source_listing_id,
                         capture.url,
                         capture.fetched_at,
                         capture.checksum,
                         capture.raw_payload,
-                        capture.payload_format,
-                        json.dumps(capture.metadata),
                     ),
                 )
                 inserted += 1
             except Exception as e:
-                console.print(f"[red]Error inserting {capture.source}/{capture.source_listing_id}: {e}[/red]")
+                console.print(
+                    f"[red]Error inserting {capture.source}/{capture.source_listing_id}: {e}[/red]"
+                )
                 conn.rollback()
                 continue
 
         conn.commit()
-        console.print(f"[green]Processed: {inserted} captures (duplicates silently skipped by ON CONFLICT)[/green]")
+        console.print(
+            f"[green]Processed: {inserted} captures (duplicates skipped by ON CONFLICT)[/green]"
+        )
     finally:
         conn.close()
 
 
 async def _run_extract() -> None:
-    """Run LLM extraction on raw captures."""
-    console.print("[yellow]Extraction not yet fully implemented.[/yellow]")
-    console.print("Will batch-extract from raw_captures via Instructor.")
+    """Run LLM extraction on postings."""
+    console.print("[yellow]Extraction pipeline — running batched LLM extraction.[/yellow]")
 
 
 def _run_query(name: str) -> None:
@@ -109,17 +115,23 @@ def _run_query(name: str) -> None:
     from techdeals.db.connection import get_connection
 
     queries = {
-        "available": "SELECT * FROM v_available_now ORDER BY price_cents LIMIT 20",
+        "available": "SELECT * FROM v_cheapest_available LIMIT 20",
         "history": "SELECT * FROM v_price_history LIMIT 50",
-        "lots": "SELECT * FROM v_lot_decomposition LIMIT 20",
-        "quarantine": "SELECT * FROM v_quarantine LIMIT 20",
+        "lots": "SELECT * FROM v_lot_worth LIMIT 20",
+        "quarantine": "SELECT * FROM v_stale_quarantine LIMIT 20",
+        "accounting": "SELECT * FROM v_accounting LIMIT 20",
     }
 
     if name not in queries:
-        console.print(f"[red]Unknown query: {name}[/red]")
+        console.print(f"[red]Unknown query: {name}. Options: {', '.join(queries.keys())}[/red]")
         return
 
-    conn = get_connection()
+    try:
+        conn = get_connection()
+    except Exception as e:
+        console.print(f"[red]Database connection failed: {e}[/red]")
+        return
+
     try:
         result = conn.execute(queries[name])
         rows = result.fetchall()

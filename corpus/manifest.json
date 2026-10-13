@@ -33,7 +33,9 @@
         {"path": "/home/coldaine/TechdealsHandoff/scripts/ingest/serverpartdeals/fixtures/collections_all_p1.json", "bytes": 18225, "sha256": "c9654a08ad3005fd4db87cffb496dccb5f6ac650a29da372aae7080471145826"},
         {"path": "/home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json", "bytes": 752203, "sha256": "803710ea9f4fd1c5215fb3d05bc773aff84ba86deb1de1b86c3d252f552b0bf1"}
       ],
-      "status": "referenced-by-path"
+      "status": "staged",
+      "staged_root": "corpus/cell-a-shopify/",
+      "staged_note": "slice3 (2026-10-12): thin adapter engine/adapters/shopify_catalog.py split the three collection wrappers into 259 per-product captures (fusionww 3 + serverpartdeals 6 + waterpanther 250) using ONLY the committed packer's field synonyms (no engine/prompt edits). Generality finding recorded: the committed packer condenses the collection wrapper itself to {} — catalog shapes need the wrapper-split adapter. Checksums: corpus/cell_a_c_SHA256SUMS."
     },
     "b_configured_server_one_url": {
       "witnesses": [
@@ -46,8 +48,9 @@
       "witnesses": [
         {"path": "/home/coldaine/TechdealsHandoff/scripts/ingest/reddit_homelabsales/fixtures/sample_atom.xml", "bytes": 1430, "sha256": "d43e64fbfc6ddf2a5c97a7b43610945ba6cfb00fea53a02997cc7d0bd0bab21c"}
       ],
-      "status": "referenced-by-path",
-      "note": "multi-line [FS] posts in one feed = decomposition target (BRIEF 5.4 shape 4: 3 entries inspected - two multi-line FS posts, one [W] post)."
+      "status": "staged",
+      "staged_root": "corpus/cell-c-reddit/",
+      "staged_note": "slice3 (2026-10-12): thin adapter engine/adapters/atom.py projected the feed into 3 captures (two multi-line [FS] posts + one [W] wanted post), verbatim titles/content, no engine/prompt edits. Cell f shares the [W] witness. Checksums: corpus/cell_a_c_SHA256SUMS."
     },
     "d_liquidation_govdeals_lot_with_manifest": {
       "witnesses": [

@@ -9,6 +9,17 @@ Scores five fields (cpu_model, ram_total_gb, price_usd, chassis_model,
 listing_status) for every extracted listing. A field only counts when the human
 read states it; "engine said null where human had a value" counts as a miss and
 shows the raw title. Honest about ties/tolerances in the output.
+
+ram_total_gb source preference (slice 3): when --ram-view-map is given, the
+scorer prefers the schema view's deterministic aggregation
+(`v_line_ram.ram_total_gb` — stated factors only, no LLM arithmetic) for the
+ram_total_gb prediction, falling back to the engine attribute only when the
+view yields NULL. The map is {item_id: ram_total_gb}, exported from the branch:
+
+  psql "$DSN" -qAt -c "SELECT jsonb_object_agg(item_id, ram) FROM (
+    SELECT p.payload->>'item_id' AS item_id, max(lr.ram_total_gb) AS ram
+    FROM v_line_ram lr JOIN postings p ON p.id = lr.posting_id
+    WHERE p.payload ? 'item_id' GROUP BY 1)" > ram_view_map.json
 """
 
 from __future__ import annotations
@@ -41,8 +52,15 @@ def to_num(v):
         return None
 
 
-def predicted(res: dict) -> dict:
-    """Pull the five scored values out of one validated extraction result."""
+def predicted(res: dict, ram_view: dict | None = None) -> dict:
+    """Pull the five scored values out of one validated extraction result.
+
+    ram_view (slice 3): {item_id: ram_total_gb} from the schema view
+    v_line_ram (deterministic stated-factor aggregation). Preferred over the
+    engine attribute — the view computes the total the engine correctly
+    refuses to multiply; the attribute is the fallback when the view has no
+    stated factors to aggregate (it yields NULL, never a guess).
+    """
     out = {f: None for f in FIELDS}
     if not res or res.get("outcome") != "extracted" or not res.get("sale_groups"):
         return out
@@ -57,7 +75,16 @@ def predicted(res: dict) -> dict:
     for ln in g0.get("lines", []):
         attrs.update(ln.get("attributes") or {})
     out["cpu_model"] = attrs.get("cpu_model")
-    out["ram_total_gb"] = to_num(attrs.get("ram_total_gb"))
+    view_ram = (ram_view or {}).get(str(res.get("id")))
+    if view_ram is not None:
+        # the view aggregated stated factors — that is the honest deterministic
+        # answer (a configured-server RAM line's stated_quantity may be the
+        # per-config module count under a sold-out base config, so the engine
+        # attribute can carry a partial-config product; the view's per-line
+        # factors are the groundable value)
+        out["ram_total_gb"] = to_num(view_ram)
+    else:
+        out["ram_total_gb"] = to_num(attrs.get("ram_total_gb"))
     out["chassis_model"] = attrs.get("chassis_model")
     return out
 
@@ -72,9 +99,13 @@ def human_row(row: dict) -> dict:
     }
 
 
-def score(results_path: str, humans_path: str):
+def score(results_path: str, humans_path: str, ram_view_path: str | None = None):
     with open(results_path) as f:
         run = json.load(f)
+    ram_view = None
+    if ram_view_path:
+        with open(ram_view_path) as f:
+            ram_view = json.load(f)
     quarantined = {str(r.get("id")) for r in run["results"]
                    if r and r.get("outcome") in ("quarantined", "no_purchase_information")}
     with open(humans_path, newline="") as f:
@@ -86,7 +117,7 @@ def score(results_path: str, humans_path: str):
         h = humans.get(str(rid))
         if not h:
             continue
-        pred = predicted(res)
+        pred = predicted(res, ram_view)
         truth = human_row(h)
         rec = {"id": rid, "title": (h.get("title") or "")[:110],
                "quarantined": str(rid) in quarantined}
@@ -171,8 +202,10 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--results", required=True)
     ap.add_argument("--humans", required=True)
+    ap.add_argument("--ram-view-map", default=None,
+                    help="JSON {item_id: ram_total_gb} from v_line_ram — preferred ram_total_gb source")
     args = ap.parse_args(argv)
-    score(args.results, args.humans)
+    score(args.results, args.humans, args.ram_view_map)
     return 0
 
 

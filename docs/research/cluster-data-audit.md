@@ -1,6 +1,6 @@
 # Cluster data audit
 
-Status: investigation in progress. This baseline is verified; it does not claim that the failure analysis is complete.
+Status: initial data investigation complete. No repairs applied.
 
 ## Scope
 
@@ -34,7 +34,10 @@ WHERE table_schema NOT IN ('pg_catalog', 'information_schema')
 ORDER BY table_schema, table_name;
 ```
 
-No production writes, schema changes, collector runs, schedules, or repairs are authorized by this investigation. Exact live failures and their evidence will be added as the investigations complete. Earlier conversation claims are hypotheses until verified against these databases.
+No production writes, schema changes, collector runs, schedules, or repairs were
+performed. Earlier conversation claims were treated as hypotheses. Aggregates
+are separate query snapshots while live ingestion continued, not one coordinated
+cross-database snapshot.
 
 ## Verified finding: unavailable listings leak into current deals
 
@@ -120,3 +123,210 @@ UNION ALL SELECT 'workflow.raw_intake', count(*) FROM workflow.raw_intake
 UNION ALL SELECT 'evidence.artifacts', count(*) FROM evidence.artifacts;
 SELECT count(*), count(DISTINCT entity_id) FROM api.entity_summaries;
 ```
+
+## Verified finding: GPU model text becomes quantity and divides the ask
+
+Database: `market_live`. Price investigator inspected all 334 retained
+r/hardwareswap observations across 31 offers. 313 observations across 10
+offers carry quantities matching model/fan-count text, not a stated number
+of GPUs. Parent independently reproduced those counts and two payloads.
+
+Observation `4e301e3f-f556-5fa2-adc6-6de1c777f662`, offer
+`23eee989-3b64-5b80-89ef-00647a062d83`, retains:
+
+```text
+source_line: Gigabyte Windforce 3X OC RTX 4070 - 12GB - $480
+quantity: 3
+total_price: 480
+price_usd: 160.00
+```
+
+Observation `d03ae962-dd9d-5ef5-8895-19cc39f1c5c9`, offer
+`d8832cc6-c604-58ea-824c-aa2892901343`, retains an RX 7900XTX source line
+ending `$800-sold`, quantity 7900 and stored price USD 0.10. That sold listing
+also leaks into current deals through the stock-spelling defect above.
+RX 6500 XT lines similarly become quantity 6500 and USD 0.01. Windforce 3X
+and SHADOW/VENTUS 2X are model names, not sufficient evidence of lots.
+
+The price investigator measured six affected current deals out of nineteen
+hardwareswap deals (six out of 3,311 total). Quantity-to-price transformation
+is visible in retained payloads; the precise parser code responsible is
+not established by this data-only investigation. Original Atom bytes live
+in Garage and were not independently fetched; evidence is the stored source
+line and normalized payload, corroborated by a listing snapshot.
+
+```sql
+SELECT observation_id, offer_id, price_usd, raw_payload
+FROM core.market_observations
+WHERE observation_id IN (
+ '4e301e3f-f556-5fa2-adc6-6de1c777f662',
+ 'd03ae962-dd9d-5ef5-8895-19cc39f1c5c9');
+SELECT count(*) AS observations,
+       count(*) FILTER (WHERE (raw_payload->>'quantity')::numeric > 1)
+         AS quantity_gt_one
+FROM core.market_observations m
+JOIN source.sources s ON s.source_id = m.source_id
+WHERE s.source_family = 'reddit_hardwareswap';
+```
+
+## Verified finding: local work history is excluded and availability changes
+
+All 23,467 local `techdeals_work.core.market_observations` have NULL run_id.
+`api.traceable_market_observations` INNER JOINs the run and requires non-NULL
+run_id: zero survive. This explains loss from the traceable history surface.
+The price investigator also found all 11,176 local offers outside their
+freshness windows, so zero current deals is independently expected from age;
+do not blame the empty current feed exclusively on provenance.
+
+All 23,467 local market payloads are nonempty, but the investigator found
+they consist solely of `{"backfill_source":"price_observations"}`.
+Parent reproduced that payload on three observation IDs:
+`019f1b06-7eb3-7763-8c2a-1baa37ffe171`,
+`019f1b06-7eb5-7171-a539-e9745ef83f73`,
+`019f1b06-7eb5-7ec8-a055-094229f52bdd`.
+Nonempty JSON is therefore not proof that original source content survived.
+
+The legacy price rows themselves are preserved: investigator's offer/time/price
+comparison found zero missing counterparts among 23,467 rows. But of 4,466
+latest legacy observations explicitly marked unavailable, 4,459 are returned
+as available by `core.latest_prices`. Parent reproduced this count. The
+read view interprets missing/unsupported availability via a negative stock
+expression, reversing the older explicit flag. This is history-semantic
+corruption, not missing numerical prices.
+
+```sql
+SELECT count(*) AS observations,
+       count(*) FILTER (WHERE run_id IS NULL) AS missing_run
+FROM core.market_observations;
+SELECT count(*) FROM api.traceable_market_observations;
+SELECT pg_get_viewdef('api.traceable_market_observations'::regclass, true);
+SELECT count(*) AS unavailable_latest,
+       count(*) FILTER (WHERE lp.available_at_observation) AS marked_available
+FROM core.price_observations p
+JOIN core.latest_prices lp
+  ON lp.offer_id = p.offer_id AND lp.observed_at = p.observed_at
+WHERE p.available_at_observation = false;
+```
+
+## Classification and configuration findings
+
+The identity investigator found five of 476 CPU items and one of 347 GPU items
+with structured RAM evidence. Parent reproduced those counts and the DDR4
+RDIMM/SODIMM capacities on the representative observations, not just titles.
+CPU item `3d78bca3-859d-573c-9b70-12ded76e8243` has observation
+`5bef3a79-0024-5288-a577-ee2db7c4dcc4` describing `DDR4`, `RDIMM`,
+`8 GB x2`. GPU item `6e67469f-9702-59eb-aaaa-9d60a700d993` has observation
+`d585ebeb-bb66-5142-a5e1-9cc0ba962dca` describing `DDR4`, `SODIMM`,
+`32 GB x2`. Investigator traced that GPU kit into a 64GB VRAM projection.
+
+Ten memory identities merge different module arrangements. Parent verified
+item `860970e8-35a4-56f5-a49e-ebbeeb127139` joins both `16 GB` and
+`8 GB x2` latest payloads: observations `8879b4f6-e1e5-5ff2-b9bd-b31b399d405d`
+and `be31ef27-7cd0-5cd6-bd64-753e5cf5885b`. An assertion selector choosing
+one quantity does not fix two different products sharing an identity.
+
+Thirteen memory items describe RAM+SSD bundles; three attach offers with
+different SSD sizes. Parent verified bundle item
+`1b8613a1-86b4-531d-b093-fa6c18ebd4c6` joins retained titles for CARDEA A440
+2TB (`44a709c5-64c0-5ea1-ac20-cae66e73e748`) and 1TB
+(`6fcb565c-a4dc-5e27-9de4-8ecd12919c0e`), including different part numbers.
+Whole bundle prices are consequently grouped under one RAM identity.
+
+The Water Panther stock example also loses compatibility grain: its offer
+and payload name a 13G tray, while canonical item
+`33fb7333-cb85-5a3f-9cb0-88600d3e17e5` names a 14G tray. Parent verified
+both names and the shared identity key. Market item_variants contains zero
+rows; no variant represents this difference.
+
+Work database legacy RAM lots and mini-PC fields have internal contradictions
+documented in the detailed identity report. Their true specifications are
+supported only by stored titles/manual summaries, not independently fetched
+original product pages. They must not be presented as externally verified
+hardware facts.
+
+## Retention versus promotion: findings from actual records
+
+Parent reproduced 24,139 work raw-intake records: 6,927 unprocessed and
+unlinked, 24,096 nonblank payloads, and 43 blank payloads with original rows
+retained in metadata. The full investigator partitions are:
+
+| State | Records |
+|---|---:|
+| Unprocessed, no decision/item/offer link | 6,927 |
+| Processed, needs_review, no item/offer link | 11,868 |
+| Processed, out_of_scope, no item/offer link | 5,308 |
+| Processed, linked to canonical item/offer | 36 |
+
+This proves stored records are largely outside the ordinary normalized
+offer/observation path, not that all rejected records should be accepted.
+6,884 unprocessed eBay imports include 3,459 search-page URLs without individual
+listing URLs. Parent verified intake `01a0f25c-1f48-7522-831b-31589a993bff`
+retains a USD 90 Samsung RDIMM claim and explicitly records missing listing ID;
+its raw payload is only a CSV-row pointer, not original listing content.
+
+The Central Computers legacy import has 16,901 retained intake records and no
+canonical links from those records. Of its needs-review decisions, 3,662 say
+the writer could not build identity. An EPYC 7543 example retains model, item
+number and USD 3,299.99, yet its disposition is identity failure. This is
+identity-dependent promotion, not proof the source lacks useful information.
+
+Parent reproduced these fixed live run counts:
+
+| Run | Parser outputs | Snapshots | Decisions | Market observations | Artifact references |
+|---|---:|---:|---:|---:|---:|
+| FusionWW dbcdb505-5272-4526-be45-6180a9281682 | 10,614 | 0 | 0 | 0 | 119 |
+| RackWatch 9f63541e-eac2-4719-a180-77c3b181f91f | Not recorded | 5,233 | 0 | 0 | 6 |
+
+FusionWW records successful parsing but has no record-level disposition or
+normalized result. Its artifacts reference Windows filesystem paths; byte
+availability was not checked. Do not describe its 10,614 parser outputs as
+10,614 eligible offers, or conclude their source bytes are definitely lost.
+RackWatch retains the snapshots; most do not match canonical key/URL records.
+That is retained/raw-only evidence, possibly intentional, not capture loss.
+
+## Other observed gaps and important non-findings
+
+- All 3,311 live current deals lack historical floors. Investigator verified
+  no source satisfies the view's authority tier <= 2 rule: historical data
+  exists, but this policy gate prevents a floor. Whether to change the policy
+  requires a separate decision; do not call it absent collection.
+- 955 of 60,928 live observations are outside the traceable surface. For 813
+  retailer observations, stored observation item IDs disagree with their
+  offer's current item ID. This is a history/read-link problem; source records
+  exist. Detailed report includes source counts and an exact example.
+- Run counters are not reliable coverage denominators: Water Panther can
+  retain 1,641 snapshots while its run's raw/candidate counters remain zero.
+- No numerical legacy prices were missing from the matched work backfill.
+- No confirmed supported-RAM-maximum substituted for installed RAM was found
+  in the examined eight explicit live rack-server examples.
+- Repeated entity labels are not duplicate entity IDs in the queried API view.
+- Deliberately partial Reddit feeds are not failed acquisition. Actual failed
+  attempts are counted separately in the intake report.
+- External Garage/file/sandbox byte existence, source-page correctness beyond
+  stored representations, and exact responsible code paths remain unverified.
+
+## Complete evidence reports and repair order
+
+Full investigator findings, denominators, persistent IDs and successful SQL:
+
+- [Price and history evidence](cluster-price-evidence.md).
+- [Identity and configuration evidence](cluster-identity-evidence.md).
+- [Intake and retention evidence](cluster-intake-evidence.md).
+
+Proposed follow-through, separate from this investigation:
+
+1. Stop publishing fabricated per-unit GPU prices and unavailable current deals.
+2. Correct affected retained normalized rows through an explicit history-safe
+   repair, preserving the source evidence and distinguishing old from corrected
+   interpretation. Do not merely hide bad rows in the UI.
+3. Separate materially different module/bundle/tray configurations before
+   comparing their prices.
+4. Recover queryable readings from parked raw records without requiring product
+   identity or a current ask; record incomplete evidence and deliberate exclusions.
+5. Preserve original availability and price-kind semantics through migration;
+   do not fabricate run provenance for legacy rows.
+6. Decide historical-floor authority policy using the actual source tiers.
+
+An implementation plan needs exact code localization and failing-before/
+passing-after verification for each repair. This report does not claim those
+repairs or the two-repo consolidation are complete.

@@ -1,0 +1,26 @@
+{
+ "item_id": "7095967514757",
+ "title": "2TB 3D TLC PCIe 3.0 x4 NVMe U.2 SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+ "brand": "Water Panther",
+ "mpn": null,
+ "category": "",
+ "price": "576.00",
+ "quantity_available": null,
+ "availability": "unavailable",
+ "description": "2TB PCIe NVMe SSD compatible in Dell servers with 2.5in U.2 chassis and NVMe capable backplanes\nSpecific riser options are required for certain configurations\nEquipped with a 14th gen. Dell hot-plug caddy tray\nDesigned for 24x7 availability in high data workload environments\nEnterprise-grade reliability and performance, optimized for massive scale-out data centers\nBacked by a 2-year replacement warranty\nThere are a number of riser combinations offered for 14th Generation PowerEdge Servers. Specific riser options are required for certain options like GPU enablement and NVMe PCIe SSD enablement.",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json#2tb-3d-tlc-pcie-3-0-x4-nvme-u-2-ssd-for-dell-emc-poweredge-servers-enterprise-drive-in-14g-tray",
+ "timestamp": "2026-06-24T10:23:29-04:00",
+ "domain": "waterpanther",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "576.00",
+     "in_stock": false
+    }
+   ]
+  }
+ ]
+}

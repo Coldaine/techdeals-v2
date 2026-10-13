@@ -1,0 +1,26 @@
+{
+ "item_id": "7265054883973",
+ "title": "1.6TB MLC SATA 6Gb/s 3.5\" Hybrid SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+ "brand": "Water Panther",
+ "mpn": null,
+ "category": "",
+ "price": "434.00",
+ "quantity_available": null,
+ "availability": "available",
+ "description": "Compatible in Dell servers with 3.5in chassis\nEquipped with a 14th gen. Dell hot-plug caddy\nDesigned for 24x7 availability in high data workload environments\nEnterprise-grade reliability and performance, optimized for scale-out data centers\nBacked by a 2-year replacement warranty",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json#1-6tb-3d-tlc-sata-6gb-s-3-5-hybrid-ssd-for-dell-emc-poweredge-servers-enterprise-drive-in-14g-tray",
+ "timestamp": "2026-06-24T10:23:29-04:00",
+ "domain": "waterpanther",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "434.00",
+     "in_stock": true
+    }
+   ]
+  }
+ ]
+}

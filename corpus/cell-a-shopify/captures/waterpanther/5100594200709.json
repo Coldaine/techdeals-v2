@@ -1,0 +1,26 @@
+{
+ "item_id": "5100594200709",
+ "title": "300GB 15K SAS 12Gb/s 2.5\" HDD for Dell PowerEdge Servers | Enterprise Drive in 13G Tray",
+ "brand": "Water Panther",
+ "mpn": null,
+ "category": "",
+ "price": "74.99",
+ "quantity_available": null,
+ "availability": "unavailable",
+ "description": "Compatible in Dell servers with 2.5in chassis\nEquipped with a 13th gen. Dell hot-plug caddy, backwards compatible in 10G, 11G, & 12G systems\nDesigned for 24x7 availability in high data workload environments\nEnterprise-grade reliability and performance, optimized for scale-out data centers\nBacked by a 2-year replacement warranty",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json#300gb-15k-sas-12g-sff-hdd-pe-gen13",
+ "timestamp": "2026-06-24T10:23:29-04:00",
+ "domain": "waterpanther",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "74.99",
+     "in_stock": false
+    }
+   ]
+  }
+ ]
+}

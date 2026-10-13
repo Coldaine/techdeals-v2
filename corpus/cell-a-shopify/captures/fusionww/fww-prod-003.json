@@ -1,0 +1,31 @@
+{
+ "item_id": "fww-prod-003",
+ "title": "Seagate Exos X18 18TB Enterprise SATA HDD",
+ "brand": "Seagate",
+ "mpn": "ST18000NM000J",
+ "category": "Hard Disk Drives (HDD)",
+ "price": 219.0,
+ "quantity_available": 85,
+ "availability": null,
+ "description": "",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/fusionww/fixtures/sample_products.json#fww-prod-003",
+ "timestamp": null,
+ "domain": "fusionww",
+ "specs": [
+  {
+   "name": "Capacity",
+   "value": "18TB",
+   "isFilter": true
+  },
+  {
+   "name": "Interface",
+   "value": "SATA 6Gb/s",
+   "isFilter": true
+  }
+ ],
+ "_listPrice": 279.0,
+ "_totalAvailableQuantity": 85,
+ "_leadTimeDays": 3,
+ "_productStatus": "Active",
+ "_isActive": true
+}

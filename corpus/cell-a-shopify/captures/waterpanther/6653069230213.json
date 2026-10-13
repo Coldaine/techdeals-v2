@@ -1,0 +1,26 @@
+{
+ "item_id": "6653069230213",
+ "title": "15.36TB 3D TLC PCIe 3.0 x4 NVMe U.2 SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G 15G Tray",
+ "brand": "Water Panther",
+ "mpn": null,
+ "category": "",
+ "price": "789.99",
+ "quantity_available": null,
+ "availability": "unavailable",
+ "description": "15.36TB NVMe SSD compatible in Dell servers with 2.5in SFF chassis and NVMe-capable backplanes.\nEquipped with a 14th gen. Dell hot-plug caddy, forwards compatible in 15th gen. PowerEdge servers.\nDesigned for 24x7 availability in high data-workload environments.\nEnterprise-grade reliability and performance, optimized for scale-out data centers.\nBacked by a 2-year replacement warranty.\nThere are a number of backplane and riser combinations offered for 14th & 15th Generation PowerEdge Servers. Specific options are required for NVMe PCIe U.2 SSD enablement.",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json#15360gb-3d-tlc-pcie-gen3-u-2-sff-ssd-pe-gen14",
+ "timestamp": "2026-06-24T10:23:29-04:00",
+ "domain": "waterpanther",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "789.99",
+     "in_stock": false
+    }
+   ]
+  }
+ ]
+}

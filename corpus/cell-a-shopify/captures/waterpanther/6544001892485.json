@@ -1,0 +1,26 @@
+{
+ "item_id": "6544001892485",
+ "title": "3.84TB 3D TLC PCIe 3.1 x4 NVMe U.2 SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+ "brand": "Water Panther",
+ "mpn": null,
+ "category": "",
+ "price": "1059.00",
+ "quantity_available": null,
+ "availability": "available",
+ "description": "Water Panther 3.84TB PCI-Express 3.1 x4 U.2 2.5-inch SSD with hot-plug 14G Dell caddy tray\nCompatible in R640, R740XD, R940 servers and more, additional information in description\nSpecific riser options are required for certain configurations\nReady to go for read-intensive applications and able to withstand 24x7 operation\nBacked by a 2 year warranty, items ship in secure packaging for critical deployment capability\nThere are a number of riser combinations offered for 14th Generation PowerEdge Servers. Specific riser options are required for certain options like GPU enablement and NVMe PCIe SSD enablement.",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json#3840gb-3d-tlc-pcie-gen3-u-2-sff-ssd-pe-gen14",
+ "timestamp": "2026-06-24T10:23:29-04:00",
+ "domain": "waterpanther",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "1059.00",
+     "in_stock": true
+    }
+   ]
+  }
+ ]
+}

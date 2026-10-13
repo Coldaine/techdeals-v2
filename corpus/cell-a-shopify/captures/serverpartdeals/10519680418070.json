@@ -1,0 +1,26 @@
+{
+ "item_id": "10519680418070",
+ "title": "Adata Ultimate SU800 ASU800SS 512GB 400 TBW SATA 6Gb/s 3D TLC 2.5in Recertified SSD",
+ "brand": "Adata",
+ "mpn": null,
+ "category": "Solid State Drives > 512GB > 2.5 > SATA",
+ "price": "2999.00",
+ "quantity_available": null,
+ "availability": "unavailable",
+ "description": "Specifications\nBrand\nAdata\nSeries\nUltimate SU80",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/serverpartdeals/fixtures/collections_all_p1.json#adata-ultimate-su800-asu800ss-512gb-400-tbw-sata-6gb-s-3d-tlc-2-5-recertified-ssd",
+ "timestamp": "2026-09-24T07:49:45-04:00",
+ "domain": "serverpartdeals",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "2999.00",
+     "in_stock": false
+    }
+   ]
+  }
+ ]
+}

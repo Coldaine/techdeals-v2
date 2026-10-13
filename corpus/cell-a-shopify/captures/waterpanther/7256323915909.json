@@ -1,0 +1,26 @@
+{
+ "item_id": "7256323915909",
+ "title": "3.84TB PCIe 3.0 x4 NVMe U.2 SSD for HPE ProLiant Servers | Enterprise Drive in Gen7 Tray",
+ "brand": "Water Panther",
+ "mpn": null,
+ "category": "",
+ "price": "999.99",
+ "quantity_available": null,
+ "availability": "unavailable",
+ "description": "3.84TB PCI-Express Gen3 x4 U.2 2.5-inch SSD\nEquipped with a 7th gen. HPE hot-plug carrier, backwards compatible with G1-G6 servers\nDesigned for 24x7 availability in high data workload environments\nEnterprise-grade reliability and performance, optimized for scale-out data centers\nBacked by a 2-year replacement warranty",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json#3-84tb-pcie-3-0-x4-nvme-u-2-ssd-for-hpe-proliant-servers-enterprise-drive-in-gen7-tray",
+ "timestamp": "2026-06-24T10:23:29-04:00",
+ "domain": "waterpanther",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "999.99",
+     "in_stock": false
+    }
+   ]
+  }
+ ]
+}

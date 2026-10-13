@@ -1,0 +1,26 @@
+{
+ "item_id": "5201434542213",
+ "title": "1.6TB SAS 12Gb/s 3.5\" Hybrid SSD for Dell PowerEdge Servers | Enterprise Drive in 13G Tray",
+ "brand": "Water Panther",
+ "mpn": null,
+ "category": "",
+ "price": "549.00",
+ "quantity_available": null,
+ "availability": "available",
+ "description": "Compatible in Dell servers with 3.5in chassis\nEquipped with a 13th gen. Dell hot-plug caddy, backwards compatible in 11G & 12G systems\nDesigned for 24x7 availability in high data workload environments\nEnterprise-grade reliability and performance, optimized for scale-out data centers\nBacked by a 2-year replacement warranty",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json#1600gb-mlc-sas-12g-hybrid-ssd-pe-gen13",
+ "timestamp": "2026-06-24T10:23:29-04:00",
+ "domain": "waterpanther",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "549.00",
+     "in_stock": true
+    }
+   ]
+  }
+ ]
+}

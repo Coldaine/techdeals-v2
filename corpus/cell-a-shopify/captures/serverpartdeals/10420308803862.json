@@ -1,0 +1,26 @@
+{
+ "item_id": "10420308803862",
+ "title": "256GB 8Rx4 DDR4 3200MHz RDIMM ECC Server RAM PC4-25600L Seller Refurbished Memory",
+ "brand": "Unbranded",
+ "mpn": null,
+ "category": "RAM",
+ "price": "899.00",
+ "quantity_available": null,
+ "availability": "unavailable",
+ "description": "Specifications\n<table class=\"met",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/serverpartdeals/fixtures/collections_all_p1.json#256gb-ddr4-3200mhz-rdimm-ecc-server-ram-pc4-25600l-seller-refurbished-memory",
+ "timestamp": "2026-09-24T07:49:45-04:00",
+ "domain": "serverpartdeals",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "899.00",
+     "in_stock": false
+    }
+   ]
+  }
+ ]
+}

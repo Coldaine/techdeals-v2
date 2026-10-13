@@ -1,0 +1,26 @@
+{
+ "item_id": "7142946734213",
+ "title": "3.2TB SAS-4 24Gb/s 3.5\" Hybrid SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+ "brand": "Water Panther",
+ "mpn": null,
+ "category": "",
+ "price": "1152.00",
+ "quantity_available": null,
+ "availability": "unavailable",
+ "description": "3.2TB SAS SSD compatible in Dell servers with 3.5in chassis\nEquipped with a 14th gen. Dell hot-plug caddy\nDesigned for 24x7 availability in high data workload environments\nEnterprise-grade reliability and performance, optimized for scale-out data centers\nBacked by a 2-year replacement warranty",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json#3-2tb-3d-tlc-sas-4-24gb-s-3-5-hybrid-ssd-for-dell-emc-poweredge-servers-enterprise-drive-in-14g-tray",
+ "timestamp": "2026-06-24T10:23:29-04:00",
+ "domain": "waterpanther",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "1152.00",
+     "in_stock": false
+    }
+   ]
+  }
+ ]
+}

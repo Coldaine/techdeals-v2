@@ -1,0 +1,31 @@
+{
+ "item_id": "fww-prod-002",
+ "title": "Micron 32GB DDR4-3200 Registered ECC Memory Module",
+ "brand": "Micron Technology",
+ "mpn": "MTA36ASF4G72PZ-3G2E1",
+ "category": "Memory Modules",
+ "price": 75.5,
+ "quantity_available": 120,
+ "availability": null,
+ "description": "",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/fusionww/fixtures/sample_products.json#fww-prod-002",
+ "timestamp": null,
+ "domain": "fusionww",
+ "specs": [
+  {
+   "name": "Capacity",
+   "value": "32GB",
+   "isFilter": true
+  },
+  {
+   "name": "Memory Type",
+   "value": "DDR4-3200 RDIMM",
+   "isFilter": true
+  }
+ ],
+ "_listPrice": 95.0,
+ "_totalAvailableQuantity": 120,
+ "_leadTimeDays": 1,
+ "_productStatus": "Active",
+ "_isActive": true
+}

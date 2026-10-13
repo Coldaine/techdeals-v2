@@ -1,0 +1,26 @@
+{
+ "item_id": "6648523522181",
+ "title": "1.6TB MLC PCIe Gen3 x4 NVMe U.2 SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G 15G Tray",
+ "brand": "Water Panther",
+ "mpn": null,
+ "category": "",
+ "price": "576.00",
+ "quantity_available": null,
+ "availability": "unavailable",
+ "description": "1.6TB NVMe SSD compatible in Dell servers with 2.5in SFF chassis and NVMe-capable backplanes.\nEquipped with a 14th gen. Dell hot-plug caddy, forwards compatible in 15th gen. PowerEdge servers.\nDesigned for 24x7 availability in high data-workload environments.\nEnterprise-grade reliability and performance, optimized for scale-out data centers.\nBacked by a 2-year replacement warranty.\nThere are a number of backplane and riser combinations offered for 14th & 15th Generation PowerEdge Servers. Specific options are required for NVMe PCIe U.2 SSD enablement.",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json#1600gb-mlc-pcie-gen3-u-2-sff-ssd-pe-gen14",
+ "timestamp": "2026-06-24T10:23:29-04:00",
+ "domain": "waterpanther",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "576.00",
+     "in_stock": false
+    }
+   ]
+  }
+ ]
+}

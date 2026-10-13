@@ -1,0 +1,26 @@
+{
+ "item_id": "5201290002565",
+ "title": "16TB SATA 6Gb/s 7.2K RPM 3.5\" HDD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+ "brand": "Water Panther",
+ "mpn": null,
+ "category": "",
+ "price": "419.99",
+ "quantity_available": null,
+ "availability": "unavailable",
+ "description": "16TB SATA HDD compatible in Dell EMC servers with 3.5in chassis\nEquipped with a 14th gen. Dell hot-plug caddy\nDesigned for 24x7 availability in high data workload environments\nEnterprise-grade reliability and performance, optimized for scale-out data centers\nBacked by a 2-year replacement warranty",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json#16tb-7200rpm-sata-6g-lff-hdd-pe-gen14",
+ "timestamp": "2026-06-24T10:23:29-04:00",
+ "domain": "waterpanther",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "419.99",
+     "in_stock": false
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,178 @@
+{
+ "run_id": "20261012T130739",
+ "model": "deepseek/deepseek-v4-flash-0731",
+ "parser_name": "llm_batch:slice3-cell-c",
+ "prompt_version": "batch-v1",
+ "batch_size": 3,
+ "results": [
+  {
+   "id": "t3_abc123",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "4x 8TB Seagate Exos SATA HDDs",
+     "availability": "available",
+     "price": {
+      "amount": "280",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Stated price for the lot of 4 drives"
+     },
+     "lines": [
+      {
+       "label": "Seagate Exos 8TB SATA HDD",
+       "quantity": 4,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 8000,
+        "storage_kind": "HDD",
+        "storage_interface": "SATA",
+        "vendor": "Seagate",
+        "model": "Exos"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "Samsung 980 Pro 2TB NVMe SSD",
+     "availability": "available",
+     "price": {
+      "amount": "110",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Stated price for one SSD"
+     },
+     "lines": [
+      {
+       "label": "Samsung 980 Pro 2TB NVMe SSD",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 2000,
+        "storage_kind": "SSD",
+        "storage_interface": "NVMe",
+        "vendor": "Samsung",
+        "model": "980 Pro"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear listing with two separate sale groups and stated prices."
+  },
+  {
+   "id": "t3_def456",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "2x 20TB WD Gold SATA",
+     "availability": "available",
+     "price": {
+      "amount": "150",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Stated price per drive"
+     },
+     "lines": [
+      {
+       "label": "WD Gold 20TB SATA HDD",
+       "quantity": 2,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 20000,
+        "storage_kind": "HDD",
+        "storage_interface": "SATA",
+        "vendor": "WD",
+        "model": "Gold"
+       },
+       "children": []
+      }
+     ]
+    },
+    {
+     "label": "6x 12TB HGST SAS HDD",
+     "availability": "available",
+     "price": {
+      "amount": "360",
+      "currency": "USD",
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Stated price for the lot of 6 drives"
+     },
+     "lines": [
+      {
+       "label": "HGST 12TB SAS HDD",
+       "quantity": 6,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 12000,
+        "storage_kind": "HDD",
+        "storage_interface": "SAS",
+        "vendor": "HGST"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Two sale groups with per-unit and lot pricing clearly stated."
+  },
+  {
+   "id": "t3_wanted1",
+   "outcome": "quarantined",
+   "sale_groups": [],
+   "quarantine": {
+    "reason": "wanted_post",
+    "detail": "User is looking to buy drives, not selling inventory."
+   },
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Wanted post, no purchasable items."
+  }
+ ],
+ "failed": {},
+ "batch_rows": [
+  {
+   "ts": "2026-10-12T13:07:51.835058+00:00",
+   "batch_index": "0",
+   "model": "deepseek/deepseek-v4-flash-0731",
+   "prompt_version": "batch-v1",
+   "listing_count": 3,
+   "input_tokens": 1525,
+   "output_tokens": 1123,
+   "cached_tokens": 0,
+   "cost_usd": 0.000749,
+   "latency_s": 12.32,
+   "retries": 0,
+   "truncated": false,
+   "salvaged_parse": false,
+   "retried_missing": 0,
+   "salvage_batch_size": null,
+   "failed_ids": [],
+   "status": "ok"
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "item_id": "8297455845654",
+ "title": "2.5\" U.2 NVMe to PCIe Adapter Card",
+ "brand": "ServerPartDeals",
+ "mpn": null,
+ "category": "Adapter Cards",
+ "price": "14.99",
+ "quantity_available": null,
+ "availability": "available",
+ "description": "Used to convert one 2.5\" U.2 NVMe drive to PCIe for compatibility in any system with an available PCIe X4 port\nPower and SATA cables not necessary, power and data connection comes fr",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/serverpartdeals/fixtures/collections_all_p1.json#u-2-nvme-to-pcie-adapter-card",
+ "timestamp": "2026-09-24T07:49:45-04:00",
+ "domain": "serverpartdeals",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "14.99",
+     "in_stock": true
+    }
+   ]
+  }
+ ]
+}

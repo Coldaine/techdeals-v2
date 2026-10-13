@@ -1,0 +1,26 @@
+{
+ "item_id": "7160058282117",
+ "title": "28TB SATA 6Gb/s 7.2K RPM 3.5\" HDD for Dell PowerEdge Servers | Enterprise Drive in 13G Tray",
+ "brand": "Water Panther",
+ "mpn": null,
+ "category": "",
+ "price": "700.00",
+ "quantity_available": null,
+ "availability": "unavailable",
+ "description": "Compatible in Dell servers with 3.5in chassis\nEquipped with a 13th gen. Dell hot-plug caddy, backwards compatible in 11G & 12G systems\nDesigned for 24x7 availability in high data workload environments\nEnterprise-grade reliability and performance, optimized for scale-out data centers\nBacked by a 2-year replacement warranty",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json#28tb-sata-6gb-s-7-2k-rpm-3-5-hdd-for-dell-poweredge-servers-enterprise-drive-in-13g-tray",
+ "timestamp": "2026-06-24T10:23:29-04:00",
+ "domain": "waterpanther",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "700.00",
+     "in_stock": false
+    }
+   ]
+  }
+ ]
+}

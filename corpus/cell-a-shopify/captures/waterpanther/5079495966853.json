@@ -1,0 +1,26 @@
+{
+ "item_id": "5079495966853",
+ "title": "300GB 15K SAS 6Gb/s 2.5\" HDD for HPE ProLiant Servers | Enterprise Drive in Gen7 Tray",
+ "brand": "Water Panther",
+ "mpn": null,
+ "category": "",
+ "price": "34.99",
+ "quantity_available": null,
+ "availability": "unavailable",
+ "description": "Compatible in HP servers with 2.5in chassis\nEquipped with a 7th gen. HPE hot-plug carrier, backwards compatible with G1-G6 servers\nDesigned for 24x7 availability in high data workload environments\nEnterprise-grade reliability and performance, optimized for scale-out data centers\nBacked by a 2-year replacement warranty",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json#300gb-15k-sas-6g-sff-hdd-pl-gen7",
+ "timestamp": "2026-06-24T10:23:29-04:00",
+ "domain": "waterpanther",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "34.99",
+     "in_stock": false
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "item_id": "7179049959557",
+ "title": "24TB 7.2K SAS 12Gb/s 3.5\" HDD for HPE ProLiant Servers | Enterprise Drive in Gen11 Tray",
+ "brand": "Water Panther",
+ "mpn": null,
+ "category": "",
+ "price": "549.99",
+ "quantity_available": null,
+ "availability": "unavailable",
+ "description": "Compatible in HP servers with 3.5in chassis\nEquipped with an 11th gen. HPE hot-plug carrier, tray is compatible with 11th & 10+ gen. servers\nDesigned for 24x7 availability in high data workload environments\nEnterprise-grade reliability and performance, optimized for scale-out data centers\nBacked by a 2-year replacement warranty",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json#24tb-7-2k-sas-12gb-s-3-5-hdd-for-hpe-proliant-servers-enterprise-drive-in-gen11-tray",
+ "timestamp": "2026-06-24T10:23:29-04:00",
+ "domain": "waterpanther",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "549.99",
+     "in_stock": false
+    }
+   ]
+  }
+ ]
+}

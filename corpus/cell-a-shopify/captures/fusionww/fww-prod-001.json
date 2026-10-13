@@ -1,0 +1,36 @@
+{
+ "item_id": "fww-prod-001",
+ "title": "Samsung 870 EVO 1TB SATA III 2.5-Inch Internal SSD",
+ "brand": "Samsung Electronics",
+ "mpn": "MZ-77E1T0B/AM",
+ "category": "Solid State Drives (SSD)",
+ "price": 89.99,
+ "quantity_available": 250,
+ "availability": null,
+ "description": "",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/fusionww/fixtures/sample_products.json#fww-prod-001",
+ "timestamp": null,
+ "domain": "fusionww",
+ "specs": [
+  {
+   "name": "Capacity",
+   "value": "1TB",
+   "isFilter": true
+  },
+  {
+   "name": "Interface",
+   "value": "SATA III 6Gb/s",
+   "isFilter": true
+  },
+  {
+   "name": "Form Factor",
+   "value": "2.5-inch",
+   "isFilter": true
+  }
+ ],
+ "_listPrice": 109.99,
+ "_totalAvailableQuantity": 500,
+ "_leadTimeDays": 2,
+ "_productStatus": "Active",
+ "_isActive": true
+}

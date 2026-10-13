@@ -1,0 +1,26 @@
+{
+ "item_id": "5201435754629",
+ "title": "1.8TB 10K SAS 12Gb/s 3.5\" Hybrid HDD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+ "brand": "Water Panther",
+ "mpn": null,
+ "category": "",
+ "price": "184.95",
+ "quantity_available": null,
+ "availability": "unavailable",
+ "description": "Compatible in Dell servers with 3.5in chassis\nEquipped with a 14th gen. Dell hot-plug caddy\nDesigned for 24x7 availability in high data workload environments\nEnterprise-grade reliability and performance, optimized for scale-out data centers\nBacked by a 2-year replacement warranty",
+ "url": "file:///home/coldaine/TechdealsHandoff/scripts/ingest/waterpanther/fixtures/collections_all_p1.json#1800gb-10k-sas-12g-hybrid-hdd-pe-gen14",
+ "timestamp": "2026-06-24T10:23:29-04:00",
+ "domain": "waterpanther",
+ "variants": [
+  {
+   "variant_type": "Variant",
+   "options": [
+    {
+     "name": "Default Title",
+     "price": "184.95",
+     "in_stock": false
+    }
+   ]
+  }
+ ]
+}

@@ -18,8 +18,20 @@ _Avoid_: scrape, page, download
 **Posting**:
 The atomic unit of evidence — one capture, whatever it contains: one item, a
 configured server, a lot, or a wanted post. Postings are never edited, merged,
-or deleted; they are only added.
-_Avoid_: listing, product, item (an item is a Line)
+or deleted; they are only added. A posting is a listing. Listing is the
+ordinary name for the same thing.
+_Avoid_: product, item (an item is a Line)
+
+**Listing**:
+A posting. Every row under analysis is a listing. The word does not name a
+second kind of object.
+_Avoid_: product, item (an item is a Line)
+
+**Comp**:
+The role a listing plays while it is being used to price another listing.
+It is not a kind of listing, it is not stored, and it is not the Reference
+price kind. When the analysis is over, it is a listing again.
+_Avoid_: comp record, comparable sale, a table of comps
 
 **Provenance**:
 The where-seen/when-seen facts attached to every capture: source, URL, fetch

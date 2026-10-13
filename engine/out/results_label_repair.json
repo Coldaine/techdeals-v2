@@ -1,0 +1,2360 @@
+{
+ "run_id": "20261013T093657",
+ "model": "deepseek/deepseek-v4-flash-0731",
+ "parser_name": "llm_batch:label-repair-v2",
+ "prompt_version": "batch-v2",
+ "batch_size": 25,
+ "results": [
+  {
+   "id": "5079496360069",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "24.50",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "300GB 10K SAS 6Gb/s 2.5\" HDD for HPE ProLiant Servers | Enterprise Drive in Gen8 Gen9 Gen10 Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 300,
+        "storage_kind": "HDD",
+        "storage_interface": "SAS 6Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "HPE ProLiant Gen8 Gen9 Gen10",
+        "carrier": "HP hot-plug carrier",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5079496949893",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "576.00",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "1.2TB 10K SAS 6Gb/s 2.5\" HDD for HPE ProLiant Servers | Enterprise Drive in Gen8 Gen9 Gen10 Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 1200,
+        "storage_kind": "HDD",
+        "storage_interface": "SAS 6Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "HPE ProLiant Gen8 Gen9 Gen10",
+        "carrier": "HP hot-plug carrier",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5079497048197",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "179.99",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "1.8TB 10K SAS 6Gb/s 2.5\" HDD for HPE ProLiant Servers | Enterprise Drive in Gen8 Gen9 Gen10 Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 1800,
+        "storage_kind": "HDD",
+        "storage_interface": "SAS 6Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "HPE ProLiant Gen8 Gen9 Gen10",
+        "carrier": "HP hot-plug carrier",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5079497212037",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "available",
+     "price": {
+      "amount": "549.00",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "1.6TB SAS 12Gb/s 2.5\" SSD for Dell PowerEdge Servers | Enterprise Drive in 13G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 1600,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell PowerEdge 13G (backwards compatible 10G, 11G, 12G)",
+        "carrier": "13th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5079497277573",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "available",
+     "price": {
+      "amount": "555.00",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "1.92TB MLC SAS 12Gb/s 2.5\" SSD for Dell PowerEdge Servers | Enterprise Drive in 13G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 1920,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell PowerEdge 13G (backwards compatible 10G, 11G, 12G)",
+        "carrier": "13th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5079497343109",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "1152.00",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "3.84TB MLC SAS 12Gb/s 2.5\" SSD for Dell PowerEdge Servers | Enterprise Drive in 13G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 3840,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell PowerEdge 13G (backwards compatible 10G, 11G, 12G)",
+        "carrier": "13th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5079497539717",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "576.00",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "1.92TB SAS 12Gb/s 2.5\" SSD for HPE ProLiant Servers | Enterprise Drive in Gen8 Gen9 Gen10 Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 1920,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "HPE ProLiant Gen8 Gen9 Gen10",
+        "carrier": "HP hot-plug carrier",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5079497932933",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "available",
+     "price": {
+      "amount": "549.00",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "1.6TB SAS 12Gb/s 2.5\" SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 1600,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell EMC PowerEdge 14G",
+        "carrier": "14th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5079497998469",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "available",
+     "price": {
+      "amount": "555.00",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "1.92TB MLC SAS 12Gb/s 2.5\" SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 1920,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell EMC PowerEdge 14G",
+        "carrier": "14th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5079498064005",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "1152.00",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "3.84TB MLC SAS 12Gb/s 2.5\" SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 3840,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell EMC PowerEdge 14G",
+        "carrier": "14th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5100594200709",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "74.99",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "300GB 15K SAS 12Gb/s 2.5\" HDD for Dell PowerEdge Servers | Enterprise Drive in 13G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 300,
+        "storage_kind": "HDD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell PowerEdge 13G (backwards compatible 10G, 11G, 12G)",
+        "carrier": "13th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5146842529925",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "899.00",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "3.84TB 3D TLC SAS 12Gb/s 2.5\" SSD for HPE ProLiant Servers | Enterprise Drive in Gen8 Gen9 Gen10 Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 3840,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "HPE ProLiant Gen8 Gen9 Gen10",
+        "carrier": "8th gen HPE hot-plug carrier",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5159485833349",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "149.99",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "400GB 3D MLC SAS 12Gb/s 2.5\" SSD for Dell PowerEdge Servers | Enterprise Drive in 13G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 400,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell PowerEdge 13G (backwards compatible 11G, 12G)",
+        "carrier": "13th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5159485866117",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "149.99",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "400GB 3D MLC SAS 12Gb/s 2.5\" SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 400,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell EMC PowerEdge 14G",
+        "carrier": "14th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5159485931653",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "194.99",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "400GB MLC SAS 12Gb/s 2.5\" SSD for Dell PowerEdge Servers | Enterprise Drive in 13G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 400,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell PowerEdge 13G (backwards compatible 11G, 12G)",
+        "carrier": "13th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5159485964421",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "194.99",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "400GB MLC SAS 12Gb/s 2.5\" SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 400,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell EMC PowerEdge 14G",
+        "carrier": "14th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5159486226565",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "4608.00",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "15.36TB 3D TLC SAS 12Gb/s 2.5\" SSD for Dell PowerEdge Servers | Enterprise Drive in 13G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 15360,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell PowerEdge 13G (backwards compatible 11G, 12G)",
+        "carrier": "13th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5159486259333",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "4608.00",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "15.36TB SAS 12Gb/s 2.5\" SSD for HPE ProLiant Servers | Enterprise Drive in Gen8 Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 15360,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "HPE ProLiant Gen8 Gen9 Gen10",
+        "carrier": "8th gen HPE hot-plug carrier",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5159486292101",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "576.00",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "1.92TB MLC SAS 12Gb/s 2.5\" SSD for Dell PowerEdge Servers | Enterprise Drive in 13G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 1920,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell PowerEdge 13G (backwards compatible 11G, 12G)",
+        "carrier": "13th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5159486324869",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "576.00",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "1.92TB MLC SAS 12Gb/s 2.5\" SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 1920,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell EMC PowerEdge 14G",
+        "carrier": "14th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5159486390405",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "1152.00",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "3.2TB MLC SAS 12Gb/s 2.5\" SSD for Dell PowerEdge Servers | Enterprise Drive in 13G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 3200,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell PowerEdge 13G (backwards compatible 11G, 12G)",
+        "carrier": "13th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5159486423173",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "1152.00",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "3.2TB MLC SAS 12Gb/s 2.5\" SSD for Dell EMC PowerEdge Servers | Enterprise Drive in 14G Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 3200,
+        "storage_kind": "SSD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "Dell EMC PowerEdge 14G",
+        "carrier": "14th gen Dell hot-plug caddy",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5160409202821",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "26.99",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "300GB 10K SAS 12Gb/s 2.5\" HDD for HPE ProLiant Servers | Enterprise Drive in Gen7 Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 300,
+        "storage_kind": "HDD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "HPE ProLiant Gen7 (backwards compatible G1-G6)",
+        "carrier": "7th gen HPE hot-plug carrier",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5160409268357",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "26.99",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "300GB 10K SAS 12Gb/s 2.5\" HDD for HPE ProLiant Servers | Enterprise Drive in Gen8 Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 300,
+        "storage_kind": "HDD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "HPE ProLiant Gen8 Gen9 Gen10",
+        "carrier": "8th gen HPE hot-plug carrier",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "5160409301125",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Default Title",
+     "availability": "unavailable",
+     "price": {
+      "amount": "74.99",
+      "currency": null,
+      "price_kind": "ask",
+      "price_basis": "explicit_unit",
+      "quantity_units": 1,
+      "bound_low": null,
+      "bound_high": null,
+      "basis_note": "Listed price for one drive"
+     },
+     "lines": [
+      {
+       "label": "300GB 15K SAS 12Gb/s 2.5\" HDD for HPE ProLiant Servers | Enterprise Drive in Gen7 Tray",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "storage_capacity_gb": 300,
+        "storage_kind": "HDD",
+        "storage_interface": "SAS 12Gb/s",
+        "form_factor": "2.5\"",
+        "compatible_with": "HPE ProLiant Gen7 (backwards compatible G1-G6)",
+        "carrier": "7th gen HPE hot-plug carrier",
+        "warranty": "2-year replacement warranty"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Single variant, price and availability stated."
+  },
+  {
+   "id": "175685581237",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "AMD EPYC 7543+ Supermicro H12SSL-I 2.8GHz 32 core 64 thread combination",
+     "availability": "available",
+     "price": {
+      "amount": "1910.00",
+      "basis_note": "Price for the CPU+motherboard combination",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "AMD EPYC 7543",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7543",
+        "cpu_cores": 32,
+        "cpu_threads": 64,
+        "cpu_family": "EPYC 7003 series",
+        "cpu_count": 1
+       },
+       "children": []
+      },
+      {
+       "label": "Supermicro H12SSL-I motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-I"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says EPYC 7543+ but description says EPYC 7543; specs say AMD epyc 7543"
+   ],
+   "read_confidence": "high",
+   "read_note": "Clear CPU listing with price and specs"
+  },
+  {
+   "id": "175699383587",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "South H12D-8D SP3 motherboard",
+     "availability": "available",
+     "price": {
+      "amount": "848.00",
+      "basis_note": "Price for the motherboard",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "South H12D-8D SP3 motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "South",
+        "chassis_model": "H12D-8D",
+        "ram_dimm_count": 8,
+        "ram_type": "DDR4",
+        "ram_speed_mts": 3200,
+        "nic": "2x Intel I226-V 2.5GbE, 1x Realtek RTL8201F 100MbE IPMI"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says H12D-8D but description says 12D-8D; specs say Processor Model H12-D8",
+    "Specs list MPN AT80569KJ080N which is for a CPU, but this is a motherboard listing"
+   ],
+   "read_confidence": "med",
+   "read_note": "Motherboard listing with conflicting model names"
+  },
+  {
+   "id": "175732805629",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i Motherboard",
+     "availability": "available",
+     "price": {
+      "amount": "1799.00",
+      "basis_note": "Price for the motherboard",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-i Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "ram_type": "ECC",
+        "cpu_family": "AMD EPYC 7002"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says H12SSL-i but description says H12SSL-i; specs say Model H12SSL-i",
+    "Description mentions AMD Opteron and 1.95GHz which is inconsistent with EPYC 7002 support"
+   ],
+   "read_confidence": "med",
+   "read_note": "Motherboard listing with some conflicting specs"
+  },
+  {
+   "id": "175871234727",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "AMD EPYC 7302+Supermicro H12SSL-i 16cores 32threads 3.0 GHz motherboard+CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1724.18",
+      "basis_note": "Price for the CPU+motherboard combination",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "AMD EPYC 7302",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7302",
+        "cpu_cores": 16,
+        "cpu_threads": 32,
+        "cpu_family": "EPYC 7002 series",
+        "cpu_count": 1
+       },
+       "children": []
+      },
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says EPYC 7302+ but description says EPYC 7302; specs say AMD epyc 7302+H12SSL-i"
+   ],
+   "read_confidence": "high",
+   "read_note": "CPU+motherboard combo with clear specs"
+  },
+  {
+   "id": "176118710627",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i + AMD EPYC 7B13 cpu processor",
+     "availability": "available",
+     "price": {
+      "amount": "60217.00",
+      "basis_note": "Price for the CPU+motherboard combination",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "TWD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "AMD EPYC 7B13",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7B13",
+        "cpu_cores": 60,
+        "cpu_threads": 60,
+        "cpu_family": "EPYC 7003 series",
+        "cpu_count": 1
+       },
+       "children": []
+      },
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says EPYC 7B13 64 cores 128 threads 2.25GHz but description says 60 cores 60 threads 2.2GHz; specs say 60 cores 2.2GHz",
+    "Description includes EPYC 7452 specs which conflict with 7B13"
+   ],
+   "read_confidence": "med",
+   "read_note": "CPU+motherboard combo with conflicting CPU specs"
+  },
+  {
+   "id": "176373372296",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Dell PowerEdge R6515 8X2.5\" 2x 550W 4XDDR4 32G EPYC 7542 32Core 2.9G Server H330",
+     "availability": "available",
+     "price": {
+      "amount": "3760.44",
+      "basis_note": "Price for the configured server",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R6515 server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R6515",
+        "form_factor_u": 1,
+        "drive_bays": 8,
+        "psu_count": 2,
+        "psu_watts": 550,
+        "raid_controller": "H330",
+        "nic": "Motherboard built-in"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7542 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7542",
+        "cpu_cores": 32,
+        "cpu_count": 1
+       },
+       "children": []
+      },
+      {
+       "label": "4x DDR4 32G 2666MHz",
+       "quantity": 4,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 128,
+        "ram_dimm_count": 4,
+        "ram_dimm_gb": 32,
+        "ram_type": "DDR4",
+        "ram_speed_mts": 2666
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says EPYC 7542 but description says EPYC 7 542 (typo)"
+   ],
+   "read_confidence": "high",
+   "read_note": "Server listing with detailed configuration"
+  },
+  {
+   "id": "176401727588",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "HPE ProLiant DL325 Gen10 Plus V2 7313P 16 Core 3GHz 256GB RAM 4 X 1.6TB NVMe",
+     "availability": "available",
+     "price": {
+      "amount": "9913.20",
+      "basis_note": "Price for the configured server",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "HPE ProLiant DL325 Gen10 Plus V2 server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "HPE",
+        "chassis_model": "ProLiant DL325 Gen10 Plus V2",
+        "drive_bays": 8,
+        "psu_count": 2,
+        "raid_controller": "HPE MR416-a",
+        "nic": "Dual port 10/25GB SFP28 OCP3",
+        "gpu": "Embedded"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7313P CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7313P",
+        "cpu_cores": 16,
+        "cpu_count": 1
+       },
+       "children": []
+      },
+      {
+       "label": "8x 32GB 3200 RAM",
+       "quantity": 8,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 256,
+        "ram_dimm_count": 8,
+        "ram_dimm_gb": 32,
+        "ram_type": "DDR4",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      },
+      {
+       "label": "4x HPe 1.6TB NVMe U.3 PM1735",
+       "quantity": 4,
+       "separately_purchasable": false,
+       "attributes": {
+        "storage_capacity_gb": 6400,
+        "storage_kind": "NVMe",
+        "storage_interface": "U.3"
+       },
+       "children": []
+      },
+      {
+       "label": "2x HPe 480GB SATA M.2 SSD",
+       "quantity": 2,
+       "separately_purchasable": false,
+       "attributes": {
+        "storage_capacity_gb": 960,
+        "storage_kind": "SSD",
+        "storage_interface": "SATA M.2"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says HPE ProLiant DL325 but specs say Brand DELL and Model DL380 G10"
+   ],
+   "read_confidence": "med",
+   "read_note": "Server listing with conflicting brand/model in specs"
+  },
+  {
+   "id": "176535664848",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "AMD EPYC 7402p+Supermicro H12SSL-i 24cores 2.8 GHz motherboard+CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1320.00",
+      "basis_note": "Price for the CPU+motherboard combination",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "AMD EPYC 7402",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7402",
+        "cpu_cores": 24,
+        "cpu_threads": 48,
+        "cpu_family": "EPYC 7002 series",
+        "cpu_count": 1
+       },
+       "children": []
+      },
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says EPYC 7402p but description says EPYC 7402; specs say AMD epyc 7402+H12SSL-I"
+   ],
+   "read_confidence": "high",
+   "read_note": "CPU+motherboard combo with clear specs"
+  },
+  {
+   "id": "176541745441",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i + AMD EPYC 7F72 combination",
+     "availability": "available",
+     "price": {
+      "amount": "1609.00",
+      "basis_note": "Price for the CPU+motherboard combination",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "AMD EPYC 7F72",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7F72",
+        "cpu_count": 1
+       },
+       "children": []
+      },
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says EPYC 7F72 but description doesn't specify CPU model; specs say Model EPYC"
+   ],
+   "read_confidence": "med",
+   "read_note": "CPU+motherboard combo with limited CPU details"
+  },
+  {
+   "id": "177074304874",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-i Motherboard With AMD EPYC 7662 CPU",
+     "availability": "available",
+     "price": {
+      "amount": "1969.63",
+      "basis_note": "Price for the CPU+motherboard combination",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "AMD EPYC 7662 CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7662",
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_family": "EPYC 7002 series",
+        "cpu_count": 1
+       },
+       "children": []
+      },
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "ram_dimm_count": 8,
+        "ram_type": "DDR4",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says EPYC 7662 but description says EPYC 7662; specs say CPU Series amd epyc 7662"
+   ],
+   "read_confidence": "high",
+   "read_note": "CPU+motherboard combo with detailed specs"
+  },
+  {
+   "id": "177952707138",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "DELL POWEREDGE R7515 12 BAY LFF SERVER",
+     "availability": "available",
+     "price": {
+      "amount": "3499.00",
+      "basis_note": "Price for the base chassis configuration",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R7515 server chassis",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R7515",
+        "form_factor_u": 2,
+        "drive_bays": 12,
+        "psu_count": 2,
+        "psu_watts": 750,
+        "nic": "Dual 1GB Ethernet",
+        "cpu_count": 0,
+        "ram_total_gb": 0,
+        "storage_capacity_gb": 0
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 12 BAY LFF but description says 12 BAY LFF; specs say Model R7515 12 BAYS"
+   ],
+   "read_confidence": "med",
+   "read_note": "Server chassis with no CPU/RAM/HDD, configurable"
+  },
+  {
+   "id": "178001227182",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Dell PowerEdge R6515 10x SFF U.2 supported AMD EPYC 7702P 64-Core",
+     "availability": "available",
+     "price": {
+      "amount": "7017.02",
+      "basis_note": "Price for the configured server",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R6515 server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R6515",
+        "form_factor_u": 1,
+        "drive_bays": 10,
+        "psu_count": 2,
+        "psu_watts": 550,
+        "raid_controller": "H730P",
+        "nic": "Dual port X710 card",
+        "boot_device": "Boss card with 2x 240GB SSD"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7702P CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7702P",
+        "cpu_cores": 64,
+        "cpu_count": 1
+       },
+       "children": []
+      },
+      {
+       "label": "2x 240GB SSD on BOSS card",
+       "quantity": 2,
+       "separately_purchasable": false,
+       "attributes": {
+        "storage_capacity_gb": 480,
+        "storage_kind": "SSD",
+        "storage_interface": "SATA"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 10x SFF U.2 supported but description says 10x SFF 2.5\" chassis"
+   ],
+   "read_confidence": "high",
+   "read_note": "Server listing with detailed configuration"
+  },
+  {
+   "id": "178231484776",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "HP P15511-B21 DL325 Gen10+ 8SFF SC FIO Cage Kit",
+     "availability": "available",
+     "price": {
+      "amount": "199.95",
+      "basis_note": "Price for the cage kit",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "HP P15511-B21 DL325 Gen10+ 8SFF SC FIO Cage Kit",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "HP",
+        "chassis_model": "DL325 Gen10+",
+        "drive_bays": 8
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear accessory listing"
+  },
+  {
+   "id": "178398597091",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro 1114S-WN10RT 1U 10-Bay NVMe U.2 Server H12SSW-NTR + AMD Epyc 7402P",
+     "availability": "unavailable",
+     "price": {
+      "amount": "1999.99",
+      "basis_note": "Price for the server with CPU",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro 1114S-WN10RT server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "1114S-WN10RT",
+        "form_factor_u": 1,
+        "drive_bays": 10,
+        "psu_count": 2,
+        "psu_watts": 750,
+        "nic": "2x 10GBASE-T Broadcom BCM57416",
+        "ram_dimm_count": 16,
+        "ram_type": "DDR4",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7402P CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7402P",
+        "cpu_count": 1
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 1U 10-Bay NVMe U.2 Server but description says 10 front hot-swap 2.5\" NVMe/SATA drive bays"
+   ],
+   "read_confidence": "high",
+   "read_note": "Server listing with detailed specs, out of stock"
+  },
+  {
+   "id": "178548958434",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Supermicro H12SSL-C Motherboard AMD EPYC 7402",
+     "availability": "available",
+     "price": {
+      "amount": "1299.00",
+      "basis_note": "Price for the motherboard",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Supermicro H12SSL-C Motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-C",
+        "ram_type": "DDR4"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says H12SSL-C but specs say MPN H12SSL-I"
+   ],
+   "read_confidence": "med",
+   "read_note": "Motherboard listing with conflicting model in MPN"
+  },
+  {
+   "id": "183706831500",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "DELL EMC POWEREDGE R7515 R7415 24 BAY SFF SERVER EMPTY CHASSIS",
+     "availability": "available",
+     "price": {
+      "amount": "499.00",
+      "basis_note": "Price for the empty chassis",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R7515/R7415 empty chassis",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R7515/R7415",
+        "form_factor_u": 2,
+        "drive_bays": 24,
+        "psu_count": 0,
+        "cpu_count": 0,
+        "ram_total_gb": 0,
+        "storage_capacity_gb": 0
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 24 BAY SFF but description says 24 HDD 2.5\" SLFF BAYS"
+   ],
+   "read_confidence": "med",
+   "read_note": "Empty chassis listing"
+  },
+  {
+   "id": "185300930400",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "DELL EMC POWEREDGE R7515 12 LFF BAY SERVER AMD 8 CORE 3.1GHZ 7232P 32GB H730P",
+     "availability": "available",
+     "price": {
+      "amount": "3999.00",
+      "basis_note": "Price for the configured server",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R7515 server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R7515",
+        "form_factor_u": 2,
+        "drive_bays": 12,
+        "psu_count": 1,
+        "raid_controller": "H730P",
+        "nic": "Dual 1GB Ethernet"
+       },
+       "children": []
+      },
+      {
+       "label": "AMD EPYC 7232P CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "AMD EPYC 7232P",
+        "cpu_cores": 8,
+        "cpu_count": 1
+       },
+       "children": []
+      },
+      {
+       "label": "32GB RAM",
+       "quantity": null,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 32
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 12 LFF BAY but description says 12X3.5\" LFF BAYS"
+   ],
+   "read_confidence": "high",
+   "read_note": "Server listing with detailed configuration"
+  },
+  {
+   "id": "185300961152",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "DELL EMC POWEREDGE R7515 12 BAY SAS SATA LFF SERVER EMPTY CHASSIS",
+     "availability": "available",
+     "price": {
+      "amount": "499.00",
+      "basis_note": "Price for the empty chassis",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R7515 empty chassis",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R7515",
+        "form_factor_u": 2,
+        "drive_bays": 12,
+        "psu_count": 0,
+        "cpu_count": 0,
+        "ram_total_gb": 0,
+        "storage_capacity_gb": 0
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 12 BAY but description says 12 SAS SATA HDD 3.5\" LFF BAYS"
+   ],
+   "read_confidence": "med",
+   "read_note": "Empty chassis listing"
+  },
+  {
+   "id": "185439945483",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "DELL EMC POWEREDGE R6515 R6415 8 BAY SFF SERVER EMPTY METAL CHASSIS",
+     "availability": "available",
+     "price": {
+      "amount": "499.00",
+      "basis_note": "Price for the empty chassis",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R6515/R6415 empty chassis",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R6515/R6415",
+        "form_factor_u": 1,
+        "drive_bays": 8,
+        "psu_count": 0,
+        "cpu_count": 0,
+        "ram_total_gb": 0,
+        "storage_capacity_gb": 0
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 8 BAY SFF but specs say Model R6415 10 BAY SFF and HDD capacity 10 x 2.5\""
+   ],
+   "read_confidence": "med",
+   "read_note": "Empty chassis listing with conflicting bay count"
+  },
+  {
+   "id": "185933465040",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "DELL EMC POWEREDGE R7415 R7515 SERVER REAR CHASSIS WITH INTRUSION SWITCH",
+     "availability": "available",
+     "price": {
+      "amount": "99.00",
+      "basis_note": "Price for the rear chassis",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R7415/R7515 rear chassis with intrusion switch",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R7415/R7515",
+        "form_factor_u": 2
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [],
+   "read_confidence": "high",
+   "read_note": "Clear accessory listing"
+  },
+  {
+   "id": "186227255673",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "Dell PowerEdge R6515 8X2.5\" Server H730/2x550W/7H12 64Core/256G RAM/8X1.2T SAS",
+     "availability": "available",
+     "price": {
+      "amount": "7034.38",
+      "basis_note": "Price for the configured server",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R6515 server",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R6515",
+        "form_factor_u": 1,
+        "drive_bays": 8,
+        "psu_count": 2,
+        "psu_watts": 550,
+        "raid_controller": "H730",
+        "nic": "Motherboard built-in"
+       },
+       "children": []
+      },
+      {
+       "label": "7H12 CPU",
+       "quantity": 1,
+       "separately_purchasable": false,
+       "attributes": {
+        "cpu_model": "7H12",
+        "cpu_cores": 64,
+        "cpu_count": 1
+       },
+       "children": []
+      },
+      {
+       "label": "8x 32G 3200MHz RAM",
+       "quantity": 8,
+       "separately_purchasable": false,
+       "attributes": {
+        "ram_total_gb": 256,
+        "ram_dimm_count": 8,
+        "ram_dimm_gb": 32,
+        "ram_type": "DDR4",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      },
+      {
+       "label": "8x 1.2T SAS HDD",
+       "quantity": 8,
+       "separately_purchasable": false,
+       "attributes": {
+        "storage_capacity_gb": 9600,
+        "storage_kind": "SAS",
+        "storage_interface": "SAS"
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 7H12 64Core but description says 1X 7H12 CPU 64Core"
+   ],
+   "read_confidence": "high",
+   "read_note": "Server listing with detailed configuration"
+  },
+  {
+   "id": "186885276680",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "DELL EMC POWEREDGE R6515 SERVER REAR CHASSIS WITH TOP COVER",
+     "availability": "available",
+     "price": {
+      "amount": "99.00",
+      "basis_note": "Price for the rear chassis",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R6515 rear chassis with top cover",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R6515",
+        "form_factor_u": 1
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says REAR CHASSIS WITH TOP COVER but description says NEW REAR CHASSIS WITH TOP COVER"
+   ],
+   "read_confidence": "high",
+   "read_note": "Clear accessory listing"
+  },
+  {
+   "id": "186885293041",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "DELL EMC POWEREDGE R6515 4 BAY LFF SERVER METAL CHASSIS",
+     "availability": "available",
+     "price": {
+      "amount": "299.00",
+      "basis_note": "Price for the empty chassis",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R6515 empty chassis",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R6515",
+        "form_factor_u": 1,
+        "drive_bays": 4,
+        "psu_count": 0,
+        "cpu_count": 0,
+        "ram_total_gb": 0,
+        "storage_capacity_gb": 0
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 4 BAY LFF but specs say HDD capacity 4 x 3.5\" SAS/SATA"
+   ],
+   "read_confidence": "med",
+   "read_note": "Empty chassis listing"
+  },
+  {
+   "id": "187553274176",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "DELL POWEREDGE R7515 12 BAY LFF SERVER 0GHZ 0GB IDRAC9 ENT CTO (CONFIGURABLE)",
+     "availability": "available",
+     "price": {
+      "amount": "3499.00",
+      "basis_note": "Price for the base chassis configuration",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "Dell PowerEdge R7515 server chassis",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Dell",
+        "chassis_model": "PowerEdge R7515",
+        "form_factor_u": 2,
+        "drive_bays": 12,
+        "psu_count": 0,
+        "nic": "Dual 1GB Ethernet",
+        "cpu_count": 0,
+        "ram_total_gb": 0,
+        "storage_capacity_gb": 0
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 12 BAY LFF but description says 24 BAY LFF"
+   ],
+   "read_confidence": "med",
+   "read_note": "Server chassis with no CPU/RAM/HDD, configurable"
+  },
+  {
+   "id": "187785646614",
+   "outcome": "extracted",
+   "sale_groups": [
+    {
+     "label": "7713P CPU + Supermicro H12SSL-I 2.0GHZ 64 core 128 thread combination",
+     "availability": "available",
+     "price": {
+      "amount": "2587.52",
+      "basis_note": "Price for the CPU+motherboard combination",
+      "bound_high": null,
+      "bound_low": null,
+      "currency": "USD",
+      "price_basis": "explicit_unit",
+      "price_kind": "ask",
+      "quantity_units": 1
+     },
+     "lines": [
+      {
+       "label": "7713P CPU",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "cpu_model": "7713P",
+        "cpu_cores": 64,
+        "cpu_threads": 128,
+        "cpu_count": 1
+       },
+       "children": []
+      },
+      {
+       "label": "Supermicro H12SSL-i motherboard",
+       "quantity": 1,
+       "separately_purchasable": true,
+       "attributes": {
+        "chassis_vendor": "Supermicro",
+        "chassis_model": "H12SSL-i",
+        "ram_dimm_count": 8,
+        "ram_type": "DDR4",
+        "ram_speed_mts": 3200
+       },
+       "children": []
+      }
+     ]
+    }
+   ],
+   "quarantine": {},
+   "conflicts": [
+    "Title says 7713P CPU but description says 1x 7713P Motherboard"
+   ],
+   "read_confidence": "med",
+   "read_note": "CPU+motherboard combo with some confusion in description"
+  }
+ ],
+ "failed": {},
+ "batch_rows": [
+  {
+   "ts": "2026-10-13T09:37:28.285862+00:00",
+   "batch_index": "0",
+   "model": "deepseek/deepseek-v4-flash-0731",
+   "prompt_version": "batch-v2",
+   "listing_count": 25,
+   "input_tokens": 8462,
+   "output_tokens": 8828,
+   "cached_tokens": 0,
+   "cost_usd": 0.005819,
+   "latency_s": 30.73,
+   "retries": 0,
+   "truncated": false,
+   "salvaged_parse": false,
+   "retried_missing": 0,
+   "salvage_batch_size": null,
+   "failed_ids": [],
+   "status": "ok"
+  },
+  {
+   "ts": "2026-10-13T09:39:45.967113+00:00",
+   "batch_index": "1",
+   "model": "deepseek/deepseek-v4-flash-0731",
+   "prompt_version": "batch-v2",
+   "listing_count": 25,
+   "input_tokens": 35168,
+   "output_tokens": 10540,
+   "cached_tokens": 0,
+   "cost_usd": 0.007449,
+   "latency_s": 137.68,
+   "retries": 0,
+   "truncated": false,
+   "salvaged_parse": false,
+   "retried_missing": 0,
+   "salvage_batch_size": null,
+   "failed_ids": [],
+   "status": "ok"
+  }
+ ]
+}

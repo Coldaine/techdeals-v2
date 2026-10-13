@@ -15,16 +15,16 @@ BEGIN
         'price_observations', 'availability_observations',
         'resolutions', 'quarantine_events', 'categories'
     ] LOOP
-        IF to_regclass('public.' || t) IS NULL THEN
+        IF to_regclass(t) IS NULL THEN
             RAISE EXCEPTION 'smoke fail: table % missing', t;
         END IF;
     END LOOP;
     FOREACH t IN ARRAY ARRAY[
         'v_current_extractions', 'v_cheapest_available', 'v_category_prices',
         'v_price_history', 'v_product_reference_price', 'v_lot_worth',
-        'v_accounting', 'v_line_ram', 'v_stale_quarantine'
+        'v_accounting', 'v_line_ram', 'v_group_ram', 'v_ddr4_gb_rate', 'v_partout', 'v_stale_quarantine'
     ] LOOP
-        IF to_regclass('public.' || t) IS NULL THEN
+        IF to_regclass(t) IS NULL THEN
             RAISE EXCEPTION 'smoke fail: view % missing', t;
         END IF;
     END LOOP;

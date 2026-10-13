@@ -48,7 +48,7 @@ MODEL_PRICES = {
     "qwen/qwen3.8-27b": (0.04, 2.30),
 }
 
-PROMPT_VERSION = "batch-v1"
+PROMPT_VERSION = "batch-v2"
 OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out")
 # S3: hard batch floor — every LLM call (steady state OR salvage retry) must
 # carry at least MIN_BATCH_SIZE listings; one-listing-per-call is a defect
@@ -210,12 +210,14 @@ Decomposition and purchase shape:
 - The currently listed / base configuration (the one whose price is displayed) is the FIRST sale group. Each selectable variant option that has its own price is its own sale group.
 - Each sale group decomposes into "lines": one line per distinct item the purchase includes (the server itself, the CPU, the RAM kit, the drives, the PSU...). Components of a configured server are lines with separately_purchasable=false; the server/chassis line and any item the seller sells on its own are separately_purchasable=true.
 - A "quantity" on a line is the stated count of that item (e.g. 4 sticks of RAM, 8 drives). Leave it null when the count is not stated — never silently default it to one. A total memory capacity does not reveal a module count.
+- Every line's "label" is the seller's own words for that item and is never empty. If the listing names only one product, that name is the line label.
 - Do not create lines for things the listing explicitly excludes or lists only as optional add-ons; if useful, record exclusions via a line's attributes instead of lines.
 
 Prices:
 - Put a price on a sale group (what the whole purchasable configuration costs). NEVER allocate a group or lot total across its component lines and NEVER calculate unit prices. Component lines get no price.
 - price_kind: "ask" for an asking/listed price; "bid" for a current auction bid; "sold" for a completed sale; "cost_basis" for a stated internal cost; "reference" for a comparable quote not attached to this listing. Prefer "ask" when the page shows a listing price. Never interpret a displayed asking price as a verified sale.
 - price_basis: "explicit_unit" when the stated price is per unit and the quantity it covers is known (amount covers quantity_units units); "homogeneous_division" when the stated price is a lot total for N identical units (amount = the lot total, quantity_units = N — the per-unit value is derived later, never stored here); "bound_only" when the amount is ambiguous (a range, a "from" price, unclear scope) — then amount is null and bound_low/bound_high carry the stated bounds (one may be null). Never use "allocated" — allocation is an analysis-time decision, not an extraction step.
+- A source line shaped "N x <item> $P" with no "each"/"per" is a lot total: homogeneous_division, amount P, quantity_units N. A source line shaped "N x <item> $P each" (or "per") is explicit_unit: amount P, quantity_units 1, and the line quantity stays N.
 - Represent amounts as decimal STRINGS. Currency is not implied by a dollar symbol: use the capture's stated currency field; null when not stated.
 - A displayed price for a configured bundle (one server including CPU+RAM) is an ask for ONE purchasable bundle: quantity_units = 1, basis "explicit_unit", basis_note describing what the amount covers.
 
@@ -481,8 +483,155 @@ def as_decimal(s) -> str | None:
 
 # --------------------------------------------------------------- validation --
 
+# A description line that is itself a lot offer: "4x 8TB Exos $280" or
+# "2x 20TB WD Gold $150 each". The count must lead the line. Chassis words
+# keep a configured-server sentence from being read as a lot of parts.
+_LOT_LINE = re.compile(
+    r"(?i)^\s*(?P<n>\d+)\s*x\b(?P<body>[^\n]{0,160}?)\$\s*(?P<amt>\d{1,3}(?:,\d{3})*(?:\.\d{1,2})?)"
+    r"\s*(?P<each>\b(?:each|per|ea)\b|/ea)?"
+)
+_NOT_A_LOT = re.compile(r"(?i)\b(server|chassis|motherboard|poweredge|supermicro|proliant|barebone)\b")
+_LABEL_ATTRS = ("cpu_model", "chassis_model", "motherboard", "gpu")
 
-def validate_result(res: dict) -> dict:
+
+def _label_from_attributes(attrs: dict) -> str | None:
+    parts: list[str] = []
+    for key in _LABEL_ATTRS:
+        val = attrs.get(key)
+        if isinstance(val, str) and val.strip():
+            parts.append(val.strip())
+    dimm = attrs.get("ram_dimm_gb")
+    if isinstance(dimm, (int, float)) and not isinstance(dimm, bool):
+        parts.append(f"{dimm:g}GB DIMM")
+    cap = attrs.get("storage_capacity_gb")
+    if isinstance(cap, (int, float)) and not isinstance(cap, bool):
+        kind = attrs.get("storage_kind")
+        kind_s = kind.strip() if isinstance(kind, str) and kind.strip() else "drive"
+        parts.append(f"{cap:g}GB {kind_s}")
+    if not parts:
+        return None
+    return " ".join(parts)[:300]
+
+
+def _repair_lines(raw_lines, group_label: str | None, fallback_label: str | None) -> list[dict]:
+    """Keep a listing when the model emits an empty line label.
+
+    Fill from the sale-group label, then stated attributes. The capture title
+    is used only when every line in the group is unlabeled (a single product
+    whose name is the listing title). Any line that still has no seller words
+    is dropped, and that drop does not fail the rest of the listing.
+    """
+    raw_lines = raw_lines or []
+    any_labeled = any(isinstance(ln, dict) and (ln.get("label") or "").strip() for ln in raw_lines)
+    title_fallback = None if any_labeled else fallback_label
+    out = []
+    for ln in raw_lines:
+        if not isinstance(ln, dict):
+            raise ValueError("line not an object")
+        attrs = {k: v for k, v in (ln.get("attributes") or {}).items() if v is not None}
+        label = (ln.get("label") or "").strip()
+        filled = None
+        if not label:
+            for source, candidate in (
+                ("sale_group_label", (group_label or "").strip()),
+                ("capture_title", (title_fallback or "").strip()),
+                ("attributes", _label_from_attributes(attrs) or ""),
+            ):
+                if candidate:
+                    label = candidate
+                    filled = source
+                    break
+        children = []
+        for c in ln.get("children") or []:
+            if not isinstance(c, dict) or not (c.get("label") or "").strip():
+                continue
+            children.append({
+                "label": c["label"].strip(),
+                "quantity": c.get("quantity") if isinstance(c.get("quantity"), (int, float)) and not isinstance(c.get("quantity"), bool) else None,
+                "separately_purchasable": bool(c.get("separately_purchasable")),
+                "attributes": {k: v for k, v in (c.get("attributes") or {}).items() if v is not None},
+            })
+        if not label and children:
+            label = children[0]["label"]
+            filled = "first_child_label"
+        if not label:
+            continue
+        if filled:
+            attrs["label_filled_from"] = filled
+        qty = ln.get("quantity")
+        out.append({
+            "label": label,
+            "quantity": qty if isinstance(qty, (int, float)) and not isinstance(qty, bool) else None,
+            "separately_purchasable": bool(ln.get("separately_purchasable")),
+            "attributes": attrs,
+            "children": children,
+        })
+    return out
+
+
+def _amount_equal(left, right: str) -> bool:
+    a = as_decimal(left)
+    b = as_decimal(str(right).replace(",", ""))
+    if a is None or b is None:
+        return False
+    return float(a) == float(b)
+
+
+def _lot_phrase(description: str, line_label: str, stated_qty, amount) -> dict | None:
+    """The description line that states this single item's price, if any."""
+    if not description or stated_qty is None or stated_qty <= 1 or amount is None:
+        return None
+    label_tokens = {w.lower() for w in re.findall(r"[A-Za-z0-9]{3,}", line_label or "")}
+    found = []
+    for line in description.splitlines():
+        m = _LOT_LINE.search(line.strip())
+        if not m:
+            continue
+        if _NOT_A_LOT.search(line):
+            continue
+        if int(m.group("n")) != int(stated_qty):
+            continue
+        if not _amount_equal(amount, m.group("amt")):
+            continue
+        body_tokens = {w.lower() for w in re.findall(r"[A-Za-z0-9]{3,}", m.group("body") or "")}
+        overlap = len(label_tokens & body_tokens)
+        found.append((overlap, m.group("each") is not None, line.strip()))
+    if not found:
+        return None
+    found.sort(key=lambda row: row[0], reverse=True)
+    if len(found) > 1 and found[0][0] == 0:
+        return None
+    overlap, each, text = found[0]
+    if len(found) > 1 and overlap == 0:
+        return None
+    return {"each": each, "text": text}
+
+
+def apply_source_price_basis(description: str, line_label: str, stated_qty, po: dict) -> str | None:
+    """Relabel a single-line group's price from the source sentence.
+
+    Returns a short note when the basis changed, else None. Does nothing
+    when the source sentence cannot be found — the caller keeps its conflict
+    check. Never divides an amount; a lot total stays the lot total.
+    """
+    phrase = _lot_phrase(description, line_label, stated_qty, po.get("amount"))
+    if phrase is None:
+        return None
+    note = po.get("basis_note") or ""
+    if phrase["each"]:
+        po["price_basis"] = "explicit_unit"
+        po["quantity"] = 1.0
+        extra = "source states a per-unit price ('each'); line quantity is how many are offered"
+    else:
+        po["price_basis"] = "homogeneous_division"
+        po["quantity"] = float(stated_qty)
+        extra = (f"source states a lot total for {int(stated_qty)} identical units; "
+                 "amount left undivided")
+    po["basis_note"] = (note + " " if note else "") + extra
+    return extra
+
+
+def validate_result(res: dict, fallback_label: str | None = None) -> dict:
     """Coerce one model result into the engine's canonical shape; raise on garbage."""
     out = {
         "id": str(res.get("id")),
@@ -499,26 +648,7 @@ def validate_result(res: dict) -> dict:
         if not isinstance(g, dict):
             raise ValueError("sale group not an object")
         price = g.get("price")
-        lines_out = []
-        for ln in g.get("lines") or []:
-            if not (ln.get("label") or "").strip():
-                raise ValueError("line without label")
-            qty = ln.get("quantity")
-            lines_out.append({
-                "label": ln["label"],
-                "quantity": qty if isinstance(qty, (int, float)) and not isinstance(qty, bool) else None,
-                "separately_purchasable": bool(ln.get("separately_purchasable")),
-                "attributes": {k: v for k, v in (ln.get("attributes") or {}).items() if v is not None},
-                "children": [
-                    {
-                        "label": (c.get("label") or "").strip(),
-                        "quantity": c.get("quantity") if isinstance(c.get("quantity"), (int, float)) and not isinstance(c.get("quantity"), bool) else None,
-                        "separately_purchasable": bool(c.get("separately_purchasable")),
-                        "attributes": {k: v for k, v in (c.get("attributes") or {}).items() if v is not None},
-                    }
-                    for c in (ln.get("children") or []) if (c.get("label") or "").strip()
-                ],
-            })
+        lines_out = _repair_lines(g.get("lines") or [], g.get("label"), fallback_label)
         if price is not None:
             if not isinstance(price, dict):
                 raise ValueError("price not an object")
@@ -953,6 +1083,19 @@ def build_batch_doc(batch: list[dict], model: str, parser_name: str, cost_usd: f
                 })
             if g["price"] is not None:
                 po, drop_reason = price_observation(l, path, g)
+                description = ""
+                payload = l.get("payload") or {}
+                if isinstance(payload.get("description"), str):
+                    description = payload["description"]
+                elif isinstance(payload.get("body_html"), str):
+                    description = payload["body_html"]
+                relabel = None
+                if po is not None and len(g["lines"]) == 1:
+                    relabel = apply_source_price_basis(
+                        description, g["lines"][0]["label"], top_stated[0], po)
+                    if relabel:
+                        doc["ledger_notes"].append(
+                            f"posting {l['client_id']} group {path}: {relabel}")
                 if po is None:
                     # S6: a stated price that cannot be stored confidently is
                     # quarantined and traced, never silently dropped
@@ -963,7 +1106,7 @@ def build_batch_doc(batch: list[dict], model: str, parser_name: str, cost_usd: f
                     })
                     doc["ledger_notes"].append(
                         f"posting {l['client_id']} group {path}: price dropped — {drop_reason}")
-                elif (po["price_basis"] == "explicit_unit" and len(top_stated) == 1
+                elif (po["price_basis"] == "explicit_unit" and relabel is None and len(top_stated) == 1
                       and top_stated[0] is not None and po["quantity"] is not None
                       and po["quantity"] != float(top_stated[0])):
                     # S6 cheap cross-check: explicit_unit count contradicting the
@@ -1059,12 +1202,13 @@ def run_batch_call(client: BatchClient, batch: list[dict], max_tokens: int,
 
     results_by_id: dict[str, dict] = {}
     failed: dict[str, str] = {}
+    titles = {l["client_id"]: (l["condensed"].get("title") or "") for l in batch}
     for r in raw_results:
         rid = str(r.get("id"))
         if rid not in {l["client_id"] for l in batch}:
             continue
         try:
-            results_by_id[rid] = validate_result(r)
+            results_by_id[rid] = validate_result(r, titles.get(rid))
         except (ValueError, TypeError, KeyError) as e:
             failed[rid] = f"invalid result: {e}"
 
@@ -1090,7 +1234,7 @@ def run_batch_call(client: BatchClient, batch: list[dict], max_tokens: int,
                 rid = str(r.get("id"))
                 if rid in missing_ids and rid not in results_by_id:
                     try:
-                        results_by_id[rid] = validate_result(r)
+                        results_by_id[rid] = validate_result(r, titles.get(rid))
                         failed.pop(rid, None)
                     except (ValueError, TypeError, KeyError) as e:
                         failed[rid] = f"invalid result on retry: {e}"
@@ -1137,6 +1281,8 @@ def main(argv=None) -> int:
     ap.add_argument("--parser-version", default="engine-v1")
     ap.add_argument("--max-tokens", type=int, default=64000)
     ap.add_argument("--dry-run", action="store_true", help="condense only; no LLM, no DB")
+    ap.add_argument("--skip-db", action="store_true",
+                    help="call the model and write the results file; do not open a database")
     ap.add_argument("--results-out", default=None)
     args = ap.parse_args(argv)
     # S3: one-listing-per-call is a defect, not an option — floor the batch size
@@ -1177,7 +1323,7 @@ def main(argv=None) -> int:
         print("OPENROUTER_API_KEY not set — run under `doppler run --project ai-automation --config dev --`", file=sys.stderr)
         return 2
     dsn = os.environ.get("TDV2_DSN")
-    if not dsn:
+    if not dsn and not args.skip_db:
         print("TDV2_DSN not set", file=sys.stderr)
         return 2
 
@@ -1194,9 +1340,13 @@ def main(argv=None) -> int:
             "note": "second capture with a repeated client id; skipped, not silently dropped (BRIEF 3.1)",
         })
 
-    posting_map = db_upsert_postings(dsn, [postset_payload(l) for l in listings])
-    for l in listings:
-        l["posting_id"] = posting_map[l["offer_key"]]
+    if args.skip_db:
+        for l in listings:
+            l["posting_id"] = uuid7()
+    else:
+        posting_map = db_upsert_postings(dsn, [postset_payload(l) for l in listings])
+        for l in listings:
+            l["posting_id"] = posting_map[l["offer_key"]]
 
     client = BatchClient(args.model, api_key)
     all_results: dict[str, dict] = {}
@@ -1216,29 +1366,30 @@ def main(argv=None) -> int:
         all_results.update(results_by_id)
         all_failed.update(failed)
         # hygiene: successfully parsed listings carrying a stale quarantine get released
-        extracted_postings = [l["posting_id"] for l in batch if l["client_id"] in results_by_id]
-        prior = db_prior_quarantines(dsn, extracted_postings)
-        doc = build_batch_doc(batch, args.model, parser_name, row.get("cost_usd", 0.0),
-                              results_by_id, failed, prior_quarantines=prior)
-        for note in doc.pop("ledger_notes", []):
-            append_ledger(ledger_path, {"ts": datetime.now(timezone.utc).isoformat(), "run_id": run_id,
-                                        "batch_index": bi, "status": "engine_note", "note": note})
-            print(f"  engine note: {note}", file=sys.stderr)
-        # H2 replay-dedupe: skip observations a previous run already wrote,
-        # loudly (S9 — never silent)
-        doc, dropped_prices, dropped_avail = db_filter_replayed_observations(dsn, doc)
-        if dropped_prices or dropped_avail:
-            append_ledger(ledger_path, {
-                "ts": datetime.now(timezone.utc).isoformat(), "run_id": run_id, "batch_index": bi,
-                "status": "replay_dedupe",
-                "dropped_price_observations": dropped_prices,
-                "dropped_avail_observations": dropped_avail,
-                "note": "identical replay observations already present (offer_key, observed_at, kind/state); "
-                        "skipped, not silently — replay appends history only for changed values",
-            })
-            print(f"  replay dedupe: {len(dropped_prices)} price / {len(dropped_avail)} availability "
-                  f"observation(s) already written by an earlier run — skipped (see ledger)", file=sys.stderr)
-        db_write_batch(dsn, doc)
+        if not args.skip_db:
+            extracted_postings = [l["posting_id"] for l in batch if l["client_id"] in results_by_id]
+            prior = db_prior_quarantines(dsn, extracted_postings)
+            doc = build_batch_doc(batch, args.model, parser_name, row.get("cost_usd", 0.0),
+                                  results_by_id, failed, prior_quarantines=prior)
+            for note in doc.pop("ledger_notes", []):
+                append_ledger(ledger_path, {"ts": datetime.now(timezone.utc).isoformat(), "run_id": run_id,
+                                            "batch_index": bi, "status": "engine_note", "note": note})
+                print(f"  engine note: {note}", file=sys.stderr)
+            # H2 replay-dedupe: skip observations a previous run already wrote,
+            # loudly (S9 — never silent)
+            doc, dropped_prices, dropped_avail = db_filter_replayed_observations(dsn, doc)
+            if dropped_prices or dropped_avail:
+                append_ledger(ledger_path, {
+                    "ts": datetime.now(timezone.utc).isoformat(), "run_id": run_id, "batch_index": bi,
+                    "status": "replay_dedupe",
+                    "dropped_price_observations": dropped_prices,
+                    "dropped_avail_observations": dropped_avail,
+                    "note": "identical replay observations already present (offer_key, observed_at, kind/state); "
+                            "skipped, not silently — replay appends history only for changed values",
+                })
+                print(f"  replay dedupe: {len(dropped_prices)} price / {len(dropped_avail)} availability "
+                      f"observation(s) already written by an earlier run — skipped (see ledger)", file=sys.stderr)
+            db_write_batch(dsn, doc)
         print(f"  -> cost ${row.get('cost_usd', 0) or 0:.6f}, {row.get('input_tokens', '?')} in / {row.get('output_tokens', '?')} out tokens, {row.get('latency_s', '?')}s", file=sys.stderr)
 
     out = {

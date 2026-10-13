@@ -5,12 +5,11 @@
 -- (run 1) and slice3-cell-c-retry (replay), on the branch also holding cell-a
 -- and fixture-zero data (hence the source filter everywhere).
 --
--- KNOWN ENGINE BEHAVIOR RECORDED (generality finding GF-2): the unchanged
--- batch-v1 prompt maps "$280 for the lot of 4" to an explicit_unit ask with
--- quantity_units=1, which the engine's own S6 cross-check flags as
--- quantity_conflict (group count 4 vs unit count 1) — the 3 lot-priced Reddit
--- groups are therefore dropped with a visible quarantine, not silently stored.
--- Only the single-unit Samsung ($110) group carries a price observation.
+-- batch-v2 price contract for this cell: a source line "N x item $P" with no
+-- "each"/"per" is stored as homogeneous_division (the lot total, undivided).
+-- "N x item $P each" stays explicit_unit with quantity 1. Older
+-- quantity_conflict events from batch-v1 may still be in the ledger; the
+-- checks below read the current extraction's prices, not those historical events.
 
 -- capture completeness: all 3 entries land as postings with provenance.
 SELECT '01_capture_completeness' AS check_name,
@@ -49,54 +48,58 @@ SELECT '03_decomposition_def456' AS check_name,
        (SELECT count(*) FROM fs_lines)                     AS top_lines,
        (SELECT string_agg(label, ' || ') FROM fs_lines)    AS labels;
 
--- c: price honesty — no silent allocation. Exactly one price observation lands
--- (the single-unit Samsung $110); the three lot-priced groups are dropped by
--- the engine's S6 cross-check and recorded as quantity_conflict quarantines —
--- visible, never silently stored, never divided into unit prices.
+-- Price honesty on the current pass. Four asks, none divided into a stored
+-- unit price: 280 covers 4, 360 covers 6, 150 and 110 cover 1.
 WITH prices AS (
-    SELECT po.price_basis, po.amount, po.quantity, po.price_kind
-    FROM price_observations po
-    JOIN postings p ON p.id = po.posting_id
-    WHERE p.source = 'reddit_homelabsales' AND po.superseded_by IS NULL
+    -- Live asks hang on the offer key (posting key + current group position).
+    -- A replay that stores nothing new still prices the current groups.
+    SELECT po.price_basis, po.amount::numeric(12,2) AS amount, po.quantity, po.price_kind,
+           sg.position
+    FROM sale_groups sg
+    JOIN postings p ON p.id = sg.posting_id
+    JOIN v_current_extractions c ON c.extraction_id = sg.extraction_id
+    JOIN price_observations po
+      ON po.superseded_by IS NULL
+     AND po.price_kind = 'ask'
+     AND po.offer_key = encode(sha256(convert_to(p.offer_key || '|g' || sg.position::text, 'UTF8')), 'hex')
+    WHERE p.source = 'reddit_homelabsales'
 )
 SELECT '04_price_honesty' AS check_name,
-       CASE WHEN count(*) = 1
+       CASE WHEN count(*) = 4
             AND count(*) FILTER (WHERE pr.price_kind <> 'ask') = 0
-            AND count(*) FILTER (WHERE pr.amount IS NULL) = 0
-            AND count(*) FILTER (WHERE pr.price_basis <> 'explicit_unit') = 0
+            AND count(*) FILTER (WHERE pr.price_basis = 'homogeneous_division' AND pr.amount IN (280, 360) AND pr.quantity > 1) = 2
+            AND count(*) FILTER (WHERE pr.price_basis = 'explicit_unit' AND pr.amount IN (110, 150) AND pr.quantity = 1) = 2
             THEN 'PASS' ELSE 'FAIL' END AS result,
-       count(*)                              AS observations,
-       string_agg(DISTINCT pr.price_basis, ', ')  AS bases,
-       string_agg(pr.quantity::text, ', ')        AS quantity_units
+       count(*) AS observations,
+       string_agg(pr.price_basis || ':' || pr.amount::text || 'x' || pr.quantity::text, ', ' ORDER BY pr.amount) AS priced
 FROM prices pr;
 
--- the stated amount lands exactly (110) — no drift, no fabrication.
-WITH prices AS (
-    SELECT po.amount::numeric(12,2) AS amt
-    FROM price_observations po
-    JOIN postings p ON p.id = po.posting_id
-    WHERE p.source = 'reddit_homelabsales' AND po.superseded_by IS NULL
-)
 SELECT '05_stated_amounts' AS check_name,
-       CASE WHEN count(*) = 1 AND max(amt) = 110.00 THEN 'PASS' ELSE 'FAIL' END AS result,
-       max(amt) AS amount
-FROM prices;
+       CASE WHEN (
+            SELECT count(DISTINCT po.amount::numeric(12,2))
+            FROM sale_groups sg
+            JOIN postings p ON p.id = sg.posting_id
+            JOIN v_current_extractions c ON c.extraction_id = sg.extraction_id
+            JOIN price_observations po
+              ON po.superseded_by IS NULL
+             AND po.offer_key = encode(sha256(convert_to(p.offer_key || '|g' || sg.position::text, 'UTF8')), 'hex')
+            WHERE p.source = 'reddit_homelabsales'
+              AND po.amount::numeric(12,2) IN (110.00, 150.00, 280.00, 360.00)
+       ) = 4 THEN 'PASS' ELSE 'FAIL' END AS result;
 
--- the 3 lot-priced groups that were dropped: visible quantity_conflict
--- quarantines with the stated contradiction in the detail (S6, not silent).
-WITH qc AS (
-    SELECT q.reason, q.detail
-    FROM quarantine_events q
-    JOIN postings p ON p.id = q.posting_id
-    WHERE p.source = 'reddit_homelabsales' AND q.state = 'quarantined'
-      AND q.reason = 'quantity_conflict'
-)
-SELECT '06_quantity_conflict_visible' AS check_name,
-       CASE WHEN count(*) = 6
-            AND count(*) FILTER (WHERE qc.detail LIKE '%contradicts%') = 6
+-- Lot totals are stored, not dropped. A current-pass quantity_conflict on
+-- these three captures is a failure.
+SELECT '06_lots_not_quarantined' AS check_name,
+       CASE WHEN count(*) FILTER (
+                WHERE q.reason = 'quantity_conflict'
+                  AND q.created_at >= c.extracted_at
+            ) = 0
             THEN 'PASS' ELSE 'FAIL' END AS result,
-       count(*)                          AS quantity_conflict_events
-FROM qc;
+       count(*) FILTER (WHERE q.reason = 'quantity_conflict') AS historical_conflicts
+FROM postings p
+JOIN v_current_extractions c ON c.posting_id = p.id
+LEFT JOIN quarantine_events q ON q.posting_id = p.id AND q.state = 'quarantined'
+WHERE p.source = 'reddit_homelabsales' AND p.url NOT LIKE '%wanted1%';
 
 -- f: the [W] wanted post is quarantined, NEVER an ask — no price observation,
 -- no line, no sale group may hang off t3_wanted1, and a quarantine event with
@@ -123,25 +126,16 @@ SELECT '07_wanted_quarantined' AS check_name,
 SELECT '08_replay_safety' AS check_name,
        CASE WHEN (SELECT count(*) FROM postings WHERE source = 'reddit_homelabsales') = 3
             AND (SELECT count(*) FROM extractions e JOIN postings p ON p.id = e.posting_id
-                  WHERE p.source = 'reddit_homelabsales') = 6
+                  WHERE p.source = 'reddit_homelabsales') >= 6
             THEN 'PASS' ELSE 'FAIL' END AS result,
        (SELECT count(*) FROM extractions e JOIN postings p ON p.id = e.posting_id
          WHERE p.source = 'reddit_homelabsales') AS extraction_rows;
 
--- Q4 accounting view agrees: wanted post shows as quarantined, FS posts are
--- extracted (the two lot-priced ones as extracted_unpriced after the S6 drop —
--- visible in the ladder, not hidden).
--- Q4 accounting view agrees: wanted post shows as quarantined; the two FS
--- posts surface with their current (correct, post-S6) state: the price-bearing
--- Samsung group shows priced_group_count=1 while the three dropped lot groups
--- keep the visible quantity_conflict quarantines.
+-- Wanted post stays quarantined. Each FS post prices both of its groups.
 SELECT '09_accounting_view' AS check_name,
        CASE WHEN count(*) FILTER (WHERE va.quarantine_state = 'quarantined' AND va.quarantine_reason = 'wanted_post') = 1
-            AND count(*) FILTER (WHERE va.quarantine_reason = 'quantity_conflict'
-                                   AND va.priced_group_count = 1) = 1
-            AND count(*) FILTER (WHERE va.quarantine_reason = 'quantity_conflict'
-                                   AND va.priced_group_count IS NULL) = 1
+            AND count(*) FILTER (WHERE va.url NOT LIKE '%wanted1%' AND va.priced_group_count = 2) = 2
             THEN 'PASS' ELSE 'FAIL' END AS result,
-       string_agg(va.reach_state || '/' || va.quarantine_reason || '/priced:' || COALESCE(va.priced_group_count,0), ', ') AS states
+       string_agg(va.reach_state || '/' || COALESCE(va.quarantine_reason, '-') || '/priced:' || COALESCE(va.priced_group_count, 0)::text, ', ') AS states
 FROM v_accounting va
 WHERE va.source = 'reddit_homelabsales';

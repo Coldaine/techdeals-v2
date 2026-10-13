@@ -12,6 +12,8 @@
 
 BEGIN;
 
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
 -- uuidv7: PostgreSQL 18+ ships pg_catalog.uuidv7() natively and that is what
 -- every PK DEFAULT below resolves to (pg_catalog precedes public in the search
 -- path). On pre-18 servers this block installs an equivalent public.uuidv7()

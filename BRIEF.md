@@ -398,7 +398,8 @@ If an ingestion step cannot show which query it feeds, it does not get built.
 - **Domain modeling is active**: root `GLOSSARY.md` holds canonical terms only
   (zero implementation details); `docs/adr/NNNN-*.md` records a decision only when
   it is hard to reverse, surprising without context, AND the result of a real
-  trade-off. Formats: `/home/coldaine/.agents/skills/domain-modeling/`.
+  trade-off. The glossary's format is free. The domain-modeling skill is optional
+  and does not override the owner's words.
 - **Tower mode**: the control tower plans missions with disjoint scopes, spawns
   workers into git worktrees, routes reviews, and merges. Mission briefings carry
   this document plus the owner's verbatim quotes relevant to the mission.

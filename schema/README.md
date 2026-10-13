@@ -4,9 +4,9 @@ Implements BRIEF.md §4 (settled design) for the four §6 target queries:
 
 | Query | View |
 |-------|------|
-| Q1 cheapest N units of spec S available right now | `v_cheapest_available`, `v_category_prices`, `v_line_ram` |
+| Q1 cheapest N units of spec S available right now | `v_cheapest_available`, `v_category_prices`, `v_line_ram`, `v_group_ram` |
 | Q2 what did this cost over time | `v_price_history` |
-| Q3 what is this lot actually worth | `v_lot_worth` (+ `v_product_reference_price`) |
+| Q3 what is this lot actually worth | `v_lot_worth` (+ `v_product_reference_price`), `v_partout` (+ `v_ddr4_gb_rate`) |
 | Q4 what did we miss (quarantined/accounting) | `v_accounting` (+ `v_stale_quarantine`) |
 
 Every table, column, and view names the target query it serves in a SQL

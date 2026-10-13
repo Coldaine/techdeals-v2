@@ -14,6 +14,12 @@ Every table, column, and view names the target query it serves in a SQL
 exception found in review — `postings_payload_gin`, which served no query —
 was dropped).
 
+`v_partout` and `v_ddr4_gb_rate` follow
+`docs/adr/0002-partout-price-assumptions.md`. That record is the calculation:
+exact key, minimum ask, out-of-stock comps allowed, one DDR4 pool for the
+rate only, no count gate, and no spread gate. The SQL comments describe the
+formula. They do not replace the ADR.
+
 ## Files (apply in order)
 
 1. `000_functions.sql` — `uuidv7` resolution (PG18+ built-in, public fallback

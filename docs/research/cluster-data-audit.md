@@ -2,12 +2,27 @@
 
 Status: initial data investigation complete. No repairs applied.
 
-## Scope
+## Scope and consolidation context
 
-Owner request: investigate actual data failures in TechdealsHandoff with multiple agents, from stored data rather than guesses or documentation. Inspect both cluster databases, not Neon. Preserve the results in commits and a PR.
+This audit was conducted by the owner's request: investigate actual data failures
+in `TechdealsHandoff` using real data from both cluster databases (`market_live`
+and `techdeals_work`), not Neon, and evaluate them **in the explicit context of
+planning the eventual consolidation of both repositories (`TechdealsHandoff` and
+`techdeals-v2`) into one unified TechDeals platform**.
 
-Separate parallel investigations cover prices/history, classification/configurations, and intake/retention. Findings must include query scope, denominator, persistent row IDs, source evidence where reachable, consumer impact, and uncertainty. A deliberately partial rolling Reddit feed is not a failure merely because its status is partial. Missing current offers do not establish missing collection.
+This audit does **not** declare `techdeals-v2` complete or non-flawed. The
+greenfield v2 implementation has only been exercised on ~640 static listings
+(376 eBay EPYC servers, 259 Shopify drives, 3 Reddit posts, 1 GovDeals auction).
+It has untested assumptions, fragile heuristic resolution, and directly equivalent
+flaws in its current code. The goal of documenting these failures is to ensure
+the merged destination repository avoids repeating the architectural and parsing
+defects of both implementations.
 
+Separate parallel investigations cover prices/history, classification/configurations,
+and intake/retention. Findings must include query scope, denominator, persistent
+row IDs, source evidence where reachable, consumer impact, and uncertainty. A
+deliberately partial rolling Reddit feed is not a failure merely because its status
+is partial. Missing current offers do not establish missing collection.
 ## Verified access and inventory
 
 Read-only SELECT queries succeeded against both databases at `pg18-core-db.moosegoose.xyz`, as database role `techdeals`. Password supplied by Doppler `homelab/dev`; no credentials retained here. Every audit connection uses:
@@ -330,3 +345,20 @@ Proposed follow-through, separate from this investigation:
 An implementation plan needs exact code localization and failing-before/
 passing-after verification for each repair. This report does not claim those
 repairs or the two-repo consolidation are complete.
+
+## Comparison: Existing implementation vs current greenfield (`techdeals-v2`)
+
+The table below documents how the defects identified in `TechdealsHandoff` compare
+to the current state of `techdeals-v2`. v2 is not a proven replacement; it is an
+early schema and extraction pilot that shares several of the same failure modes.
+
+| Defect / Dimension | Existing Repo (`TechdealsHandoff` / Cluster) | Current Greenfield (`techdeals-v2`) |
+|---|---|---|
+| **Unavailable listings leak into pricing** | **1,028 of 3,311** rows in `api.current_deals` say `outofstock` or `out_of_stock`. Regex misses both.<br>*(obs `b6b39cc0-9cfe-5f67-bd5e-502c38b9a5b0`)* | **Same defect in part-out:** `v_partout` allows out-of-stock asks to set reference prices.<br>*(R7515 drive comps of $1,152 come from unavailable listings; `exact_refs_in_stock = false` in `schema/020_views.sql:571`, ADR 0002)* |
+| **Model / text parsed as quantity** | Model text divides asking price: Windforce 3X RTX 4070 ($480) parsed as qty 3 → **$160**; RX 7900XTX ($800) parsed as qty 7,900 → **$0.10**.<br>*(obs `4e301e3f-f556-5fa2-adc6-6de1c777f662`, `d03ae962-dd9d-5ef5-8895-19cc39f1c5c9`)* | **Unprobed on GPUs; lot-division failure on Reddit:** "$280 for the lot of 4" was extracted as `explicit_unit` at qty 1 ($280/ea), tripping `quantity_conflict` quarantine and dropping the price completely.<br>*(Example: `engine/out/results_slice3_cell_c.json`)* |
+| **Loss of compatibility & configuration grain** | Merges 13G tray offer into a 14G tray item (`0d08b78a-b577-576a-a2fe-8b912817100a`). Merges 1x16GB vs 2x8GB (`860970e8-35a4-56f5-a49e-ebbeeb127139`). Merges 1TB and 2TB SSD bundles (`1b8613a1-86b4-531d-b093-fa6c18ebd4c6`). | **Same grain loss:** `resolve.py:78` builds `drive:hdd:sas:1200gb`, completely ignoring tray version (13G vs 14G).<br>**Same RAM fungibility error:** `v_ddr4_gb_rate` pools all DDR4 (RDIMM, UDIMM, SODIMM, speeds, module sizes) into a single $2.36/GB rate from one 32GB stick. |
+| **Category misclassification** | 5 CPU items and 1 GPU item have structured payloads proving they are RAM kits/modules.<br>*(Example: CPU item `3d78bca3-859d-573c-9b70-12ded76e8243` is an A-Tech DDR4 RDIMM kit)* | **Completely uninvestigated across categories:** v2 has only processed single-socket EPYC servers and clean storage drives. Its prompt and parser have never been tested on mixed-category retail sweeps, GPUs, or expansion cards. |
+| **Price history & availability corruption** | In `techdeals_work`, 4,459 of 4,466 unavailable historical prices flip to `available = true` in `core.latest_prices` because NULL defaults to available.<br>*(Example: price ID `4c8f1b8d-a1e2-568d-8d21-92d379023a75`)* | **Zero real time-series depth:** v2 has only ingested single-point-in-time snapshots on Neon (plus one 5-listing replay test). How `v_price_history` behaves over weeks of price drops, re-listings, and stock toggles is entirely unverified. |
+| **Provenance exclusions dropping data** | In `techdeals_work`, all 23,467 local observations lack a `run_id`, causing `api.traceable_market_observations` to drop 100% of them from queryable views.<br>*(Example: `techdeals_work.core.market_observations`)* | **Single point of failure on offer keys:** In v2, if natural facts change slightly across parser versions (e.g. whitespace, currency default), the SHA-256 `offer_key` changes, creating orphaned observations or split series. Proven on 5 fixtures, never tested at scale. |
+| **Intake retention vs queryable data** | 24,139 raw records in work DB: 6,927 unprocessed/unlinked, 11,868 stuck in `needs_review`. FusionWW parsed 10,614 records but stored 0 canonical offers or observations.<br>*(Example: run `dbcdb505-5272-4526-be45-6180a9281682`)* | **Zero automated pipeline:** v2 has no background collectors, no scheduler, and no queue. Ingestion requires manually running Python CLI scripts (`extract.py`) against local JSON directories. |
+| **Server part-out coverage** | No part-out logic exists. Multi-item server listings are either force-fit into single items or discarded. | **Extremely sparse coverage:** On the loaded R7515 server, 7 of 9 lines have no comps. 0 of 51 multi-item server sale groups with 8+ lines are fully priced. |

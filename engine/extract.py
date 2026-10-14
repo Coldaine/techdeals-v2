@@ -39,13 +39,10 @@ import uuid
 from datetime import datetime, timezone
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-DEFAULT_MODEL = "deepseek/deepseek-v4-flash-0731"
-# USD per million tokens (prompt, completion), from the OpenRouter catalog.
+DEFAULT_MODEL = "nvidia/nemotron-3.5-lightning:free"
+# Free tier models only. Paid models are strictly forbidden; cost must be $0.00.
 MODEL_PRICES = {
-    "deepseek/deepseek-v4-flash-0731": (0.02, 0.64),
-    "deepseek/deepseek-v4-flash": (0.03, 1.28),
-    "openai/gpt-oss-120b": (0.04, 0.17),
-    "qwen/qwen3.8-27b": (0.04, 2.30),
+    "nvidia/nemotron-3.5-lightning:free": (0.0, 0.0),
 }
 
 PROMPT_VERSION = "batch-v2"
@@ -1288,6 +1285,9 @@ def main(argv=None) -> int:
     # S3: one-listing-per-call is a defect, not an option — floor the batch size
     if args.batch_size < MIN_BATCH_SIZE:
         ap.error(f"--batch-size must be >= {MIN_BATCH_SIZE} (batch discipline: never one listing per call)")
+    if args.model not in MODEL_PRICES:
+        ap.error(f"--model {args.model!r} is not an authorized free endpoint. "
+                 f"Allowed free models: {', '.join(MODEL_PRICES)}")
 
     if args.files:
         paths = [p for p in args.files.split(",") if p]

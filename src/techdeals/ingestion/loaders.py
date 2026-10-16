@@ -86,7 +86,12 @@ def load_shopify_fixtures(source: str) -> Iterator[RawCapture]:
                 checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
                 raw_payload=raw_payload,
                 payload_format="json",
-                metadata={"file": str(json_file)},
+                metadata={
+                    "file": str(json_file),
+                    "timestamp_provenance": (
+                        "source_capture" if product.get("timestamp") else "fixture_mtime_fallback"
+                    ),
+                },
             )
 
 
@@ -118,7 +123,13 @@ def load_govdeals_fixtures(source: str = "govdeals") -> Iterator[RawCapture]:
             checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
             raw_payload=raw_payload,
             payload_format="json",
-            metadata={"file": str(json_file), "type": json_file.stem.split("_")[0]},
+            metadata={
+                "file": str(json_file),
+                "type": json_file.stem.split("_")[0],
+                "timestamp_provenance": (
+                    "source_capture" if data.get("timestamp") else "fixture_mtime_fallback"
+                ),
+            },
         )
 
 
@@ -151,7 +162,13 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
                 checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
                 raw_payload=raw_payload,
                 payload_format="json",
-                metadata={"file": str(file_path), "title": title},
+                metadata={
+                    "file": str(file_path),
+                    "title": title,
+                    "timestamp_provenance": (
+                        "source_capture" if data.get("timestamp") else "fixture_mtime_fallback"
+                    ),
+                },
             )
         elif file_path.suffix == ".xml":
             raw_payload = file_path.read_text()
@@ -216,7 +233,11 @@ def load_liquidation_fixtures(source: str = "liquidation_com") -> Iterator[RawCa
             checksum=hashlib.sha256(combined_html.encode()).hexdigest(),
             raw_payload=combined_html,
             payload_format="html",
-            metadata={"lot_id": lot_id, "files": [str(f) for f in files]},
+            metadata={
+                "lot_id": lot_id,
+                "files": [str(f) for f in files],
+                "timestamp_provenance": "fixture_mtime_fallback",
+            },
         )
 
 
@@ -247,7 +268,10 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
                 checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
                 raw_payload=raw_payload,
                 payload_format="json",
-                metadata={"format": "fixture_zero_jsonl"},
+                metadata={
+                    "format": "fixture_zero_jsonl",
+                    "timestamp_provenance": "fixture_mtime_fallback",
+                },
             )
     else:
         data = json.loads(path.read_text())
@@ -266,12 +290,21 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
                 checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
                 raw_payload=raw_payload,
                 payload_format="json",
-                metadata={"format": "rackrat_hit"},
+                metadata={
+                    "format": "rackrat_hit",
+                    "timestamp_provenance": (
+                        "source_capture" if listing.get("timestamp") else "fixture_mtime_fallback"
+                    ),
+                },
             )
 
 
 def _capture_time(value: str | None, path: Path) -> datetime:
-    """Use a recorded capture timestamp when available; otherwise file mtime."""
+    """Use a recorded capture timestamp or deterministic fixture fallback.
+
+    The fallback is only a stable ingestion key for staged fixtures. It does not
+    establish when the source was observed.
+    """
     if value:
         try:
             parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))

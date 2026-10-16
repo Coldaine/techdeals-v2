@@ -11,6 +11,12 @@ from rich.table import Table
 console = Console()
 
 
+def _posting_offer_key(source: str, url: str, fetched_at: object) -> str:
+    """Hash the schema's posting natural key (source, URL, fetch timestamp)."""
+    natural_key = f"{source}|{url}|{fetched_at.isoformat()}"
+    return hashlib.sha256(natural_key.encode()).hexdigest()
+
+
 def main() -> None:
     """Main CLI entry point."""
     if len(sys.argv) < 2:
@@ -74,12 +80,12 @@ async def _run_ingest() -> None:
 
     try:
         inserted = 0
+        duplicates = 0
         failed = 0
         for capture in captures:
             try:
-                natural_key = f"{capture.source}|{capture.url}|{capture.fetched_at.isoformat()}"
-                offer_key = hashlib.sha256(natural_key.encode()).hexdigest()
-                conn.execute(
+                offer_key = _posting_offer_key(capture.source, capture.url, capture.fetched_at)
+                result = conn.execute(
                     """INSERT INTO postings (offer_key, source, url, fetched_at, checksum, payload)
                     VALUES (%s, %s, %s, %s, %s, %s::jsonb)
                     ON CONFLICT (offer_key) DO NOTHING""",
@@ -92,7 +98,10 @@ async def _run_ingest() -> None:
                         capture.raw_payload,
                     ),
                 )
-                inserted += 1
+                if result.rowcount == 1:
+                    inserted += 1
+                else:
+                    duplicates += 1
             except Exception as e:
                 console.print(
                     f"[red]Error inserting {capture.source}/{capture.source_listing_id}: {e}[/red]"
@@ -103,8 +112,8 @@ async def _run_ingest() -> None:
 
         conn.commit()
         console.print(
-            f"[green]Processed: {inserted} captures; {failed} failed "
-            "(duplicates skipped by ON CONFLICT)[/green]"
+            f"[green]Input: {len(captures)}; inserted: {inserted}; "
+            f"duplicates: {duplicates}; failed: {failed}[/green]"
         )
     finally:
         conn.close()

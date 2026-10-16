@@ -36,7 +36,7 @@ Availability is whether the offer can be bought, recorded over time next to pric
 
 ## Analysis
 
-A comp is a role, not a thing in the database. During an analysis, a listing used to price another listing is a comp. When the analysis is over, it is a listing again. A comp is not the Reference price kind.
+A comp is a temporary pricing-analysis role played by a source listing when it is used to price another listing. A comp is not a separate stored object, a decomposed line, or the Reference price kind.
 
 ## Identity
 

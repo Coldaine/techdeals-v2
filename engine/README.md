@@ -58,9 +58,12 @@ historical measurements and do not validate this free model.
    into one user message: `{"listings":[{id, ...fields}...]}`. Stable ids are
    the capture's natural item id (or `idxN`), so per-listing verdicts are
    addressable across replays.
-2. **Call** — one chat-completions call, temperature 0,
-   `response_format: json_schema strict`. The system prompt (fixed =
-   `PROMPT_VERSION`) carries the extraction policy: purchase-shape semantics
+2. **Call** — one chat-completions call, temperature 0. Endpoint capabilities
+   determine whether `response_format: json_schema strict` is sent. The current
+   free Nemotron endpoint does not support it, so the complete output schema is
+   included in the system prompt and results are still locally validated. The
+   system prompt (fixed = `PROMPT_VERSION`) carries the extraction policy:
+   purchase-shape semantics
    (sale groups / lines / quantities, absorbed from PR #222's
    options-nodes-memberships), never-allocate-lot-price, null-instead-of-
    guessing, description-beats-title conflicts, untrusted-input discipline.
@@ -99,9 +102,10 @@ historical measurements and do not validate this free model.
 - Latency is the real tax: bigger batches are fewer calls but longer calls
   (~3 min for 20 listings on deepseek-flash-tier models). For wall-clock-bound
   ingest, run batches concurrently; for cost-bound ingest, bigger is better.
-- Free-tier routers sometimes ignore `response_format` — the salvage path +
-  per-endpoint failure counters in the ledger make that an evidenced choice,
-  not a one-time bet.
+- Structured-output support varies by endpoint. The engine sends
+  `response_format` only for models explicitly marked as supporting JSON Schema;
+  unsupported or unknown models receive the schema in the prompt and still pass
+  through local validation and salvage.
 
 ## Cost-per-listing math
 

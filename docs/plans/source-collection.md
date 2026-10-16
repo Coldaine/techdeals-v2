@@ -19,7 +19,16 @@ object per capture file, either from `--files` or a directory's `*.json` files.
 path automatically. A source slice must name its adapter and show the resulting
 per-listing files reaching this engine, the scratch database, and query readback.
 Use the existing Shopify/Atom/GovDeals shape adapters where their inspected input
-contracts fit. An adapter's existence alone does not establish that connection.
+contracts fit, but treat them as shape examples that require provenance review,
+not as approved capture wrappers. The current adapters map Shopify `updated_at`,
+Atom `<updated>`, and GovDeals `assetAuctionEndDateUTC` to `timestamp`; the engine
+uses `timestamp` as `fetched_at` and as the price/availability observation time.
+That misstates collection time. Before using any adapter, audit and correct its
+wrapper so `fetched_at` is the actual retrieval time and source update,
+publication, or auction-end dates remain separate source fields. When retrieval
+time is unavailable, leave it unknown and mark the capture incomplete; never
+substitute a source date, file modification time, or processing time for it.
+An adapter's existence alone does not establish a correct capture or connection.
 Revisit this boundary when the application paths are reconciled; do not add a
 second intake implementation to make a pilot appear complete.
 
@@ -104,7 +113,7 @@ The hierarchy also names DiskPrices, r/homelabsales, and r/hardwareswap as exist
 
 For each source, the implementation PR must include:
 
-- Real fetched/imported evidence with source URL and original fetched-at timestamp required for a complete capture; the native source key is optional. Record import receipt time separately. Preserve source observation/publication time when stated, retained payload and checksum. Imported evidence missing its original URL or fetch time stays explicitly incomplete; never invent those fields or substitute receipt time. A page's last-update date is not its fetch date or necessarily its price observation date.
+- Real fetched/imported evidence with source URL and original fetched-at timestamp required for a complete capture; the native source key is optional. Record import receipt time separately. Preserve source observation/publication/update/auction-end time in its own field when stated; it never supplies `fetched_at` or the observation time for a current price/availability capture. Imported evidence missing its original URL or fetch time stays explicitly incomplete; never invent those fields or substitute a source date, file modification time, processing time, or receipt time. A page's last-update date is not its fetch date or necessarily its price observation date.
 - Durable intake for every acquired record before price, product identity, or extraction succeeds. Partial/error records remain retrievable; unsupported source fields stay in raw evidence.
 - Query readback of actual titles, stated amounts/currencies, price kinds, units/quantities, configuration or child lines, availability, condition, and time. Missing shipping does not mean free shipping; EUR and USD are not pooled without an explicit conversion analysis.
 - A second-date collection showing price/availability history when a source changes. Replaying the same capture with a new parser must append a new extraction version, preserve prior extraction and observation history, and create no duplicate postings or other duplicate logical intake. No invented changes if the page is unchanged.

@@ -10,10 +10,23 @@ The deliverable is an accumulating, queryable corpus of source listings, stated 
 
 This plan extends acquisition planning; it does not authorize production changes, paid requests, credential bypasses, or bulk browser crawling. BRIEF.md keeps the existing collectors where they run. Inspect existing acquisition logic before implementing anything new. If v2 needs live capture, use a thin fresh fetcher and its current capture intake; do not copy legacy identities, writers, or scraper infrastructure into v2. Keep the production cluster unchanged.
 
+## Initial capture contract
+
+Prove the first slice with existing captured evidence before adding live acquisition.
+The current executable path is `engine/extract.py`: it reads one listing JSON
+object per capture file, either from `--files` or a directory's `*.json` files.
+`RawCapture` objects from `src/techdeals/ingestion/loaders.py` do not feed this
+path automatically. A source slice must name its adapter and show the resulting
+per-listing files reaching this engine, the scratch database, and query readback.
+Use the existing Shopify/Atom/GovDeals shape adapters where their inspected input
+contracts fit. An adapter's existence alone does not establish that connection.
+Revisit this boundary when the application paths are reconciled; do not add a
+second intake implementation to make a pilot appear complete.
+
 ## Work order
 
 1. **Source reconnaissance.** For each inventory row, record a real entry URL, supported product scope, public price examples, terms/access restrictions, pagination shape, route, and blocker if any. Try public structured data/feed/direct HTTP first. These routes are candidates until exercised; do not assume Shopify or an API from a storefront name.
-2. **End-to-end pilot.** Start with UnixSurplus as the baseline, The Server Store, TechMikeNY, PC Server and Parts, ServerMall, and TechBuyer. In parallel scope the hierarchy's component-deal surfaces: r/buildapcsales, SlickDeals, DealNews, Woot, Newegg Daily Deals, and Google Shopping's permitted manual intake. Each pilot must fetch actual evidence, retain it, parse representative shapes, and read the stated fields back from the scratch corpus. No source is covered merely because its adapter exists.
+2. **End-to-end pilot.** First use existing captures to prove intake, representative parsing, scratch storage, and query readback through the contract above. Defer live acquisition until that path works. Then start source pilots with UnixSurplus as the baseline, The Server Store, TechMikeNY, PC Server and Parts, ServerMall, and TechBuyer. Scope the hierarchy's component-deal surfaces: r/buildapcsales, SlickDeals, DealNews, Woot, Newegg Daily Deals, and Google Shopping's permitted manual intake. Each source pilot must fetch actual evidence, retain it, parse representative shapes, and read the stated fields back from the scratch corpus. Missing captures are a coverage gap, not permission to label a source proven. No source is covered merely because its adapter exists.
 3. **Complete both inventories.** Work through the remaining US/EU resellers, borderline candidates, editorial/reference pages, and history providers. Give every source an acquired result or a precise unresolved access/scope blocker. Do not silently omit low-priority sources.
 4. **Repeat and broaden.** Repeat successful pilots on distinct collection dates; then traverse their explicitly scoped categories/searches. Measure discovered, fetched, stored, parsed, unresolved, and failed records separately. Record what lies outside the traversal; never call a bounded search a full catalog.
 5. **Schedule only proven routes.** Propose schedules in the owning runtime repository through separate reviewed PRs. Suggested starting cadence: daily scoped server catalogs; more frequent flash-deal feeds; weekly/on-demand specifications; history lookup on demand. These are proposals, not active schedules or freshness guarantees. Verify a scheduled run and corpus readback before declaring it live.
@@ -91,10 +104,10 @@ The hierarchy also names DiskPrices, r/homelabsales, and r/hardwareswap as exist
 
 For each source, the implementation PR must include:
 
-- Real fetched/imported evidence with source URL/native key where available, receipt/fetch time, source observation/publication time when stated, retained payload and checksum. A page's last-update date is not its fetch date or necessarily its price observation date.
+- Real fetched/imported evidence with source URL and original fetched-at timestamp required for a complete capture; the native source key is optional. Record import receipt time separately. Preserve source observation/publication time when stated, retained payload and checksum. Imported evidence missing its original URL or fetch time stays explicitly incomplete; never invent those fields or substitute receipt time. A page's last-update date is not its fetch date or necessarily its price observation date.
 - Durable intake for every acquired record before price, product identity, or extraction succeeds. Partial/error records remain retrievable; unsupported source fields stay in raw evidence.
 - Query readback of actual titles, stated amounts/currencies, price kinds, units/quantities, configuration or child lines, availability, condition, and time. Missing shipping does not mean free shipping; EUR and USD are not pooled without an explicit conversion analysis.
-- A second-date collection showing price/availability history when a source changes, and replay without duplicate logical intake. No invented changes if the page is unchanged.
+- A second-date collection showing price/availability history when a source changes. Replaying the same capture with a new parser must append a new extraction version, preserve prior extraction and observation history, and create no duplicate postings or other duplicate logical intake. No invented changes if the page is unchanged.
 - Representative edge coverage: barebones versus configured server, base versus selected options, several component rows, lot versus each-price, foreign currency, unavailable listing, expired article/coupon, and a no-price specification page. Use actual source shapes, not invented rows to claim source coverage.
 - Scoped pagination/accounting, rate-limit behavior, route cost and access restrictions. Browser use is targeted only after supported cheap routes fail for a genuine rendering need. Authentication/policy denial is a blocker, not permission to bypass or escalate to paid scraping.
 - Independent review before merging. Record remaining blockers accurately; issue closure requires all assigned sources covered or explicitly deferred by the owner.

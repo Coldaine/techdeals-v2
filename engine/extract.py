@@ -734,15 +734,54 @@ def validate_result(res: dict, fallback_label: str | None = None) -> dict:
                 if not isinstance(child["attributes"], dict):
                     raise ValueError(f"{child_context} attributes must be an object")
         lines_out = _repair_lines(raw_lines, g["label"], fallback_label)
-        if outcome == "extracted" and not lines_out:
-            raise ValueError(f"extracted sale group {group_index} must contain at least one valid line")
         if price is not None:
+            required_price_fields = {
+                "amount", "currency", "price_kind", "price_basis",
+                "quantity_units", "bound_low", "bound_high", "basis_note",
+            }
+            missing_price_fields = required_price_fields - price.keys()
+            if missing_price_fields:
+                raise ValueError(
+                    f"sale group {group_index} price missing required fields: "
+                    + ", ".join(sorted(missing_price_fields))
+                )
+            for key in ("amount", "currency", "bound_low", "bound_high", "basis_note"):
+                value = price[key]
+                if value is not None and not isinstance(value, str):
+                    raise ValueError(f"sale group {group_index} price {key} must be a string or null")
+            for key in ("amount", "bound_low", "bound_high"):
+                value = price[key]
+                if value is not None and as_decimal(value) is None:
+                    raise ValueError(f"sale group {group_index} price {key} must be a decimal string or null")
+            if price["price_kind"] is not None and price["price_kind"] not in (
+                "ask", "bid", "sold", "cost_basis", "reference",
+            ):
+                raise ValueError(f"bad price_kind {price['price_kind']!r}")
+            quantity_units = price["quantity_units"]
+            if quantity_units is not None and (
+                isinstance(quantity_units, bool)
+                or not isinstance(quantity_units, (int, float))
+                or quantity_units <= 0
+            ):
+                raise ValueError(
+                    f"sale group {group_index} price quantity_units must be a positive number or null"
+                )
             if price.get("price_basis") not in ("explicit_unit", "homogeneous_division", "bound_only"):
                 raise ValueError(f"bad price_basis {price.get('price_basis')!r}")
             if price.get("price_basis") == "bound_only" and price.get("amount") is not None:
                 raise ValueError("bound_only with an amount")
             if not any(price.get(k) for k in ("amount", "bound_low", "bound_high")):
                 raise ValueError("price with neither amount nor bounds")
+        if outcome == "extracted" and not lines_out:
+            has_identity = isinstance(g["label"], str) and bool(g["label"].strip())
+            has_price = price is not None and any(
+                price.get(k) for k in ("amount", "bound_low", "bound_high")
+            )
+            has_known_availability = g["availability"] in ("available", "unavailable")
+            if not (has_identity or has_price or has_known_availability):
+                raise ValueError(
+                    f"extracted sale group {group_index} has no line or other purchase information"
+                )
         out["sale_groups"].append({
             "label": g.get("label"),
             "availability": g.get("availability") if g.get("availability") in ("available", "unavailable", "unknown") else "unknown",
@@ -1030,14 +1069,14 @@ def price_observation(l: dict, path: str, group: dict) -> tuple[dict | None, str
     qty = float(qty) if isinstance(qty, (int, float)) and not isinstance(qty, bool) and float(qty) > 0 else None
     bound_low = as_decimal(p.get("bound_low"))
     bound_high = as_decimal(p.get("bound_high"))
-    kind = p.get("price_kind") or "ask"
+    kind = p.get("price_kind")
     if kind not in ("ask", "bid", "sold", "cost_basis", "reference"):
-        kind = "ask"
+        return None, "price kind unstated; price not stored as an assumed ask"
     note = p.get("basis_note")
-    currency = (p.get("currency") or "USD").upper()[:3]
-    if not re.fullmatch(r"[A-Z]{3}", currency):
-        currency = "USD"
-        note = (note + " " if note else "") + "currency unstated in capture; defaulted USD"
+    raw_currency = p.get("currency")
+    if not isinstance(raw_currency, str) or not re.fullmatch(r"[A-Za-z]{3}", raw_currency):
+        return None, "currency unstated or invalid; price not stored with an assumed currency"
+    currency = raw_currency.upper()
     if qty is None:
         note = (note + " " if note else "") + "quantity_units not stated; unit price not confidently derivable"
     if basis == "homogeneous_division" and not (amount and qty and qty > 1):

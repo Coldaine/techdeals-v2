@@ -88,11 +88,92 @@ def test_extracted_result_requires_a_valid_line_in_each_sale_group() -> None:
     no_lines = {
         "id": "empty",
         "outcome": "extracted",
-        "sale_groups": [{"label": "Server", "lines": [], "price": None, "availability": "unknown"}],
+        "sale_groups": [{"label": None, "lines": [], "price": None, "availability": "unknown"}],
     }
 
-    with pytest.raises(ValueError, match="must contain at least one valid line"):
+    with pytest.raises(ValueError, match="no line or other purchase information"):
         extract.validate_result(no_lines)
+
+
+def test_price_only_purchase_group_is_preserved_without_inventing_a_line() -> None:
+    price = {
+        "amount": "100.00", "currency": "USD", "price_kind": "ask",
+        "price_basis": "explicit_unit", "quantity_units": 1,
+        "bound_low": None, "bound_high": None, "basis_note": None,
+    }
+    result = extract.validate_result({
+        "id": "price-only", "outcome": "extracted", "sale_groups": [{
+            "label": None, "availability": "available", "price": price, "lines": [],
+        }],
+    })
+
+    assert result["sale_groups"][0]["price"] == price
+    assert result["sale_groups"][0]["lines"] == []
+
+
+def test_nullable_price_provenance_stays_unknown_in_validated_result() -> None:
+    price = {
+        "amount": "100.00", "currency": None, "price_kind": None,
+        "price_basis": "explicit_unit", "quantity_units": 1,
+        "bound_low": None, "bound_high": None, "basis_note": None,
+    }
+    result = extract.validate_result({
+        "id": "unknown-price-context", "outcome": "extracted", "sale_groups": [{
+            "label": "Machine", "availability": "available", "price": price,
+            "lines": [],
+        }],
+    })
+    assert result["sale_groups"][0]["price"]["currency"] is None
+    assert result["sale_groups"][0]["price"]["price_kind"] is None
+
+
+def test_price_contract_rejects_wrong_types_missing_fields_and_unknown_kind() -> None:
+    good = {
+        "amount": "100.00", "currency": "USD", "price_kind": "ask",
+        "price_basis": "explicit_unit", "quantity_units": 1,
+        "bound_low": None, "bound_high": None, "basis_note": None,
+    }
+    base = {"id": "price", "outcome": "extracted", "sale_groups": [{
+        "label": "Machine", "availability": "available", "price": good,
+        "lines": [{"label": "Machine", "quantity": 1,
+                   "separately_purchasable": True, "attributes": {}, "children": []}],
+    }]}
+
+    for field, value, message in (
+        ("amount", 100, "price amount must be a string or null"),
+        ("amount", "NaN", "amount must be a decimal string or null"),
+        ("quantity_units", True, "quantity_units must be a positive number or null"),
+        ("price_kind", "unknown", "bad price_kind"),
+    ):
+        bad = json.loads(json.dumps(base))
+        bad["sale_groups"][0]["price"][field] = value
+        with pytest.raises(ValueError, match=message):
+            extract.validate_result(bad)
+
+    bad = json.loads(json.dumps(base))
+    del bad["sale_groups"][0]["price"]["currency"]
+    with pytest.raises(ValueError, match="price missing required fields: currency"):
+        extract.validate_result(bad)
+
+
+@pytest.mark.parametrize(
+    ("currency", "price_kind", "reason"),
+    [(None, "ask", "currency unstated"), ("USD", None, "price kind unstated")],
+)
+def test_price_writer_does_not_default_unknown_currency_or_kind(
+    currency: str | None, price_kind: str | None, reason: str
+) -> None:
+    group = {"price": {
+        "amount": "100.00", "currency": currency, "price_kind": price_kind,
+        "price_basis": "explicit_unit", "quantity_units": 1,
+        "bound_low": None, "bound_high": None, "basis_note": None,
+    }}
+    observation, error = extract.price_observation(
+        {"offer_key": "a" * 64, "posting_id": "posting", "fetched_at": "2026-10-15T00:00:00+00:00"},
+        "g0", group,
+    )
+    assert observation is None
+    assert error is not None and reason in error
 
 
 def test_malformed_child_is_rejected_instead_of_silently_dropped() -> None:

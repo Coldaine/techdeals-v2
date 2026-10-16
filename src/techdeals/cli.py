@@ -3,18 +3,37 @@ from __future__ import annotations
 
 import asyncio
 import hashlib
+import json
 import sys
+from datetime import datetime
 
 from rich.console import Console
 from rich.table import Table
 
+from techdeals.ingestion.contract import RawCapture
+
 console = Console()
 
 
-def _posting_offer_key(source: str, url: str, fetched_at: object) -> str:
-    """Hash the schema's posting natural key (source, URL, fetch timestamp)."""
+def _posting_offer_key(
+    source: str, url: str, fetched_at: datetime, source_listing_id: str
+) -> str:
+    """Hash the posting key, using the source ID when no source URL exists."""
     natural_key = f"{source}|{url}|{fetched_at.isoformat()}"
+    if not url:
+        natural_key += f"|missing-url|{source_listing_id}"
     return hashlib.sha256(natural_key.encode()).hexdigest()
+
+
+def _stored_payload(capture: RawCapture) -> str:
+    """Encode raw evidence and its format/provenance inside the JSONB column."""
+    return json.dumps(
+        {
+            "payload_format": capture.payload_format,
+            "raw_payload": capture.raw_payload,
+            "metadata": {**capture.metadata, "source_listing_id": capture.source_listing_id},
+        }
+    )
 
 
 def main() -> None:
@@ -26,7 +45,7 @@ def main() -> None:
         console.print("  migrate         Run database migrations")
         console.print("  migrate --reset Drop all tables and re-run")
         console.print("  ingest          Run ingestion on fixtures")
-        console.print("  extract         Run LLM extraction")
+        console.print("  extract         Extract postings (currently unavailable; exits nonzero)")
         console.print("  query <name>    Run a predefined query")
         return
 
@@ -46,8 +65,10 @@ def main() -> None:
         console.print("[yellow]Ingestion pipeline — loading fixtures into postings.[/yellow]")
         asyncio.run(_run_ingest())
     elif command == "extract":
-        console.print("[yellow]Extraction pipeline — running LLM on postings.[/yellow]")
-        asyncio.run(_run_extract())
+        console.print(
+            "[red]Extraction persistence is not implemented; no postings were processed.[/red]"
+        )
+        sys.exit(2)
     elif command == "query":
         if len(sys.argv) < 3:
             console.print("Available queries: available, history, lots, quarantine, accounting")
@@ -84,20 +105,25 @@ async def _run_ingest() -> None:
         failed = 0
         for capture in captures:
             try:
-                offer_key = _posting_offer_key(capture.source, capture.url, capture.fetched_at)
-                result = conn.execute(
-                    """INSERT INTO postings (offer_key, source, url, fetched_at, checksum, payload)
-                    VALUES (%s, %s, %s, %s, %s, %s::jsonb)
-                    ON CONFLICT (offer_key) DO NOTHING""",
-                    (
-                        offer_key,
-                        capture.source,
-                        capture.url,
-                        capture.fetched_at,
-                        capture.checksum,
-                        capture.raw_payload,
-                    ),
+                offer_key = _posting_offer_key(
+                    capture.source, capture.url, capture.fetched_at, capture.source_listing_id
                 )
+                # A savepoint keeps a bad row from rolling back earlier inserts.
+                with conn.transaction():
+                    result = conn.execute(
+                        """INSERT INTO postings (
+                        offer_key, source, url, fetched_at, checksum, payload)
+                        VALUES (%s, %s, %s, %s, %s, %s::jsonb)
+                        ON CONFLICT (offer_key) DO NOTHING""",
+                        (
+                            offer_key,
+                            capture.source,
+                            capture.url,
+                            capture.fetched_at,
+                            capture.checksum,
+                            _stored_payload(capture),
+                        ),
+                    )
                 if result.rowcount == 1:
                     inserted += 1
                 else:
@@ -106,7 +132,6 @@ async def _run_ingest() -> None:
                 console.print(
                     f"[red]Error inserting {capture.source}/{capture.source_listing_id}: {e}[/red]"
                 )
-                conn.rollback()
                 failed += 1
                 continue
 
@@ -117,11 +142,6 @@ async def _run_ingest() -> None:
         )
     finally:
         conn.close()
-
-
-async def _run_extract() -> None:
-    """Report extraction as unavailable until persistence is wired."""
-    console.print("[yellow]Extraction is not implemented; no postings were processed.[/yellow]")
 
 
 def _run_query(name: str) -> None:

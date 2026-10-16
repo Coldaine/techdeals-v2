@@ -14,23 +14,27 @@ ORDER BY source;
 -- Expected: server postings have multiple lines, single items have 1
 SELECT p.id, p.source, COUNT(l.id) as line_count
 FROM postings p
-JOIN extractions e ON e.posting_id = p.id
-JOIN lines l ON l.extraction_id = e.id
+JOIN v_current_extractions e ON e.posting_id = p.id
+JOIN lines l ON l.posting_id = p.id AND l.extraction_id = e.extraction_id
 GROUP BY p.id, p.source
 ORDER BY line_count DESC;
 
--- AC3: No fabricated prices — lot totals never silently divided
--- Expected: all sale_groups have explicit price_basis, no hidden division
-SELECT sg.price_basis, COUNT(*) as count,
-       SUM(sg.total_price_cents) as total_cents
-FROM sale_groups sg
-GROUP BY sg.price_basis
-ORDER BY sg.price_basis;
+-- AC3: No fabricated prices — report actual observed bases by subject.
+-- Price basis and amount belong to price_observations, not sale_groups.
+SELECT po.subject_kind, po.price_basis, COUNT(*) AS observation_count,
+       SUM(po.amount) AS total_amount
+FROM price_observations po
+WHERE po.superseded_by IS NULL
+GROUP BY po.subject_kind, po.price_basis
+ORDER BY po.subject_kind, po.price_basis;
 
 -- AC3b: Verify price observations flow through valid lines or sale groups
-SELECT po.id, po.price_cents, po.price_kind, po.subject_kind
+SELECT po.id, po.amount, po.price_kind, po.subject_kind
 FROM price_observations po
-WHERE po.line_id IS NULL AND po.sale_group_id IS NULL AND po.subject_kind != 'posting';
+LEFT JOIN lines l ON l.id = po.line_id
+LEFT JOIN sale_groups sg ON sg.id = po.sale_group_id
+WHERE (po.subject_kind = 'line' AND l.id IS NULL)
+   OR (po.subject_kind = 'sale_group' AND sg.id IS NULL);
 
 -- AC4: Time series — price and availability history queryable via views
 -- Expected: price history view returns active observations
@@ -46,12 +50,12 @@ FROM extraction_batches b
 ORDER BY b.created_at DESC;
 
 -- AC7: Dynamic categories — categories are data, not DDL
-SELECT name, description, parent_category, created_at
+SELECT name, spec, created_at
 FROM categories
 ORDER BY name;
 
--- AC8: Replay safety — re-ingesting creates new extractions, not duplicate postings
--- Expected: offer_key is unique per posting
+-- AC8: Posting identity — one row per stable capture natural key
+-- Expected: offer_key is unique per posting; replay coverage is compared by row count externally
 SELECT offer_key, COUNT(*) as count
 FROM postings
 GROUP BY offer_key

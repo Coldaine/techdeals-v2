@@ -12,6 +12,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterator
+from urllib.parse import urlparse
 
 from techdeals.ingestion.contract import RawCapture
 
@@ -77,11 +78,16 @@ def load_shopify_fixtures(source: str) -> Iterator[RawCapture]:
             product_id = str(product.get("id", json_file.stem))
             raw_payload = json.dumps(product)
             fetched_at = _capture_time(product.get("timestamp"), json_file)
+            reported_url = product.get("url", product.get("handle", ""))
+            parsed_url = urlparse(reported_url)
+            has_source_url = parsed_url.scheme in {"http", "https"} and bool(parsed_url.netloc)
+            artifact_locator = reported_url if parsed_url.scheme == "file" else None
+            source_url = reported_url if has_source_url else ""
 
             yield RawCapture(
                 source=source,
                 source_listing_id=product_id,
-                url=product.get("url", product.get("handle", f"file://{json_file}")),
+                url=source_url,
                 fetched_at=fetched_at,
                 checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
                 raw_payload=raw_payload,
@@ -89,7 +95,14 @@ def load_shopify_fixtures(source: str) -> Iterator[RawCapture]:
                 metadata={
                     "file": str(json_file),
                     "timestamp_provenance": (
-                        "source_capture" if product.get("timestamp") else "fixture_mtime_fallback"
+                        _timestamp_provenance(product.get("timestamp"))
+                    ),
+                    "source_url_status": "present" if has_source_url else "incomplete",
+                    **({"artifact_locator": artifact_locator} if artifact_locator else {}),
+                    **(
+                        {"reported_url_value": reported_url}
+                        if reported_url and not has_source_url and not artifact_locator
+                        else {}
                     ),
                 },
             )
@@ -127,7 +140,7 @@ def load_govdeals_fixtures(source: str = "govdeals") -> Iterator[RawCapture]:
                 "file": str(json_file),
                 "type": json_file.stem.split("_")[0],
                 "timestamp_provenance": (
-                    "source_capture" if data.get("timestamp") else "fixture_mtime_fallback"
+                    _timestamp_provenance(data.get("timestamp"))
                 ),
             },
         )
@@ -166,7 +179,7 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
                     "file": str(file_path),
                     "title": title,
                     "timestamp_provenance": (
-                        "source_capture" if data.get("timestamp") else "fixture_mtime_fallback"
+                        _timestamp_provenance(data.get("timestamp"))
                     ),
                 },
             )
@@ -183,12 +196,7 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
                 updated = entry.findtext("atom:updated", "", ns)
 
                 entry_xml = ET.tostring(entry, encoding="unicode")
-                fetched_at = datetime.now(timezone.utc)
-                if updated:
-                    try:
-                        fetched_at = datetime.fromisoformat(updated.replace("Z", "+00:00"))
-                    except ValueError:
-                        pass
+                fetched_at = _capture_time(updated, file_path)
 
                 yield RawCapture(
                     source=source,
@@ -198,7 +206,11 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
                     checksum=hashlib.sha256(entry_xml.encode()).hexdigest(),
                     raw_payload=entry_xml,
                     payload_format="atom",
-                    metadata={"file": str(file_path), "title": title},
+                    metadata={
+                        "file": str(file_path),
+                        "title": title,
+                        "timestamp_provenance": _timestamp_provenance(updated),
+                    },
                 )
 
 
@@ -293,7 +305,7 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
                 metadata={
                     "format": "rackrat_hit",
                     "timestamp_provenance": (
-                        "source_capture" if listing.get("timestamp") else "fixture_mtime_fallback"
+                        _timestamp_provenance(listing.get("timestamp"))
                     ),
                 },
             )
@@ -305,10 +317,20 @@ def _capture_time(value: str | None, path: Path) -> datetime:
     The fallback is only a stable ingestion key for staged fixtures. It does not
     establish when the source was observed.
     """
-    if value:
+    if _timestamp_provenance(value) == "source_capture":
         try:
             parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
             return parsed.replace(tzinfo=timezone.utc) if parsed.tzinfo is None else parsed
+        except ValueError:  # guarded by _timestamp_provenance
+            raise AssertionError("validated timestamp failed to parse")
+    return datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
+
+
+def _timestamp_provenance(value: str | None) -> str:
+    if value:
+        try:
+            datetime.fromisoformat(value.replace("Z", "+00:00"))
+            return "source_capture"
         except ValueError:
             pass
-    return datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
+    return "fixture_mtime_fallback"

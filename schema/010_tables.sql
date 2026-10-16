@@ -65,12 +65,12 @@ CREATE TRIGGER postings_reject_truncate
 
 COMMENT ON TABLE  postings            IS 'The atomic unit of evidence: one captured listing (page payload + source + fetch time), whatever it contains. Posting is the center of the model (BRIEF §4). Serves all four; it IS the accounting unit for Q4 and the provenance anchor for Q1-Q3.';
 COMMENT ON COLUMN postings.id         IS 'Serves Q4: every capture lands as exactly one posting row — nothing silently dropped.';
-COMMENT ON COLUMN postings.offer_key  IS 'Serves Q4 (and replay-safety for Q1-Q3): sha256 of the natural key (source | url | fetched_at), stable across parser replays so re-ingesting a capture never invents a second posting (BRIEF §3 acceptance 5, 8).';
+COMMENT ON COLUMN postings.offer_key  IS 'Serves Q4 (and replay-safety for Q1-Q3): sha256 of source | url | fetched_at; when the source URL is genuinely unavailable, the stable source_listing_id disambiguates captures while URL provenance remains explicitly incomplete. Stable across fixture replays (BRIEF §3 acceptance 5, 8).';
 COMMENT ON COLUMN postings.source     IS 'Serves Q4: provenance — where it was seen (source name).';
 COMMENT ON COLUMN postings.url        IS 'Serves Q4: provenance — where it was seen (URL).';
 COMMENT ON COLUMN postings.fetched_at IS 'Serves Q2: provenance — when it was seen; anchors every price/availability time series.';
 COMMENT ON COLUMN postings.checksum   IS 'Serves Q4: provenance — integrity checksum of the payload, so corrupted re-captures are detectable.';
-COMMENT ON COLUMN postings.payload    IS 'Serves Q4: the raw capture kept intact so missed/mis-parsed/quarantined postings can be re-extracted (BRIEF §6 query 4: "parse failures surfaced with their payload intact").';
+COMMENT ON COLUMN postings.payload    IS 'Serves Q4: JSONB envelope with payload_format, exact raw_payload text, and capture metadata, so HTML/XML and JSON evidence remain intact for re-extraction (BRIEF §6 query 4: "parse failures surfaced with their payload intact").';
 COMMENT ON COLUMN postings.created_at IS 'Serves Q4: when the posting row was written (ingest time, distinct from fetch time).';
 
 CREATE TABLE extractions (

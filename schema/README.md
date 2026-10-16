@@ -39,6 +39,17 @@ enum types), append-only ledgers whose ONLY correction path is the
 `superseded_by` pointer (set once, only to a strictly later row), derived
 values computed in views only.
 
+The intake CLI stores `postings.payload` as a JSONB envelope containing
+`payload_format`, exact `raw_payload` text, and capture `metadata`. This keeps
+HTML, XML, and JSON evidence intact without requiring every source payload to
+be valid JSON. Fixture modification-time fallbacks are marked
+`timestamp_provenance: fixture_mtime_fallback`; they stabilize fixture replay
+keys but are not evidence of when the source was observed. Local fixture paths
+are retained as `artifact_locator` metadata and are never reported as source
+URLs. When a source URL is absent, the intake key uses the stable
+`source_listing_id` to keep separate fixture captures distinct, and retains an
+empty URL plus explicit incomplete provenance.
+
 ## Key invariants added by the adversarial-review fixes (2026-10-12)
 
 - **Offer-key writer contract (H2).** `price_observations` and

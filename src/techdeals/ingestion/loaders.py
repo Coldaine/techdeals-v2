@@ -76,12 +76,13 @@ def load_shopify_fixtures(source: str) -> Iterator[RawCapture]:
 
             product_id = str(product.get("id", json_file.stem))
             raw_payload = json.dumps(product)
+            fetched_at = _capture_time(product.get("timestamp"), json_file)
 
             yield RawCapture(
                 source=source,
                 source_listing_id=product_id,
                 url=product.get("url", product.get("handle", f"file://{json_file}")),
-                fetched_at=datetime.now(timezone.utc),
+                fetched_at=fetched_at,
                 checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
                 raw_payload=raw_payload,
                 payload_format="json",
@@ -113,7 +114,7 @@ def load_govdeals_fixtures(source: str = "govdeals") -> Iterator[RawCapture]:
             source=source,
             source_listing_id=source_listing_id,
             url=f"https://www.govdeals.com/asset/{asset_id}",
-            fetched_at=datetime.now(timezone.utc),
+            fetched_at=_capture_time(data.get("timestamp"), json_file),
             checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
             raw_payload=raw_payload,
             payload_format="json",
@@ -146,7 +147,7 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
                 source=source,
                 source_listing_id=entry_id,
                 url=url,
-                fetched_at=datetime.now(timezone.utc),
+                fetched_at=_capture_time(data.get("timestamp"), file_path),
                 checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
                 raw_payload=raw_payload,
                 payload_format="json",
@@ -211,7 +212,7 @@ def load_liquidation_fixtures(source: str = "liquidation_com") -> Iterator[RawCa
             source=source,
             source_listing_id=lot_id,
             url=f"https://www.liquidation.com/auction/view?id={lot_id}",
-            fetched_at=datetime.now(timezone.utc),
+            fetched_at=_capture_time(None, files[0]),
             checksum=hashlib.sha256(combined_html.encode()).hexdigest(),
             raw_payload=combined_html,
             payload_format="html",
@@ -242,7 +243,7 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
                 source=source,
                 source_listing_id=listing_id,
                 url=listing.get("url", ""),
-                fetched_at=datetime.now(timezone.utc),
+                fetched_at=_capture_time(listing.get("timestamp"), path),
                 checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
                 raw_payload=raw_payload,
                 payload_format="json",
@@ -261,9 +262,20 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
                 source=source,
                 source_listing_id=listing_id,
                 url=listing.get("url", ""),
-                fetched_at=datetime.now(timezone.utc),
+                fetched_at=_capture_time(listing.get("timestamp"), path),
                 checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
                 raw_payload=raw_payload,
                 payload_format="json",
                 metadata={"format": "rackrat_hit"},
             )
+
+
+def _capture_time(value: str | None, path: Path) -> datetime:
+    """Use a recorded capture timestamp when available; otherwise file mtime."""
+    if value:
+        try:
+            parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+            return parsed.replace(tzinfo=timezone.utc) if parsed.tzinfo is None else parsed
+        except ValueError:
+            pass
+    return datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)

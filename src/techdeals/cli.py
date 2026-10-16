@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import sys
 
 from rich.console import Console
@@ -73,9 +74,11 @@ async def _run_ingest() -> None:
 
     try:
         inserted = 0
+        failed = 0
         for capture in captures:
             try:
-                offer_key = capture.checksum  # offer_key natural sha256
+                natural_key = f"{capture.source}|{capture.url}|{capture.fetched_at.isoformat()}"
+                offer_key = hashlib.sha256(natural_key.encode()).hexdigest()
                 conn.execute(
                     """INSERT INTO postings (offer_key, source, url, fetched_at, checksum, payload)
                     VALUES (%s, %s, %s, %s, %s, %s::jsonb)
@@ -95,19 +98,21 @@ async def _run_ingest() -> None:
                     f"[red]Error inserting {capture.source}/{capture.source_listing_id}: {e}[/red]"
                 )
                 conn.rollback()
+                failed += 1
                 continue
 
         conn.commit()
         console.print(
-            f"[green]Processed: {inserted} captures (duplicates skipped by ON CONFLICT)[/green]"
+            f"[green]Processed: {inserted} captures; {failed} failed "
+            "(duplicates skipped by ON CONFLICT)[/green]"
         )
     finally:
         conn.close()
 
 
 async def _run_extract() -> None:
-    """Run LLM extraction on postings."""
-    console.print("[yellow]Extraction pipeline — running batched LLM extraction.[/yellow]")
+    """Report extraction as unavailable until persistence is wired."""
+    console.print("[yellow]Extraction is not implemented; no postings were processed.[/yellow]")
 
 
 def _run_query(name: str) -> None:

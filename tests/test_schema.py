@@ -21,3 +21,8 @@ def test_schema_files_are_valid_sql() -> None:
                 continue
             content = sql_file.read_text()
             assert len(content.strip()) > 0, f"{sql_file} is empty"
+
+
+def test_packaged_schema_matches_authoritative_schema() -> None:
+    for name in ("000_functions.sql", "010_tables.sql", "020_views.sql"):
+        assert (ROOT_SCHEMA_DIR / name).read_bytes() == (PKG_SCHEMA_DIR / name).read_bytes()

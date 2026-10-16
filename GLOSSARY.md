@@ -1,138 +1,57 @@
-
 # TechDeals v2
 
-Canonical vocabulary for the TechDeals v2 rebuild. The domain is used
-hardware and datacenter gear — sources sell or auction it, the pipeline
-decomposes it into items, prices it over time, and makes it answerable.
-These definitions are the language every mission, review, and document uses.
+Words for used hardware and datacenter gear. A source sells or auctions it, the pipeline breaks a listing into parts, prices those parts over time, and answers questions about them.
 
-## Language
+## Listing
 
-### Evidence and provenance
+A listing is one capture: the raw payload plus where and when it was fetched. It may be one part, a configured server, a lot, or a wanted post. Listings are only added. They are not edited, merged, or deleted.
 
-**Capture**:
-A single fetch of a source: the raw page payload plus where and when it was
-fetched. The only input the pipeline accepts.
-_Avoid_: scrape, page, download
+Posting is the same thing. It is the name used in the schema. It is not a second object.
 
-**Posting**:
-The atomic unit of evidence — one capture, whatever it contains: one item, a
-configured server, a lot, or a wanted post. Postings are never edited, merged,
-or deleted; they are only added.
-_Avoid_: listing, product, item (an item is a Line)
+A capture is that fetch. Provenance is the source, the URL, the fetch time, and a content checksum. Nothing enters without those.
 
-**Provenance**:
-The where-seen/when-seen facts attached to every capture: source, URL, fetch
-time, and a content checksum. Nothing enters the system without it.
+An extraction is one parse of one listing. A new parse adds an extraction. It does not rewrite the old one. A batch is a collection of extractions handled as one unit.
 
-**Offer Key**:
-The stable identity of an offer, derived from its natural facts so that
-re-parsing the same capture never invents a second offer.
-_Avoid_: offer id, dedupe key
+An offer key identifies the logical offer whose price and availability history is being tracked.
 
-**Extraction**:
-One parse pass over one capture. Re-running a parser produces a new
-extraction; it never rewrites the old one.
-_Avoid_: parse job, ingest run
+## Parts
 
-**Batch**:
-Many postings parsed together in a single LLM call. Batched parsing is a
-requirement, never an optimization; one-listing-per-call is a defect.
-_Avoid_: single parse
+A line is one part taken out of a listing, with the seller's stated description and stated quantity. Lines can nest: parts inside a server, rows inside a lot. Stated quantity is what the seller said, not a guess. Separately purchasable means the line can be bought alone.
 
-### Decomposition
+A sale group is the set of lines that can be bought together in one purchase: the whole server, each DIMM alone, or the whole lot. Two ways of buying the same listing are two sale groups. Membership terms say which lines are in the group and how many of each stated quantity the purchase includes.
 
-**Line**:
-One item decomposed out of a posting, carrying the seller's stated
-description and stated quantity. Lines can nest: components inside a server
-line, manifest rows inside a lot line.
-_Avoid_: product, SKU, item row
+## Price
 
-**Stated Quantity**:
-How many units of a line the seller says are present, as stated — not
-inferred or rounded.
+An offer is a line or a sale group that can be bought at a price. A listing is the evidence. An offer is what is for sale.
 
-**Separately Purchasable**:
-Whether a line can be bought on its own, or only as part of a larger purchase.
+An observation is one appended price or availability event. Observations are not edited. A correction points at a later observation.
 
-**Sale Group**:
-The set of lines that can actually be bought together in one purchase — a
-configured server as one unit, each DIMM bought individually, a whole lot.
-Alternative purchase shapes of the same posting are distinct sale groups.
-_Avoid_: bundle, package, offer (see Offer)
+Price kind is which fact the number is. These stay separate: ask, bid, sold, cost basis, and reference. A reference is a third-party or list price used for comparison. It is a kind of price, not a role.
 
-**Membership Terms**:
-Which lines are in a sale group and how many of each one's stated quantity
-the purchase includes.
+Price basis is how the amount relates to units: explicit unit, homogeneous division of a lot of identical units, bound-only (bounds known, nothing allocated), or allocated across different parts with the basis recorded.
 
-### Prices and time
+Availability is whether the offer can be bought, recorded over time next to price.
 
-**Offer**:
-Something purchasable at a price — a line or a sale group, at a point in
-time. Observations attach to offers.
-_Avoid_: posting (a posting is evidence; an offer is what is for sale)
+## Analysis
 
-**Price Kind**:
-Which market fact a price is — these series are never conflated:
-- **Ask** — what a seller is asking
-- **Bid** — what a buyer has offered (auction)
-- **Sold** — a completed transaction
-- **Cost Basis** — what we paid internally, not a market price
-- **Reference** — a third-party or list price used for comparison
+A comp is a temporary pricing-analysis role played by a source listing when it is used to price another listing. A comp is not a separate stored object, a decomposed line, or the Reference price kind.
 
-**Price Basis**:
-How a price amount relates to units — the honesty record:
-- **Explicit Unit** — the price was stated per unit
-- **Homogeneous Division** — a lot total divided across identical units
-- **Bound-Only** — only bounds are known; never allocate to units
-- **Allocated** — a lot total apportioned across different components, with
-  the basis recorded
+## Identity
 
-**Availability**:
-Whether an offer is currently purchasable — a time series alongside price.
+A resolution is a candidate product match for a line, with a confidence score. It can be run again. An unresolved listing stays visible.
 
-**Observation**:
-An appended price or availability event. Observations are never updated or
-deleted; corrections point to a superseding observation.
-_Avoid_: price update, correction row
+A product is the identity a line resolves to. It is reached through resolutions. It is not trusted just because a row exists.
 
-### Identity
+A category is a named spec, added as data.
 
-**Resolution**:
-A candidate product match for a line, with a confidence score. Resolutions
-are re-runnable and never block anything from being visible; unresolved
-postings appear in every read view immediately.
-_Avoid_: identity merge, dedupe, match lock
+## Honesty
 
-**Product**:
-The canonical identity lines resolve to. Never trusted implicitly — always
-arrived at through scored resolutions.
-_Avoid_: item, SKU
+Quarantine is a visible exclusion with a reason: out of scope, a wanted post, or a parse failure. Those rows are counted.
 
-**Category**:
-A named spec, built dynamically by adding data — not by changing the schema.
-_Avoid_: type, taxonomy node
+A wanted post is someone trying to buy. It is not an ask.
 
-### Honesty
+A parse failure keeps the payload for another extraction. The failure stays visible.
 
-**Quarantine**:
-An explicit, visible exclusion state with a reason (out-of-scope item, wanted
-post, parse failure). Quarantined things are counted, never silently dropped.
-_Avoid_: skip, filter, delete
+Coverage is the share of captures that reach a queryable state, including the ones that were quarantined, as long as the reason is visible.
 
-**Wanted Post**:
-A post seeking to buy, not to sell. Excluded from inventory with a recorded
-reason; never treated as an ask.
-
-**Parse Failure**:
-An extraction that could not complete. The capture's payload stays intact
-for re-extraction; the failure is visible, not hidden.
-
-**Coverage**:
-The fraction of captures that reach a queryable state — extracted, priced,
-resolved or explicitly unresolved. Drops and quarantines count as long as
-they are visible with reasons.
-
-**Trust**:
-The guarantee that query answers are correctly decomposed, priced, and
-kinned: zero fabricated unit prices, zero conflated price kinds.
+Trust means the answers are decomposed, priced, and kinded without invented unit prices and without mixing price kinds.

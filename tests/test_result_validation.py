@@ -63,3 +63,93 @@ def test_run_batch_call_marks_purchase_without_outcome_as_failed(tmp_path: Path)
     assert row["status"] == "partial"
     ledger_row = json.loads((tmp_path / "ledger.jsonl").read_text())
     assert ledger_row["failed_ids"] == ["missing-outcome"]
+
+
+def test_malformed_nonempty_sale_group_is_rejected() -> None:
+    malformed = {"id": "bad", "outcome": "extracted", "sale_groups": [{}]}
+
+    with pytest.raises(ValueError, match="sale group missing required fields"):
+        extract.validate_result(malformed)
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [("label", 7), ("lines", {}), ("price", []), ("availability", [])],
+)
+def test_sale_group_fields_must_have_contract_types(field: str, value: object) -> None:
+    group = {"label": None, "lines": [], "price": None, "availability": "unknown"}
+    group[field] = value
+
+    with pytest.raises(ValueError, match="sale group|price"):
+        extract.validate_result({"id": "bad", "outcome": "quarantined", "sale_groups": [group]})
+
+
+def test_extracted_result_requires_a_valid_line_in_each_sale_group() -> None:
+    no_lines = {
+        "id": "empty",
+        "outcome": "extracted",
+        "sale_groups": [{"label": "Server", "lines": [], "price": None, "availability": "unknown"}],
+    }
+
+    with pytest.raises(ValueError, match="must contain at least one valid line"):
+        extract.validate_result(no_lines)
+
+
+def test_malformed_child_is_rejected_instead_of_silently_dropped() -> None:
+    malformed_child = {
+        "id": "child",
+        "outcome": "extracted",
+        "sale_groups": [{
+            "label": "Server",
+            "availability": "available",
+            "price": None,
+            "lines": [{
+                "label": "System",
+                "quantity": 1,
+                "separately_purchasable": True,
+                "attributes": {},
+                "children": [{}],
+            }],
+        }],
+    }
+
+    with pytest.raises(ValueError, match="child 0 missing required fields"):
+        extract.validate_result(malformed_child)
+
+
+def test_child_fields_must_have_contract_types() -> None:
+    malformed_child = {
+        "id": "child",
+        "outcome": "extracted",
+        "sale_groups": [{
+            "label": "Server",
+            "availability": "available",
+            "price": None,
+            "lines": [{
+                "label": "System",
+                "quantity": 1,
+                "separately_purchasable": True,
+                "attributes": {},
+                "children": [{
+                    "label": "CPU",
+                    "quantity": True,
+                    "separately_purchasable": False,
+                    "attributes": {},
+                }],
+            }],
+        }],
+    }
+
+    with pytest.raises(ValueError, match="child 0 quantity must be a number or null"):
+        extract.validate_result(malformed_child)
+
+
+def test_quarantined_result_may_have_no_sale_groups() -> None:
+    result = extract.validate_result({
+        "id": "quarantine",
+        "outcome": "quarantined",
+        "sale_groups": [],
+    })
+
+    assert result["outcome"] == "quarantined"
+    assert result["sale_groups"] == []

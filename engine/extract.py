@@ -654,6 +654,8 @@ def validate_result(res: dict, fallback_label: str | None = None) -> dict:
     outcome = res["outcome"]
     if outcome not in ("extracted", "quarantined", "no_purchase_information"):
         raise ValueError(f"bad outcome {outcome!r}")
+    if "sale_groups" not in res or not isinstance(res["sale_groups"], list):
+        raise ValueError("missing or invalid sale_groups array")
     out = {
         "id": str(res.get("id")),
         "outcome": outcome,
@@ -663,14 +665,78 @@ def validate_result(res: dict, fallback_label: str | None = None) -> dict:
         "read_confidence": res.get("read_confidence"),
         "read_note": res.get("read_note"),
     }
-    for g in res.get("sale_groups") or []:
+    for group_index, g in enumerate(res["sale_groups"]):
         if not isinstance(g, dict):
             raise ValueError("sale group not an object")
-        price = g.get("price")
-        lines_out = _repair_lines(g.get("lines") or [], g.get("label"), fallback_label)
+        required_group_fields = {"label", "lines", "price", "availability"}
+        missing_group_fields = required_group_fields - g.keys()
+        if missing_group_fields:
+            raise ValueError(
+                "sale group missing required fields: " + ", ".join(sorted(missing_group_fields))
+            )
+        if g["label"] is not None and not isinstance(g["label"], str):
+            raise ValueError("sale group label must be a string or null")
+        if g["availability"] is not None and not isinstance(g["availability"], str):
+            raise ValueError("sale group availability must be a string or null")
+        raw_lines = g["lines"]
+        if not isinstance(raw_lines, list):
+            raise ValueError("sale group lines must be an array")
+        price = g["price"]
+        if price is not None and not isinstance(price, dict):
+            raise ValueError("price not an object")
+        for line_index, line in enumerate(raw_lines):
+            context = f"sale group {group_index} line {line_index}"
+            if not isinstance(line, dict):
+                raise ValueError(f"{context} not an object")
+            required_line_fields = {
+                "label", "quantity", "separately_purchasable", "attributes", "children",
+            }
+            missing_line_fields = required_line_fields - line.keys()
+            if missing_line_fields:
+                raise ValueError(
+                    f"{context} missing required fields: " + ", ".join(sorted(missing_line_fields))
+                )
+            if not isinstance(line["label"], str):
+                raise ValueError(f"{context} label must be a string")
+            if line["quantity"] is not None and (
+                isinstance(line["quantity"], bool)
+                or not isinstance(line["quantity"], (int, float))
+            ):
+                raise ValueError(f"{context} quantity must be a number or null")
+            if not isinstance(line["separately_purchasable"], bool):
+                raise ValueError(f"{context} separately_purchasable must be a boolean")
+            if not isinstance(line["attributes"], dict):
+                raise ValueError(f"{context} attributes must be an object")
+            if not isinstance(line["children"], list):
+                raise ValueError(f"{context} children must be an array")
+            for child_index, child in enumerate(line["children"]):
+                child_context = f"{context} child {child_index}"
+                if not isinstance(child, dict):
+                    raise ValueError(f"{child_context} not an object")
+                required_child_fields = {
+                    "label", "quantity", "separately_purchasable", "attributes",
+                }
+                missing_child_fields = required_child_fields - child.keys()
+                if missing_child_fields:
+                    raise ValueError(
+                        f"{child_context} missing required fields: "
+                        + ", ".join(sorted(missing_child_fields))
+                    )
+                if not isinstance(child["label"], str):
+                    raise ValueError(f"{child_context} label must be a string")
+                if child["quantity"] is not None and (
+                    isinstance(child["quantity"], bool)
+                    or not isinstance(child["quantity"], (int, float))
+                ):
+                    raise ValueError(f"{child_context} quantity must be a number or null")
+                if not isinstance(child["separately_purchasable"], bool):
+                    raise ValueError(f"{child_context} separately_purchasable must be a boolean")
+                if not isinstance(child["attributes"], dict):
+                    raise ValueError(f"{child_context} attributes must be an object")
+        lines_out = _repair_lines(raw_lines, g["label"], fallback_label)
+        if outcome == "extracted" and not lines_out:
+            raise ValueError(f"extracted sale group {group_index} must contain at least one valid line")
         if price is not None:
-            if not isinstance(price, dict):
-                raise ValueError("price not an object")
             if price.get("price_basis") not in ("explicit_unit", "homogeneous_division", "bound_only"):
                 raise ValueError(f"bad price_basis {price.get('price_basis')!r}")
             if price.get("price_basis") == "bound_only" and price.get("amount") is not None:

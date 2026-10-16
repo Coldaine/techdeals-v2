@@ -83,11 +83,9 @@ def load_shopify_fixtures(source: str) -> Iterator[RawCapture]:
             if fetched_at is None:
                 _warn_missing_timestamp(source, product_id, json_file)
                 continue
-            reported_url = product.get("url", product.get("handle", ""))
-            parsed_url = urlparse(reported_url)
-            has_source_url = parsed_url.scheme in {"http", "https"} and bool(parsed_url.netloc)
-            artifact_locator = reported_url if parsed_url.scheme == "file" else None
-            source_url = reported_url if has_source_url else ""
+            source_url, url_metadata = _source_url_fields(
+                product.get("url", product.get("handle", ""))
+            )
             selector = (
                 f"/products/{index}"
                 if isinstance(data, dict) and "products" in data
@@ -108,13 +106,7 @@ def load_shopify_fixtures(source: str) -> Iterator[RawCapture]:
                     "file": str(json_file),
                     "payload_selector": selector,
                     "timestamp_provenance": "capture_metadata.fetched_at",
-                    "source_url_status": "present" if has_source_url else "incomplete",
-                    **({"artifact_locator": artifact_locator} if artifact_locator else {}),
-                    **(
-                        {"reported_url_value": reported_url}
-                        if reported_url and not has_source_url and not artifact_locator
-                        else {}
-                    ),
+                    **url_metadata,
                 },
             )
 
@@ -143,15 +135,12 @@ def load_govdeals_fixtures(source: str = "govdeals") -> Iterator[RawCapture]:
         if fetched_at is None:
             _warn_missing_timestamp(source, source_listing_id, json_file)
             continue
-        reported_url = data.get("url", "")
-        parsed_url = urlparse(reported_url)
-        has_source_url = parsed_url.scheme in {"http", "https"} and bool(parsed_url.netloc)
-        artifact_locator = reported_url if parsed_url.scheme == "file" else None
+        source_url, url_metadata = _source_url_fields(data.get("url", ""))
 
         yield RawCapture(
             source=source,
             source_listing_id=source_listing_id,
-            url=reported_url if has_source_url else "",
+            url=source_url,
             fetched_at=fetched_at,
             checksum=hashlib.sha256(raw_bytes).hexdigest(),
             raw_payload=raw_payload,
@@ -160,13 +149,7 @@ def load_govdeals_fixtures(source: str = "govdeals") -> Iterator[RawCapture]:
                 "file": str(json_file),
                 "type": json_file.stem.split("_")[0],
                 "timestamp_provenance": "capture_metadata.fetched_at",
-                "source_url_status": "present" if has_source_url else "incomplete",
-                **({"artifact_locator": artifact_locator} if artifact_locator else {}),
-                **(
-                    {"reported_url_value": reported_url}
-                    if reported_url and not has_source_url and not artifact_locator
-                    else {}
-                ),
+                **url_metadata,
             },
         )
 
@@ -194,7 +177,7 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
             if fetched_at is None:
                 _warn_missing_timestamp(source, entry_id, file_path)
                 continue
-            url = data.get("url", "")
+            url, url_metadata = _source_url_fields(data.get("url", ""))
             title = data.get("title", "")
 
             yield RawCapture(
@@ -209,6 +192,7 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
                     "file": str(file_path),
                     "title": title,
                     "timestamp_provenance": "capture_metadata.fetched_at",
+                    **url_metadata,
                 },
             )
         elif file_path.suffix == ".xml":
@@ -216,6 +200,9 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
             raw_payload = raw_bytes.decode("utf-8")
             root = ET.fromstring(raw_payload)
             ns = {"atom": "http://www.w3.org/2005/Atom"}
+            fetch_node = root.find(".//{*}capture_metadata/{*}fetched_at")
+            fetched_value = fetch_node.text if fetch_node is not None else None
+            fetched_at = _capture_time({"capture_metadata": {"fetched_at": fetched_value}})
 
             for entry in root.findall("atom:entry", ns):
                 entry_id = entry.findtext("atom:id", "", ns)
@@ -223,15 +210,15 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
                 link = link_elem.get("href", "") if link_elem is not None else ""
                 title = entry.findtext("atom:title", "", ns)
                 entry_selector = entry_id
-                fetched_at = _capture_time({})
                 if fetched_at is None:
                     _warn_missing_timestamp(source, entry_id, file_path)
                     continue
 
+                source_url, url_metadata = _source_url_fields(link)
                 yield RawCapture(
                     source=source,
                     source_listing_id=entry_id,
-                    url=link,
+                    url=source_url,
                     fetched_at=fetched_at,
                     checksum=hashlib.sha256(raw_bytes).hexdigest(),
                     raw_payload=raw_payload,
@@ -241,6 +228,7 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
                         "title": title,
                         "payload_selector": entry_selector,
                         "timestamp_provenance": "capture_metadata.fetched_at",
+                        **url_metadata,
                     },
                 )
 
@@ -272,6 +260,7 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
     """Load RackRat snapshot fixtures."""
     candidate_paths = [
         REPO_ROOT / "corpus" / "fixture-zero" / "servers_read_v2.jsonl",
+        REPO_ROOT / "corpus" / "rackrat" / "captures.jsonl",
         REPO_ROOT / "corpus" / "rackrat" / "snapshot.json",
         REPO_ROOT / "fixtures" / "rackrat.json",
     ]
@@ -302,10 +291,11 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
                 _warn_missing_timestamp(source, listing_id or str(line_number), path)
                 continue
 
+            source_url, url_metadata = _source_url_fields(listing.get("url", ""))
             yield RawCapture(
                 source=source,
                 source_listing_id=listing_id,
-                url=listing.get("url", ""),
+                url=source_url,
                 fetched_at=fetched_at,
                 checksum=hashlib.sha256(raw_bytes).hexdigest(),
                 raw_payload=raw_payload,
@@ -313,6 +303,7 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
                 metadata={
                     "format": "fixture_zero_jsonl",
                     "timestamp_provenance": "capture_metadata.fetched_at",
+                    **url_metadata,
                 },
             )
     else:
@@ -320,19 +311,20 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
         raw_payload = raw_bytes.decode("utf-8")
         data = json.loads(raw_payload)
         listings = data.get("listings", []) if isinstance(data, dict) else data
-        for listing in listings:
+        for index, listing in enumerate(listings):
             if not isinstance(listing, dict):
                 continue
             listing_id = str(listing.get("id", listing.get("ebay_item", "unknown")))
-            fetched_at = _capture_time(listing)
+            fetched_at = _capture_time(listing, data if isinstance(data, dict) else None)
             if fetched_at is None:
                 _warn_missing_timestamp(source, listing_id, path)
                 continue
 
+            source_url, url_metadata = _source_url_fields(listing.get("url", ""))
             yield RawCapture(
                 source=source,
                 source_listing_id=listing_id,
-                url=listing.get("url", ""),
+                url=source_url,
                 fetched_at=fetched_at,
                 checksum=hashlib.sha256(raw_bytes).hexdigest(),
                 raw_payload=raw_payload,
@@ -340,6 +332,10 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
                 metadata={
                     "format": "rackrat_hit",
                     "timestamp_provenance": "capture_metadata.fetched_at",
+                    "payload_selector": (
+                        f"/listings/{index}" if isinstance(data, dict) else f"/{index}"
+                    ),
+                    **url_metadata,
                 },
             )
 
@@ -361,6 +357,19 @@ def _capture_time(
         except ValueError:
             return None
     return None
+
+
+def _source_url_fields(reported_url: Any) -> tuple[str, dict[str, str]]:
+    """Keep only observed HTTP(S) URLs as source links; retain other evidence as metadata."""
+    reported = reported_url if isinstance(reported_url, str) else ""
+    parsed = urlparse(reported)
+    has_source_url = parsed.scheme in {"http", "https"} and bool(parsed.netloc)
+    metadata = {"source_url_status": "present" if has_source_url else "incomplete"}
+    if parsed.scheme == "file" and reported:
+        metadata["artifact_locator"] = reported
+    elif reported and not has_source_url:
+        metadata["reported_url_value"] = reported
+    return (reported if has_source_url else ""), metadata
 
 
 def _warn_missing_timestamp(source: str, listing_id: str, path: Path) -> None:

@@ -11,6 +11,7 @@ from techdeals.ingestion.contract import RawCapture
 from techdeals.ingestion.loaders import (
     load_govdeals_fixtures,
     load_rackrat_fixtures,
+    load_reddit_fixtures,
     load_shopify_fixtures,
 )
 
@@ -119,6 +120,75 @@ def test_waterpanther_artifact_locator_is_not_reported_as_source_url(
     assert capture.fetched_at == datetime(2026, 10, 1, 12, 30, tzinfo=timezone.utc)
     assert capture.raw_payload == source_text
     assert capture.metadata["payload_selector"] == "/products/0"
+
+
+def test_reddit_keeps_missing_source_url_incomplete_without_fabricating_link(
+    tmp_path: Path, monkeypatch
+) -> None:
+    monkeypatch.setattr(loaders, "REPO_ROOT", tmp_path)
+    captures = tmp_path / "corpus/cell-c-reddit/captures"
+    captures.mkdir(parents=True)
+    source_text = (
+        '{"id":"t3_abc123","title":"Sale","capture_metadata":'
+        '{"fetched_at":"2026-10-01T12:30:00Z"}}\n'
+    )
+    source_bytes = source_text.encode("utf-8")
+    (captures / "post.json").write_bytes(source_bytes)
+
+    capture = next(load_reddit_fixtures())
+    assert capture.source_listing_id == "t3_abc123"
+    assert capture.url == ""
+    assert capture.metadata["source_url_status"] == "incomplete"
+    assert capture.raw_payload == source_text
+    assert capture.checksum == hashlib.sha256(source_bytes).hexdigest()
+
+
+def test_rackrat_jsonl_preserves_exact_line_and_artifact_locator(
+    tmp_path: Path, monkeypatch
+) -> None:
+    monkeypatch.setattr(loaders, "REPO_ROOT", tmp_path)
+    corpus = tmp_path / "corpus/rackrat"
+    corpus.mkdir(parents=True)
+    line = (
+        '{"id":"rack-7","url":"file:///tmp/listings.json#rack-7",'
+        '"capture_metadata":{"fetched_at":"2026-10-01T12:30:00Z"}}\r\n'
+    )
+    line_bytes = line.encode("utf-8")
+    (corpus / "captures.jsonl").write_bytes(line_bytes)
+
+    capture = next(load_rackrat_fixtures())
+    assert capture.source_listing_id == "rack-7"
+    assert capture.url == ""
+    assert capture.metadata["source_url_status"] == "incomplete"
+    assert capture.metadata["artifact_locator"] == "file:///tmp/listings.json#rack-7"
+    assert capture.raw_payload == line
+    assert capture.checksum == hashlib.sha256(line_bytes).hexdigest()
+
+
+def test_reddit_atom_uses_explicit_fetch_metadata_and_exact_xml_bytes(
+    tmp_path: Path, monkeypatch
+) -> None:
+    monkeypatch.setattr(loaders, "REPO_ROOT", tmp_path)
+    captures = tmp_path / "corpus/cell-c-reddit/captures"
+    captures.mkdir(parents=True)
+    source_text = (
+        '<feed xmlns="http://www.w3.org/2005/Atom">\n'
+        '  <capture_metadata><fetched_at>2026-10-01T12:30:00Z</fetched_at></capture_metadata>\n'
+        '  <entry><id>reddit-post-9</id><title>Sale</title>'
+        '<updated>2026-10-14T09:00:00Z</updated><link href="file:///tmp/feed.xml" /></entry>\n'
+        '</feed>\n'
+    )
+    source_bytes = source_text.encode("utf-8")
+    (captures / "feed.xml").write_bytes(source_bytes)
+
+    capture = next(load_reddit_fixtures())
+    assert capture.source_listing_id == "reddit-post-9"
+    assert capture.url == ""
+    assert capture.metadata["source_url_status"] == "incomplete"
+    assert capture.metadata["artifact_locator"] == "file:///tmp/feed.xml"
+    assert capture.fetched_at == datetime(2026, 10, 1, 12, 30, tzinfo=timezone.utc)
+    assert capture.raw_payload == source_text
+    assert capture.checksum == hashlib.sha256(source_bytes).hexdigest()
 
 
 def test_captures_without_source_timestamp_are_skipped_with_disposition(capsys) -> None:

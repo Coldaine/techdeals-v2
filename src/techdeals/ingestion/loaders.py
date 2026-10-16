@@ -128,16 +128,20 @@ def load_govdeals_fixtures(source: str = "govdeals") -> Iterator[RawCapture]:
         # Extract identifiers
         account_id = data.get("accountId", "unknown")
         asset_id = data.get("assetId", json_file.stem)
-        source_listing_id = f"{account_id}_{asset_id}"
+        source_listing_id = str(data.get("item_id") or f"{account_id}_{asset_id}")
         fetched_at = _capture_time(data.get("timestamp"))
         if fetched_at is None:
             _warn_missing_timestamp(source, source_listing_id, json_file)
             continue
+        reported_url = data.get("url", "")
+        parsed_url = urlparse(reported_url)
+        has_source_url = parsed_url.scheme in {"http", "https"} and bool(parsed_url.netloc)
+        artifact_locator = reported_url if parsed_url.scheme == "file" else None
 
         yield RawCapture(
             source=source,
             source_listing_id=source_listing_id,
-            url=f"https://www.govdeals.com/asset/{asset_id}",
+            url=reported_url if has_source_url else "",
             fetched_at=fetched_at,
             checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
             raw_payload=raw_payload,
@@ -146,6 +150,13 @@ def load_govdeals_fixtures(source: str = "govdeals") -> Iterator[RawCapture]:
                 "file": str(json_file),
                 "type": json_file.stem.split("_")[0],
                 "timestamp_provenance": "source_capture",
+                "source_url_status": "present" if has_source_url else "incomplete",
+                **({"artifact_locator": artifact_locator} if artifact_locator else {}),
+                **(
+                    {"reported_url_value": reported_url}
+                    if reported_url and not has_source_url and not artifact_locator
+                    else {}
+                ),
             },
         )
 

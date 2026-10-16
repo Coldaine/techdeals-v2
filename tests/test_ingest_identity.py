@@ -5,7 +5,11 @@ from datetime import datetime, timezone
 
 from techdeals.cli import _posting_offer_key, _stored_payload
 from techdeals.ingestion.contract import RawCapture
-from techdeals.ingestion.loaders import load_rackrat_fixtures, load_shopify_fixtures
+from techdeals.ingestion.loaders import (
+    load_govdeals_fixtures,
+    load_rackrat_fixtures,
+    load_shopify_fixtures,
+)
 
 
 def test_posting_key_uses_source_url_and_timestamp_not_payload() -> None:
@@ -64,6 +68,14 @@ def test_waterpanther_artifact_locator_is_not_reported_as_source_url() -> None:
     assert capture.metadata["source_url_status"] == "incomplete"
     assert capture.metadata["artifact_locator"].startswith("file://")
     assert capture.metadata["timestamp_provenance"] == "source_capture"
+
+
+def test_govdeals_uses_payload_url_and_native_listing_id() -> None:
+    capture = next(load_govdeals_fixtures())
+
+    assert capture.source_listing_id == "govdeals-30467-94"
+    assert capture.url == "https://www.govdeals.com/asset/30467/94"
+    assert capture.metadata["source_url_status"] == "present"
 
 
 def test_captures_without_source_timestamp_are_skipped_with_disposition(capsys) -> None:

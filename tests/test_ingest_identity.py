@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 
 from techdeals.cli import _posting_offer_key, _stored_payload
 from techdeals.ingestion.contract import RawCapture
-from techdeals.ingestion.loaders import load_shopify_fixtures
+from techdeals.ingestion.loaders import load_rackrat_fixtures, load_shopify_fixtures
 
 
 def test_posting_key_uses_source_url_and_timestamp_not_payload() -> None:
@@ -64,3 +64,19 @@ def test_waterpanther_artifact_locator_is_not_reported_as_source_url() -> None:
     assert capture.metadata["source_url_status"] == "incomplete"
     assert capture.metadata["artifact_locator"].startswith("file://")
     assert capture.metadata["timestamp_provenance"] == "source_capture"
+
+
+def test_captures_without_source_timestamp_are_skipped_with_disposition(capsys) -> None:
+    assert list(load_shopify_fixtures("fusionww")) == []
+
+    warning = capsys.readouterr().err
+    assert "Skipping fusionww/fww-prod-001" in warning
+    assert "raw artifact is preserved but not ingested" in warning
+
+
+def test_human_verified_fixture_zero_rows_are_not_ingested_as_captures(capsys) -> None:
+    assert list(load_rackrat_fixtures()) == []
+
+    warning = capsys.readouterr().err
+    assert "human-verified scoring records" in warning
+    assert "original raw artifacts remain in corpus/fixture-zero/raw/" in warning

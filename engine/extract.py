@@ -40,7 +40,8 @@ from datetime import datetime, timezone
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_MODEL = "nvidia/nemotron-3.5-lightning:free"
-# Free tier models only. Paid models are strictly forbidden; cost must be $0.00.
+# Models authorized by the standalone extraction CLI; rates drive its cost ledger.
+# Keep this allowlist limited to OpenRouter free-tier model slugs.
 MODEL_PRICES = {
     "nvidia/nemotron-3.5-lightning:free": (0.0, 0.0),
 }

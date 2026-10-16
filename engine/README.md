@@ -41,6 +41,17 @@ Environment: `OPENROUTER_API_KEY` (injected by doppler), `TDV2_DSN`
 (the Neon branch connection string — generated at run time, never stored).
 Dependencies: python3 stdlib + `psql` on PATH.
 
+## Free-model policy for the extraction CLI
+
+`engine/extract.py` allows only the models listed in its `MODEL_PRICES` table;
+the current default is `nvidia/nemotron-3.5-lightning:free`, priced at zero.
+An unlisted `--model` is rejected before loading captures or creating an API
+client. This is a guard on this standalone extraction CLI, not an application-
+wide restriction on other parsers or on already saved results. It controls the
+model slug and recorded cost; it does not establish endpoint availability or
+semantic extraction quality. The earlier paid-model pilot figures below are
+historical measurements and do not validate this free model.
+
 ## What one batch does
 
 1. **Pack** — N condensed captures (field-synonym projection, budgets below)

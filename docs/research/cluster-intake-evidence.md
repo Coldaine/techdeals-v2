@@ -1,3 +1,5 @@
+# Cluster intake and retention evidence
+
 ## Scope and evidence boundaries
 
 Queried **`techdeals_work` and `market_live` on `pg18-core-db.moosegoose.xyz`**, read-only. No production/repository changes, collectors, tests, builds, linters, or formatters.

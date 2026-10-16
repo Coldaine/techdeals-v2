@@ -185,10 +185,14 @@ FROM core.price_observations p
 JOIN core.latest_prices lp
  ON lp.offer_id=p.offer_id AND lp.observed_at=p.observed_at;
 
-SELECT count(*) history,
- count(*) FILTER(WHERE lp.offer_id IS NULL) missing_from_latest
+-- market_live: distinct eBay offers with legacy history, not all-source rows.
+SELECT count(DISTINCT p.offer_id) history_offers,
+ count(DISTINCT p.offer_id) FILTER(WHERE lp.offer_id IS NULL) missing_from_latest
 FROM core.price_observations p
-LEFT JOIN core.latest_prices lp USING(offer_id);
+JOIN core.offers o ON o.offer_id=p.offer_id
+JOIN source.sources s ON s.source_id=o.source_id
+LEFT JOIN core.latest_prices lp ON lp.offer_id=p.offer_id
+WHERE lower(s.source_name) LIKE '%ebay%';
 
 -- market_live: exclusions and proved mismatch causes.
 SELECT s.source_name,count(*) excluded,

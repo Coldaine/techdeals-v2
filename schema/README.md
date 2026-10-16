@@ -42,8 +42,10 @@ values computed in views only.
 The intake CLI stores `postings.payload` as a JSONB envelope containing
 `payload_format`, exact `raw_payload` text, and capture `metadata`. This keeps
 HTML, XML, and JSON evidence intact without requiring every source payload to
-be valid JSON. Captures without a valid source timestamp are skipped and
-reported; local file modification time is never stored as `fetched_at`. Local
+be valid JSON. Only explicit `capture_metadata.fetched_at` values qualify for
+`fetched_at`; product update, post publication/update, and auction close times
+are skipped and reported because they describe the source object, not when it
+was captured. Local file modification time is never stored as `fetched_at`. Local
 fixture paths are retained as `artifact_locator` metadata and are never
 reported as source URLs. When a source URL is absent, the intake key uses the
 stable `source_listing_id` to keep separate fixture captures distinct, and

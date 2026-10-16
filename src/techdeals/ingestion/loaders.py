@@ -12,7 +12,7 @@ import json
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Iterator
+from typing import Any, Iterator
 from urllib.parse import urlparse
 
 from techdeals.ingestion.contract import RawCapture
@@ -78,7 +78,7 @@ def load_shopify_fixtures(source: str) -> Iterator[RawCapture]:
 
             product_id = str(product.get("id", json_file.stem))
             raw_payload = json.dumps(product)
-            fetched_at = _capture_time(product.get("timestamp"))
+            fetched_at = _capture_time(product)
             if fetched_at is None:
                 _warn_missing_timestamp(source, product_id, json_file)
                 continue
@@ -98,7 +98,7 @@ def load_shopify_fixtures(source: str) -> Iterator[RawCapture]:
                 payload_format="json",
                 metadata={
                     "file": str(json_file),
-                    "timestamp_provenance": "source_capture",
+                    "timestamp_provenance": "capture_metadata.fetched_at",
                     "source_url_status": "present" if has_source_url else "incomplete",
                     **({"artifact_locator": artifact_locator} if artifact_locator else {}),
                     **(
@@ -129,7 +129,7 @@ def load_govdeals_fixtures(source: str = "govdeals") -> Iterator[RawCapture]:
         account_id = data.get("accountId", "unknown")
         asset_id = data.get("assetId", json_file.stem)
         source_listing_id = str(data.get("item_id") or f"{account_id}_{asset_id}")
-        fetched_at = _capture_time(data.get("timestamp"))
+        fetched_at = _capture_time(data)
         if fetched_at is None:
             _warn_missing_timestamp(source, source_listing_id, json_file)
             continue
@@ -149,7 +149,7 @@ def load_govdeals_fixtures(source: str = "govdeals") -> Iterator[RawCapture]:
             metadata={
                 "file": str(json_file),
                 "type": json_file.stem.split("_")[0],
-                "timestamp_provenance": "source_capture",
+                "timestamp_provenance": "capture_metadata.fetched_at",
                 "source_url_status": "present" if has_source_url else "incomplete",
                 **({"artifact_locator": artifact_locator} if artifact_locator else {}),
                 **(
@@ -179,7 +179,7 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
             data = json.loads(file_path.read_text())
             raw_payload = json.dumps(data)
             entry_id = str(data.get("id", file_path.stem))
-            fetched_at = _capture_time(data.get("timestamp"))
+            fetched_at = _capture_time(data)
             if fetched_at is None:
                 _warn_missing_timestamp(source, entry_id, file_path)
                 continue
@@ -197,7 +197,7 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
                 metadata={
                     "file": str(file_path),
                     "title": title,
-                    "timestamp_provenance": "source_capture",
+                    "timestamp_provenance": "capture_metadata.fetched_at",
                 },
             )
         elif file_path.suffix == ".xml":
@@ -210,10 +210,8 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
                 link_elem = entry.find("atom:link", ns)
                 link = link_elem.get("href", "") if link_elem is not None else ""
                 title = entry.findtext("atom:title", "", ns)
-                updated = entry.findtext("atom:updated", "", ns)
-
                 entry_xml = ET.tostring(entry, encoding="unicode")
-                fetched_at = _capture_time(updated)
+                fetched_at = _capture_time({})
                 if fetched_at is None:
                     _warn_missing_timestamp(source, entry_id, file_path)
                     continue
@@ -229,7 +227,7 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
                     metadata={
                         "file": str(file_path),
                         "title": title,
-                        "timestamp_provenance": "source_capture",
+                        "timestamp_provenance": "capture_metadata.fetched_at",
                     },
                 )
 
@@ -284,7 +282,7 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
             listing = json.loads(line)
             listing_id = str(listing.get("id", listing.get("client_id", "unknown")))
             raw_payload = json.dumps(listing)
-            fetched_at = _capture_time(listing.get("timestamp"))
+            fetched_at = _capture_time(listing)
             if fetched_at is None:
                 _warn_missing_timestamp(source, listing_id or str(line_number), path)
                 continue
@@ -299,7 +297,7 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
                 payload_format="json",
                 metadata={
                     "format": "fixture_zero_jsonl",
-                    "timestamp_provenance": "source_capture",
+                    "timestamp_provenance": "capture_metadata.fetched_at",
                 },
             )
     else:
@@ -310,7 +308,7 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
                 continue
             listing_id = str(listing.get("id", listing.get("ebay_item", "unknown")))
             raw_payload = json.dumps(listing)
-            fetched_at = _capture_time(listing.get("timestamp"))
+            fetched_at = _capture_time(listing)
             if fetched_at is None:
                 _warn_missing_timestamp(source, listing_id, path)
                 continue
@@ -325,17 +323,21 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
                 payload_format="json",
                 metadata={
                     "format": "rackrat_hit",
-                    "timestamp_provenance": "source_capture",
+                    "timestamp_provenance": "capture_metadata.fetched_at",
                 },
             )
 
 
-def _capture_time(value: str | None) -> datetime | None:
-    """Parse a source capture timestamp; never substitute local file time."""
+def _capture_time(record: dict[str, Any]) -> datetime | None:
+    """Read only an explicit fetch timestamp from capture metadata."""
+    metadata = record.get("capture_metadata")
+    value = metadata.get("fetched_at") if isinstance(metadata, dict) else None
     if isinstance(value, str) and value:
         try:
             parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
-            return parsed.replace(tzinfo=timezone.utc) if parsed.tzinfo is None else parsed
+            if parsed.tzinfo is None:
+                return None
+            return parsed.astimezone(timezone.utc)
         except ValueError:
             return None
     return None
@@ -343,7 +345,8 @@ def _capture_time(value: str | None) -> datetime | None:
 
 def _warn_missing_timestamp(source: str, listing_id: str, path: Path) -> None:
     print(
-        f"Skipping {source}/{listing_id}: no valid source capture timestamp in {path}; "
-        "raw artifact is preserved but not ingested.",
+        f"Skipping {source}/{listing_id}: no explicit capture_metadata.fetched_at in {path}; "
+        "product updated_at, post updated/published, auction end, and file mtime do not "
+        "establish fetch time. Raw artifact is preserved but not ingested.",
         file=sys.stderr,
     )

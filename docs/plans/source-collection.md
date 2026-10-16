@@ -28,6 +28,16 @@ wrapper so `fetched_at` is the actual retrieval time and source update,
 publication, or auction-end dates remain separate source fields. When retrieval
 time is unavailable, leave it unknown and mark the capture incomplete; never
 substitute a source date, file modification time, or processing time for it.
+The current standalone extractor does not meet this requirement: its
+`iso_or_now` helper falls back to the capture file's modification time, and
+price/availability writes use that derived `fetched_at` as `observed_at`. Before
+any adapter is used for database readback, implementation must change this
+helper and the intake/write path to preserve an unknown fetch time and retain
+the raw incomplete evidence without publishing dated price or availability
+observations. Until that dependency is implemented, an incomplete capture
+cannot pass through the standalone extractor and be described as provenance
+honest. This is an implementation gate, not a claim that the current engine
+already supports it.
 An adapter's existence alone does not establish a correct capture or connection.
 Revisit this boundary when the application paths are reconciled; do not add a
 second intake implementation to make a pilot appear complete.
@@ -114,7 +124,7 @@ The hierarchy also names DiskPrices, r/homelabsales, and r/hardwareswap as exist
 For each source, the implementation PR must include:
 
 - Real fetched/imported evidence with source URL and original fetched-at timestamp required for a complete capture; the native source key is optional. Record import receipt time separately. Preserve source observation/publication/update/auction-end time in its own field when stated; it never supplies `fetched_at` or the observation time for a current price/availability capture. Imported evidence missing its original URL or fetch time stays explicitly incomplete; never invent those fields or substitute a source date, file modification time, processing time, or receipt time. A page's last-update date is not its fetch date or necessarily its price observation date.
-- Durable intake for every acquired record before price, product identity, or extraction succeeds. Partial/error records remain retrievable; unsupported source fields stay in raw evidence.
+- Durable intake for every acquired record before price, product identity, or extraction succeeds. Partial/error records remain retrievable; unsupported source fields stay in raw evidence. Acceptance must include a capture with unknown original fetch time: it remains retrievable as incomplete, generates no substitute fetch/observation timestamp, and publishes no dated price or availability observation.
 - Query readback of actual titles, stated amounts/currencies, price kinds, units/quantities, configuration or child lines, availability, condition, and time. Missing shipping does not mean free shipping; EUR and USD are not pooled without an explicit conversion analysis.
 - A second-date collection showing price/availability history when a source changes. Replaying the same capture with a new parser must append a new extraction version, preserve prior extraction and observation history, and create no duplicate postings or other duplicate logical intake. No invented changes if the page is unchanged.
 - Representative edge coverage: barebones versus configured server, base versus selected options, several component rows, lot versus each-price, foreign currency, unavailable listing, expired article/coupon, and a no-price specification page. Use actual source shapes, not invented rows to claim source coverage.

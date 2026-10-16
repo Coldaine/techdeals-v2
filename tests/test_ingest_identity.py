@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -79,21 +80,21 @@ def test_explicit_capture_metadata_is_accepted_without_using_source_dates(
     monkeypatch.setattr(loaders, "REPO_ROOT", tmp_path)
     captures = tmp_path / "corpus/cell-d-govdeals/captures"
     captures.mkdir(parents=True)
-    (captures / "lot.json").write_text(
-        json.dumps(
-            {
-                "item_id": "govdeals-30467-94",
-                "url": "https://www.govdeals.com/asset/30467/94",
-                "timestamp": "2026-10-08T19:00:00Z",
-                "capture_metadata": {"fetched_at": "2026-10-01T12:30:00Z"},
-            }
-        )
+    source_text = (
+        '{\n  "item_id": "govdeals-30467-94",\n'
+        '  "url": "https://www.govdeals.com/asset/30467/94",\n'
+        '  "timestamp": "2026-10-08T19:00:00Z",\n'
+        '  "capture_metadata": {"fetched_at": "2026-10-01T12:30:00Z"}\n}\n'
     )
+    source_bytes = source_text.encode("utf-8")
+    (captures / "lot.json").write_bytes(source_bytes)
 
     capture = next(load_govdeals_fixtures())
     assert capture.source_listing_id == "govdeals-30467-94"
     assert capture.url == "https://www.govdeals.com/asset/30467/94"
     assert capture.fetched_at == datetime(2026, 10, 1, 12, 30, tzinfo=timezone.utc)
+    assert capture.raw_payload == source_text
+    assert capture.checksum == hashlib.sha256(source_bytes).hexdigest()
     assert capture.metadata["source_url_status"] == "present"
     assert capture.metadata["timestamp_provenance"] == "capture_metadata.fetched_at"
 
@@ -104,22 +105,20 @@ def test_waterpanther_artifact_locator_is_not_reported_as_source_url(
     monkeypatch.setattr(loaders, "REPO_ROOT", tmp_path)
     captures = tmp_path / "corpus/cell-a-shopify/captures/waterpanther"
     captures.mkdir(parents=True)
-    (captures / "synthetic.json").write_text(
-        json.dumps(
-            {
-                "id": "synthetic-1",
-                "timestamp": "2026-06-24T10:23:29-04:00",
-                "url": "file:///tmp/products.json#synthetic-1",
-                "capture_metadata": {"fetched_at": "2026-10-01T12:30:00Z"},
-            }
-        )
+    source_text = (
+        '{\n "capture_metadata": {"fetched_at": "2026-10-01T12:30:00Z"},\n'
+        ' "products": [{"id":"synthetic-1", "timestamp":"2026-06-24T10:23:29-04:00", '
+        '"url":"file:///tmp/products.json#synthetic-1"}]\n}\n'
     )
+    (captures / "synthetic.json").write_bytes(source_text.encode("utf-8"))
 
     capture = next(load_shopify_fixtures("waterpanther"))
     assert capture.url == ""
     assert capture.metadata["source_url_status"] == "incomplete"
     assert capture.metadata["artifact_locator"] == "file:///tmp/products.json#synthetic-1"
     assert capture.fetched_at == datetime(2026, 10, 1, 12, 30, tzinfo=timezone.utc)
+    assert capture.raw_payload == source_text
+    assert capture.metadata["payload_selector"] == "/products/0"
 
 
 def test_captures_without_source_timestamp_are_skipped_with_disposition(capsys) -> None:

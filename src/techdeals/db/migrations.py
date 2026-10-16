@@ -13,6 +13,58 @@ MIGRATION_FILES = [
     "020_views.sql",
 ]
 
+LEGACY_MIGRATIONS = {"001_postings.sql", "002_observations.sql", "003_views.sql"}
+LEGACY_POSTING_COLUMNS = {"capture_id", "source_listing_id", "status"}
+
+
+def _legacy_database_state(conn: psycopg.Connection) -> tuple[set[str], set[str], bool]:
+    """Inspect migration metadata and table shape without changing the database."""
+    registry_exists, raw_captures_exists, postings_exists = conn.execute(
+        """SELECT to_regclass('public._schema_migrations') IS NOT NULL,
+                  to_regclass('public.raw_captures') IS NOT NULL,
+                  to_regclass('public.postings') IS NOT NULL"""
+    ).fetchone()
+
+    applied: set[str] = set()
+    if registry_exists:
+        applied = {
+            row[0]
+            for row in conn.execute("SELECT filename FROM public._schema_migrations").fetchall()
+        }
+
+    posting_columns: set[str] = set()
+    if postings_exists:
+        posting_columns = {
+            row[0]
+            for row in conn.execute(
+                """SELECT column_name FROM information_schema.columns
+                   WHERE table_schema = 'public' AND table_name = 'postings'"""
+            ).fetchall()
+        }
+    return applied, posting_columns, raw_captures_exists
+
+
+def _raise_on_legacy_database(conn: psycopg.Connection) -> None:
+    applied, posting_columns, has_raw_captures = _legacy_database_state(conn)
+    legacy_registry = applied & LEGACY_MIGRATIONS
+    legacy_postings = bool(posting_columns & LEGACY_POSTING_COLUMNS)
+    if not (legacy_registry or legacy_postings or has_raw_captures):
+        return
+
+    details = []
+    if legacy_registry:
+        details.append(f"legacy migrations recorded: {', '.join(sorted(legacy_registry))}")
+    if legacy_postings or has_raw_captures:
+        details.append("legacy raw_captures/postings tables detected")
+    raise RuntimeError(
+        "Refusing to apply the v2 schema over a legacy TechDeals database ("
+        + "; ".join(details)
+        + "). No schema changes were made. Preserve the existing database and its data; "
+        "do not use `techdeals migrate --reset`. For v2, provision a separate empty scratch "
+        "database. In-place legacy data conversion is not implemented; export/transform it "
+        "only under a separately reviewed migration plan."
+    )
+
 
 def get_schema_dir() -> Path:
     """Resolve schema directory location (root schema/ preferred, fallback to package schema)."""
@@ -36,6 +88,7 @@ def run_migrations() -> None:
 
     conn = psycopg.connect(settings.neon_database_url)
     try:
+        _raise_on_legacy_database(conn)
         conn.execute("""
             CREATE TABLE IF NOT EXISTS _schema_migrations (
                 filename TEXT PRIMARY KEY,

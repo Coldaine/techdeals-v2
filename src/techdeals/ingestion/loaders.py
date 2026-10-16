@@ -63,7 +63,9 @@ def load_shopify_fixtures(source: str) -> Iterator[RawCapture]:
         raise FileNotFoundError(f"Fixture directory not found for shopify source: {source}")
 
     for json_file in sorted(base.glob("*.json")):
-        data = json.loads(json_file.read_text())
+        raw_bytes = json_file.read_bytes()
+        raw_payload = raw_bytes.decode("utf-8")
+        data = json.loads(raw_payload)
 
         # Handle both single objects and arrays
         products = data if isinstance(data, list) else [data]
@@ -72,13 +74,12 @@ def load_shopify_fixtures(source: str) -> Iterator[RawCapture]:
         if isinstance(data, dict) and "products" in data:
             products = data["products"]
 
-        for product in products:
+        for index, product in enumerate(products):
             if not isinstance(product, dict):
                 continue
 
             product_id = str(product.get("id", json_file.stem))
-            raw_payload = json.dumps(product)
-            fetched_at = _capture_time(product)
+            fetched_at = _capture_time(product, data if isinstance(data, dict) else None)
             if fetched_at is None:
                 _warn_missing_timestamp(source, product_id, json_file)
                 continue
@@ -87,17 +88,25 @@ def load_shopify_fixtures(source: str) -> Iterator[RawCapture]:
             has_source_url = parsed_url.scheme in {"http", "https"} and bool(parsed_url.netloc)
             artifact_locator = reported_url if parsed_url.scheme == "file" else None
             source_url = reported_url if has_source_url else ""
+            selector = (
+                f"/products/{index}"
+                if isinstance(data, dict) and "products" in data
+                else f"/{index}"
+                if isinstance(data, list)
+                else ""
+            )
 
             yield RawCapture(
                 source=source,
                 source_listing_id=product_id,
                 url=source_url,
                 fetched_at=fetched_at,
-                checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
+                checksum=hashlib.sha256(raw_bytes).hexdigest(),
                 raw_payload=raw_payload,
                 payload_format="json",
                 metadata={
                     "file": str(json_file),
+                    "payload_selector": selector,
                     "timestamp_provenance": "capture_metadata.fetched_at",
                     "source_url_status": "present" if has_source_url else "incomplete",
                     **({"artifact_locator": artifact_locator} if artifact_locator else {}),
@@ -122,8 +131,9 @@ def load_govdeals_fixtures(source: str = "govdeals") -> Iterator[RawCapture]:
         raise FileNotFoundError(f"Fixture directory not found for govdeals: {source}")
 
     for json_file in sorted(base.glob("*.json")):
-        data = json.loads(json_file.read_text())
-        raw_payload = json.dumps(data)
+        raw_bytes = json_file.read_bytes()
+        raw_payload = raw_bytes.decode("utf-8")
+        data = json.loads(raw_payload)
 
         # Extract identifiers
         account_id = data.get("accountId", "unknown")
@@ -143,7 +153,7 @@ def load_govdeals_fixtures(source: str = "govdeals") -> Iterator[RawCapture]:
             source_listing_id=source_listing_id,
             url=reported_url if has_source_url else "",
             fetched_at=fetched_at,
-            checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
+            checksum=hashlib.sha256(raw_bytes).hexdigest(),
             raw_payload=raw_payload,
             payload_format="json",
             metadata={
@@ -176,14 +186,15 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
 
     for file_path in sorted(base.glob("*")):
         if file_path.suffix == ".json":
-            data = json.loads(file_path.read_text())
-            raw_payload = json.dumps(data)
+            raw_bytes = file_path.read_bytes()
+            raw_payload = raw_bytes.decode("utf-8")
+            data = json.loads(raw_payload)
             entry_id = str(data.get("id", file_path.stem))
             fetched_at = _capture_time(data)
             if fetched_at is None:
                 _warn_missing_timestamp(source, entry_id, file_path)
                 continue
-            url = data.get("url", f"https://reddit.com/comments/{entry_id}")
+            url = data.get("url", "")
             title = data.get("title", "")
 
             yield RawCapture(
@@ -191,7 +202,7 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
                 source_listing_id=entry_id,
                 url=url,
                 fetched_at=fetched_at,
-                checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
+                checksum=hashlib.sha256(raw_bytes).hexdigest(),
                 raw_payload=raw_payload,
                 payload_format="json",
                 metadata={
@@ -201,7 +212,8 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
                 },
             )
         elif file_path.suffix == ".xml":
-            raw_payload = file_path.read_text()
+            raw_bytes = file_path.read_bytes()
+            raw_payload = raw_bytes.decode("utf-8")
             root = ET.fromstring(raw_payload)
             ns = {"atom": "http://www.w3.org/2005/Atom"}
 
@@ -210,7 +222,7 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
                 link_elem = entry.find("atom:link", ns)
                 link = link_elem.get("href", "") if link_elem is not None else ""
                 title = entry.findtext("atom:title", "", ns)
-                entry_xml = ET.tostring(entry, encoding="unicode")
+                entry_selector = entry_id
                 fetched_at = _capture_time({})
                 if fetched_at is None:
                     _warn_missing_timestamp(source, entry_id, file_path)
@@ -221,12 +233,13 @@ def load_reddit_fixtures(source: str = "reddit_homelabsales") -> Iterator[RawCap
                     source_listing_id=entry_id,
                     url=link,
                     fetched_at=fetched_at,
-                    checksum=hashlib.sha256(entry_xml.encode()).hexdigest(),
-                    raw_payload=entry_xml,
+                    checksum=hashlib.sha256(raw_bytes).hexdigest(),
+                    raw_payload=raw_payload,
                     payload_format="atom",
                     metadata={
                         "file": str(file_path),
                         "title": title,
+                        "payload_selector": entry_selector,
                         "timestamp_provenance": "capture_metadata.fetched_at",
                     },
                 )
@@ -267,7 +280,8 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
         return
 
     if path.suffix == ".jsonl":
-        lines = path.read_text().splitlines()
+        jsonl_text = path.read_bytes().decode("utf-8")
+        lines = jsonl_text.splitlines(keepends=True)
         if path.name == "servers_read_v2.jsonl":
             print(
                 f"Skipping {source}: {len(lines)} human-verified scoring records in {path} "
@@ -279,9 +293,10 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
         for line_number, line in enumerate(lines, start=1):
             if not line.strip():
                 continue
+            raw_bytes = line.encode("utf-8")
             listing = json.loads(line)
             listing_id = str(listing.get("id", listing.get("client_id", "unknown")))
-            raw_payload = json.dumps(listing)
+            raw_payload = line
             fetched_at = _capture_time(listing)
             if fetched_at is None:
                 _warn_missing_timestamp(source, listing_id or str(line_number), path)
@@ -292,7 +307,7 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
                 source_listing_id=listing_id,
                 url=listing.get("url", ""),
                 fetched_at=fetched_at,
-                checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
+                checksum=hashlib.sha256(raw_bytes).hexdigest(),
                 raw_payload=raw_payload,
                 payload_format="json",
                 metadata={
@@ -301,13 +316,14 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
                 },
             )
     else:
-        data = json.loads(path.read_text())
+        raw_bytes = path.read_bytes()
+        raw_payload = raw_bytes.decode("utf-8")
+        data = json.loads(raw_payload)
         listings = data.get("listings", []) if isinstance(data, dict) else data
         for listing in listings:
             if not isinstance(listing, dict):
                 continue
             listing_id = str(listing.get("id", listing.get("ebay_item", "unknown")))
-            raw_payload = json.dumps(listing)
             fetched_at = _capture_time(listing)
             if fetched_at is None:
                 _warn_missing_timestamp(source, listing_id, path)
@@ -318,7 +334,7 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
                 source_listing_id=listing_id,
                 url=listing.get("url", ""),
                 fetched_at=fetched_at,
-                checksum=hashlib.sha256(raw_payload.encode()).hexdigest(),
+                checksum=hashlib.sha256(raw_bytes).hexdigest(),
                 raw_payload=raw_payload,
                 payload_format="json",
                 metadata={
@@ -328,9 +344,13 @@ def load_rackrat_fixtures(source: str = "rackrat") -> Iterator[RawCapture]:
             )
 
 
-def _capture_time(record: dict[str, Any]) -> datetime | None:
+def _capture_time(
+    record: dict[str, Any], inherited_record: dict[str, Any] | None = None
+) -> datetime | None:
     """Read only an explicit fetch timestamp from capture metadata."""
     metadata = record.get("capture_metadata")
+    if not isinstance(metadata, dict) and inherited_record is not None:
+        metadata = inherited_record.get("capture_metadata")
     value = metadata.get("fetched_at") if isinstance(metadata, dict) else None
     if isinstance(value, str) and value:
         try:

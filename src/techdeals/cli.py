@@ -14,6 +14,20 @@ from techdeals.ingestion.contract import RawCapture
 
 console = Console()
 
+QUERY_SQL = {
+    "available": (
+        "SELECT * FROM v_cheapest_available "
+        "WHERE availability_state = 'available' ORDER BY unit_price LIMIT 20"
+    ),
+    "history": "SELECT * FROM v_price_history LIMIT 50",
+    "lots": "SELECT * FROM v_lot_worth LIMIT 20",
+    "quarantine": (
+        "SELECT * FROM v_accounting WHERE quarantine_state = 'quarantined' "
+        "OR COALESCE(quarantined_line_count, 0) > 0 LIMIT 20"
+    ),
+    "accounting": "SELECT * FROM v_accounting LIMIT 20",
+}
+
 
 def _posting_offer_key(
     source: str, url: str, fetched_at: datetime, source_listing_id: str
@@ -63,7 +77,8 @@ def main() -> None:
             run_migrations()
     elif command == "ingest":
         console.print("[yellow]Ingestion pipeline — loading fixtures into postings.[/yellow]")
-        asyncio.run(_run_ingest())
+        if asyncio.run(_run_ingest()) != 0:
+            sys.exit(1)
     elif command == "extract":
         console.print(
             "[red]Extraction persistence is not implemented; no postings were processed.[/red]"
@@ -79,7 +94,7 @@ def main() -> None:
         sys.exit(1)
 
 
-async def _run_ingest() -> None:
+async def _run_ingest() -> int:
     """Ingest fixtures into postings table."""
     from techdeals.db.connection import get_connection
     from techdeals.ingestion.loaders import load_all_fixtures
@@ -87,17 +102,20 @@ async def _run_ingest() -> None:
     console.print("Loading fixtures from corpus...")
 
     captures = list(load_all_fixtures(max_per_source=10))
-    console.print(f"Found {len(captures)} captures from all sources.")
+    console.print(f"Eligible captures: {len(captures)}.")
 
     if not captures:
-        console.print("[yellow]No fixtures found.[/yellow]")
-        return
+        console.print(
+            "[yellow]No rows attempted: no fixture has explicit "
+            "capture_metadata.fetched_at.[/yellow]"
+        )
+        return 0
 
     try:
         conn = get_connection()
     except Exception as e:
         console.print(f"[red]Database connection failed: {e}[/red]")
-        return
+        return 1
 
     try:
         inserted = 0
@@ -136,10 +154,12 @@ async def _run_ingest() -> None:
                 continue
 
         conn.commit()
-        console.print(
-            f"[green]Input: {len(captures)}; inserted: {inserted}; "
-            f"duplicates: {duplicates}; failed: {failed}[/green]"
+        summary = (
+            f"Input: {len(captures)}; inserted: {inserted}; "
+            f"duplicates: {duplicates}; failed: {failed}"
         )
+        console.print(f"[{'red' if failed else 'green'}]{summary}[/]")
+        return 1 if failed else 0
     finally:
         conn.close()
 
@@ -148,16 +168,8 @@ def _run_query(name: str) -> None:
     """Run a predefined query."""
     from techdeals.db.connection import get_connection
 
-    queries = {
-        "available": "SELECT * FROM v_cheapest_available LIMIT 20",
-        "history": "SELECT * FROM v_price_history LIMIT 50",
-        "lots": "SELECT * FROM v_lot_worth LIMIT 20",
-        "quarantine": "SELECT * FROM v_stale_quarantine LIMIT 20",
-        "accounting": "SELECT * FROM v_accounting LIMIT 20",
-    }
-
-    if name not in queries:
-        console.print(f"[red]Unknown query: {name}. Options: {', '.join(queries.keys())}[/red]")
+    if name not in QUERY_SQL:
+        console.print(f"[red]Unknown query: {name}. Options: {', '.join(QUERY_SQL.keys())}[/red]")
         return
 
     try:
@@ -167,7 +179,7 @@ def _run_query(name: str) -> None:
         return
 
     try:
-        result = conn.execute(queries[name])
+        result = conn.execute(QUERY_SQL[name])
         rows = result.fetchall()
         columns = [desc[0] for desc in result.description]
 

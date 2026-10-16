@@ -2,8 +2,6 @@
 
 Words for used hardware and datacenter gear. A source sells or auctions it, the pipeline breaks a listing into parts, prices those parts over time, and answers questions about them.
 
-The format of this file is not fixed. The domain-modeling skill is optional. It does not get to ban a word the owner uses.
-
 ## Listing
 
 A listing is one capture: the raw payload plus where and when it was fetched. It may be one part, a configured server, a lot, or a wanted post. Listings are only added. They are not edited, merged, or deleted.

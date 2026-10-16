@@ -10,9 +10,9 @@ Posting is the same thing. It is the name used in the schema. It is not a second
 
 A capture is that fetch. Provenance is the source, the URL, the fetch time, and a content checksum. Nothing enters without those.
 
-An extraction is one parse of one listing. A new parse adds an extraction. It does not rewrite the old one. A batch is many listings parsed in one model call. One listing per call is a defect.
+An extraction is one parse of one listing. A new parse adds an extraction. It does not rewrite the old one. A batch is a collection of extractions handled as one unit.
 
-The offer key is the stable identity of an offer, taken from its natural facts, so parsing the same listing again does not invent a second offer.
+An offer key identifies the logical offer whose price and availability history is being tracked.
 
 ## Parts
 

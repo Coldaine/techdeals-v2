@@ -649,17 +649,20 @@ def apply_source_price_basis(description: str, line_label: str, stated_qty, po: 
 
 def validate_result(res: dict, fallback_label: str | None = None) -> dict:
     """Coerce one model result into the engine's canonical shape; raise on garbage."""
+    if "outcome" not in res:
+        raise ValueError("missing required outcome")
+    outcome = res["outcome"]
+    if outcome not in ("extracted", "quarantined", "no_purchase_information"):
+        raise ValueError(f"bad outcome {outcome!r}")
     out = {
         "id": str(res.get("id")),
-        "outcome": res.get("outcome") or "no_purchase_information",
+        "outcome": outcome,
         "sale_groups": [],
         "quarantine": res.get("quarantine") or {},
         "conflicts": res.get("conflicts") or [],
         "read_confidence": res.get("read_confidence"),
         "read_note": res.get("read_note"),
     }
-    if out["outcome"] not in ("extracted", "quarantined", "no_purchase_information"):
-        raise ValueError(f"bad outcome {out['outcome']!r}")
     for g in res.get("sale_groups") or []:
         if not isinstance(g, dict):
             raise ValueError("sale group not an object")

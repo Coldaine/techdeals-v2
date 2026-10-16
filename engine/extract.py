@@ -28,6 +28,7 @@ import base64
 import glob
 import hashlib
 import json
+import math
 import os
 import re
 import subprocess
@@ -758,11 +759,17 @@ def validate_result(res: dict, fallback_label: str | None = None) -> dict:
             ):
                 raise ValueError(f"bad price_kind {price['price_kind']!r}")
             quantity_units = price["quantity_units"]
-            if quantity_units is not None and (
-                isinstance(quantity_units, bool)
-                or not isinstance(quantity_units, (int, float))
-                or quantity_units <= 0
+            valid_quantity = quantity_units is None
+            if (
+                not valid_quantity
+                and not isinstance(quantity_units, bool)
+                and isinstance(quantity_units, (int, float))
             ):
+                try:
+                    valid_quantity = quantity_units > 0 and math.isfinite(float(quantity_units))
+                except (OverflowError, ValueError):
+                    valid_quantity = False
+            if not valid_quantity:
                 raise ValueError(
                     f"sale group {group_index} price quantity_units must be a positive number or null"
                 )

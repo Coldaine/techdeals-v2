@@ -156,6 +156,24 @@ def test_price_contract_rejects_wrong_types_missing_fields_and_unknown_kind() ->
         extract.validate_result(bad)
 
 
+@pytest.mark.parametrize("quantity", [float("nan"), float("inf"), float("-inf"), json.loads("1e999")])
+def test_price_contract_rejects_nonfinite_quantity_units(quantity: float) -> None:
+    result = {
+        "id": "nonfinite", "outcome": "extracted", "sale_groups": [{
+            "label": "Machine", "availability": "available",
+            "price": {
+                "amount": "100", "currency": "USD", "price_kind": "ask",
+                "price_basis": "explicit_unit", "quantity_units": quantity,
+                "bound_low": None, "bound_high": None, "basis_note": None,
+            },
+            "lines": [{"label": "Machine", "quantity": 1,
+                       "separately_purchasable": True, "attributes": {}, "children": []}],
+        }],
+    }
+    with pytest.raises(ValueError, match="quantity_units must be a positive number or null"):
+        extract.validate_result(result)
+
+
 @pytest.mark.parametrize(
     ("currency", "price_kind", "reason"),
     [(None, "ask", "currency unstated"), ("USD", None, "price kind unstated")],
